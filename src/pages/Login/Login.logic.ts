@@ -11,6 +11,7 @@ const login = () => {
     validationSchema: LoginShema,
 
     onSubmit: (values: User) => {
+      // send POST request to server
       console.log(values);
     },
   });

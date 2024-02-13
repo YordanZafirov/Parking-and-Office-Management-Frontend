@@ -15,5 +15,6 @@ export const LoginShema = Yup.object().shape({
     .required("Required"),
   password: Yup.string()
     .min(6, "Password is too short - should be 6 chars minimum.")
+    .max(32, "Password is too long - should be 32 chars maximum.")
     .required("Required"),
 });
