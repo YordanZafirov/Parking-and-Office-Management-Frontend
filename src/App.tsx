@@ -27,19 +27,19 @@ const parking = [
   },
   {
     id: 7,
-    name: "Parking 6",
+    name: "Parking 7",
   },
   {
     id: 8,
-    name: "Parking 6",
+    name: "Parking 8",
   },
   {
     id: 9,
-    name: "Parking 6",
+    name: "Parking 9",
   },
   {
     id: 10,
-    name: "Parking 6",
+    name: "Parking 10",
   },
 ];
 
