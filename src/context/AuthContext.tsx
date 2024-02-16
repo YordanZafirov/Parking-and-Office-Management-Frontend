@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { loginService } from "../services/userService";
+// import { loginService } from "../services/userService";
 import { User } from "../pages/Login/Login.static";
+import { loginService } from "../services/userService";
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  loginUser: ({email, password}: User) => void;
+  loginUser: ({ email, password }: User) => void;
   logout: () => void;
 }
 
@@ -33,7 +34,7 @@ const isTokenValid = (token: string) => {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    const storedToken = localStorage.getItem("accessToken");
+    const storedToken = localStorage.getItem("access_token");
     return !!storedToken && isTokenValid(storedToken);
   });
   const currentPath = window.location.pathname;
@@ -41,38 +42,48 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const loginUser = async ({ email, password }: User) => {
     try {
       // Call your login service to authenticate user
-      const response = await loginService({ email, password });
-      console.log(response);
+      const response: Response | User = await loginService({ email, password });
 
-      // if (response && response.access_token) {
-      //   localStorage.setItem("access_token", response.access_token);
-      //   setIsAuthenticated(true);
-      //   navigate("/");
-      // } else {
-      //   setIsAuthenticated(false);
-      // }
+      if (response) {
+        localStorage.setItem("access_token", response.access_token);
+        setIsAuthenticated(true);
+        navigate("/");
+      } else {
+        setIsAuthenticated(false);
+      }
     } catch (error) {
       console.error("Error logging in:", error);
       setIsAuthenticated(false);
     }
   };
 
+  // const loginUser = (accessToken: string) => {
+  //   const isValidToken = accessToken && isTokenValid(accessToken);
+
+  //   if (!isValidToken) {
+  //     localStorage.removeItem("accessToken");
+  //   }
+
+  //   setIsAuthenticated(true);
+  // };
+
   const logout = () => {
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem("access_token");
     setIsAuthenticated(false);
     navigate("/login");
   };
 
   useEffect(() => {
-    const publicRoutes = ["/login", "/register"];
-    const storedToken = localStorage.getItem("accessToken");
+    const publicRoutes = ["/login"];
+    const storedToken = localStorage.getItem("access_token");
+    const tokenIsValid = storedToken && isTokenValid(storedToken);
 
-    if (!isAuthenticated && storedToken && isTokenValid(storedToken)) {
+    if (!isAuthenticated && tokenIsValid) {
       setIsAuthenticated(true);
-    } else if (!publicRoutes.includes(currentPath)) {
+    } else if (!tokenIsValid && !publicRoutes.includes(currentPath)) {
       navigate("/login");
     }
-  }, [navigate, currentPath, isAuthenticated]);
+  }, [navigate]);
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, loginUser, logout }}>
