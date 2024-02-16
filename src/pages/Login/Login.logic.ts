@@ -20,8 +20,6 @@ const login = () => {
         console.error("Error logging in:", error);
         formik.setFieldValue("error", error.message);
       }
-      
-      console.log(values);
     },
   });
   return { formik };
