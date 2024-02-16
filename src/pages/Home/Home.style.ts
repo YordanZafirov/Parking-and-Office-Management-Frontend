@@ -12,7 +12,6 @@ export const HomeContainer = styled.div`
     text-align: center;
     color: #fff;
     margin: 50px 0 20px;
-    z-index: 1;
   }
 
   ul {
@@ -22,7 +21,6 @@ export const HomeContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    z-index: 1;
   }
 
   li {

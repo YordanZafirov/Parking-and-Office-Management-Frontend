@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <HomeContainer>
       <h1>Choose location</h1>
-      <BackgroundImage src={officeBackground} alt="" />
+      {/* <BackgroundImage src={officeBackground} alt="" /> */}
       <ul>
         {location.map((location) => (
           <li key={location.id}>

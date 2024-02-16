@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import { GlobalStyle } from "./components/Global.style";
 import { route } from "./static/routes";
 import { AuthProvider } from "./context/AuthContext";
+import Navigation from "./components/navigation/Navigation";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <AuthProvider>
+          <Navigation />
           <Routes>
             <Route path={route.home} element={<Home />} />
             <Route path={route.login} element={<Login />} />
