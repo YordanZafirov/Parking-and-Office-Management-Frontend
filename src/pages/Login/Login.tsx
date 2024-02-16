@@ -30,9 +30,7 @@ const Login = () => {
           <div>{formik.errors.password}</div>
         ) : null}
         <button type="submit">Login</button>
-        {formik.errors.error ? (
-          <div>{formik.errors.error}</div>
-        ) : null}
+        {formik.errors.error ? <div>{formik.errors.error}</div> : null}
       </LoginForm>
     </LoginPage>
   );

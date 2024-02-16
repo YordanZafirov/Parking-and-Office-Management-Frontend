@@ -1,7 +1,10 @@
 import { useFormik } from "formik";
 import { LoginShema, User } from "./Login.static";
+import { useAuth } from "../../context/AuthContext";
+
 
 const login = () => {
+  const { loginUser } = useAuth();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -11,7 +14,13 @@ const login = () => {
     validationSchema: LoginShema,
 
     onSubmit: (values: User) => {
-      // send POST request to server
+      try{
+        loginUser(values);
+      } catch (error) {
+        console.error("Error logging in:", error);
+        formik.setFieldValue("error", error.message);
+      }
+      
       console.log(values);
     },
   });

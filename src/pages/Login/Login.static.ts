@@ -3,7 +3,7 @@ import * as Yup from "yup";
 export interface User {
   email: string;
   password: string;
-  error: string;
+  error?: string;
 }
 
 export const LoginShema = Yup.object().shape({
