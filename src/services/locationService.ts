@@ -1,9 +1,9 @@
 import { get } from "./fetchService";
 import { endpoints } from "../static/endpoints";
-import { Location } from "../pages/Home/Home.static";
+import { LocationInterface } from "../pages/Location/Location.static";
 
 // Function to get all locations
-export const getLocations = async (): Promise<Location[]> => {
+export const getLocations = async (): Promise<LocationInterface[]> => {
   try {
     const response = await get(endpoints.getLocations, {});
     return response;
@@ -13,7 +13,7 @@ export const getLocations = async (): Promise<Location[]> => {
 };
 
 // Function to get location by id
-export const getLocation = async (id: string): Promise<Location[]> => {
+export const getLocation = async (id: string): Promise<LocationInterface> => {
   try {
     const response = await get(endpoints.getLocations + "/" + id, {});
     return response;

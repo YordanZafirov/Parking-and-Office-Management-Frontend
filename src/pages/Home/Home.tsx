@@ -1,6 +1,6 @@
 import { HomeContainer } from "./Home.style";
 import useHome from "./Home.logic";
-import { Location } from "./Home.static";
+import { LocationInterface } from "../Location/Location.static";
 import Loader from "../../components/loader/Loader";
 import LocationChoice from "./LocationChocie/LocationChocie";
 
@@ -17,10 +17,10 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      {locations.length === 0 && <div>No locations found</div>}
+      {locations?.length === 0 && <div>No locations found</div>}
       <h1>Choose location</h1>
       <ul>
-        {locations.map((location: Location) => (
+        {locations?.map((location: LocationInterface) => (
           <LocationChoice key={location.id} location={location} />
         ))}
       </ul>

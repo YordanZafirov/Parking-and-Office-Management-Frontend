@@ -3,7 +3,6 @@ import LocationTable from "./LocationTable/LocationTable";
 import SpotType from "./SpotType/SpotType";
 import useLocation from "./Location.logic";
 import useSpotType from "./SpotType/SpotType.logic";
-import { useEffect } from "react";
 
 const Location = () => {
   const {
@@ -17,11 +16,6 @@ const Location = () => {
     error: errorSpotType,
   } = useSpotType();
 
-  useEffect(() => {
-    // returns undefined
-    console.log(spotTypeByLocationId);
-  }, [spotTypeByLocationId]);
-
   if (loadingLocation || loadingSpotType) {
     return <Loader />;
   }
@@ -32,7 +26,10 @@ const Location = () => {
 
   return (
     <>
-      <SpotType name={singleLocation?.name} spotTypeData={spotTypeByLocationId} />
+      <SpotType
+        name={singleLocation?.name}
+        spotTypeData={spotTypeByLocationId}
+      />
       <LocationTable />
     </>
   );
