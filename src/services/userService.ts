@@ -1,6 +1,19 @@
 import { User } from "../pages/Login/Login.static";
 import { endpoints } from "../static/endpoints";
-import { post } from "./fetchService";
+import { del, get, post } from "./fetchService";
+
+export const getUsers = async (): Promise<User[]> => {
+  const response = await get(`${endpoints.user}`,{});
+  return response;
+}
+export const getUser = async (id: string): Promise<User> => {
+  const response = await get(`${endpoints.user}/${id}`,{});
+  return response;
+}
+export const deleteUser = async (id: string): Promise<User> => {
+  const response = await del(`${endpoints.user}/${id}`,{});
+  return response;
+}
 
 export const register = async ({ email, password }: User): Promise<User> => {
   try {
@@ -26,3 +39,4 @@ export const loginService = async ({
 export const logout = async () => {
   localStorage.removeItem("access_token");
 };
+

@@ -6,7 +6,7 @@ export const endpoints = {
   register: `${BASE_URL}/user/signup`,
 
   // USER
-  getUsers: `${BASE_URL}/user`,
+  user: `${BASE_URL}/user`,
   getSingleUser: `${BASE_URL}/user/:userId`,
   deleteUser: `${BASE_URL}/user/:userId`,
 
