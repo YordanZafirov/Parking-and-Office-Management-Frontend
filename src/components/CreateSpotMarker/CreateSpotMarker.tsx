@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ImageMarker, { Marker } from 'react-image-marker';
 import { CustomSpotMarker } from './CreateSpotMarker.static';
 import { Button, ButtonsContainer, Container, DivFlexStyled, FormStyled, Option } from './CreateSpotMarker.style';
+import CustomMarker from './CustomMarker/CustomMarker';
 
 const floorPlan = 'https://parking-and-office-management.s3.amazonaws.com/1708009292684-office-planning-software.png';
 
@@ -78,6 +79,7 @@ export default function SpotMarker() {
                     onAddMarker={(marker: Marker) => {
                         handleAddMarker(marker);
                     }}
+                    markerComponent={CustomMarker}
                 />
                 {isFormOpen && (
                     <div className="modal-content">
