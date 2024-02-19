@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { route } from "../../../static/routes";
@@ -38,7 +37,7 @@ const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
       <Ul open={open}>
         {isAuthenticated ? (
           <>
-            <NavLink
+            {/* <NavLink
               className="nav-link"
               to={route.client}
               onClick={handleCloseNav}
@@ -72,7 +71,7 @@ const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
               onClick={handleCloseNav}
             >
               <li>Reports</li>
-            </NavLink>
+            </NavLink> */}
             <StyledProfile>
               <ProfileSpan onClick={handleProfileClick}>
                 <li>Profile</li>
@@ -100,9 +99,9 @@ const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
         ) : (
           <>
             {" "}
-            <NavLink to={route.register} onClick={handleCloseNav}>
+            {/* <NavLink to={route.register} onClick={handleCloseNav}>
               <li>Register</li>
-            </NavLink>
+            </NavLink> */}
             <NavLink to={route.login} onClick={handleCloseNav}>
               <li>Login</li>
             </NavLink>

@@ -24,7 +24,7 @@ export const Ul = styled.ul<NavProps>`
     flex-flow: column nowrap;
     align-items: center;
     background-color: #333;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 
     position: fixed;
     transform: ${({ open }: NavProps) =>
