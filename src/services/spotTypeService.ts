@@ -23,21 +23,23 @@ export const getSpotTypes = async (id: string): Promise<SpotType[]> => {
   }
 };
 
-export const getSpotByLocationId = async (
+export const getSpotTypeByLocationId = async (
   locationId: string
 ): Promise<SpotType[]> => {
-  const url = `${endpoints.getSpotTypes}/search?locationId=${locationId}`;
+  const response = await get(endpoints.getSpotTypes + "/search?locationId=" + locationId, {});
+  return response;
+  // const url = `${endpoints.getSpotTypes}/search?locationId=${locationId}`;
 
-  try {
-    const response = await get(url, {});
+  // try {
+  //   const response = await get(url, {});
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch spot types");
-    }
+  //   if (!response.ok) {
+  //     throw new Error("Failed to fetch spot types");
+  //   }
 
-    const data: SpotType[] = await response.json();
-    return data;
-  } catch (error) {
-    throw new Error("Failed to fetch spot types");
-  }
+  //   const data: SpotType[] = await response.json();
+  //   return data;
+  // } catch (error) {
+  //   throw new Error("Failed to fetch spot types");
+  // }
 };

@@ -1,15 +1,19 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { get } from "../../../services/fetchService";
+import { getSpotTypeByLocationId } from "../../../services/spotTypeService";
 
-const useSpotChoice = () => {
+const useSpotType = () => {
   const { locationId } = useParams();
   const {
-    data: spot,
+    data: spotTypeByLocationId,
     isLoading,
     error,
-  } = useQuery(["spot", locationId], () => get(``, {}));
-  return { spot, isLoading, error };
+  } = useQuery(["spot", locationId], () => {
+    if (locationId) {
+      return getSpotTypeByLocationId(locationId);
+    }
+  });
+  return { spotTypeByLocationId, isLoading, error };
 };
 
-export default useSpotChoice;
+export default useSpotType;
