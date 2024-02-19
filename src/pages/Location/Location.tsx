@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import Loader from "../../components/loader/Loader";
 import LocationTable from "./LocationTable/LocationTable";
-import SpotChoice from "./SpotChoice/SpotChoice";
+import SpotChoice from "./SpotType/SpotType";
 import useLocation from "./Location.logic";
 
 const Location = () => {
@@ -19,9 +19,10 @@ const Location = () => {
   if (error) {
     return <div>Error loading location</div>;
   }
+
   return (
     <>
-      <SpotChoice />
+      <SpotChoice name={singleLocation?.name} />
       <LocationTable />
     </>
   );
