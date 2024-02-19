@@ -41,7 +41,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const loginUser = async ({ email, password }: User) => {
     try {
-      // Call your login service to authenticate user
+      // LoginService returns a User object or a Response object
       const response: Response | User = await loginService({ email, password });
 
       if (response) {
@@ -57,16 +57,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  // const loginUser = (accessToken: string) => {
-  //   const isValidToken = accessToken && isTokenValid(accessToken);
-
-  //   if (!isValidToken) {
-  //     localStorage.removeItem("accessToken");
-  //   }
-
-  //   setIsAuthenticated(true);
-  // };
-
   const logout = () => {
     localStorage.removeItem("access_token");
     setIsAuthenticated(false);
@@ -81,6 +71,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (!isAuthenticated && tokenIsValid) {
       setIsAuthenticated(true);
     } else if (!tokenIsValid && !publicRoutes.includes(currentPath)) {
+      localStorage.removeItem("access_token");
       navigate("/login");
     }
   }, [navigate]);
