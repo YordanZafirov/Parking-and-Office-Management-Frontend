@@ -2,6 +2,7 @@ import { User } from "../pages/Login/Login.static";
 import { endpoints } from "../static/endpoints";
 import { post } from "./fetchService";
 
+// Function to register user
 export const register = async ({ email, password }: User): Promise<User> => {
   try {
     const response = await post(`${endpoints.register}`, { email, password });
@@ -11,6 +12,7 @@ export const register = async ({ email, password }: User): Promise<User> => {
   }
 };
 
+// Function to login user
 export const loginService = async ({
   email,
   password,
@@ -23,6 +25,7 @@ export const loginService = async ({
   }
 };
 
+// Function to logout user
 export const logout = async () => {
   localStorage.removeItem("access_token");
 };

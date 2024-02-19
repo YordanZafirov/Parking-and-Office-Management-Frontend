@@ -4,7 +4,8 @@ import { getSpotTypeByLocationId } from "../../../services/spotTypeService";
 
 const useSpotType = () => {
   const { id } = useParams();
-  console.log(id);
+
+  // Fetch spot type data by location id
   const {
     data: spotTypeByLocationId,
     isLoading,

@@ -5,6 +5,7 @@ import { getLocation } from "../../services/locationService";
 const useLocation = () => {
   const { id } = useParams();
 
+  // Fetch single location
   const {
     data: singleLocation,
     isLoading,

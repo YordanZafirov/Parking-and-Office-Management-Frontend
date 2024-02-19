@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import { getLocations } from "../../services/locationService";
 
 const useHome = () => {
+  // Fetch all locations
   const {
     data: locations,
     isLoading,

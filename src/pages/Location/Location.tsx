@@ -5,6 +5,7 @@ import useLocation from "./Location.logic";
 import useSpotType from "./SpotType/SpotType.logic";
 
 const Location = () => {
+  // Fetch location and spot type data
   const {
     singleLocation,
     isLoading: loadingLocation,
