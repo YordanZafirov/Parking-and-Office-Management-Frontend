@@ -1,15 +1,19 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { get } from "../../services/fetchService";
-import { endpoints } from "../../static/endpoints";
+import { getLocation } from "../../services/locationService";
 
 const useLocation = () => {
   const { id } = useParams();
 
-  const { data: singleLocation, isLoading, error } = useQuery(
-    ["location", id],
-    () => get(endpoints.getLocations + "/" + id, {}),
-  );
+  const {
+    data: singleLocation,
+    isLoading,
+    error,
+  } = useQuery(["location", id], () => {
+    if (id) {
+      return getLocation(id);
+    }
+  });
 
   return { singleLocation, isLoading, error };
 };

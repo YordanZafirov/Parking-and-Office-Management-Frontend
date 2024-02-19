@@ -26,6 +26,7 @@ export const endpoints = {
   // SPOT_TYPE
   getSpotTypes: `${BASE_URL}/spot-type`,
   getSingleSpotType: `${BASE_URL}/spot-type/:spotTypeId`,
+  getSpotTypeByLocation: `${BASE_URL}/spot-type/search/:locationId`,
   createSpotType: `${BASE_URL}/spot-type`,
 
   // SPOT

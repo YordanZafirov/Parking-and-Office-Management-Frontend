@@ -6,7 +6,7 @@ export interface User {
   error?: string;
 }
 
-export const LoginShema = Yup.object().shape({
+export const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .matches(
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,

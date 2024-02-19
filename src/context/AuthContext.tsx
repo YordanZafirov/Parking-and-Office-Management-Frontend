@@ -17,8 +17,11 @@ interface AuthProviderProps {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const isTokenExpired = (exp: any) => {
+const isTokenExpired = (exp: number | undefined) => {
   const currentTime = Date.now() / 1000;
+  if (!exp) {
+    return false;
+  }
   return exp < currentTime;
 };
 const isTokenValid = (token: string) => {
@@ -74,7 +77,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       localStorage.removeItem("access_token");
       navigate("/login");
     }
-  }, [navigate]);
+  }, [navigate, isAuthenticated, currentPath]);
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, loginUser, logout }}>
