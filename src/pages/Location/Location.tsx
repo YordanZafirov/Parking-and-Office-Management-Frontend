@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import useLocation from "./Location.logic";
+
 import Loader from "../../components/loader/Loader";
 import LocationTable from "./LocationTable/LocationTable";
 import SpotChoice from "./SpotChoice/SpotChoice";
+import useLocation from "./Location.logic";
 
 const Location = () => {
   const { singleLocation, isLoading, error } = useLocation();

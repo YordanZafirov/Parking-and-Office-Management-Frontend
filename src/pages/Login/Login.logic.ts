@@ -1,9 +1,9 @@
 import { useFormik } from "formik";
-import { LoginShema, User } from "./Login.static";
+import { LoginSchema, User } from "./Login.static";
 import { useAuth } from "../../context/AuthContext";
 
 
-const login = () => {
+const useLogin = () => {
   const { loginUser } = useAuth();
   const formik = useFormik({
     initialValues: {
@@ -11,7 +11,7 @@ const login = () => {
       password: "",
       error: "",
     },
-    validationSchema: LoginShema,
+    validationSchema: LoginSchema,
 
     onSubmit: (values: User) => {
       try{
@@ -25,4 +25,4 @@ const login = () => {
   return { formik };
 };
 
-export default login;
+export default useLogin;
