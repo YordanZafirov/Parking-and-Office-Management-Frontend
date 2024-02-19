@@ -1,6 +1,6 @@
 import { del, get, post } from "./fetchService";
 import { endpoints } from "../static/endpoints";
-import { LocationInterface } from "../pages/Reservation/Location.static";
+import { LocationInterface } from "../pages/Location/Location.static";
 import { LocationCreate } from "../pages/Location/LocationCreate/LocationCreate.static";
 
 // Function to get all locations
