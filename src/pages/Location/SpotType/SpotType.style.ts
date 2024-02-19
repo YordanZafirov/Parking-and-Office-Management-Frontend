@@ -22,9 +22,3 @@ a{
   text-decoration: none;
 }
 `;
-
-export const Title = styled.h1`
-margin-top: 3rem;
-color: var(--dark-blue);
-text-align: center;
-`;
