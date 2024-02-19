@@ -1,6 +1,7 @@
 import { Marker } from "react-image-marker";
 
 interface CustomSpotMarker extends Marker {
+    id?: string;
     name?: string;
     description?: string;
     isPermanent?: boolean;
