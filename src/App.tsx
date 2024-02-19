@@ -28,6 +28,7 @@ function App() {
             <GlobalStyle />
             <BrowserRouter>
                 <AuthProvider>
+                    <Navigation/>
                     <Routes>
                         <Route path={route.home} element={<Home />} />
                       <Route path={route.location} element={<Location />} />
