@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import Loader from "../../components/loader/Loader";
 import LocationTable from "./LocationTable/LocationTable";
-import SpotChoice from "./SpotType/SpotType";
+import SpotType from "./SpotType/SpotType";
 import useLocation from "./Location.logic";
 
 const Location = () => {
@@ -22,7 +22,7 @@ const Location = () => {
 
   return (
     <>
-      <SpotChoice name={singleLocation?.name} />
+      <SpotType name={singleLocation?.name} />
       <LocationTable />
     </>
   );

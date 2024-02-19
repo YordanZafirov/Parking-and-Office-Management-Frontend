@@ -5,7 +5,7 @@ interface Location {
   name: string;
 }
 
-const SpotChoice: React.FC<Location> = ({ name }) => {
+const SpotType: React.FC<Location> = ({ name }) => {
   return (
     <div>
       <Title>Reserve your spot at {name}</Title>
@@ -27,4 +27,4 @@ const SpotChoice: React.FC<Location> = ({ name }) => {
   );
 };
 
-export default SpotChoice;
+export default SpotType;
