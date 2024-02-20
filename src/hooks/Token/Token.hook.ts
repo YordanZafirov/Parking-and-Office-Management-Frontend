@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { useQuery } from "react-query";
 
-interface Token {
+export interface Token {
   id: string;
   email: string;
   role: string;
