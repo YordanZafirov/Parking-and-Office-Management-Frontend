@@ -1,31 +1,13 @@
-import { useEffect } from "react";
-
-import Loader from "../../components/loader/Loader";
-import LocationTable from "./LocationTable/LocationTable";
-import SpotType from "./SpotType/SpotType";
-import useLocation from "./Location.logic";
+import LocationCreateForm from "./LocationCreate/LocationCreate";
 
 const Location = () => {
-  const { singleLocation, isLoading, error } = useLocation();
 
-  useEffect(() => {
-    console.log(singleLocation);
-  }, [singleLocation]);
+    return (
+        <>
+            <LocationCreateForm />
+        </>
+    );
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (error) {
-    return <div>Error loading location</div>;
-  }
-
-  return (
-    <>
-      <SpotType name={singleLocation?.name} />
-      <LocationTable />
-    </>
-  );
 };
 
 export default Location;

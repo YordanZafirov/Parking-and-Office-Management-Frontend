@@ -10,17 +10,15 @@ import Location from "./pages/Location/Location";
 import HomeCalendar from "./pages/Calendar-component/Home-calendar/Home";
 
 export const StyledLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 `;
 
 export const StyledMain = styled.main`
-  flex: 1;
-  width: 100%;
+    flex: 1;
+    width: 100%;
 `;
-
-
 
 function App() {
     return (
@@ -28,13 +26,12 @@ function App() {
             <GlobalStyle />
             <BrowserRouter>
                 <AuthProvider>
-                    <Navigation/>
+                    <Navigation />
                     <Routes>
                         <Route path={route.home} element={<Home />} />
-                      <Route path={route.location} element={<Location />} />
-                                              <Route path={route.calendar} element={<HomeCalendar />} />
+                        <Route path={route.location} element={<Location />} />
+                        <Route path={route.calendar} element={<HomeCalendar />} />
                         <Route path={route.login} element={<Login />} />
-
                     </Routes>
                 </AuthProvider>
             </BrowserRouter>
