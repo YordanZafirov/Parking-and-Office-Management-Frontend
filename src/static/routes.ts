@@ -1,13 +1,12 @@
 export const route = {
-    home: '/',
-    login: '/login',
-    createSpot: '/spot',
+  home: '/',
+  login: '/login',
+  location: '/location',
+  createSpot: '/spot',
   createFloorPlan: '/floor-plan',
-  reateLocation: "/createLocation",
+  createLocation: "/createLocation",
   calendar: "/calendar",
   user: "/user",
   updateUser: "/user-update/:userId",
   register: "/register"
 };
-
-  

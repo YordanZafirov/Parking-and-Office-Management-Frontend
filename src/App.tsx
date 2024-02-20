@@ -1,10 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import { GlobalStyle } from './components/Global.style';
 import { route } from './static/routes';
 import { AuthProvider } from './context/AuthContext';
-import SpotMarker from './components/CreateSpotMarker/CreateSpotMarker';
+import AddSpotForm from './pages/CreateSpots/AddSpotForm/AddSpotForm';
+import CreateSpots from './pages/CreateSpots/CreateSpotsPage';
 import Navigation from './components/navigation/Navigation';
 import styled from 'styled-components';
 
@@ -26,24 +27,31 @@ export const StyledMain = styled.main`
 `;
 
 function App() {
+    const location = useLocation();
+    const background = location.state as { background?: Location };
     return (
         <div>
             <GlobalStyle />
-            <BrowserRouter>
-                <AuthProvider>
-                    <Navigation />
+            <AuthProvider>
+                <Navigation />
+                <Routes location={background?.background || location}>
+                    <Route path={route.home} element={<Home />} />
+                    <Route path={`${route.location}/:id`} element={<Reservation />} />
+                    <Route path={route.createLocation} element={<LocationCreateForm />} />
+                    <Route path={route.calendar} element={<HomeCalendar />} />
+                    <Route path={route.login} element={<Login />} />
+                    <Route path={route.register} element={<Register />} />
+                    <Route path={route.user} element={<UsersPage />} />
+                    <Route path={route.createSpot} element={<CreateSpots />}>
+                        <Route path="/spot/create" element={<AddSpotForm />} />
+                    </Route>
+                </Routes>
+                {background?.background && (
                     <Routes>
-                        <Route path={route.home} element={<Home />} />
-                        <Route path={`${route.location}/:id`} element={<Reservation />} />
-                        <Route path={route.createLocation} element={<LocationCreateForm />} />
-                        <Route path={route.calendar} element={<HomeCalendar />} />
                         <Route path={route.login} element={<Login />} />
-                        <Route path={route.createSpot} element={<SpotMarker />} />
-                        <Route path={route.register} element={<Register />} />
-                        <Route path={route.user} element={<UsersPage />} />
                     </Routes>
-                </AuthProvider>
-            </BrowserRouter>
+                )}
+            </AuthProvider>
         </div>
     );
 }
