@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { route } from "../../../static/routes";
 import { useMutation, useQuery } from "react-query";
-import { User } from "./UsersPage.static";
+import { RefetchFunction, User } from "./UsersPage.static";
 
-export const UseUsers = () => {
+export const useUsers = () => {
   const {
     data: users,
     isLoading,
@@ -15,14 +15,15 @@ export const UseUsers = () => {
   return { users, isLoading, error, refetch };
 };
 
-export const UseDeleteUser = () => {
-  const { refetch } = UseUsers();
+export const useDeleteUser = (refetch:RefetchFunction<User>) => {
   const deleteUserMutation = useMutation(deleteUser);
-  return { deleteUser: deleteUserMutation.mutate, refetch };
+  refetch();
+  return { deleteUser: deleteUserMutation.mutate };
 };
 
-export const UseUsersPageLogic = () => {
-  const { users, isLoading } = UseUsers();
+export const useUsersPageLogic = () => {
+  const { users, isLoading, refetch } = useUsers();
+  const { deleteUser } = useDeleteUser(refetch);
   const [filteredUsers, setFilteredUsers] = useState<User[] | undefined>([]);
   const title = "All Users";
   const searchPlaceholder = "Search user..";
@@ -31,7 +32,6 @@ export const UseUsersPageLogic = () => {
     navigate(route.register);
   };
   const handleDeleteUser = async (userId: string) => {
-    const { deleteUser, refetch } = UseDeleteUser();
     deleteUser(userId);
     refetch();
   };

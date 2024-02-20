@@ -9,6 +9,7 @@ import styled from "styled-components";
 
 import HomeCalendar from "./pages/Calendar-component/Home-calendar/Home";
 import UsersPage from "./pages/User/UsersPage/UsersPage";
+import Register from "./pages/Register/Register";
 import LocationCreateForm from "./pages/LocationCreate/LocationCreate";
 import Reservation from "./pages/Reservation/Reservation";
 
@@ -39,6 +40,7 @@ function App() {
             />
             <Route path={route.calendar} element={<HomeCalendar />} />
             <Route path={route.login} element={<Login />} />
+                        <Route path={route.register} element={<Register />} />
                         <Route path={route.user} element={<UsersPage />} />
           </Routes>
         </AuthProvider>

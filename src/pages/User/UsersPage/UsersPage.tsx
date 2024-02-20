@@ -2,18 +2,19 @@ import { BaseButton, PageTitle } from "../../../components/CommonStyledElements"
 import Loader from "../../../components/loader/Loader";
 import SearchBar from "../../../components/searchBar/SearchBar";
 import UserCardsContainer from "./UserCard/UserCardsContainer";
-import { UseUsersPageLogic } from "./UsersPage.logic";
+import { useUsersPageLogic } from "./UsersPage.logic";
 import { UserPageMainButtonsContainer } from "./UsersPage.style";
 
-export default function FarmsPage() {
+const UsersPage = () => {
     const {
       users,
       title,
       handleSearch,
       isLoading,
       handleCreateUser,
+      handleDeleteUser,
       searchPlaceholder,
-    } = UseUsersPageLogic();
+    } = useUsersPageLogic();
   
     if(isLoading){
         return (
@@ -31,7 +32,9 @@ export default function FarmsPage() {
             <SearchBar placeholder={searchPlaceholder} onSearch={handleSearch} />
             <BaseButton onClick={handleCreateUser}>Create User</BaseButton>
           </UserPageMainButtonsContainer>
-          {users && <UserCardsContainer users={users} />}
+          {users && <UserCardsContainer users={users} deleteUser={handleDeleteUser} />}
       </div>
     );
   }
+
+  export default UsersPage;

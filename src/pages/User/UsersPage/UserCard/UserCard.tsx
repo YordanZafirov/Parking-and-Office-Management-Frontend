@@ -5,18 +5,13 @@ import { StyledUserCard, UserImage } from "./FarmCard.styles";
 import UserCardDetails from "./UserCardDetails";
 import userImg from "../../../../assets/default-profile.jpg";
 
-export default function UserCard({ user }: UserCardProps) {
+export default function UserCard({ user, deleteUser }: UserCardProps) {
 
-    const navigate = useNavigate();
-  
-    const handleUserClick = () => {
-      navigate(`${route.user}/${user.id}`);
-    };
-  
+
     return (
-      <StyledUserCard onClick={handleUserClick}>
+      <StyledUserCard>
         <UserImage src={userImg} alt="User"/>
-        <UserCardDetails user={user} />
+        <UserCardDetails user={user} deleteUser={deleteUser} />
       </StyledUserCard>
     );
   }

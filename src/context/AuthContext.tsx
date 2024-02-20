@@ -2,13 +2,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 // import { loginService } from "../services/userService";
-import { User } from "../pages/Login/Login.static";
+import { LoginUser } from "../pages/Login/Login.static";
 import { loginService } from "../services/userService";
 
 interface AuthContextType {
-    isAuthenticated: boolean;
-    loginUser: ({ email, password }: User) => void;
-    logout: () => void;
+  isAuthenticated: boolean;
+  loginUser: ({ email, password }: LoginUser) => void;
+  logout: () => void;
 }
 
 interface AuthProviderProps {
@@ -42,10 +42,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     });
     const currentPath = window.location.pathname;
 
-    const loginUser = async ({ email, password }: User) => {
-        try {
-            // LoginService returns a User object or a Response object
-            const response: Response | User = await loginService({ email, password });
+  const loginUser = async ({ email, password }: LoginUser) => {
+    try {
+      // LoginService returns a User object or a Response object
+      const response: Response | LoginUser = await loginService({ email, password });
 
             if (response) {
                 localStorage.setItem("access_token", response.access_token);

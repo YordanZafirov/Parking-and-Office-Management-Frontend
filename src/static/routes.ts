@@ -5,5 +5,6 @@ export const route = {
     calendar: "/calendar",
       login: "/login",
     user: "/user",
+    updateUser: "/user-update/:userId",
     register: "/register"
 };
