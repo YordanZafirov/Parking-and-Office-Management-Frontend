@@ -6,9 +6,10 @@ import { route } from "./static/routes";
 import { AuthProvider } from "./context/AuthContext";
 import Navigation from "./components/navigation/Navigation";
 import styled from "styled-components";
-import Location from "./pages/Location/Location";
+
 import HomeCalendar from "./pages/Calendar-component/Home-calendar/Home";
 import LocationCreateForm from "./pages/LocationCreate/LocationCreate";
+import Reservation from "./pages/Reservation/Reservation";
 
 export const StyledLayout = styled.div`
   display: flex;
@@ -30,7 +31,7 @@ function App() {
           <Navigation />
           <Routes>
             <Route path={route.home} element={<Home />} />
-            <Route path={route.location} element={<Location />} />
+            <Route path={`${route.location}/:id`} element={<Reservation />} />
             <Route
               path={route.createLocation}
               element={<LocationCreateForm />}
