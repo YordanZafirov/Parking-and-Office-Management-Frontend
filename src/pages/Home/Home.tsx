@@ -7,38 +7,38 @@ import { useNavigate } from "react-router-dom";
 import UserRoleHOC from "../UserRoleHOC";
 
 const Home = () => {
-  const { locations, isLoading, error } = useHome();
-  const navigate = useNavigate();
+    const { locations, isLoading, error } = useHome();
+    const navigate = useNavigate();
 
-  const handleCreateLocationClick = () => {
-    // Navigate to the LocationCreateForm route
-    navigate("/createLocation");
-  };
+    const handleCreateLocationClick = () => {
+        // Navigate to the LocationCreateForm route
+        navigate("/createLocation");
+    };
 
-  if (isLoading) {
-    return <Loader />;
-  }
+    if (isLoading) {
+        return <Loader />;
+    }
 
-  if (error) {
-    return <div>Error loading locations</div>;
-  }
+    if (error) {
+        return <div>Error loading locations</div>;
+    }
 
-  return (
-    <>
-      <UserRoleHOC>
-        <button onClick={handleCreateLocationClick}>Create Location</button>
-      </UserRoleHOC>
-      <HomeContainer>
-        {locations?.length === 0 && <div>No locations found</div>}
-        <h1>Choose location</h1>
-        <ul>
-          {locations?.map((location: Location) => (
-            <LocationChoice key={location.id} location={location} />
-          ))}
-        </ul>
-      </HomeContainer>
-    </>
-  );
+    return (
+        <>
+            <UserRoleHOC>
+                <button onClick={handleCreateLocationClick}>Create Location</button>
+            </UserRoleHOC>
+            <HomeContainer>
+                {locations?.length === 0 && <div>No locations found</div>}
+                <h1>Choose location</h1>
+                <ul>
+                    {locations?.map((location: Location) => (
+                        <LocationChoice key={location.id} location={location} />
+                    ))}
+                </ul>
+            </HomeContainer>
+        </>
+    );
 };
 
 export default Home;
