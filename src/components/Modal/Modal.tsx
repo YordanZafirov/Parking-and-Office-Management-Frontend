@@ -4,11 +4,9 @@ import { ModalBox, ModalOverlay } from './Modal.style';
 export default function Modal(props: ModalType) {
     return (
         <>
-            {props.isOpen && (
-                <ModalOverlay onClick={props.toggle}>
+                <ModalOverlay>
                     <ModalBox onClick={(e) => e.stopPropagation()}>{props.children}</ModalBox>
                 </ModalOverlay>
-            )}
         </>
     );
 }

@@ -22,16 +22,6 @@ const DivFlexStyled = styled.div`
     width: auto;
 `;
 
-const Option = styled.option`
-    font-size: var(--font-size-sm);
-    font-weight: 400;
-    width: 250px;
-    color: var(--dark-grey);
-    padding: 10px 14px;
-    margin-bottom: 1rem;
-    min-height: 1em;
-`;
-
 const ButtonsContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -87,25 +77,4 @@ const Button = styled.button`
     }
 `;
 
-const FormStyled = styled.form`
-    // margin: 1rem auto;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-content: flex-start;
-    width: auto;
-    height: auto;
-    min-width: 300px;
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 20px 0 darkgrey;
-    padding: 0.3rem;
-    z-index: 20;
-
-    h3 {
-        color: black;
-        text-align: center;
-    }
-`;
-
-export { Container, DivFlexStyled, ButtonsContainer, Button, FormStyled, Option };
+export { Container, DivFlexStyled, ButtonsContainer, Button };
