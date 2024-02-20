@@ -6,7 +6,7 @@ export const endpoints = {
   register: `${BASE_URL}/user/signup`,
 
   // USER
-  getUsers: `${BASE_URL}/user`,
+  user: `${BASE_URL}/user`,
   getSingleUser: `${BASE_URL}/user/:userId`,
   deleteUser: `${BASE_URL}/user/:userId`,
 
@@ -37,7 +37,10 @@ export const endpoints = {
   deleteSpot: `${BASE_URL}/spot/:spotId`,
 
   // RESERVATION
-  getReservations: `${BASE_URL}/reservation`,
+  reservation: `${BASE_URL}/reservation`,
+  getPastReservationsByUser: `${BASE_URL}/reservation/by-user-past/`,
+  getCurrentReservationsByUser: `${BASE_URL}/reservation/by-user-current/`,
+  getFutureReservationsByUser: `${BASE_URL}/reservation/by-user-future/`,
   getReservationsByUser: `${BASE_URL}/reservation/by-user/:userId`,
   getReservationsBySpot: `${BASE_URL}/reservation/by-spot/:spotId`,
   getSingleReservation: `${BASE_URL}/reservation/:reservationId`,
