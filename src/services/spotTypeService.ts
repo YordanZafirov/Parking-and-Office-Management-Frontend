@@ -23,9 +23,4 @@ export const getSpotTypeByLocationId = async (
     {}
   );
   return response;
-  const response = await get(
-    `${endpoints.getSpotTypes}/search?locationId=${id}`,
-    {}
-  );
-  return response;
 };

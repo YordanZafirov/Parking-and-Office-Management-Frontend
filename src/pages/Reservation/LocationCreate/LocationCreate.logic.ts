@@ -28,7 +28,7 @@ function useCreateLocation() {
                 city: values.city,
                 address: values.address,
                 imgUrl: values.imgUrl,
-                modifiedBy: decodedToken?.sub,
+                modifiedBy: decodedToken?.id,
             };
             try {
                 const createdLocation = await addLocation(newObj);
