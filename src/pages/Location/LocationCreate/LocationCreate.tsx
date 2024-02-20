@@ -21,12 +21,10 @@ export default function LocationCreateForm() {
                 {formik.errors.address && formik.touched.address && <div className="error-message">{formik.errors.address}</div>}
 
                 <label>Image</label>
-                <input type="name" id="imgUrl" name="imgUrl" placeholder="Please enter location's address" onChange={formik.handleChange} />
+                <input type="name" id="imgUrl" name="imgUrl" placeholder="Please enter location's image" onChange={formik.handleChange} />
                 {formik.errors.imgUrl && formik.touched.imgUrl && <div className="error-message">{formik.errors.imgUrl}</div>}
 
                 <button type="submit">Create</button>
-
-                {formik.errors.name && formik.touched.name && <div className="error-message">{formik.errors.name}</div>}
             </form>
         </div>
     );

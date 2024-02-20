@@ -8,7 +8,7 @@ function useCreateLocation() {
     const navigate = useNavigate();
 
     const decodedToken = useToken();
-    console.log("decoded token", decodedToken);
+    // console.log("decoded token", decodedToken);
 
     const formik = useFormik({
         initialValues: {
@@ -16,22 +16,21 @@ function useCreateLocation() {
             city: "",
             address: "",
             imgUrl: "",
-            modifiedBy: decodedToken?.sub,
+            modifiedBy: decodedToken?.id,
             error: "",
         },
         validationSchema: LocationCreateShema,
 
         onSubmit: async (values: LocationCreate, { setFieldError, setSubmitting, resetForm }) => {
+            // console.log("values", values);
+            const newObj = {
+                name: values.name,
+                city: values.city,
+                address: values.address,
+                imgUrl: values.imgUrl,
+                modifiedBy: decodedToken?.sub,
+            };
             try {
-                console.log("values", values);
-                const newObj = {
-                    name: values.name,
-                    city: values.city,
-                    address: values.address,
-                    imgUrl: values.imgUrl,
-                    modifiedBy: decodedToken?.sub,
-                };
-
                 const createdLocation = await addLocation(newObj);
 
                 if (createdLocation.error) {
@@ -49,8 +48,6 @@ function useCreateLocation() {
             }
         },
     });
-
-    console.log("decoded tokeneeeeeee", decodedToken);
 
     return { formik };
 }
