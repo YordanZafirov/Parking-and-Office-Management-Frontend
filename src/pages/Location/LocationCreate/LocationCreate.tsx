@@ -1,3 +1,5 @@
+import { FormStyled } from "../../../components/InputField/Form.style";
+import InputField from "../../../components/InputField/InputField";
 import { useCreateLocation } from "./LocationCreate.logic";
 
 export default function LocationCreateForm() {
