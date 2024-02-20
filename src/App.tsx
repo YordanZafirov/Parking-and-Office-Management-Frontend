@@ -21,22 +21,22 @@ export const StyledMain = styled.main`
 `;
 
 function App() {
-    return (
-        <div>
-            <GlobalStyle />
-            <BrowserRouter>
-                <AuthProvider>
-                    <Navigation />
-                    <Routes>
-                        <Route path={route.home} element={<Home />} />
-                        <Route path={route.location} element={<Location />} />
-                        <Route path={route.calendar} element={<HomeCalendar />} />
-                        <Route path={route.login} element={<Login />} />
-                    </Routes>
-                </AuthProvider>
-            </BrowserRouter>
-        </div>
-    );
+  return (
+    <div>
+      <GlobalStyle />
+      <BrowserRouter>
+        <AuthProvider>
+          <Navigation />
+          <Routes>
+            <Route path={route.home} element={<Home />} />
+            <Route path={route.location} element={<Location />} />
+            <Route path={route.calendar} element={<HomeCalendar />} />
+            <Route path={route.login} element={<Login />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;

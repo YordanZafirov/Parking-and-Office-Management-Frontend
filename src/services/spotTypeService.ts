@@ -9,10 +9,8 @@ export const getSpotTypes = async (): Promise<SpotTypeInterface[]> => {
 };
 
 // Function to get spot type by id
-export const getSpotType = async (
-  spotTypeId: string
-): Promise<SpotTypeInterface[]> => {
-  const response = await get(`${endpoints.getSpotTypes}/${spotTypeId}`, {});
+export const getSpotType = async (id: string): Promise<SpotTypeInterface[]> => {
+  const response = await get(`${endpoints.getSpotTypes}/${id}`, {});
   return response;
 };
 
@@ -20,6 +18,11 @@ export const getSpotType = async (
 export const getSpotTypeByLocationId = async (
   id: string
 ): Promise<SpotTypeInterface[]> => {
+  const response = await get(
+    `${endpoints.getSpotTypes}/search?locationId=${id}`,
+    {}
+  );
+  return response;
   const response = await get(
     `${endpoints.getSpotTypes}/search?locationId=${id}`,
     {}
