@@ -10,7 +10,7 @@ export const getLocations = async (): Promise<Location[]> => {
 };
 
 // Function to get location by id
-export const getLocation = async (id: string): Promise<Location[]> => {
+export const getLocation = async (id: string): Promise<Location> => {
   const response = await get(endpoints.getLocations + "/" + id, {});
   return response;
 };
