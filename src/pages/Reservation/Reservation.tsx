@@ -4,7 +4,7 @@ import SpotType from "./SpotType/SpotType";
 import useLocation from "./Reservation.logic";
 import useSpotType from "./SpotType/SpotType.logic";
 
-const Location = () => {
+const Reservation = () => {
   // Fetch location and spot type data
   const {
     singleLocation,
@@ -36,4 +36,4 @@ const Location = () => {
   );
 };
 
-export default Location;
+export default Reservation;

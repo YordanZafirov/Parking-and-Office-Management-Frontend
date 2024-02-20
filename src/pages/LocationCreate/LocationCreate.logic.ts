@@ -8,7 +8,6 @@ function useCreateLocation() {
   const navigate = useNavigate();
 
   const decodedToken = useToken();
-  // console.log("decoded token", decodedToken);
 
   const formik = useFormik({
     initialValues: {
@@ -25,7 +24,6 @@ function useCreateLocation() {
       values: LocationCreate,
       { setFieldError, setSubmitting, resetForm }
     ) => {
-      // console.log("values", values);
       const newObj = {
         name: values.name,
         city: values.city,

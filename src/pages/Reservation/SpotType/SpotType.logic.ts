@@ -11,7 +11,6 @@ const useSpotType = () => {
     isLoading,
     error,
   } = useQuery(["spot", id ?? ""], () => {
-    
     return getSpotTypeByLocationId(id ?? "");
   });
   return { spotTypeByLocationId, isLoading, error };

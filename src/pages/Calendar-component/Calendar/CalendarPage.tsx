@@ -58,8 +58,6 @@ const CalendarPage: React.FC<{ reservations: Reservation[]; onAddReservation: (n
 
             onAddReservation(newReservation);
 
-            console.log(`Reservation made from ${formattedStartDate?.toString()} ${selectedStartTime} to ${newEndDate?.toString()} ${selectedEndTime} GMT+0200`);
-
             setState([
                 {
                     startDate: formattedStartDate || new Date(),

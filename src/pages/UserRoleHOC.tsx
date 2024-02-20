@@ -9,9 +9,6 @@ const UserRoleHOC: React.FC<UserRoleHOCProps> = ({ children }) => {
     const decodedToken = useToken();
     const canUserViewForm = decodedToken?.role === "ADMIN";
 
-    console.log("decodedToken", decodedToken);
-    console.log("decodedToken_role", decodedToken?.role);
-
     return canUserViewForm ? <>{children}</> : null;
 };
 
