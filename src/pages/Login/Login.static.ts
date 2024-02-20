@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export interface User {
+export interface LoginUser {
   email: string;
   password: string;
   error?: string;

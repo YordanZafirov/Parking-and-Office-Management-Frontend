@@ -1,4 +1,5 @@
-import { User } from "../pages/Login/Login.static";
+import { LoginUser } from "../pages/Login/Login.static";
+import { User } from "../pages/User/UsersPage/UsersPage.static";
 import { endpoints } from "../static/endpoints";
 import { del, get, post } from "./fetchService";
 
@@ -15,7 +16,7 @@ export const deleteUser = async (id: string): Promise<User> => {
   return response;
 }
 
-export const register = async ({ email, password }: User): Promise<User> => {
+export const register = async ({ email, password }: LoginUser): Promise<User> => {
   try {
     const response = await post(`${endpoints.register}`, { email, password });
     return response;
@@ -27,7 +28,7 @@ export const register = async ({ email, password }: User): Promise<User> => {
 export const loginService = async ({
   email,
   password,
-}: User): Promise<User> => {
+}: LoginUser): Promise<User> => {
   try {
     const response = await post(`${endpoints.login}`, { email, password });
     return response;

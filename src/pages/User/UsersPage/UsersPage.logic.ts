@@ -1,9 +1,9 @@
 import { deleteUser, getUsers } from "./../../../services/userService";
 import { useEffect, useState } from "react";
-import { User } from "../../Login/Login.static";
 import { useNavigate } from "react-router";
 import { route } from "../../../static/routes";
 import { useMutation, useQuery } from "react-query";
+import { User } from "./UsersPage.static";
 
 export const UseUsers = () => {
   const {

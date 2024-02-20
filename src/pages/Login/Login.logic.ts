@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { LoginSchema, User } from "./Login.static";
+import { LoginSchema, LoginUser } from "./Login.static";
 import { useAuth } from "../../context/AuthContext";
 
 
@@ -13,7 +13,7 @@ const useLogin = () => {
     },
     validationSchema: LoginSchema,
 
-    onSubmit: (values: User) => {
+    onSubmit: (values: LoginUser) => {
       try{
         loginUser(values);
       } catch (error) {
