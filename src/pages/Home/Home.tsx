@@ -1,6 +1,6 @@
 import { HomeContainer } from "./Home.style";
 import useHome from "./Home.logic";
-import { LocationInterface } from "../Location/Location.static";
+import { LocationInterface } from "../Reservation/Location.static";
 import Loader from "../../components/loader/Loader";
 import LocationChoice from "./LocationChocie/LocationChocie";
 
