@@ -31,7 +31,7 @@ function App() {
           <Navigation />
           <Routes>
             <Route path={route.home} element={<Home />} />
-            <Route path={route.location} element={<Reservation />} />
+            <Route path={`${route.location}/:id`} element={<Reservation />} />
             <Route
               path={route.createLocation}
               element={<LocationCreateForm />}
