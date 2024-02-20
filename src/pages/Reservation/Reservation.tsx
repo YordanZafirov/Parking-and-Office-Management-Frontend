@@ -1,7 +1,7 @@
 import Loader from "../../components/loader/Loader";
-import LocationTable from "./LocationTable/LocationTable";
+import LocationTable from "./ReservationTable/ReservationTable";
 import SpotType from "./SpotType/SpotType";
-import useLocation from "./Location.logic";
+import useLocation from "./Reservation.logic";
 import useSpotType from "./SpotType/SpotType.logic";
 
 const Location = () => {
