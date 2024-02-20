@@ -1,4 +1,4 @@
-export interface SpotType {
+export interface SpotTypeInterface {
   id: string;
   name: string;
   createdAt: Date;

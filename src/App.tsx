@@ -8,37 +8,40 @@ import Navigation from "./components/navigation/Navigation";
 import styled from "styled-components";
 import Location from "./pages/Location/Location";
 import HomeCalendar from "./pages/Calendar-component/Home-calendar/Home";
-import LocationCreateForm from "./pages/Location/LocationCreate/LocationCreate";
+import LocationCreateForm from "./pages/LocationCreate/LocationCreate";
 
 export const StyledLayout = styled.div`
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
 export const StyledMain = styled.main`
-    flex: 1;
-    width: 100%;
+  flex: 1;
+  width: 100%;
 `;
 
 function App() {
-    return (
-        <div>
-            <GlobalStyle />
-            <BrowserRouter>
-                <AuthProvider>
-                    <Navigation />
-                    <Routes>
-                        <Route path={route.home} element={<Home />} />
-                        <Route path={route.location} element={<Location />} />
-                        <Route path={route.createLocation} element={<LocationCreateForm />} />
-                        <Route path={route.calendar} element={<HomeCalendar />} />
-                        <Route path={route.login} element={<Login />} />
-                    </Routes>
-                </AuthProvider>
-            </BrowserRouter>
-        </div>
-    );
+  return (
+    <div>
+      <GlobalStyle />
+      <BrowserRouter>
+        <AuthProvider>
+          <Navigation />
+          <Routes>
+            <Route path={route.home} element={<Home />} />
+            <Route path={route.location} element={<Location />} />
+            <Route
+              path={route.createLocation}
+              element={<LocationCreateForm />}
+            />
+            <Route path={route.calendar} element={<HomeCalendar />} />
+            <Route path={route.login} element={<Login />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
