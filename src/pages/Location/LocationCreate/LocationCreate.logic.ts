@@ -5,51 +5,55 @@ import { addLocation } from "../../../services/locationService";
 import useToken from "../../../hooks/Token/Token.hook";
 
 function useCreateLocation() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const decodedToken = useToken();
-    // console.log("decoded token", decodedToken);
+  const decodedToken = useToken();
+  // console.log("decoded token", decodedToken);
 
-    const formik = useFormik({
-        initialValues: {
-            name: "",
-            city: "",
-            address: "",
-            imgUrl: "",
-            modifiedBy: decodedToken?.id,
-            error: "",
-        },
-        validationSchema: LocationCreateShema,
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      city: "",
+      address: "",
+      imgUrl: "",
+      modifiedBy: decodedToken?.id,
+      error: "",
+    },
+    validationSchema: LocationCreateShema,
 
-        onSubmit: async (values: LocationCreate, { setFieldError, setSubmitting, resetForm }) => {
-            // console.log("values", values);
-            const newObj = {
-                name: values.name,
-                city: values.city,
-                address: values.address,
-                imgUrl: values.imgUrl,
-                modifiedBy: decodedToken?.sub,
-            };
-            try {
-                const createdLocation = await addLocation(newObj);
+    onSubmit: async (
+      values: LocationCreate,
+      { setFieldError, setSubmitting, resetForm }
+    ) => {
+      // console.log("values", values);
+      const newObj = {
+        name: values.name,
+        city: values.city,
+        address: values.address,
+        imgUrl: values.imgUrl,
+        modifiedBy: decodedToken?.sub,
+      };
+      try {
+        const createdLocation = await addLocation(newObj);
 
-                if (createdLocation.error) {
-                    throw new Error(createdLocation.error);
-                } else {
-                    alert("Location created successfully!");
-                    resetForm();
-                    navigate("/location");
-                }
-            } catch (e) {
-                const errorMessage = e instanceof Error ? e.message : "An unexpected error occurred.";
+        if (createdLocation.error) {
+          throw new Error(createdLocation.error);
+        } else {
+          alert("Location created successfully!");
+          resetForm();
+          navigate("/location");
+        }
+      } catch (e) {
+        const errorMessage =
+          e instanceof Error ? e.message : "An unexpected error occurred.";
 
-                setFieldError("error", errorMessage);
-                setSubmitting(false);
-            }
-        },
-    });
+        setFieldError("error", errorMessage);
+        setSubmitting(false);
+      }
+    },
+  });
 
-    return { formik };
+  return { formik };
 }
 
 export { useCreateLocation };
