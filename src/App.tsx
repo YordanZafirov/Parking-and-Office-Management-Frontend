@@ -8,6 +8,7 @@ import Navigation from "./components/navigation/Navigation";
 import styled from "styled-components";
 import Location from "./pages/Location/Location";
 import HomeCalendar from "./pages/Calendar-component/Home-calendar/Home";
+import LocationCreateForm from "./pages/Location/LocationCreate/LocationCreate";
 
 export const StyledLayout = styled.div`
     display: flex;
@@ -30,6 +31,7 @@ function App() {
                     <Routes>
                         <Route path={route.home} element={<Home />} />
                         <Route path={route.location} element={<Location />} />
+                        <Route path={route.createLocation} element={<LocationCreateForm />} />
                         <Route path={route.calendar} element={<HomeCalendar />} />
                         <Route path={route.login} element={<Login />} />
                     </Routes>
