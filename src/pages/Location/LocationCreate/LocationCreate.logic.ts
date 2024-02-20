@@ -16,7 +16,7 @@ function useCreateLocation() {
             city: "",
             address: "",
             imgUrl: "",
-            modifiedBy: decodedToken?.id,
+            modifiedBy: "",
             error: "",
         },
         validationSchema: LocationCreateShema,
