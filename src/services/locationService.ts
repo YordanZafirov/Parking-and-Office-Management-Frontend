@@ -1,7 +1,7 @@
 import { del, get, post } from "./fetchService";
 import { endpoints } from "../static/endpoints";
 import { LocationInterface } from "../pages/Reservation/Location.static";
-import { LocationCreate } from "../pages/Location/LocationCreate/LocationCreate.static";
+import { LocationCreate } from "../pages/Reservation/LocationCreate/LocationCreate.static";
 
 // Function to get all locations
 export const getLocations = async (): Promise<LocationInterface[]> => {
