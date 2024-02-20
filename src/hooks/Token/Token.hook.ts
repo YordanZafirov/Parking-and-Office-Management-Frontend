@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { useQuery } from "react-query";
 
-export interface Token {
+interface Token {
   id: string;
   email: string;
   role: string;
@@ -10,7 +10,9 @@ export interface Token {
 }
 
 const useToken = () => {
-    const { data: validToken, status } = useQuery("access_token", () => localStorage.getItem("access_token"));
+  const { data: validToken, status } = useQuery("accessToken", () =>
+    localStorage.getItem("accessToken")
+  );
 
   if (status === "loading") {
     return null;

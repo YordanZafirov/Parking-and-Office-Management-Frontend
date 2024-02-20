@@ -1,5 +1,4 @@
 import { del, get, post } from "./fetchService";
-import { del, get, post } from "./fetchService";
 import { endpoints } from "../static/endpoints";
 import { LocationInterface } from "../pages/Location/Location.static";
 import { LocationCreate } from "../pages/Location/LocationCreate/LocationCreate.static";
