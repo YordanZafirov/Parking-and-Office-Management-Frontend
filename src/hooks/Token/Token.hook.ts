@@ -10,8 +10,8 @@ interface Token {
 }
 
 const useToken = () => {
-  const { data: validToken, status } = useQuery("accessToken", () =>
-    localStorage.getItem("accessToken")
+  const { data: validToken, status } = useQuery("access_token", () =>
+    localStorage.getItem("access_token")
   );
 
   if (status === "loading") {
