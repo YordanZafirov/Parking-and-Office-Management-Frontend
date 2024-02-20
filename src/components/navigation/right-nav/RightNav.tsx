@@ -3,41 +3,31 @@ import styled from "styled-components";
 import { route } from "../../../static/routes";
 
 import { Ul } from "./RightNav.style";
-import {
-  PopoverContainer,
-  PopoverContent,
-  PopoverLink,
-  ProfileSpan,
-} from "./Popover.style";
+import { PopoverContainer, PopoverContent, PopoverLink, ProfileSpan } from "./Popover.style";
 import { useAuth } from "../../../context/AuthContext";
 import useToken from "../../../hooks/Token/Token.hook";
 import useRightNav from "./RightNav.logic";
 
 interface NavProps {
-  open: boolean;
-  handleClick: () => void;
+    open: boolean;
+    handleClick: () => void;
 }
 
 const StyledProfile = styled.div`
-  position: relative;
+    position: relative;
 `;
 
 const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
-  const { isAuthenticated, logout } = useAuth();
-  const decodedToken = useToken();
-  const {
-    showPopover,
-    handleProfileClick,
-    handlePopoverClose,
-    handleCloseNav,
-  } = useRightNav(handleClick);
+    const { isAuthenticated, logout } = useAuth();
+    const decodedToken = useToken();
+    const { showPopover, handleProfileClick, handlePopoverClose, handleCloseNav } = useRightNav(handleClick);
 
-  return (
-    <nav>
-      <Ul open={open}>
-        {isAuthenticated ? (
-          <>
-            {/* <NavLink
+    return (
+        <nav>
+            <Ul open={open}>
+                {isAuthenticated ? (
+                    <>
+                        {/* <NavLink
               className="nav-link"
               to={route.client}
               onClick={handleCloseNav}
@@ -72,44 +62,44 @@ const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
             >
               <li>Reports</li>
             </NavLink> */}
-            <StyledProfile>
-              <ProfileSpan onClick={handleProfileClick}>
-                <li>Profile</li>
-              </ProfileSpan>
-              {showPopover && (
-                <PopoverContainer show={showPopover}>
-                  <PopoverContent id="popover-content">
-                    <div>Email: {decodedToken?.email}</div>
-                    <div>Role: {decodedToken?.role}</div>
-                    <PopoverLink
-                      className="logout"
-                      to={route.login}
-                      onClick={() => {
-                        logout();
-                        handlePopoverClose();
-                      }}
-                    >
-                      Logout
-                    </PopoverLink>
-                  </PopoverContent>
-                </PopoverContainer>
-              )}
-            </StyledProfile>
-          </>
-        ) : (
-          <>
-            {" "}
-            {/* <NavLink to={route.register} onClick={handleCloseNav}>
+                        <StyledProfile>
+                            <ProfileSpan onClick={handleProfileClick}>
+                                <li>Profile</li>
+                            </ProfileSpan>
+                            {showPopover && (
+                                <PopoverContainer show={showPopover}>
+                                    <PopoverContent id="popover-content">
+                                        <div>Email: {decodedToken?.email}</div>
+                                        <div>Role: {decodedToken?.role}</div>
+                                        <PopoverLink
+                                            className="logout"
+                                            to={route.login}
+                                            onClick={() => {
+                                                logout();
+                                                handlePopoverClose();
+                                            }}
+                                        >
+                                            Logout
+                                        </PopoverLink>
+                                    </PopoverContent>
+                                </PopoverContainer>
+                            )}
+                        </StyledProfile>
+                    </>
+                ) : (
+                    <>
+                        {" "}
+                        {/* <NavLink to={route.register} onClick={handleCloseNav}>
               <li>Register</li>
             </NavLink> */}
-            <NavLink to={route.login} onClick={handleCloseNav}>
-              <li>Login</li>
-            </NavLink>
-          </>
-        )}
-      </Ul>
-    </nav>
-  );
+                        <NavLink to={route.login} onClick={handleCloseNav}>
+                            <li>Login</li>
+                        </NavLink>
+                    </>
+                )}
+            </Ul>
+        </nav>
+    );
 };
 
 export default RightNav;
