@@ -3,7 +3,7 @@ import InputField from '../../components/InputField/InputField';
 import { useCreateLocation } from './LocationCreate.logic';
 
 export default function LocationCreateForm() {
-    const { formik, imageFile, setImageFile } = useCreateLocation();
+    const { formik, setImageFile } = useCreateLocation();
 
     return (
         <FormStyled onSubmit={formik.handleSubmit}>

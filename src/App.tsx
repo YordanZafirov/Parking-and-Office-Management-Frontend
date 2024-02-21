@@ -9,11 +9,14 @@ import CreateSpots from './pages/CreateSpots/CreateSpotsPage';
 import Navigation from './components/navigation/Navigation';
 import styled from 'styled-components';
 
-import HomeCalendar from './pages/Calendar-component/Home-calendar/Home';
+import HomeCalendar from './pages/CalendarComponent/Home-calendar/Home';
 import UsersPage from './pages/User/UsersPage/UsersPage';
 import Register from './pages/Register/Register';
 import LocationCreateForm from './pages/LocationCreate/LocationCreate';
 import Reservation from './pages/Reservation/Reservation';
+import AdminPage from './pages/AdminPage/Adminpage';
+// import EditLocationModal from './pages/AdminPage/AdminListModal/EditModal';
+// import DeleteLocationModal from './pages/AdminPage/AdminListModal/DeleteModal';
 
 export const StyledLayout = styled.div`
     display: flex;
@@ -42,6 +45,12 @@ function App() {
                     <Route path={route.login} element={<Login />} />
                     <Route path={route.register} element={<Register />} />
                     <Route path={route.user} element={<UsersPage />} />
+
+                    <Route path={route.admin} element={<AdminPage />}>
+                        {/* <Route path=":id/edit" element={<EditLocationModal />} />
+                        <Route path=":id/delete" element={<DeleteLocationModal />} /> */}
+                    </Route>
+
                     <Route path={route.createSpot} element={<CreateSpots />}>
                         <Route path="/spot/create" element={<AddSpotForm />} />
                     </Route>
