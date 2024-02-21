@@ -1,48 +1,41 @@
-import { useEffect } from "react";
-import useReservationTableLogic from "./ReservationTable.logic";
+import { useEffect } from 'react';
+import useReservationTableLogic from './ReservationTable.logic';
+import { ReservationTableInterface } from './ReservationTable.static';
 
 const ReservationTable = () => {
-  const {
-    allFutureReservationsByUserId,
-    spotId,
-    singleSpot,
-    singleSpotTypeId,
-    singleSpotType,
-  } = useReservationTableLogic();
+    const { formattedReservations } = useReservationTableLogic();
 
-  useEffect(() => {
-    console.log(
-      "allFutureReservationsByUserId ",
-      allFutureReservationsByUserId
+    useEffect(() => {
+        console.log('formattedReservations', formattedReservations);
+    }, [formattedReservations]);
+
+    return (
+        <table>
+            <caption>My reservations</caption>
+            <thead>
+                <tr>
+                    <th>Spot</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Comment</th>
+                    <th>Spot Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {formattedReservations.map((reservation: ReservationTableInterface, index) => {
+                    return (
+                        <tr key={index}>
+                            <td>{reservation.spotName}</td>
+                            <td>{new Date(reservation.start).toLocaleString()}</td>
+                            <td>{new Date(reservation.end).toLocaleString()}</td>
+                            <td>{reservation.comment}</td>
+                            <td>{reservation.spotDescription}</td>
+                        </tr>
+                    );
+                })}
+            </tbody>
+        </table>
     );
-    console.log("spotId ", spotId);
-    console.log("singleSpot ", singleSpot);
-    console.log("singleSpotTypeId ", singleSpotTypeId);
-
-    console.log("singleSpotType ", singleSpotType);
-  }, [
-    allFutureReservationsByUserId,
-    spotId,
-    singleSpot,
-    singleSpotTypeId,
-    singleSpotType,
-  ]);
-
-  return (
-    <table>
-      <caption>My reservations</caption>
-      <thead>
-        <tr>
-          <th>Spot</th>
-          <th>Start</th>
-          <th>End</th>
-          <th>Comment</th>
-          <th>Spot Description</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  );
 };
 
 export default ReservationTable;
