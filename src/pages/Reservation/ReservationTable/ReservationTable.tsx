@@ -21,10 +21,10 @@ const ReservationTable = () => {
                     <thead>
                         <tr>
                             <th>Spot</th>
+                            <th>Spot Description</th>
+                            <th>Comment</th>
                             <th>Start</th>
                             <th>End</th>
-                            <th>Comment</th>
-                            <th>Spot Description</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,10 +33,10 @@ const ReservationTable = () => {
                             return (
                                 <tr key={reservation.id}>
                                     <td>{reservation.spotName}</td>
+                                    <td>{reservation.spotDescription}</td>
+                                    <td>{reservation.comment}</td>
                                     <td>{new Date(reservation.start).toLocaleString()}</td>
                                     <td>{new Date(reservation.end).toLocaleString()}</td>
-                                    <td>{reservation.comment}</td>
-                                    <td>{reservation.spotDescription}</td>
                                     <td>
                                         <button onClick={() => deleteReservation(reservation.id)}>Delete</button>
                                     </td>
