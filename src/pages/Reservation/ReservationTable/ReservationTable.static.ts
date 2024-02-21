@@ -1,4 +1,5 @@
 export interface ReservationTableInterface {
+  id: string;
   comment: string;
   spotName: string;
   spotDescription: string;
