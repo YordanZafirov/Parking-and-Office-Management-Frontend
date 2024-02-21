@@ -1,10 +1,10 @@
-import { HomeContainer } from "./Home.style";
-import useHome from "./Home.logic";
-import { Location } from "./Home.static";
-import Loader from "../../components/loader/Loader";
-import LocationChoice from "./LocationChocie/LocationChocie";
-import { useNavigate } from "react-router-dom";
-import UserRoleHOC from "../UserRoleHOC";
+import { HomeContainer } from './Home.style';
+import useHome from './Home.logic';
+import { Location } from './Home.static';
+import Loader from '../../components/loader/Loader';
+import LocationChoice from './LocationChocie/LocationChocie';
+import { useNavigate } from 'react-router-dom';
+import UserRoleHOC from '../UserRoleHOC';
 
 const Home = () => {
     const { locations, isLoading, error } = useHome();
@@ -12,7 +12,7 @@ const Home = () => {
 
     const handleCreateLocationClick = () => {
         // Navigate to the LocationCreateForm route
-        navigate("/createLocation");
+        navigate('/createLocation');
     };
 
     if (isLoading) {
