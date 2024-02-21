@@ -1,12 +1,12 @@
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
-import { route } from "../../../static/routes";
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import { route } from '../../../static/routes';
 
-import { Ul } from "./RightNav.style";
-import { PopoverContainer, PopoverContent, PopoverLink, ProfileSpan } from "./Popover.style";
-import { useAuth } from "../../../context/AuthContext";
-import useToken from "../../../hooks/Token/Token.hook";
-import useRightNav from "./RightNav.logic";
+import { Ul } from './RightNav.style';
+import { PopoverContainer, PopoverContent, PopoverLink, ProfileSpan } from './Popover.style';
+import { useAuth } from '../../../context/AuthContext';
+import useToken from '../../../hooks/Token/Token.hook';
+import useRightNav from './RightNav.logic';
 
 interface NavProps {
     open: boolean;
@@ -62,7 +62,10 @@ const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
             >
               <li>Reports</li>
             </NavLink> */}
-                        <StyledProfile>
+                        <NavLink to={`/user/${decodedToken?.id}`}>
+                            <li>Profile</li>
+                        </NavLink>
+                        {/* <StyledProfile>
                             <ProfileSpan onClick={handleProfileClick}>
                                 <li>Profile</li>
                             </ProfileSpan>
@@ -84,11 +87,11 @@ const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
                                     </PopoverContent>
                                 </PopoverContainer>
                             )}
-                        </StyledProfile>
+                        </StyledProfile> */}
                     </>
                 ) : (
                     <>
-                        {" "}
+                        {' '}
                         {/* <NavLink to={route.register} onClick={handleCloseNav}>
               <li>Register</li>
             </NavLink> */}
