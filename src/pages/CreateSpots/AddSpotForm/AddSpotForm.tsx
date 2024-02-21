@@ -1,6 +1,6 @@
 import { Field, FormikProvider } from 'formik';
 import { FormStyled, Option, SelectStyle } from './AddSpotForm.style';
-import { useAddSpot } from './AddSpotForm.logic';
+import { useAddSpot, useSpotTypes } from './AddSpotForm.logic';
 import Modal from '../../../components/Modal/Modal';
 import InputField from '../../../components/InputField/InputField';
 import { useNavigate } from 'react-router';
@@ -9,6 +9,7 @@ import { Button } from '../CreateSpotsPage.style';
 export default function AddSpotForm() {
     const navigate = useNavigate();
     const { formik } = useAddSpot();
+    const { spotTypes } = useSpotTypes();
 
     return (
         <Modal>
@@ -34,14 +35,11 @@ export default function AddSpotForm() {
                         <label>Type</label>
                         <Field as="select" id={'spotTypeId'} name="spotTypeId" onChange={formik.handleChange}>
                             <Option value="" label="Please enter spot type" />
-                            {/* {spotTypes.map((option) => (
-                            <Option key={option.value} value={option.value}>
-                                {option.label}
-                            </Option>
-                        ))} */}
-                            <Option value="">Select Spot Type</Option>
-                            <Option value="indoor">Indoor</Option>
-                            <Option value="outdoor">Outdoor</Option>
+                            {spotTypes?.map((option) => (
+                                <Option key={option.id} value={option.id}>
+                                    {option.name}
+                                </Option>
+                            ))}
                         </Field>
                         {formik.errors.spotTypeId && formik.touched.spotTypeId ? (
                             <div>{formik.errors.spotTypeId}</div>

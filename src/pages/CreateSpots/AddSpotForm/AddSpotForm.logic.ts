@@ -4,12 +4,16 @@ import { useState } from 'react';
 import { Marker } from 'react-image-marker';
 import { checkSpot } from '../../../services/spotService';
 import { useNavigate } from 'react-router';
-import { useQueryClient } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
+import { getSpotTypes } from '../../../services/spotTypeService';
+import useToken from '../../../hooks/Token/Token.hook';
 
 function useAddSpot() {
     const [markers, setMarkers] = useState<Array<CustomSpotMarker>>([]);
     const navigate = useNavigate();
     const query = useQueryClient();
+
+    const user = useToken();
 
     const formik = useFormik({
         initialValues: {
@@ -34,10 +38,10 @@ function useAddSpot() {
                         left: marker.left,
                         name: values.name,
                         description: values.description,
-                        spotTypeId: 'ea3e6c4d-d1c0-4d8b-8ad7-c6d3419c27ae',
+                        spotTypeId: values.spotTypeId,
                         isPermanent: values.isPermanent,
-                        floorPlanId: 'f3624366-89e0-494e-91bb-37f57b211665',
-                        modifiedBy: '3e58c232-eb64-493a-aeac-e171ac6a47c1',
+                        floorPlanId: 'f3624366-89e0-494e-91bb-37f57b211665', //TODO GET FLOOR PLAN ID
+                        modifiedBy: user?.id,
                     };
                     console.log('new Marker', newMarker);
 
@@ -70,4 +74,9 @@ function useAddSpot() {
     return { formik, markers: data };
 }
 
-export { useAddSpot };
+const useSpotTypes = () => {
+    const { data: spotTypes, isLoading, error, refetch } = useQuery({ queryKey: ['spotTypes'], queryFn: getSpotTypes });
+    return { spotTypes, isLoading, error, refetch };
+};
+
+export { useAddSpot, useSpotTypes };
