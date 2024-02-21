@@ -3,7 +3,7 @@ import InputField from '../../components/InputField/InputField';
 import { useCreateLocation } from './LocationCreate.logic';
 
 export default function LocationCreateForm() {
-    const { formik } = useCreateLocation();
+    const { formik, imageFile, setImageFile } = useCreateLocation();
 
     return (
         <FormStyled onSubmit={formik.handleSubmit}>
@@ -47,7 +47,11 @@ export default function LocationCreateForm() {
                 name="imgUrl"
                 label="Image"
                 placeholder="Please enter location's image"
-                onChange={formik.handleChange}
+                onChange={(event) => {
+                    const file = event.currentTarget.files?.[0] || null;
+                    setImageFile(file);
+                    formik.handleChange(event);
+                }}
             />
             {formik.errors.imgUrl && formik.touched.imgUrl && (
                 <div className="error-message">{formik.errors.imgUrl}</div>
