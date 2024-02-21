@@ -3,6 +3,8 @@ import { QueryObserverResult, RefetchOptions, RefetchQueryFilters } from "react-
 export interface User {
     id: string
     email: string;
+    role: string;
+    profilePicture?: string;
     error?: string;
   }
 

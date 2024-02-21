@@ -15,11 +15,15 @@ export const useUsers = () => {
   return { users, isLoading, error, refetch };
 };
 
-export const useDeleteUser = (refetch:RefetchFunction<User>) => {
-  const deleteUserMutation = useMutation(deleteUser);
-  refetch();
-  return { deleteUser: deleteUserMutation.mutate };
-};
+export const useDeleteUser = (refetch: RefetchFunction<User>) => {
+    const deleteUserMutation = useMutation(deleteUser, {
+      onSuccess: () => {
+        refetch();
+      },
+    });
+  
+    return { deleteUser: deleteUserMutation.mutate };
+  };
 
 export const useUsersPageLogic = () => {
   const { users, isLoading, refetch } = useUsers();

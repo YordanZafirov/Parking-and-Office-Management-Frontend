@@ -37,19 +37,19 @@ export const deleteUser = async (id: string): Promise<User> => {
 export const getPastReservationsByUser = async (
   id: string | undefined
 ): Promise<ReservationToFix[]> => {
-  const response = await get(`${endpoints.getPastReservationsByUser}/${id}`, {});
+  const response = await get(`${endpoints.getPastReservationsByUser}${id}`, {});
   return response;
 };
 export const getCurrentReservationsByUser = async (
   id: string | undefined
 ): Promise<ReservationToFix[]> => {
-  const response = await get(`${endpoints.getCurrentReservationsByUser}/${id}`, {});
+  const response = await get(`${endpoints.getCurrentReservationsByUser}${id}`, {});
   return response;
 };
 export const getFutureReservationsByUser = async (
   id: string | undefined
 ): Promise<ReservationToFix[]> => {
-  const response = await get(`${endpoints.getFutureReservationsByUser}/${id}`, {});
+  const response = await get(`${endpoints.getFutureReservationsByUser}${id}`, {});
   return response;
 };
 
