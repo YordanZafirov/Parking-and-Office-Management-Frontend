@@ -48,7 +48,7 @@ function App() {
                 </Routes>
                 {background?.background && (
                     <Routes>
-                        <Route path={route.login} element={<Login />} />
+                        <Route path="/spot/create" element={<AddSpotForm />} />
                     </Routes>
                 )}
             </AuthProvider>
