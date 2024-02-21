@@ -1,11 +1,14 @@
 import { useEffect } from "react";
-import useToken from "../../../hooks/Token/Token.hook";
 import useReservationTableLogic from "./ReservationTable.logic";
 
 const ReservationTable = () => {
-  const decodedToken = useToken();
-  const { allFutureReservationsByUserId, spotId } = useReservationTableLogic();
-  // const { id } = decodedToken;
+  const {
+    allFutureReservationsByUserId,
+    spotId,
+    singleSpot,
+    singleSpotTypeId,
+    singleSpotType,
+  } = useReservationTableLogic();
 
   useEffect(() => {
     console.log(
@@ -13,8 +16,17 @@ const ReservationTable = () => {
       allFutureReservationsByUserId
     );
     console.log("spotId ", spotId);
-    console.log("singleSpot ", spotId);
-  }, [allFutureReservationsByUserId, spotId]);
+    console.log("singleSpot ", singleSpot);
+    console.log("singleSpotTypeId ", singleSpotTypeId);
+
+    console.log("singleSpotType ", singleSpotType);
+  }, [
+    allFutureReservationsByUserId,
+    spotId,
+    singleSpot,
+    singleSpotTypeId,
+    singleSpotType,
+  ]);
 
   return (
     <table>

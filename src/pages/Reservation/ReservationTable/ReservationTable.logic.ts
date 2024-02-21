@@ -17,37 +17,39 @@ const useReservationTableLogic = () => {
     }
   });
 
-  const { id: spotId } = allFutureReservationsByUserId || {};
+  const spotId = allFutureReservationsByUserId?.[0]?.spotId;
 
-  // const {
-  //   data: singleSpot,
-  //   isLoading: spotLoading,
-  //   error: spotError,
-  // } = useQuery(["spot", spotId], () => {
-  //     return getSpotById(spotId);
-  // });
+  const {
+    data: singleSpot,
+    isLoading: spotLoading,
+    error: spotError,
+    // refetch: refetchSpot,
+  } = useQuery(["spot", spotId ?? ""], () => {
+    return getSpotById(spotId);
+  });
 
-  // const { id: spotTypeId } = singleSpot || {};
+  const singleSpotTypeId = singleSpot?.spotTypeId;
 
-  // const {
-  //   data: singleSpotType,
-  //   isLoading: spotTypeLoading,
-  //   error: spotTypeError,
-  // } = useQuery(["spotType", spotTypeId ?? ""], () => {
-  //     return getSpotType(spotTypeId);
-  // });
+  const {
+    data: singleSpotType,
+    isLoading: spotTypeLoading,
+    error: spotTypeError,
+  } = useQuery(["spotType", singleSpotTypeId ?? ""], () => {
+    return getSpotType(singleSpotTypeId);
+  });
 
   return {
     allFutureReservationsByUserId,
     futureReservationsByUserIdLoading,
     futureReservationsByUserIdError,
-    spotId
-    // singleSpot,
-    // spotLoading,
-    // spotError,
-    // singleSpotType,
-    // spotTypeLoading,
-    // spotTypeError,
+    spotId,
+    singleSpotTypeId,
+    singleSpot,
+    spotLoading,
+    spotError,
+    singleSpotType,
+    spotTypeLoading,
+    spotTypeError,
   };
 };
 
