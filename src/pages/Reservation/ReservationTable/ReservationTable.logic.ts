@@ -1,6 +1,6 @@
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import useToken from '../../../hooks/Token/Token.hook';
-import { getFutureReservationsByUserId } from '../../../services/reservationService';
+import { deleteReservation, getFutureReservationsByUserId } from '../../../services/reservationService';
 import { getSpotById } from '../../../services/spotService';
 import { getSpotType } from '../../../services/spotTypeService';
 import { useEffect, useState } from 'react';
@@ -12,17 +12,20 @@ const useReservationTableLogic = () => {
         data: allFutureReservationsByUserId,
         isLoading: futureReservationsByUserIdLoading,
         error: futureReservationsByUserIdError,
+        refetch,
     } = useQuery(['reservationByUserId', userId], () => {
         if (userId) {
             return getFutureReservationsByUserId(userId);
         }
     });
 
+    const deleteReservationMutation = useMutation(deleteReservation, {
+        onSuccess: () => {
+            refetch();
+        },
+    });
+
     const [formattedReservations, setFormattedReservations] = useState([]);
-    const [spotLoading, setSpotLoading] = useState(false);
-    const [spotError, setSpotError] = useState(null);
-    const [spotTypeLoading, setSpotTypeLoading] = useState(false);
-    const [spotTypeError, setSpotTypeError] = useState(null);
 
     useEffect(() => {
         if (!allFutureReservationsByUserId) return;
@@ -36,6 +39,7 @@ const useReservationTableLogic = () => {
                         const spotType = await getSpotType(spot.spotTypeId);
 
                         return {
+                            id: reservation.id,
                             comment: reservation.comment,
                             spotName: spot.name,
                             spotDescription: spot.description,
@@ -58,12 +62,9 @@ const useReservationTableLogic = () => {
 
     return {
         formattedReservations,
+        deleteReservation: deleteReservationMutation.mutate,
         futureReservationsByUserIdLoading,
         futureReservationsByUserIdError,
-        spotLoading,
-        spotError,
-        spotTypeLoading,
-        spotTypeError,
     };
 };
 
