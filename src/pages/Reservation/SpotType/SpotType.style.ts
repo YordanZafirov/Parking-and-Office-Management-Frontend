@@ -5,7 +5,7 @@ display: grid;
 grid-template-columns: repeat(2, 1fr);
 gap: 20px;
 padding: 20px;
-width: 60%;
+/* width: 60%; */
 margin: 3rem auto;
 background-color: var(--light-pink);
 border: 1px solid #ccc;

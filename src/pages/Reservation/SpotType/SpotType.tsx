@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { SpotTypeContainer, SpotTypeCard } from "./SpotType.style";
-import { PageTitle } from "../../../components/CommonStyledElements";
+import { Container, PageTitle } from "../../../components/CommonStyledElements";
 import { SpotTypeInterface } from "./SpotType.static";
 
 interface Location {
@@ -10,7 +10,7 @@ interface Location {
 
 const SpotType: React.FC<Location> = ({ name, spotTypeData }) => {
     return (
-        <div>
+        <Container>
             <PageTitle>Reserve your spot at {name}</PageTitle>
             <SpotTypeContainer>
                 {spotTypeData?.map((spotType) => (
@@ -19,7 +19,7 @@ const SpotType: React.FC<Location> = ({ name, spotTypeData }) => {
                     </SpotTypeCard>
                 ))}
             </SpotTypeContainer>
-        </div>
+        </Container>
     );
 };
 
