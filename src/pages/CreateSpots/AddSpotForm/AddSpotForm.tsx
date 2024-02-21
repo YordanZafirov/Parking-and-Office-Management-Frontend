@@ -4,7 +4,7 @@ import { useAddSpot, useSpotTypes } from './AddSpotForm.logic';
 import Modal from '../../../components/Modal/Modal';
 import InputField from '../../../components/InputField/InputField';
 import { useNavigate } from 'react-router';
-import { Button } from '../CreateSpotsPage.style';
+import { BaseButton } from '../../../components/CommonStyledElements';
 
 export default function AddSpotForm() {
     const navigate = useNavigate();
@@ -14,9 +14,9 @@ export default function AddSpotForm() {
     return (
         <Modal>
             <FormStyled onSubmit={formik.handleSubmit}>
-                <Button type="button" className="close-btn" onClick={() => navigate(-1)}>
+                <BaseButton type="button" className="close-btn" onClick={() => navigate(-1)}>
                     Close
-                </Button>
+                </BaseButton>
                 <h3>Add New Spot</h3>
                 <InputField type="text" id={'name'} name={'name'} label="Name" onChange={formik.handleChange} />
                 {formik.errors.name && formik.touched.name ? <div>{formik.errors.name}</div> : null}
@@ -46,9 +46,9 @@ export default function AddSpotForm() {
                         ) : null}
                     </SelectStyle>
                 </FormikProvider>
-                <Button className="create-btn" type={'submit'}>
+                <BaseButton className="create-btn" type={'submit'}>
                     Save
-                </Button>
+                </BaseButton>
                 {formik.errors.error ? <div>{formik.errors.error}</div> : null}
             </FormStyled>
         </Modal>
