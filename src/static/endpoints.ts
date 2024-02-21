@@ -35,6 +35,7 @@ export const endpoints = {
   createSpot: `${BASE_URL}/spot`,
   updateSpot: `${BASE_URL}/spot/:spotId`,
   deleteSpot: `${BASE_URL}/spot/:spotId`,
+  checkSpot: `${BASE_URL}/spot/check`,
 
   // RESERVATION
   reservation: `${BASE_URL}/reservation`,
