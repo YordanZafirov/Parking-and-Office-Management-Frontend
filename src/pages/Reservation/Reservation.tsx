@@ -17,7 +17,7 @@ const Reservation = () => {
     error: errorSpotType,
   } = useSpotType();
 
-  if (loadingLocation || loadingSpotType) {
+  if (loadingLocation && loadingSpotType) {
     return <Loader />;
   }
 
