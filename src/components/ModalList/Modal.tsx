@@ -1,5 +1,6 @@
-import React from "react";
-import { ModalOverlay, StyledModalContainer, ModalContent, ModalActions, ModalButton } from "./Modal.style";
+import React from 'react';
+import { ModalOverlay, StyledModalContainer, ModalContent, ModalActions } from './Modal.style';
+import { BaseButton } from '../CommonStyledElements';
 
 interface ModalProps {
     isVisible: boolean;
@@ -16,17 +17,20 @@ const Modal: React.FC<ModalProps> = ({ isVisible, hideModal, onConfirm, showConf
                 <ModalContent>{children}</ModalContent>
                 <ModalActions>
                     {showConfirmButton && (
-                        <ModalButton
+                        <BaseButton
+                            className="create-btn"
                             onClick={() => {
                                 onConfirm && onConfirm();
                                 hideModal();
                             }}
                         >
                             Confirm
-                        </ModalButton>
+                        </BaseButton>
                     )}
 
-                    <ModalButton onClick={hideModal}>Close</ModalButton>
+                    <BaseButton className="remove-btn" onClick={hideModal}>
+                        Close
+                    </BaseButton>
                 </ModalActions>
             </StyledModalContainer>
         </ModalOverlay>

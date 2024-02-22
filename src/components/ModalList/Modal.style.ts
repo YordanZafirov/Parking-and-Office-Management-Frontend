@@ -1,5 +1,5 @@
-import { HTMLAttributes } from "react";
-import styled from "styled-components";
+import { HTMLAttributes } from 'react';
+import styled from 'styled-components';
 
 interface ModalProps extends HTMLAttributes<HTMLDivElement> {
     $show: boolean;
@@ -7,7 +7,7 @@ interface ModalProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const ModalOverlay = styled.div<ModalProps>`
-    display: ${($props) => ($props.$show ? "block" : "none")};
+    display: ${($props) => ($props.$show ? 'block' : 'none')};
     position: fixed;
     top: 0;
     left: 0;
@@ -26,8 +26,8 @@ export const StyledModalContainer = styled.div<ModalProps>`
     padding: 20px;
     border-radius: 5px;
     text-align: center;
-    padding-left: ${(props) => (props.$confirmation ? "20px" : "40px")};
-    padding-right: ${(props) => (props.$confirmation ? "20px" : "40px")};
+    padding-left: ${(props) => (props.$confirmation ? '20px' : '40px')};
+    padding-right: ${(props) => (props.$confirmation ? '20px' : '40px')};
 `;
 
 export const ModalContent = styled.div`

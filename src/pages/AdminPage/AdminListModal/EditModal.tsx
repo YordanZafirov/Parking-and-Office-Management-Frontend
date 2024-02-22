@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '../../../components/ModalList/Modal';
+import { HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
 
 interface EditModalProps {
     isVisible: boolean;
@@ -35,10 +36,10 @@ const EditLocationModal: React.FC<EditModalProps> = ({
 
     return (
         <Modal isVisible={isVisible} hideModal={hideModal} onConfirm={handleConfirm} showConfirmButton={true}>
-            <p>Update Location</p>
-            <div>
-                <label>Location Name</label>
-                <input
+            <HeaderModal>Update Location</HeaderModal>
+            <ItemsModal>
+                <LabelModal>Location Name</LabelModal>
+                <InputModal
                     type="text"
                     placeholder="Enter new location name"
                     value={newLocationName}
@@ -47,10 +48,10 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                         setCurrentLocationName(e.target.value);
                     }}
                 />
-            </div>
-            <div>
-                <label>Location City</label>
-                <input
+            </ItemsModal>
+            <ItemsModal>
+                <LabelModal>Location City</LabelModal>
+                <InputModal
                     type="text"
                     placeholder="Enter new location city"
                     value={newLocationCity}
@@ -59,10 +60,10 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                         setCurrentLocationCity(e.target.value);
                     }}
                 />
-            </div>
-            <div>
-                <label>Location Address</label>
-                <input
+            </ItemsModal>
+            <ItemsModal>
+                <LabelModal>Location Address</LabelModal>
+                <InputModal
                     type="text"
                     placeholder="Enter new location address"
                     value={newLocationAddress}
@@ -71,7 +72,7 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                         setCurrentLocationAddress(e.target.value);
                     }}
                 />
-            </div>
+            </ItemsModal>
         </Modal>
     );
 };
