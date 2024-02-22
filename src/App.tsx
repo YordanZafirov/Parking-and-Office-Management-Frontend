@@ -14,6 +14,7 @@ import UsersPage from './pages/User/UsersPage/UsersPage';
 import Register from './pages/Register/Register';
 import LocationCreateForm from './pages/LocationCreate/LocationCreate';
 import Reservation from './pages/Reservation/Reservation';
+import UserProfilePage from './pages/User/UserProfilePage/UserProfilePage';
 import AdminPage from './pages/AdminPage/Adminpage';
 // import EditLocationModal from './pages/AdminPage/AdminListModal/EditModal';
 // import DeleteLocationModal from './pages/AdminPage/AdminListModal/DeleteModal';
@@ -45,6 +46,7 @@ function App() {
                     <Route path={route.login} element={<Login />} />
                     <Route path={route.register} element={<Register />} />
                     <Route path={route.user} element={<UsersPage />} />
+                    <Route path={`${route.user}/:id`} element={<UserProfilePage />} />
 
                     <Route path={route.admin} element={<AdminPage />}>
                         {/* <Route path=":id/edit" element={<EditLocationModal />} />

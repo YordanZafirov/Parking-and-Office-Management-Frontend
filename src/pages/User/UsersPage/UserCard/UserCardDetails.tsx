@@ -8,7 +8,9 @@ export default function UserDetails({ user, deleteUser }: UserDetailsProps) {
     return (
       <StyledUserDetails>
         <h3>{user.email}</h3>
+        {user.role !== "ADMIN" && (
         <BaseButton onClick={() => deleteUser(user.id)}>Delete User</BaseButton>
+      )}
       </StyledUserDetails>
     );
   }

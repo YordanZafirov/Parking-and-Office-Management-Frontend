@@ -8,6 +8,6 @@ export const route = {
     createLocation: '/createLocation',
     calendar: '/calendar',
     user: '/user',
-    updateUser: '/user-update/:userId',
+    updatePassword: '/user-update-password/:userId',
     register: '/register',
 };
