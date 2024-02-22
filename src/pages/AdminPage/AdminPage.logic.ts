@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import { deleteLocation, getLocations, updateLocation } from '../../services/locationService';
 import { useState } from 'react';
 import useToken from '../../hooks/Token/Token.hook';
@@ -11,7 +11,8 @@ interface LocationData {
 }
 
 const useAdminPage = () => {
-    const { data: locations, isLoading, error, refetch } = useQuery('admin', () => getLocations());
+    const queryClient = useQueryClient();
+    const { data: locations, isLoading, error } = useQuery('admin', () => getLocations());
 
     const [selectedLocationIdForDelete, setSelectedLocationIdForDelete] = useState<string | null>(null);
     const [selectedLocationIdForEdit, setSelectedLocationIdForEdit] = useState<string | null>(null);
@@ -27,7 +28,7 @@ const useAdminPage = () => {
     const onDeleteLocation = async (locationId: string) => {
         try {
             await deleteLocation(locationId);
-            refetch();
+            queryClient.invalidateQueries('admin');
         } catch (error) {
             console.error('Error deleting location:', error);
         }
@@ -37,12 +38,12 @@ const useAdminPage = () => {
         try {
             if (newLocationData.name !== originalLocationName) {
                 await updateLocation(locationId, newLocationData);
-                refetch();
             } else {
                 const { name: _, ...updatedLocationData } = newLocationData;
                 await updateLocation(locationId, updatedLocationData);
-                refetch();
             }
+
+            queryClient.invalidateQueries('admin');
         } catch (error) {
             console.error('Error editing location:', error);
         }
@@ -80,7 +81,10 @@ const useAdminPage = () => {
                 };
 
                 await onEditLocation(selectedLocationIdForEdit, newLocationData);
-                refetch();
+                // Update the original values after edit is confirmed
+                setOriginalLocationName(currentLocationName);
+                setOriginalLocationCity(currentLocationCity);
+                setOriginalLocationAddress(currentLocationAddress);
             }
 
             setSelectedLocationIdForEdit(null);
@@ -96,7 +100,6 @@ const useAdminPage = () => {
         locations,
         isLoading,
         error,
-        refetch,
         onDeleteClick,
         onEditClick,
         currentLocationName,
