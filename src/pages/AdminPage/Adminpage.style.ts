@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { BaseButton } from '../../components/CommonStyledElements';
 
 export const AdminPageContainer = styled.div`
     max-width: 800px;
@@ -47,6 +48,16 @@ export const ListItem = styled.li`
     backdrop-filter: blur(5px);
     gap: 10px;
     border-radius: 80px;
+`;
+
+export const ContainerCreateSerch = styled.li`
+    display: flex;
+    justify-content: space-between;
+`;
+
+export const BaseButtonCreateLocation = styled(BaseButton)`
+    font-size: 16px;
+    padding: 15px;
 `;
 
 export const LocationTableStyle = styled.table`
