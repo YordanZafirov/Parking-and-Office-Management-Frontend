@@ -1,7 +1,7 @@
 import { LoginUser } from "../pages/Login/Login.static";
 import { User } from "../pages/User/UsersPage/UsersPage.static";
 import { endpoints } from "../static/endpoints";
-import { del, get, post } from "./fetchService";
+import { del, get, patch, post } from "./fetchService";
 
 export interface ReservationToFix {
   id: string;
@@ -19,6 +19,12 @@ export interface RegisterUser {
   modifiedBy: string | undefined;
   error?: string;
 }
+export interface ChangePasswordResponse{
+  message?: string
+  error?: string;
+}
+
+
 
 export const getUsers = async (): Promise<User[]> => {
   const response = await get(`${endpoints.user}`, {});
@@ -66,8 +72,8 @@ export const changePassword = async ({
   id,
   password,
   newPassword,
-}: {id: string | undefined, password: string | undefined, newPassword: string | undefined}): Promise<string> => {
-    const response = await post(`${endpoints.changePassword}/${id}`, {id,  password, newPassword });
+}: {id: string | undefined, password: string | undefined, newPassword: string | undefined}): Promise<ChangePasswordResponse> => {
+    const response = await patch(`${endpoints.changePassword}/${id}`, {id,  password, newPassword });
     console.log(response);
     return response;
 };

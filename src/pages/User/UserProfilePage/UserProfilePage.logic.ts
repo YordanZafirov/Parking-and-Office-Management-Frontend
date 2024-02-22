@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { useQuery } from "react-query";
 import {
   getCurrentReservationsByUser,
@@ -51,6 +51,7 @@ const {id: userId} = useParams()
   };
 
   const navigate = useNavigate();
+  const location = useLocation();
 
 
   return {
@@ -64,6 +65,6 @@ const {id: userId} = useParams()
     // showFields,
     // toggleShowFields,
     handleUpdateUserPassword: (id: string) =>
-      navigate(route.updatePassword.replace(":userId", id)),
+    navigate(`${route.user}/${id}/change-password`, { state: { background: location } }),
   };
 };

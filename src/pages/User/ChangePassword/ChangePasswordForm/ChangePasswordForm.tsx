@@ -1,13 +1,19 @@
+import { useNavigate } from 'react-router';
 import Modal from '../../../../components/Modal/Modal';
+import { Button } from '../../../CreateSpots/CreateSpotsPage.style';
 import useChangePassword from './ChangePasswordForm.logic';
-import { ChangePasswordForm } from './ChangePasswordForm.styles';
+import { StyledPasswordForm } from './ChangePasswordForm.styles';
 
-const ChangePassword = () => {
+const ChangePasswordForm = () => {
     const { formik } = useChangePassword();
+    const navigate = useNavigate();
 
     return (
         <Modal>
-            <ChangePasswordForm onSubmit={formik.handleSubmit}>
+            <StyledPasswordForm onSubmit={formik.handleSubmit}>
+            <Button type="button" className="close-btn" onClick={() => navigate(-1)}>
+                    Close
+                </Button>
                 <h2 className="form-title">Change Password</h2>
                 <label htmlFor="password">Current Password</label>
                 <input
@@ -42,9 +48,9 @@ const ChangePassword = () => {
                 ) : null}
                 <button type="submit">Change Password</button>
                 {formik.errors.error ? <div>{formik.errors.error}</div> : null}
-            </ChangePasswordForm>
+            </StyledPasswordForm>
         </Modal>
     );
 };
 
-export default ChangePassword;
+export default ChangePasswordForm;

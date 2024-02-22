@@ -2,7 +2,6 @@ import { useFormik } from 'formik';
 import useToken from '../../../../hooks/Token/Token.hook';
 import { ChangePassword, ChangePasswordSchema } from './ChangePasswordForm.static';
 import { changePassword } from '../../../../services/userService';
-import { route } from '../../../../static/routes';
 import { useNavigate } from 'react-router';
 
 const useChangePassword = () => {
@@ -18,14 +17,20 @@ const useChangePassword = () => {
         },
         validationSchema: ChangePasswordSchema,
 
-        onSubmit: async (values: ChangePassword) => {
+        onSubmit: async (values: ChangePassword, { setFieldError, setSubmitting, resetForm }) => {
             try {
                 const { id, password, newPassword } = values;
-                await changePassword({ id, password, newPassword });
-                navigate(`${route.user}/${id}`);
+                const response = await changePassword({ id, password, newPassword });
+                if(response.error){
+                    throw new Error(response.error);
+                }
+                resetForm();
+                navigate(-1);
             } catch (error) {
+                const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred.';
                 console.error('Error while change password:', error);
-                formik.setFieldValue('error', error.message);
+                setFieldError('error', errorMessage);
+                setSubmitting(false);
             }
         },
     });
