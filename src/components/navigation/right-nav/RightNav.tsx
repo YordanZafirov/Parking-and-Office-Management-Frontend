@@ -62,6 +62,10 @@ const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
             >
               <li>Reports</li>
             </NavLink> */}
+                        <NavLink to={`/admin`}>
+                            <li>Admin</li>
+                        </NavLink>
+
                         <NavLink to={`/user/${decodedToken?.id}`}>
                             <li>Profile</li>
                         </NavLink>
