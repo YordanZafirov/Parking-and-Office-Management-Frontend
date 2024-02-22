@@ -1,5 +1,5 @@
 import { UserProfilePageLogic } from './UserProfilePage.logic';
-import { BaseButton } from '../../../components/CommonStyledElements';
+import { BaseButton, BigButtonDark, BigButtonLight } from '../../../components/CommonStyledElements';
 import {
     ToggleButtonsContainer,
     UpdateButtonContainer,
@@ -20,11 +20,11 @@ const UserProfilePage = () => {
         currentReservations,
         futureReservations,
         handleUpdateUserPassword,
+        handleUpdateUserProfilePicture,
         activeTab,
         handleTabClick,
         logout,
     } = UserProfilePageLogic();
-
     return (
         <div>
             {user && (
@@ -37,17 +37,17 @@ const UserProfilePage = () => {
                         {/* <StyledMap id="map" style={{ height: "400px" }}></StyledMap> */}
                         <UserMainInfoContainer>
                             <UserProfilePictureContainer>
-                            <UserProfilePicture src={user.profilePicture ?? defaultPicture} alt="Profile" />
-                            <p>{user.email}</p>
+                                <UserProfilePicture src={user.imgUrl ?? defaultPicture} alt="Profile" />
+                                <p>{user.email}</p>
                             </UserProfilePictureContainer>
                             <UpdateButtonContainer>
-                                <BaseButton onClick={() => handleUpdateUserProfilePicture(user.id)}>
+                                <BigButtonLight onClick={() => handleUpdateUserProfilePicture(user.id)}>
                                     {userProfileConstants.changeProfilePictureButton}
-                                </BaseButton>
-                                <BaseButton onClick={() => handleUpdateUserPassword(user.id)}>
+                                </BigButtonLight>
+                                <BigButtonLight onClick={() => handleUpdateUserPassword(user.id)}>
                                     {userProfileConstants.changePasswordButton}
-                                </BaseButton>
-                                <BaseButton onClick={() => logout()}>
+                                </BigButtonLight>
+                                <BaseButton className="remove-btn" onClick={() => logout()}>
                                     {userProfileConstants.logout}
                                 </BaseButton>
                             </UpdateButtonContainer>
@@ -62,37 +62,40 @@ const UserProfilePage = () => {
                     </UserProfileContainer>
                     <ToggleButtonsContainer>
                         {/* Button to show past reservations */}
-                        <BaseButton
+                        <BigButtonDark
                             onClick={() => handleTabClick('past')}
                             style={{
                                 fontWeight: activeTab === 'past' ? 'bold' : 'normal',
-                                backgroundColor: activeTab === 'past' ? `var(--blue-green-light)` : `var(--blue-green-dark)`,
+                                backgroundColor:
+                                    activeTab === 'past' ? `var(--blue-green-light)` : `var(--blue-green-dark)`,
                             }}
                         >
                             {userProfileConstants.showPastReservations}
-                        </BaseButton>
+                        </BigButtonDark>
 
                         {/* Button to show current reservations */}
-                        <BaseButton
+                        <BigButtonDark
                             onClick={() => handleTabClick('current')}
                             style={{
                                 fontWeight: activeTab === 'current' ? 'bold' : 'normal',
-                                backgroundColor: activeTab === 'current' ? `var(--blue-green-light)` : `var(--blue-green-dark)`,
+                                backgroundColor:
+                                    activeTab === 'current' ? `var(--blue-green-light)` : `var(--blue-green-dark)`,
                             }}
                         >
                             {userProfileConstants.showCurrentReservations}
-                        </BaseButton>
+                        </BigButtonDark>
 
                         {/* Button to show future reservations */}
-                        <BaseButton
+                        <BigButtonDark
                             onClick={() => handleTabClick('future')}
                             style={{
                                 fontWeight: activeTab === 'future' ? 'bold' : 'normal',
-                                backgroundColor: activeTab === 'future' ? `var(--blue-green-light)` : `var(--blue-green-dark)`,
+                                backgroundColor:
+                                    activeTab === 'future' ? `var(--blue-green-light)` : `var(--blue-green-dark)`,
                             }}
                         >
                             {userProfileConstants.showFutureReservations}
-                        </BaseButton>
+                        </BigButtonDark>
                     </ToggleButtonsContainer>
 
                     {/* Render reservations based on active tab */}

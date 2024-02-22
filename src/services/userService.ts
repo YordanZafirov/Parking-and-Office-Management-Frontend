@@ -23,6 +23,10 @@ export interface ChangePasswordResponse{
   message?: string
   error?: string;
 }
+export interface ChangeProfilePictureResponse{
+  message?: string
+  error?: string;
+}
 
 
 
@@ -75,6 +79,14 @@ export const changePassword = async ({
 }: {id: string | undefined, password: string | undefined, newPassword: string | undefined}): Promise<ChangePasswordResponse> => {
     const response = await patch(`${endpoints.changePassword}/${id}`, {id,  password, newPassword });
     console.log(response);
+    return response;
+};
+
+export const changeProfilePicture = async ({
+  id,
+  imgUrl,
+}: {id: string | undefined, imgUrl: string | undefined}): Promise<ChangeProfilePictureResponse> => {
+    const response = await patch(`${endpoints.changeProfilePicture}/${id}`, {id,  imgUrl });
     return response;
 };
 
