@@ -14,8 +14,10 @@ import UsersPage from './pages/User/UsersPage/UsersPage';
 import Register from './pages/Register/Register';
 import LocationCreateForm from './pages/LocationCreate/LocationCreate';
 import Reservation from './pages/Reservation/Reservation';
+import CreateReservation from './pages/CreateReservation/CreateReservationPage';
 import UserProfilePage from './pages/User/UserProfilePage/UserProfilePage';
 import AdminPage from './pages/AdminPage/Adminpage';
+import SpotInfo from './pages/CreateReservation/SpotInfo/SpotInfo';
 // import EditLocationModal from './pages/AdminPage/AdminListModal/EditModal';
 // import DeleteLocationModal from './pages/AdminPage/AdminListModal/DeleteModal';
 
@@ -56,10 +58,14 @@ function App() {
                     <Route path={route.createSpot} element={<CreateSpots />}>
                         <Route path="/spot/create" element={<AddSpotForm />} />
                     </Route>
+                    <Route path={route.createReservation} element={<CreateReservation />}>
+                        <Route path="/create-reservation/:id" element={<SpotInfo top={0} left={0} />} />
+                    </Route>
                 </Routes>
                 {background?.background && (
                     <Routes>
                         <Route path="/spot/create" element={<AddSpotForm />} />
+                        <Route path="/create-reservation/:id" element={<SpotInfo top={0} left={0} />} />
                     </Routes>
                 )}
             </AuthProvider>

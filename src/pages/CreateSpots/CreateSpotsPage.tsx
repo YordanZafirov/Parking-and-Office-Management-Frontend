@@ -1,7 +1,6 @@
 import ImageMarker, { Marker } from 'react-image-marker';
 import { useNavigate } from 'react-router';
 import { useAddSpot } from './AddSpotForm/AddSpotForm.logic';
-import {} from './AddSpotForm/AddSpotForm.style';
 import CustomMarker from './CustomSpotMarker/CustomSpotMarker';
 import { useLocation } from 'react-router-dom';
 import { CustomSpotMarker } from './AddSpotForm/AddSpotForm.static';
