@@ -91,10 +91,6 @@ const useAdminPage = () => {
         }
     };
 
-    useEffect(() => {
-        refetch();
-    }, []);
-
     return {
         locations,
         isLoading,
