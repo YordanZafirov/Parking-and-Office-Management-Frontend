@@ -15,12 +15,12 @@ function useCreateSpots() {
     const createSpots = async () => {
         const markers: CustomSpotMarker[] | undefined = query.getQueryData('markers');
         if (markers) {
-            const markersJson = { markers }
+            const markersJson = { markers };
 
-             const newSpots = await createMultipleSpots(markersJson);
-            console.log("input",JSON.stringify(markersJson));
-            console.log("result",newSpots);
-             return newSpots;
+            const newSpots = await createMultipleSpots(markersJson);
+            console.log('input', JSON.stringify(markersJson));
+            console.log('result', newSpots);
+            return newSpots;
         }
     };
 

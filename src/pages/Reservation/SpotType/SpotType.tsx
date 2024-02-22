@@ -1,21 +1,32 @@
-import { Link } from "react-router-dom";
-import { SpotTypeContainer, SpotTypeCard } from "./SpotType.style";
-import { Container, PageTitle } from "../../../components/CommonStyledElements";
-import { SpotTypeInterface } from "./SpotType.static";
+import { useNavigate } from 'react-router-dom';
+import { SpotTypeContainer, SpotTypeCard } from './SpotType.style';
+import { BaseButton, Container, PageTitle } from '../../../components/CommonStyledElements';
+import { SpotTypeInterface } from './SpotType.static';
+import { LocationInterface } from '../Location.static';
+import { route } from '../../../static/routes';
 
 interface Location {
-    name: string | undefined;
+    singleLocation: LocationInterface | undefined;
     spotTypeData: SpotTypeInterface[] | undefined;
 }
 
-const SpotType: React.FC<Location> = ({ name, spotTypeData }) => {
+const SpotType: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
+    const navigate = useNavigate();
     return (
         <Container>
-            <PageTitle>Reserve your spot at {name}</PageTitle>
+            <PageTitle>Reserve your spot at {singleLocation?.name}</PageTitle>
             <SpotTypeContainer>
                 {spotTypeData?.map((spotType) => (
                     <SpotTypeCard key={spotType.id}>
-                        <Link to="#">{spotType.name}</Link>
+                        <BaseButton
+                            onClick={() => {
+                                navigate(`${route.createReservation}`, {
+                                    state: { currentLocation: singleLocation, selectedSpotType: spotType.id },
+                                });
+                            }}
+                        >
+                            {spotType.name}
+                        </BaseButton>
                     </SpotTypeCard>
                 ))}
             </SpotTypeContainer>

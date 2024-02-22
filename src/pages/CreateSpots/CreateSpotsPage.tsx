@@ -1,12 +1,12 @@
 import ImageMarker, { Marker } from 'react-image-marker';
 import { useNavigate } from 'react-router';
 import { useAddSpot } from './AddSpotForm/AddSpotForm.logic';
-import {} from './AddSpotForm/AddSpotForm.style';
 import CustomMarker from './CustomSpotMarker/CustomSpotMarker';
 import { useLocation } from 'react-router-dom';
 import { CustomSpotMarker } from './AddSpotForm/AddSpotForm.static';
-import { Button, ButtonsContainer, Container, DivFlexStyled } from './CreateSpotsPage.style';
+import { ButtonsContainer, DivFlexStyled } from './CreateSpotsPage.style';
 import { useCreateSpots } from './CreateSpotsPage.logic';
+import { BaseButton, Container } from '../../components/CommonStyledElements';
 
 const floorPlan = 'https://parking-and-office-management.s3.amazonaws.com/1708009292684-office-planning-software.png';
 
@@ -32,12 +32,12 @@ export default function CreateSpots() {
                 />
             </DivFlexStyled>
             <ButtonsContainer>
-                <Button className="remove-btn" onClick={handleClear}>
+                <BaseButton className="remove-btn" onClick={handleClear}>
                     Clear All Spots
-                </Button>
-                <Button className="create-btn" onClick={createSpots}>
+                </BaseButton>
+                <BaseButton className="create-btn" onClick={createSpots}>
                     Save All Spots
-                </Button>
+                </BaseButton>
             </ButtonsContainer>
         </Container>
     );

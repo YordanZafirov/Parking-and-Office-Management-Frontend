@@ -10,10 +10,7 @@ const Reservation = () => {
     const { singleLocation, isLoading: loadingLocation, error: errorLocation } = useLocation();
     const { spotTypeByLocationId, isLoading: loadingSpotType, error: errorSpotType } = useSpotType();
 
-    const {
-        futureReservationsByUserIdLoading,
-        futureReservationsByUserIdError,
-    } = useReservationTableLogic();
+    const { futureReservationsByUserIdLoading, futureReservationsByUserIdError } = useReservationTableLogic();
 
     if (loadingLocation && loadingSpotType && futureReservationsByUserIdLoading) {
         return <Loader />;
@@ -25,7 +22,7 @@ const Reservation = () => {
 
     return (
         <>
-            <SpotType name={singleLocation?.name} spotTypeData={spotTypeByLocationId} />
+            <SpotType singleLocation={singleLocation} spotTypeData={spotTypeByLocationId} />
             <LocationTable />
         </>
     );

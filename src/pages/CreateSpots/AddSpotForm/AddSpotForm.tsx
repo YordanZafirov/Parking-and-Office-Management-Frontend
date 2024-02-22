@@ -1,21 +1,22 @@
 import { Field, FormikProvider } from 'formik';
 import { FormStyled, Option, SelectStyle } from './AddSpotForm.style';
-import { useAddSpot } from './AddSpotForm.logic';
+import { useAddSpot, useSpotTypes } from './AddSpotForm.logic';
 import Modal from '../../../components/Modal/Modal';
 import InputField from '../../../components/InputField/InputField';
 import { useNavigate } from 'react-router';
-import { Button } from '../CreateSpotsPage.style';
+import { BaseButton } from '../../../components/CommonStyledElements';
 
 export default function AddSpotForm() {
     const navigate = useNavigate();
     const { formik } = useAddSpot();
+    const { spotTypes } = useSpotTypes();
 
     return (
         <Modal>
             <FormStyled onSubmit={formik.handleSubmit}>
-                <Button type="button" className="close-btn" onClick={() => navigate(-1)}>
+                <BaseButton type="button" className="close-btn" onClick={() => navigate(-1)}>
                     Close
-                </Button>
+                </BaseButton>
                 <h3>Add New Spot</h3>
                 <InputField type="text" id={'name'} name={'name'} label="Name" onChange={formik.handleChange} />
                 {formik.errors.name && formik.touched.name ? <div>{formik.errors.name}</div> : null}
@@ -34,23 +35,20 @@ export default function AddSpotForm() {
                         <label>Type</label>
                         <Field as="select" id={'spotTypeId'} name="spotTypeId" onChange={formik.handleChange}>
                             <Option value="" label="Please enter spot type" />
-                            {/* {spotTypes.map((option) => (
-                            <Option key={option.value} value={option.value}>
-                                {option.label}
-                            </Option>
-                        ))} */}
-                            <Option value="">Select Spot Type</Option>
-                            <Option value="indoor">Indoor</Option>
-                            <Option value="outdoor">Outdoor</Option>
+                            {spotTypes?.map((option) => (
+                                <Option key={option.id} value={option.id}>
+                                    {option.name}
+                                </Option>
+                            ))}
                         </Field>
                         {formik.errors.spotTypeId && formik.touched.spotTypeId ? (
                             <div>{formik.errors.spotTypeId}</div>
                         ) : null}
                     </SelectStyle>
                 </FormikProvider>
-                <Button className="create-btn" type={'submit'}>
+                <BaseButton className="create-btn" type={'submit'}>
                     Save
-                </Button>
+                </BaseButton>
                 {formik.errors.error ? <div>{formik.errors.error}</div> : null}
             </FormStyled>
         </Modal>
