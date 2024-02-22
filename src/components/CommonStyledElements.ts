@@ -46,6 +46,25 @@ export const BaseButton = styled.button`
         margin: 0.5rem;
     }
 
+    &.spot-type-card {
+        color: var(--light-pink);
+        text-decoration: none;
+        /* box-shadow: rgba(0, 0, 0, 0.1) 1px 25px -10px 0px; */
+        width: 100;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            box-shadow: rgba(0, 0, 0, 0.1) 2px 3px 3px -5px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            box-shadow: none;
+            margin: 0 auto;
+        }
+    }
+
     &.edit-btn,
     &.create-btn {
         background-color: lightblue;
