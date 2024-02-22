@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ReservationTableStyle = styled.table`
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     width: 100%;
     margin: 0 auto;
     margin-top: 1rem;
@@ -20,7 +20,7 @@ export const ReservationTableStyle = styled.table`
     th,
     td {
         background-color: var(--blue-green-light);
-        border: 1px solid var(--blue-green-dark);
+        /* border: 1px solid var(--blue-green-dark); */
         padding: 8px;
     }
 
@@ -29,9 +29,22 @@ export const ReservationTableStyle = styled.table`
     }
 
     tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: var(--blue-green);
     }
 
+    tr:first-child th:first-child{
+        border-top-left-radius: 10px;
+    }
+    tr:first-child th:last-child{
+        border-top-right-radius: 10px;
+    }
+    tr:last-child td:first-child{
+        border-bottom-left-radius: 10px;
+    }
+    tr:last-child td:last-child{
+        border-bottom-right-radius: 10px;
+    }
+    
     button {
         background-color: var(--beige);
         color: var(--grey-dark);
