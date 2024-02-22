@@ -1,7 +1,7 @@
 import { Location } from '../Home/Home.static';
 import Loader from '../../components/loader/Loader';
 import { useNavigate } from 'react-router-dom';
-import { ListContainer, ListHeader, LocationTableStyle } from './Adminpage.style';
+import { BaseButtonCreateLocation, ContainerCreateSerch, ListContainer, LocationTableStyle } from './Adminpage.style';
 import EditIcon from '../../components/icons/EditIcon';
 import DeleteIcon from '../../components/icons/DeleteIcon';
 import useAdminPage from './AdminPage.logic';
@@ -10,7 +10,6 @@ import useFilter from '../../utils/search';
 import DeleteLocationModal from './AdminListModal/DeleteModal';
 import EditLocationModal from './AdminListModal/EditModal';
 import SearchBar from '../../components/searchBar/SearchBar';
-import { BaseButton } from '../../components/CommonStyledElements';
 import { LocationData } from './AdminPage.static';
 
 const AdminPage = () => {
@@ -50,16 +49,18 @@ const AdminPage = () => {
 
     return (
         <ListContainer>
-            <BaseButton
-                onClick={handleCreateLocationClick}
-                style={{
-                    backgroundColor: `var(--blue-green-light)`,
-                }}
-            >
-                Create Location
-            </BaseButton>
-            <ListHeader>Location List</ListHeader>
-            <SearchBar placeholder="Search by locations" onSearch={setSearchQuery} />
+            <ContainerCreateSerch>
+                <BaseButtonCreateLocation
+                    onClick={handleCreateLocationClick}
+                    style={{
+                        backgroundColor: `var(--blue-green-light)`,
+                    }}
+                >
+                    Create Location
+                </BaseButtonCreateLocation>
+
+                <SearchBar placeholder="Search by locations" onSearch={setSearchQuery} />
+            </ContainerCreateSerch>
 
             <LocationTableStyle>
                 <caption>Location List</caption>
