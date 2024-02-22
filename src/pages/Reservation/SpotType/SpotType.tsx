@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { SpotTypeContainer, SpotTypeCard, SpotTypeImage } from './SpotType.style';
+import { SpotTypeContainer, SpotTypeCard, SpotTypeImage, SpotTypeParagraph } from './SpotType.style';
 import { BaseButton, Container, PageTitle } from '../../../components/CommonStyledElements';
 import { SpotTypeInterface } from './SpotType.static';
 import { LocationInterface } from '../Location.static';
@@ -36,18 +36,20 @@ const SpotType: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
             <PageTitle>Reserve your spot at {singleLocation?.name}</PageTitle>
             <SpotTypeContainer>
                 {spotTypeData?.map((spotType) => (
-                    <SpotTypeCard key={spotType.id}>
-                        <BaseButton
-                            onClick={() => {
-                                navigate(`${route.createReservation}`, {
-                                    state: { currentLocation: singleLocation, selectedSpotType: spotType.id },
-                                });
-                            }}
-                        >
-                            {spotType.name}
-                        </BaseButton>
-                        <SpotTypeImage>{renderImage(spotType.name)}</SpotTypeImage>
-                    </SpotTypeCard>
+                    <BaseButton
+                        key={spotType.id}
+                        className="spot-type-card"
+                        onClick={() => {
+                            navigate(`${route.createReservation}`, {
+                                state: { currentLocation: singleLocation, selectedSpotType: spotType.id },
+                            });
+                        }}
+                    >
+                        <SpotTypeCard>
+                            <SpotTypeParagraph>{spotType.name}</SpotTypeParagraph>
+                            <SpotTypeImage>{renderImage(spotType.name)}</SpotTypeImage>
+                        </SpotTypeCard>
+                    </BaseButton>
                 ))}
             </SpotTypeContainer>
         </Container>
