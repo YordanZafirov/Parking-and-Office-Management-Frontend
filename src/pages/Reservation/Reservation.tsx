@@ -4,6 +4,7 @@ import SpotType from './SpotType/SpotType';
 import useLocation from './Reservation.logic';
 import useSpotType from './SpotType/SpotType.logic';
 import useReservationTableLogic from './ReservationTable/ReservationTable.logic';
+import { ReservationContainer } from './Reservation.style';
 
 const Reservation = () => {
     // Fetch location and spot type data
@@ -21,10 +22,10 @@ const Reservation = () => {
     }
 
     return (
-        <>
+        <ReservationContainer>
             <SpotType singleLocation={singleLocation} spotTypeData={spotTypeByLocationId} />
             <LocationTable />
-        </>
+        </ReservationContainer>
     );
 };
 

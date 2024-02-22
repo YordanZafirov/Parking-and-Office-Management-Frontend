@@ -16,6 +16,6 @@ export const GlobalStyle = createGlobalStyle`
   --beige-dark: #8b8680;
   --brown: #d0bba2;
   --brown-light: #7d7061;
-  --brown-dark: #e3d6c7;
+  --brown-dark: #3e3831;
 }
 `;
