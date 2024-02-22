@@ -22,7 +22,10 @@ export const TableCell = styled.td`
     border-bottom: 1px solid #ddd;
 `;
 
-export const ListContainer = styled.div``;
+export const ListContainer = styled.div`
+    background-color: var(--beige-light);
+    padding: 20px;
+`;
 
 export const ListHeader = styled.h2`
     font-size: 1.5rem;
@@ -32,7 +35,7 @@ export const ListHeader = styled.h2`
 
 export const List = styled.ul`
     list-style-type: none;
-    padding: 0;
+    padding: 20px;
 `;
 
 export const ListItem = styled.li`

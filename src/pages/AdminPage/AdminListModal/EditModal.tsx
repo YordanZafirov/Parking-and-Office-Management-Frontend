@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '../../../components/ModalList/Modal';
+import { HeaderModal, ItemsModal, LabelModal } from './EditModal.style';
 
 interface EditModalProps {
     isVisible: boolean;
@@ -35,9 +36,9 @@ const EditLocationModal: React.FC<EditModalProps> = ({
 
     return (
         <Modal isVisible={isVisible} hideModal={hideModal} onConfirm={handleConfirm} showConfirmButton={true}>
-            <p>Update Location</p>
-            <div>
-                <label>Location Name</label>
+            <HeaderModal>Update Location</HeaderModal>
+            <ItemsModal>
+                <LabelModal>Location Name</LabelModal>
                 <input
                     type="text"
                     placeholder="Enter new location name"
@@ -47,9 +48,9 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                         setCurrentLocationName(e.target.value);
                     }}
                 />
-            </div>
-            <div>
-                <label>Location City</label>
+            </ItemsModal>
+            <ItemsModal>
+                <LabelModal>Location City</LabelModal>
                 <input
                     type="text"
                     placeholder="Enter new location city"
@@ -59,9 +60,9 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                         setCurrentLocationCity(e.target.value);
                     }}
                 />
-            </div>
-            <div>
-                <label>Location Address</label>
+            </ItemsModal>
+            <ItemsModal>
+                <LabelModal>Location Address</LabelModal>
                 <input
                     type="text"
                     placeholder="Enter new location address"
@@ -71,7 +72,7 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                         setCurrentLocationAddress(e.target.value);
                     }}
                 />
-            </div>
+            </ItemsModal>
         </Modal>
     );
 };

@@ -11,6 +11,7 @@ import useFilter from '../../utils/search';
 import DeleteLocationModal from './AdminListModal/DeleteModal';
 import EditLocationModal from './AdminListModal/EditModal';
 import SearchBar from '../../components/searchBar/SearchBar';
+import { BaseButton } from '../../components/CommonStyledElements';
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -49,7 +50,14 @@ const AdminPage = () => {
 
     return (
         <ListContainer>
-            <button onClick={handleCreateLocationClick}>Create Location</button>
+            <BaseButton
+                onClick={handleCreateLocationClick}
+                style={{
+                    backgroundColor: `var(--blue-green-light)`,
+                }}
+            >
+                Create Location
+            </BaseButton>
             <ListHeader>Location List</ListHeader>
             <SearchBar placeholder="Search by locations" onSearch={setSearchQuery} />
             <List>
