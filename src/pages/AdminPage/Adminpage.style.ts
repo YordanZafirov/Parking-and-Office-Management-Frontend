@@ -50,13 +50,11 @@ export const ListItem = styled.li`
 `;
 
 export const LocationTableStyle = styled.table`
-    border-collapse: collapse;
     width: 100%;
     margin: 0 auto;
     margin-top: 1rem;
     text-align: center;
     font-size: 1.2rem;
-    border-radius: 8px !important;
 
     caption {
         font-size: 1.5rem;
@@ -70,7 +68,6 @@ export const LocationTableStyle = styled.table`
     th,
     td {
         background-color: var(--blue-green-light);
-        border: 1px solid var(--blue-green-dark);
         padding: 8px;
     }
 
@@ -78,8 +75,17 @@ export const LocationTableStyle = styled.table`
         background-color: #f2f2f2;
     }
 
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
+    tr:first-child th:first-child {
+        border-top-left-radius: 10px;
+    }
+    tr:first-child th:last-child {
+        border-top-right-radius: 10px;
+    }
+    tr:last-child td:first-child {
+        border-bottom-left-radius: 10px;
+    }
+    tr:last-child td:last-child {
+        border-bottom-right-radius: 10px;
     }
 
     button {
@@ -89,7 +95,6 @@ export const LocationTableStyle = styled.table`
         padding: 5px 10px;
         border-radius: 5px;
         cursor: pointer;
-        margin-right: 5px;
     }
 
     button:hover {
