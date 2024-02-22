@@ -1,3 +1,4 @@
+import { styled } from 'styled-components';
 import styled from 'styled-components';
 
 export const PageTitle = styled.h1`
@@ -84,3 +85,17 @@ export const BaseButton = styled.button`
         cursor: not-allowed;
     }
 `;
+
+export const BigButtonLight = styled(BaseButton)`
+  background-color: var(--beige-light);
+  font-size: 0.8rem;
+  line-height: 1rem;
+  padding: 0.9rem;
+`
+export const BigButtonDark = styled(BaseButton)`
+  background-color: var(--blue--green-light);
+  color: var(--beige-light);
+  font-size: 0.8rem;
+  line-height: 1rem;
+  padding: 0.9rem;
+`

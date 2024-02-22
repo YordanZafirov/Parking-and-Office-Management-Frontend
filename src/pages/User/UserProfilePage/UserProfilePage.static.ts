@@ -1,6 +1,6 @@
 export const userProfileConstants = {
     changePasswordButton: "Change Password",
-    changeProfilePictureButton: "Change Profile picture",
+    changeProfilePictureButton: "Change Profile Picture",
     showPastReservations: "Show Past Reservations",
     showCurrentReservations: "Show Current Reservations",
     showFutureReservations: "Show Future Reservations",

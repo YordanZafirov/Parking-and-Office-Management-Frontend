@@ -64,7 +64,7 @@ export const UserProfileContainer = styled.div`
     @media (min-width: 1500px) {
         margin: 30px auto;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 715px) {
         grid-template-columns: 1fr;
         > :nth-child(2) {
             display: none;
@@ -121,6 +121,6 @@ export const UserProfilePicture = styled.img`
     width: 200px;
     height: 200px;
     object-fit: cover;
-    border: 2px solid;
+    border: 2px solid var(--blue-green-light);
     margin-bottom: 10px;
 `;

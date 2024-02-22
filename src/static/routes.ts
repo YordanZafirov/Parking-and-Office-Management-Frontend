@@ -10,5 +10,6 @@ export const route = {
     calendar: '/calendar',
     user: '/user',
     updatePassword: '/user-update-password/:userId',
+    updateProfilePicture: '/user-update-picture/:userId',
     register: '/register',
 };
