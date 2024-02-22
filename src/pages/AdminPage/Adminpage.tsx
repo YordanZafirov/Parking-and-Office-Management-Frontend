@@ -1,8 +1,7 @@
 import { Location } from '../Home/Home.static';
 import Loader from '../../components/loader/Loader';
 import { useNavigate } from 'react-router-dom';
-import { List, ListContainer, ListHeader, ListItem } from './Adminpage.style';
-import { ButtonContainer } from '../../components/icons/ButtonContainer';
+import { ListContainer, ListHeader, LocationTableStyle } from './Adminpage.style';
 import EditIcon from '../../components/icons/EditIcon';
 import DeleteIcon from '../../components/icons/DeleteIcon';
 import useAdminPage from './AdminPage.logic';
@@ -12,6 +11,7 @@ import DeleteLocationModal from './AdminListModal/DeleteModal';
 import EditLocationModal from './AdminListModal/EditModal';
 import SearchBar from '../../components/searchBar/SearchBar';
 import { BaseButton } from '../../components/CommonStyledElements';
+import { LocationData } from './AdminPage.static';
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -60,34 +60,52 @@ const AdminPage = () => {
             </BaseButton>
             <ListHeader>Location List</ListHeader>
             <SearchBar placeholder="Search by locations" onSearch={setSearchQuery} />
-            <List>
-                {Array.isArray(filteredItems) && filteredItems.length > 0 ? (
-                    filteredItems.map((location) => (
-                        <ListItem key={location.id}>
-                            {location.name}
-                            {location.city}
-                            {location.address}
 
-                            <ButtonContainer>
-                                <EditIcon
-                                    onClick={() => {
-                                        onEditClick(location.id || '', location.name, location.city, location.address);
-                                        showEditModal();
-                                    }}
-                                />
-                                <DeleteIcon
-                                    onClick={() => {
-                                        onDeleteClick(location.id || '');
-                                        showDeleteModal();
-                                    }}
-                                />
-                            </ButtonContainer>
-                        </ListItem>
-                    ))
-                ) : (
-                    <ListItem>No Locations available</ListItem>
-                )}
-            </List>
+            <LocationTableStyle>
+                <caption>Location List</caption>
+                <thead>
+                    <tr>
+                        <th className="table-head">Name</th>
+                        <th className="table-head">City</th>
+                        <th className="table-head">Address</th>
+                        <th className="table-head">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {filteredItems.length > 0 ? (
+                        filteredItems.map((location: LocationData) => (
+                            <tr key={location.id}>
+                                <td data-label="Name:">{location.name}</td>
+                                <td data-label="City:">{location.city}</td>
+                                <td data-label="Address:">{location.address}</td>
+                                <td>
+                                    <EditIcon
+                                        onClick={() => {
+                                            onEditClick(
+                                                location.id || '',
+                                                location.name || '',
+                                                location.city || '',
+                                                location.address || '',
+                                            );
+                                            showEditModal();
+                                        }}
+                                    />
+                                    <DeleteIcon
+                                        onClick={() => {
+                                            onDeleteClick(location.id || '');
+                                            showDeleteModal();
+                                        }}
+                                    />
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan={4}>No Locations available</td>
+                        </tr>
+                    )}
+                </tbody>
+            </LocationTableStyle>
 
             {isDeleteModalVisible && (
                 <DeleteLocationModal
