@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '../../../components/ModalList/Modal';
-import { HeaderModal, ItemsModal, LabelModal } from './EditModal.style';
+import { HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
 
 interface EditModalProps {
     isVisible: boolean;
@@ -39,7 +39,7 @@ const EditLocationModal: React.FC<EditModalProps> = ({
             <HeaderModal>Update Location</HeaderModal>
             <ItemsModal>
                 <LabelModal>Location Name</LabelModal>
-                <input
+                <InputModal
                     type="text"
                     placeholder="Enter new location name"
                     value={newLocationName}
@@ -51,7 +51,7 @@ const EditLocationModal: React.FC<EditModalProps> = ({
             </ItemsModal>
             <ItemsModal>
                 <LabelModal>Location City</LabelModal>
-                <input
+                <InputModal
                     type="text"
                     placeholder="Enter new location city"
                     value={newLocationCity}
@@ -63,7 +63,7 @@ const EditLocationModal: React.FC<EditModalProps> = ({
             </ItemsModal>
             <ItemsModal>
                 <LabelModal>Location Address</LabelModal>
-                <input
+                <InputModal
                     type="text"
                     placeholder="Enter new location address"
                     value={newLocationAddress}

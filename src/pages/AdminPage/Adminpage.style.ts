@@ -46,4 +46,5 @@ export const ListItem = styled.li`
     margin-bottom: 5px;
     backdrop-filter: blur(5px);
     gap: 10px;
+    border-radius: 8px;
 `;
