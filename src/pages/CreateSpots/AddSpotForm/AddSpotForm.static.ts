@@ -1,7 +1,7 @@
 import { Marker } from 'react-image-marker';
 import * as Yup from 'yup';
 
-interface CustomSpotMarker extends Marker {
+interface SpotMarker extends Marker {
     id?: string;
     name?: string;
     description?: string;
@@ -13,7 +13,7 @@ interface CustomSpotMarker extends Marker {
 }
 
 interface MultipleSpots {
-    markers: Array<CustomSpotMarker>;
+    markers: Array<SpotMarker>;
 }
 
 const AddSpotShema = Yup.object().shape({
@@ -23,4 +23,4 @@ const AddSpotShema = Yup.object().shape({
 });
 
 export { AddSpotShema };
-export type { CustomSpotMarker, MultipleSpots };
+export type { SpotMarker, MultipleSpots };

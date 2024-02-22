@@ -6,7 +6,7 @@ import Loader from '../../components/loader/Loader';
 import { LocationImage } from '../Home/LocationChocie/LocationChoice.style';
 import { Card, ImageContainer } from './CreateReservationPage.style';
 import { DivFlexStyled } from '../CreateSpots/CreateSpotsPage.style';
-import SpotInfo from './SpotInfo/SpotInfo';
+import SpotMarkerReservation from './SpotMarker/SpotMarker';
 
 export default function CreateReservation() {
     const { isLoading, error, floorPlans, showPlan, spots, showModal, currentFloorPlan } = useShowSpots();
@@ -39,7 +39,11 @@ export default function CreateReservation() {
             </DivFlexStyled>
             {showModal && currentFloorPlan && spots && (
                 <ImageContainer>
-                    <ImageMarker src={currentFloorPlan.imgUrl} markers={spots} markerComponent={SpotInfo} />
+                    <ImageMarker
+                        src={currentFloorPlan.imgUrl}
+                        markers={spots}
+                        markerComponent={SpotMarkerReservation}
+                    />
                 </ImageContainer>
             )}
         </Container>

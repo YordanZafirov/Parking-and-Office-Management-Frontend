@@ -1,52 +1,34 @@
 import { useLocation, useNavigate } from 'react-router';
 import { BaseButton } from '../../../components/CommonStyledElements';
 import Modal from '../../../components/Modal/Modal';
-import { CustomSpotMarker } from '../../CreateSpots/AddSpotForm/AddSpotForm.static';
-import { MarkerStyled } from '../../CreateSpots/CustomSpotMarker/CustomSpotMarker.style';
-import { useState } from 'react';
-import { route } from '../../../static/routes';
 
-export default function SpotInfo(props: CustomSpotMarker) {
-    const { name, description } = props;
-    const navigate = useNavigate();
+export default function SpotInfo() {
     const location = useLocation();
-    const [isOpen, setisOpen] = useState(false);
-
-    const toggle = () => {
-        setisOpen(!isOpen);
-    };
+    const spotProps = location.state.spotProps;
+    const navigate = useNavigate();
 
     return (
-        <>
-            <MarkerStyled
+        <Modal>
+            <BaseButton
+                type="button"
+                className="close-btn"
                 onClick={() => {
-                    toggle();
-                    navigate(`${route.createReservation}/${props.id}`, { state: { background: location } });
+                    navigate(-1);
                 }}
-            />
-            {isOpen && props.id && (
-                <Modal>
-                    <BaseButton
-                        type="button"
-                        className="close-btn"
-                        onClick={() => {
-                            toggle(), navigate(-1);
-                        }}
-                    >
-                        Close
-                    </BaseButton>
-                    <h4>{name}</h4>
-                    <p>Description: {description}</p>
-                    <BaseButton
-                        type="button"
-                        onClick={() => {
-                            console.log(props);
-                        }}
-                    >
-                        Reserve
-                    </BaseButton>
-                </Modal>
-            )}
-        </>
+            >
+                Close
+            </BaseButton>
+            <h4>{spotProps.name}</h4>
+            <p>Description: {spotProps.description}</p>
+            <BaseButton
+                type="button"
+                onClick={() => {
+                    console.log(spotProps);
+                    navigate(-1);
+                }}
+            >
+                Reserve
+            </BaseButton>
+        </Modal>
     );
 }
