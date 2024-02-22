@@ -7,6 +7,7 @@ import { PopoverContainer, PopoverContent, PopoverLink, ProfileSpan } from './Po
 import { useAuth } from '../../../context/AuthContext';
 import useToken from '../../../hooks/Token/Token.hook';
 import useRightNav from './RightNav.logic';
+import UserRoleHOC from '../../../pages/UserRoleHOC';
 
 interface NavProps {
     open: boolean;
@@ -62,9 +63,11 @@ const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
             >
               <li>Reports</li>
             </NavLink> */}
-                        <NavLink to={`/admin`}>
-                            <li>Admin</li>
-                        </NavLink>
+                        <UserRoleHOC>
+                            <NavLink to={`/admin`}>
+                                <li>Admin</li>
+                            </NavLink>
+                        </UserRoleHOC>
 
                         <NavLink to={`/user/${decodedToken?.id}`}>
                             <li>Profile</li>
