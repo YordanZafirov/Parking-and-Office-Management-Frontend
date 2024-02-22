@@ -48,7 +48,7 @@ function App() {
                     <Route path={route.register} element={<Register />} />
                     <Route path={route.user} element={<UsersPage />} />
                     <Route path={`${route.user}/:id`} element={<UserProfilePage />}>
-                    <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
+                        <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
                     </Route>
 
                     <Route path={route.admin} element={<AdminPage />}>
@@ -60,14 +60,14 @@ function App() {
                         <Route path="/spot/create" element={<AddSpotForm />} />
                     </Route>
                     <Route path={route.createReservation} element={<CreateReservation />}>
-                        <Route path="/create-reservation/:id" element={<SpotInfo top={0} left={0} />} />
+                        <Route path="/create-reservation/:id" element={<SpotInfo />} />
                     </Route>
                 </Routes>
                 {background?.background && (
                     <Routes>
                         <Route path="/spot/create" element={<AddSpotForm />} />
                         <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
-                        <Route path="/create-reservation/:id" element={<SpotInfo top={0} left={0} />} />
+                        <Route path="/create-reservation/:id" element={<SpotInfo />} />
                     </Routes>
                 )}
             </AuthProvider>

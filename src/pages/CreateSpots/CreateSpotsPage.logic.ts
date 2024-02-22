@@ -2,7 +2,7 @@ import { Marker } from 'react-image-marker';
 // import { useNavigate } from 'react-router';
 import { useQueryClient } from 'react-query';
 import { createMultipleSpots } from '../../services/spotService';
-import { CustomSpotMarker } from './AddSpotForm/AddSpotForm.static';
+import { SpotMarker } from './AddSpotForm/AddSpotForm.static';
 
 function useCreateSpots() {
     // const navigate = useNavigate();
@@ -13,7 +13,7 @@ function useCreateSpots() {
     };
 
     const createSpots = async () => {
-        const markers: CustomSpotMarker[] | undefined = query.getQueryData('markers');
+        const markers: SpotMarker[] | undefined = query.getQueryData('markers');
         if (markers) {
             const markersJson = { markers };
 
