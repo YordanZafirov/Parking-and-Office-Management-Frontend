@@ -9,6 +9,8 @@ const Navigation = () => {
                 <ListItem>Logo</ListItem>
             </NavLink>
 
+            <div style={{ flex: 1 }}></div>
+
             <Burger />
         </NavDiv>
     );
