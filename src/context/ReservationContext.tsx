@@ -1,21 +1,22 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import { ReservationInterface } from '../pages/Reservation/Reservation.static';
+import { post } from '../services/fetchService';
+import { endpoints } from '../static/endpoints';
 
+// Define the context interface
 interface ReservationContextInterface {
-    addReservation: (
-        spotId: string,
-        userId: string,
-        start: Date,
-        end: Date,
-        comment: string,
-        modifiedBy: string,
-    ) => void;
+    addReservation: (reservationsToAdd: ReservationInterface[]) => void;
     reservation: ReservationInterface[];
+}
+
+// Specify the type of children prop
+interface ReservationProviderProps {
+    children: ReactNode;
 }
 
 const ReservationContext = createContext<ReservationContextInterface | undefined>(undefined);
 
-export const ReservationProvider = ({ children }: any) => {
+export const ReservationProvider = ({ children }: ReservationProviderProps) => {
     const [reservation, setReservation] = useState<ReservationInterface[]>([]);
 
     useEffect(() => {
@@ -33,26 +34,29 @@ export const ReservationProvider = ({ children }: any) => {
         }
     }, [reservation]);
 
-    const addReservation = (
-        spotId: string,
-        userId: string,
-        start: Date,
-        end: Date,
-        comment: string,
-        modifiedBy: string,
-    ) => {
-        // Create a new reservation object
-        const newReservation: ReservationInterface = {
-            spotId: spotId,
-            userId: userId,
-            modifiedBy: modifiedBy,
-            comment: comment,
-            start: start,
-            end: end,
-        };
+    const addReservation = (reservationsToAdd: ReservationInterface[]) => {
+        // Add the reservations to the state
+        setReservation([...reservation, ...reservationsToAdd]);
 
-        // Add the reservation to the state
-        setReservation([...reservation, newReservation]);
+        // Send the reservations to the backend
+        sendReservationsToBackend(reservationsToAdd);
+    };
+
+    const sendReservationsToBackend = async (reservations: ReservationInterface[]) => {
+        const response = await post(`${endpoints.createMultipleReservations}`, reservations);
+
+        if (response.status === 201) {
+            // If the reservations were successfully added to the backend, remove them from the state and sessionStorage
+            setReservation([]);
+            sessionStorage.removeItem('reservation');
+        }
+
+        // If the reservations were not successfully added to the backend, show an error message
+        if (response.status !== 201) {
+            console.error('Error adding reservations to the backend');
+        }
+
+        return response;
     };
 
     return (
@@ -60,6 +64,7 @@ export const ReservationProvider = ({ children }: any) => {
     );
 };
 
+// Custom hook that shorthands the context
 export const useReservationContext = () => {
     const context = useContext(ReservationContext);
     if (!context) {
