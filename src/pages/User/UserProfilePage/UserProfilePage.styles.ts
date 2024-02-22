@@ -121,6 +121,6 @@ export const UserProfilePicture = styled.img`
     width: 200px;
     height: 200px;
     object-fit: cover;
-    border: 2px solid var(--blue-green-light);
+    border: 3px solid var(--blue-green-light);
     margin-bottom: 10px;
 `;

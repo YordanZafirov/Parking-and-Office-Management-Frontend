@@ -12,18 +12,26 @@ import {
 import { userProfileConstants } from './UserProfilePage.static';
 import UserProfileInfo from './UserProfileInfo';
 import defaultPicture from '../../../assets/default-profile.jpg';
+import UserReservationsTable from '../../../components/UserReservationsTable/UserReservationsTable';
 
 const UserProfilePage = () => {
     const {
         user,
         pastReservations,
+        arePastReservationsLoading,
+        pastReservationsRefetch,
         currentReservations,
+        areCurrentReservationsLoading,
+        currentReservationsRefetch,
         futureReservations,
+        areFutureReservationsLoading,
+        futureReservationsRefetch,
         handleUpdateUserPassword,
         handleUpdateUserProfilePicture,
         activeTab,
         handleTabClick,
         logout,
+        reservationTypes,
     } = UserProfilePageLogic();
     return (
         <div>
@@ -34,7 +42,6 @@ const UserProfilePage = () => {
               {farm.name}
             </PageTitle> */}
                     <UserProfileContainer>
-                        {/* <StyledMap id="map" style={{ height: "400px" }}></StyledMap> */}
                         <UserMainInfoContainer>
                             <UserProfilePictureContainer>
                                 <UserProfilePicture src={user.imgUrl ?? defaultPicture} alt="Profile" />
@@ -61,7 +68,6 @@ const UserProfilePage = () => {
                         </UserAdditionalInfoContainer>
                     </UserProfileContainer>
                     <ToggleButtonsContainer>
-                        {/* Button to show past reservations */}
                         <BigButtonDark
                             onClick={() => handleTabClick('past')}
                             style={{
@@ -73,7 +79,6 @@ const UserProfilePage = () => {
                             {userProfileConstants.showPastReservations}
                         </BigButtonDark>
 
-                        {/* Button to show current reservations */}
                         <BigButtonDark
                             onClick={() => handleTabClick('current')}
                             style={{
@@ -85,7 +90,6 @@ const UserProfilePage = () => {
                             {userProfileConstants.showCurrentReservations}
                         </BigButtonDark>
 
-                        {/* Button to show future reservations */}
                         <BigButtonDark
                             onClick={() => handleTabClick('future')}
                             style={{
@@ -98,10 +102,30 @@ const UserProfilePage = () => {
                         </BigButtonDark>
                     </ToggleButtonsContainer>
 
-                    {/* Render reservations based on active tab */}
-                    {/* {activeTab === "past" && <ReservationComponent reservations={pastReservations} />}
-          {activeTab === "current" && <ReservationComponent reservations={currentReservations} />}
-          {activeTab === "future" && <ReservationComponent reservations={futureReservations} />} */}
+                    {activeTab === 'past' && (
+                        <UserReservationsTable
+                            reservations={pastReservations}
+                            isLoading={arePastReservationsLoading}
+                            refetch={pastReservationsRefetch}
+                            reservationType={reservationTypes.past}
+                        />
+                    )}
+                    {activeTab === 'current' && (
+                        <UserReservationsTable
+                            reservations={currentReservations}
+                            isLoading={areCurrentReservationsLoading}
+                            refetch={currentReservationsRefetch}
+                            reservationType={reservationTypes.current}
+                        />
+                    )}
+                    {activeTab === 'future' && (
+                        <UserReservationsTable
+                            reservations={futureReservations}
+                            isLoading={areFutureReservationsLoading}
+                            refetch={futureReservationsRefetch}
+                            reservationType={reservationTypes.future}
+                        />
+                    )}
                 </div>
             )}
         </div>
