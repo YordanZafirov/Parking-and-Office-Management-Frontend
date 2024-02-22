@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router';
-import Modal from '../../../../components/Modal/Modal';
+import Modal from '../../../components/Modal/Modal';
 import useChangePassword from './ChangePasswordForm.logic';
 import { StyledPasswordForm } from './ChangePasswordForm.styles';
-import { BaseButton } from '../../../../components/CommonStyledElements';
+import { BaseButton } from '../../../components/CommonStyledElements';
 
 const ChangePasswordForm = () => {
     const { formik } = useChangePassword();
@@ -11,7 +11,7 @@ const ChangePasswordForm = () => {
     return (
         <Modal>
             <StyledPasswordForm onSubmit={formik.handleSubmit}>
-            <BaseButton type="button" className="close-btn" onClick={() => navigate(-1)}>
+                <BaseButton type="button" className="close-btn" onClick={() => navigate(-1)}>
                     Close
                 </BaseButton>
                 <h2 className="form-title">Change Password</h2>

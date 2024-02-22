@@ -10,6 +10,7 @@ export const endpoints = {
     getSingleUser: `${BASE_URL}/user/:userId`,
     deleteUser: `${BASE_URL}/user/:userId`,
   changePassword: `${BASE_URL}/user/change-password`,
+  changeProfilePicture: `${BASE_URL}/user/change-picture`,
 
     // LOCATION
     getLocations: `${BASE_URL}/location`,

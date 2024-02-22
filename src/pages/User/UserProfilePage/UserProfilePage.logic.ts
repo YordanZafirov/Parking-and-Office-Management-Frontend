@@ -11,10 +11,10 @@ import { SetStateAction, useState } from "react";
 import { useAuth } from "../../../context/AuthContext";
 
 export const UseUser = (userId: string | undefined) => {
-  const { data: user, refetch } = useQuery(["user", userId], () =>
+  const { data: user, refetch: userRefetch } = useQuery(["user", userId], () =>
     getUser(userId)
   );
-  return { user, refetch };
+  return { user, userRefetch };
 };
 
 export const UsePastReservationsByUser = (userId: string | undefined) => {
@@ -39,7 +39,7 @@ export const UseFutureReservationsByUser = (userId: string | undefined) => {
 
 export const UserProfilePageLogic = () => {
 const {id: userId} = useParams()
-  const { user } = UseUser(userId);
+  const { user, userRefetch } = UseUser(userId);
   const { pastReservations } = UsePastReservationsByUser(userId);
   const { currentReservations } = UseCurrentReservationsByUser(userId);
   const { futureReservations } = UseFutureReservationsByUser(userId);
@@ -61,9 +61,10 @@ const {id: userId} = useParams()
     futureReservations,
     activeTab,
     handleTabClick,
+    userRefetch,
     logout,
-    // showFields,
-    // toggleShowFields,
+    handleUpdateUserProfilePicture: (id: string) =>
+    navigate(`${route.user}/${id}/change-picture`, { state: { background: location } }),
     handleUpdateUserPassword: (id: string) =>
     navigate(`${route.user}/${id}/change-password`, { state: { background: location } }),
   };
