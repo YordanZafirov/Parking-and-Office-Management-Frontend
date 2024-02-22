@@ -3,6 +3,7 @@ import * as Yup from "yup";
 export interface LoginUser {
   email: string;
   password: string;
+  access_token?: string;
   error?: string;
 }
 

@@ -45,9 +45,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const loginUser = async ({ email, password }: LoginUser) => {
         try {
             // LoginService returns a User object or a Response object
-            const response: Response | LoginUser = await loginService({ email, password });
+            const response: LoginUser = await loginService({ email, password });
 
-            if (response) {
+            if (response && response.access_token) {
                 localStorage.setItem('access_token', response.access_token);
                 setIsAuthenticated(true);
                 navigate('/');
