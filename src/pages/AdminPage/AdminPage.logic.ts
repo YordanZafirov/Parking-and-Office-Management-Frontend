@@ -1,6 +1,6 @@
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 import { deleteLocation, getLocations, updateLocation } from '../../services/locationService';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useToken from '../../hooks/Token/Token.hook';
 
 interface LocationData {
@@ -11,8 +11,7 @@ interface LocationData {
 }
 
 const useAdminPage = () => {
-    const queryClient = useQueryClient();
-    const { data: locations, isLoading, error } = useQuery('admin', () => getLocations());
+    const { data: locations, isLoading, error, refetch } = useQuery('admin', () => getLocations());
 
     const [selectedLocationIdForDelete, setSelectedLocationIdForDelete] = useState<string | null>(null);
     const [selectedLocationIdForEdit, setSelectedLocationIdForEdit] = useState<string | null>(null);
@@ -28,7 +27,7 @@ const useAdminPage = () => {
     const onDeleteLocation = async (locationId: string) => {
         try {
             await deleteLocation(locationId);
-            queryClient.invalidateQueries('admin');
+            refetch();
         } catch (error) {
             console.error('Error deleting location:', error);
         }
@@ -43,7 +42,7 @@ const useAdminPage = () => {
                 await updateLocation(locationId, updatedLocationData);
             }
 
-            queryClient.invalidateQueries('admin');
+            refetch();
         } catch (error) {
             console.error('Error editing location:', error);
         }
@@ -81,10 +80,6 @@ const useAdminPage = () => {
                 };
 
                 await onEditLocation(selectedLocationIdForEdit, newLocationData);
-                // Update the original values after edit is confirmed
-                setOriginalLocationName(currentLocationName);
-                setOriginalLocationCity(currentLocationCity);
-                setOriginalLocationAddress(currentLocationAddress);
             }
 
             setSelectedLocationIdForEdit(null);
@@ -95,6 +90,10 @@ const useAdminPage = () => {
             console.error('Error handling edit confirmation:', error);
         }
     };
+
+    useEffect(() => {
+        refetch();
+    }, []);
 
     return {
         locations,
