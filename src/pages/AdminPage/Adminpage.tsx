@@ -65,14 +65,12 @@ const AdminPage = () => {
                                     onClick={() => {
                                         onEditClick(location.id || '', location.name, location.city, location.address);
                                         showEditModal();
-                                        // navigate(`/admin/${location.id}/edit`);
                                     }}
                                 />
                                 <DeleteIcon
                                     onClick={() => {
                                         onDeleteClick(location.id || '');
                                         showDeleteModal();
-                                        // navigate(`/admin/${location.id}/delete`);
                                     }}
                                 />
                             </ButtonContainer>
