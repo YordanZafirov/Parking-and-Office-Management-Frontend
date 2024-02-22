@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 export const HomeContainer = styled.div`
     display: flex;
+    width: 100%;
+    height: calc(100vh - 4.2rem);
     flex-direction: column;
     gap: 5rem;
     align-items: center;
     background-color: #f5f5f5;
 
     h1 {
+        margin-top: 3rem;
         text-align: center;
     }
 

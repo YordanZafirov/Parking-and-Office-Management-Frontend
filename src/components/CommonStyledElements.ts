@@ -9,7 +9,7 @@ export const PageTitle = styled.h1`
 export const Container = styled.div`
     max-width: 1500px;
     margin: auto;
-    padding: 0 2rem;
+    /* padding: 0 2rem; */
     overflow: hidden;
 `;
 
