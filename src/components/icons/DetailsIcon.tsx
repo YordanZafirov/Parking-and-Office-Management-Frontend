@@ -1,5 +1,5 @@
-import React, { MouseEventHandler } from "react";
-import styled from "styled-components";
+import React, { MouseEventHandler } from 'react';
+import styled from 'styled-components';
 
 interface DetailsIconProps {
     onClick: MouseEventHandler;
@@ -8,6 +8,7 @@ interface DetailsIconProps {
 const WhiteDetailsIcon = styled.span`
     color: white;
     cursor: pointer;
+    margin: 10px;
 `;
 
 const DetailsIcon: React.FC<DetailsIconProps> = ({ onClick }) => (
