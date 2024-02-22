@@ -16,7 +16,7 @@ interface Location {
 
 const SpotType: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
     const navigate = useNavigate();
-    
+
     const renderImage = (name: string) => {
         switch (name) {
             case 'Office desk':
@@ -36,18 +36,18 @@ const SpotType: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
             <PageTitle>Reserve your spot at {singleLocation?.name}</PageTitle>
             <SpotTypeContainer>
                 {spotTypeData?.map((spotType) => (
-                        <SpotTypeCard key={spotType.id}>
-                            <BaseButton
-                                onClick={() => {
-                                    navigate(`${route.createReservation}`, {
-                                        state: { currentLocation: singleLocation, selectedSpotType: spotType.id },
-                                    });
-                                }}
-                            >
-                                {spotType.name}
-                            </BaseButton>
-                            <SpotTypeImage>{renderImage(spotType.name)}</SpotTypeImage>
-                        </SpotTypeCard>
+                    <SpotTypeCard key={spotType.id}>
+                        <BaseButton
+                            onClick={() => {
+                                navigate(`${route.createReservation}`, {
+                                    state: { currentLocation: singleLocation, selectedSpotType: spotType.id },
+                                });
+                            }}
+                        >
+                            {spotType.name}
+                        </BaseButton>
+                        <SpotTypeImage>{renderImage(spotType.name)}</SpotTypeImage>
+                    </SpotTypeCard>
                 ))}
             </SpotTypeContainer>
         </Container>
