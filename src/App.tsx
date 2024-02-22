@@ -17,6 +17,7 @@ import Reservation from './pages/Reservation/Reservation';
 import CreateReservation from './pages/CreateReservation/CreateReservationPage';
 import UserProfilePage from './pages/User/UserProfilePage/UserProfilePage';
 import AdminPage from './pages/AdminPage/Adminpage';
+import ChangePasswordForm from './pages/User/ChangePassword/ChangePasswordForm/ChangePasswordForm';
 import SpotInfo from './pages/CreateReservation/SpotInfo/SpotInfo';
 // import EditLocationModal from './pages/AdminPage/AdminListModal/EditModal';
 // import DeleteLocationModal from './pages/AdminPage/AdminListModal/DeleteModal';
@@ -48,7 +49,9 @@ function App() {
                     <Route path={route.login} element={<Login />} />
                     <Route path={route.register} element={<Register />} />
                     <Route path={route.user} element={<UsersPage />} />
-                    <Route path={`${route.user}/:id`} element={<UserProfilePage />} />
+                    <Route path={`${route.user}/:id`} element={<UserProfilePage />}>
+                    <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
+                    </Route>
 
                     <Route path={route.admin} element={<AdminPage />}>
                         {/* <Route path=":id/edit" element={<EditLocationModal />} />
@@ -65,6 +68,7 @@ function App() {
                 {background?.background && (
                     <Routes>
                         <Route path="/spot/create" element={<AddSpotForm />} />
+                        <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
                         <Route path="/create-reservation/:id" element={<SpotInfo top={0} left={0} />} />
                     </Routes>
                 )}
