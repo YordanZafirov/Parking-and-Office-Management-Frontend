@@ -6,10 +6,11 @@ export const route = {
     createSpot: '/spot',
     createFloorPlan: '/floor-plan',
     createLocation: '/createLocation',
-    createReservation:'/create-reservation',
+    createReservation: '/create-reservation',
     calendar: '/calendar',
     user: '/user',
     updatePassword: '/user-update-password/:userId',
     updateProfilePicture: '/user-update-picture/:userId',
     register: '/register',
+    notFound: '/*',
 };
