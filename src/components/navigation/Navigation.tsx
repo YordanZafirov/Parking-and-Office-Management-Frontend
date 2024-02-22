@@ -1,14 +1,17 @@
-import Burger from "./burger/Burger";
-import { NavDiv } from "./Navigation.style";
+import { NavLink } from 'react-router-dom';
+import Burger from './burger/Burger';
+import { ListItem, NavDiv } from './Navigation.style';
 
 const Navigation = () => {
-  return (
-    <NavDiv>
-      <div className="logo">Logo</div>
-      <div style={{ flex: 1 }}></div>
-      <Burger />
-    </NavDiv>
-  );
+    return (
+        <NavDiv>
+            <NavLink to={`/`} className="logo">
+                <ListItem>Logo</ListItem>
+            </NavLink>
+
+            <Burger />
+        </NavDiv>
+    );
 };
 
 export default Navigation;
