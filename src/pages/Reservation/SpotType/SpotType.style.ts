@@ -28,7 +28,7 @@ export const SpotTypeContainer = styled.div`
 
 export const SpotTypeCard = styled.div`
     background-color: var(--blue-green-light);
-    width: 70%;
+    width: 100%;
     height: 90%;
     margin: 0 auto;
     border: 1px solid #ccc;

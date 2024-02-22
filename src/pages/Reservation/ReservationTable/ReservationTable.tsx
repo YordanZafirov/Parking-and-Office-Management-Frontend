@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import useReservationTableLogic from './ReservationTable.logic';
 import { ReservationTableInterface } from './ReservationTable.static';
 import { ReservationTableStyle } from './ReservationTable.style';
@@ -6,10 +5,6 @@ import { Container, PageTitle } from '../../../components/CommonStyledElements';
 
 const ReservationTable = () => {
     const { formattedReservations, deleteReservation } = useReservationTableLogic();
-
-    useEffect(() => {
-        console.log('formattedReservations', formattedReservations);
-    }, [formattedReservations]);
 
     return (
         <Container>
