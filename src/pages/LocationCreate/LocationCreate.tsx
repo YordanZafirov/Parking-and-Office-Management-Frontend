@@ -1,3 +1,4 @@
+import { BaseButton } from '../../components/CommonStyledElements';
 import { FormStyled } from '../../components/InputField/Form.style';
 import InputField from '../../components/InputField/InputField';
 import { useCreateLocation } from './LocationCreate.logic';
@@ -57,7 +58,9 @@ export default function LocationCreateForm() {
                 <div className="error-message">{formik.errors.imgUrl}</div>
             )}
 
-            <button type="submit">Create</button>
+            <BaseButton className="create-btn" type="submit">
+                Create
+            </BaseButton>
         </FormStyled>
     );
 }
