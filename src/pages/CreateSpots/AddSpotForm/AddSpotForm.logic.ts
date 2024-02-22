@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { AddSpotShema, CustomSpotMarker } from './AddSpotForm.static';
+import { AddSpotShema, SpotMarker } from './AddSpotForm.static';
 import { useState } from 'react';
 import { Marker } from 'react-image-marker';
 import { checkSpot } from '../../../services/spotService';
@@ -9,7 +9,7 @@ import { getSpotTypes } from '../../../services/spotTypeService';
 import useToken from '../../../hooks/Token/Token.hook';
 
 function useAddSpot() {
-    const [markers, setMarkers] = useState<Array<CustomSpotMarker>>([]);
+    const [markers, setMarkers] = useState<Array<SpotMarker>>([]);
     const navigate = useNavigate();
     const query = useQueryClient();
 
@@ -28,12 +28,12 @@ function useAddSpot() {
         },
         validationSchema: AddSpotShema,
 
-        onSubmit: async (values: CustomSpotMarker, { setFieldError, setSubmitting, resetForm }) => {
+        onSubmit: async (values: SpotMarker, { setFieldError, setSubmitting, resetForm }) => {
             console.log('values', values);
             try {
                 const marker: Marker | undefined = query.getQueryData('currentMarker');
                 if (marker) {
-                    const newMarker: CustomSpotMarker = {
+                    const newMarker: SpotMarker = {
                         top: marker.top,
                         left: marker.left,
                         name: values.name,
@@ -50,7 +50,7 @@ function useAddSpot() {
                     if (spot.error) {
                         throw new Error(spot.error);
                     } else {
-                        query.setQueryData<CustomSpotMarker[]>('markers', (prevMarkers) => {
+                        query.setQueryData<SpotMarker[]>('markers', (prevMarkers) => {
                             if (!prevMarkers) {
                                 return [newMarker];
                             }
@@ -69,7 +69,7 @@ function useAddSpot() {
             }
         },
     });
-    const data: CustomSpotMarker[] | undefined = query.getQueryData('markers');
+    const data: SpotMarker[] | undefined = query.getQueryData('markers');
 
     return { formik, markers: data };
 }

@@ -10,7 +10,6 @@ const MarkerStyled = styled.button`
     border-bottom-right-radius: 0;
     position: relative;
     transform: rotate(45deg);
-    cursor: pointer;
     border: 0.1rem solid #881100;
 `;
 

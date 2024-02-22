@@ -1,4 +1,4 @@
-import { CustomSpotMarker, MultipleSpots } from '../pages/CreateSpots/AddSpotForm/AddSpotForm.static';
+import { MultipleSpots, SpotMarker } from '../pages/CreateSpots/AddSpotForm/AddSpotForm.static';
 import { endpoints } from '../static/endpoints';
 import { get, post } from './fetchService';
 export interface SpotInterface {
@@ -20,7 +20,7 @@ export interface GetSpot {
     spotTypeId: string;
 }
 
-const getAll = async (): Promise<CustomSpotMarker[]> => {
+const getAll = async (): Promise<SpotMarker[]> => {
     return await get(`${endpoints.getSpots}`, {});
 };
 
@@ -29,7 +29,7 @@ const getSpotById = async (id: string): Promise<SpotInterface> => {
     return response;
 };
 
-const getAllBySpotTypeAndFloorPlan = async ({ floorPlanId, spotTypeId }: GetSpot): Promise<CustomSpotMarker[]> => {
+const getAllBySpotTypeAndFloorPlan = async ({ floorPlanId, spotTypeId }: GetSpot): Promise<SpotMarker[]> => {
     const data = { floorPlanId: floorPlanId, spotTypeId: spotTypeId };
     console.log('DATA', data);
 
@@ -47,7 +47,7 @@ const checkSpot = async ({
     spotTypeId,
     floorPlanId,
     modifiedBy,
-}: CustomSpotMarker): Promise<CustomSpotMarker> => {
+}: SpotMarker): Promise<SpotMarker> => {
     return await post(`${endpoints.checkSpot}`, {
         top,
         left,

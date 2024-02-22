@@ -2,14 +2,14 @@ import { useQuery } from 'react-query';
 import { FloorPlan, getAllBySpotTypeAndLocation } from '../../services/floorPlanService';
 import { useLocation } from 'react-router';
 import { useState } from 'react';
-import { CustomSpotMarker } from '../CreateSpots/AddSpotForm/AddSpotForm.static';
+import { SpotMarker } from '../CreateSpots/AddSpotForm/AddSpotForm.static';
 import { getAllBySpotTypeAndFloorPlan } from '../../services/spotService';
 
 function useShowSpots() {
     const location = useLocation();
     const currentLocation = location.state.currentLocation;
     const selectedSpotType = location.state.selectedSpotType;
-    const [spots, setSpots] = useState<CustomSpotMarker[]>([]);
+    const [spots, setSpots] = useState<SpotMarker[]>([]);
     const [currentFloorPlan, setCurrentFloorPlan] = useState<FloorPlan>();
 
     const [showModal, setShowModal] = useState<boolean>(false);
