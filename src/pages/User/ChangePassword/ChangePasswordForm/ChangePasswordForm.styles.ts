@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ChangePasswordForm = styled.form`
+export const StyledPasswordForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 300px;

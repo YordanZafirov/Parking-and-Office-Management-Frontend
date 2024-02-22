@@ -1,16 +1,16 @@
 import DetailBullet from './DetailBullet';
 import { UserDetailsInterface } from './UserProfilePage.static';
-import redClock from '../../../assets/redClock.png';
-import blueClock from '../../../assets/blueClock.png';
-import greenClock from '../../../assets/greenClock.png';
+import redCalendar from '../../../assets/calendarPast.png';
+import blueCalendar from '../../../assets/calendarNow.png';
+import greenCalendar from '../../../assets/calendarFuture.png';
 
 const UserProfileInfo = ({ pastReservations, currentReservations, futureReservations }: UserDetailsInterface) => {
     return (
         <div>
-            <DetailBullet icon={redClock} value={pastReservations} />
-            <DetailBullet icon={blueClock} value={currentReservations} />
+            <DetailBullet icon={redCalendar} value={pastReservations} />
+            <DetailBullet icon={blueCalendar} value={currentReservations} />
             {/* Add other details as needed */}
-            <DetailBullet icon={greenClock} value={futureReservations} />
+            <DetailBullet icon={greenCalendar} value={futureReservations} />
         </div>
     );
 };

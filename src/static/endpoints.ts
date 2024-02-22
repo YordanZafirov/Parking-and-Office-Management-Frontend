@@ -9,6 +9,7 @@ export const endpoints = {
     user: `${BASE_URL}/user`,
     getSingleUser: `${BASE_URL}/user/:userId`,
     deleteUser: `${BASE_URL}/user/:userId`,
+  changePassword: `${BASE_URL}/user/change-password`,
 
     // LOCATION
     getLocations: `${BASE_URL}/location`,
