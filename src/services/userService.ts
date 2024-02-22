@@ -62,6 +62,15 @@ export const register = async ({
     console.log(response);
     return response;
 };
+export const changePassword = async ({
+  id,
+  password,
+  newPassword,
+}: {id: string | undefined, password: string | undefined, newPassword: string | undefined}): Promise<string> => {
+    const response = await post(`${endpoints.changePassword}/${id}`, {id,  password, newPassword });
+    console.log(response);
+    return response;
+};
 
 export const loginService = async ({
   email,
