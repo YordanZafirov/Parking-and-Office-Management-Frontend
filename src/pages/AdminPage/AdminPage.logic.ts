@@ -1,14 +1,8 @@
 import { useQuery } from 'react-query';
 import { deleteLocation, getLocations, updateLocation } from '../../services/locationService';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useToken from '../../hooks/Token/Token.hook';
-
-interface LocationData {
-    name?: string;
-    city: string;
-    address: string;
-    modifiedBy: string | undefined;
-}
+import { LocationData } from './AdminPage.static';
 
 const useAdminPage = () => {
     const { data: locations, isLoading, error, refetch } = useQuery('admin', () => getLocations());
