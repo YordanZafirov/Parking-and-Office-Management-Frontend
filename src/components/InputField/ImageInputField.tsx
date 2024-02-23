@@ -1,9 +1,9 @@
-import InputStyle from './InputField.style';
 import { InputProps } from './InputField.static';
+import ImageInputStyle from './ImageInputField.style';
 
-export default function InputField({ ...props }: InputProps) {
+export default function ImageInputField({ ...props }: InputProps) {
     return (
-        <InputStyle>
+        <ImageInputStyle>
             <label htmlFor={props.label}>{props.label}</label>
             <input
                 type={props.type}
@@ -16,6 +16,6 @@ export default function InputField({ ...props }: InputProps) {
                 disabled={props.disabled}
             />
             {props.error && <p className="error">{props.errorMessage}</p>}
-        </InputStyle>
+        </ImageInputStyle>
     );
 }

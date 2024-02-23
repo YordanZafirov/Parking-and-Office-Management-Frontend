@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const InputStyle = styled.div`
+const ImageInputStyle = styled.div`
     margin-top: 1rem;
     margin-inline-end: auto;
     margin-inline-start: auto;
@@ -12,7 +12,6 @@ const InputStyle = styled.div`
         display: block;
         text-align: left;
         padding-left: 0.8rem;
-        //margin-bottom: 8px;
     }
 
     /* Input field */
@@ -22,7 +21,6 @@ const InputStyle = styled.div`
         width: 250px;
         color: var(--dark-grey);
         background: var(white-smoke);
-        border: 1px solid gray;
         box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
         border-radius: 8px;
         padding: 10px 14px;
@@ -39,7 +37,6 @@ const InputStyle = styled.div`
         color: var(--grey);
     }
 
-    /* Input field focus */
     input:focus {
     }
 
@@ -55,4 +52,4 @@ const InputStyle = styled.div`
         margin-top: 0.4rem;
     }
 `;
-export default InputStyle;
+export default ImageInputStyle;
