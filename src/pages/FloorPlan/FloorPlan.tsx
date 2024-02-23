@@ -1,45 +1,62 @@
-import { BaseButton } from '../../components/CommonStyledElements';
-import { FormStyled } from '../../components/InputField/Form.style';
-import ImageInputField from '../../components/InputField/ImageInputField';
-import InputField from '../../components/InputField/InputField';
-import { useCreateFloorPlan } from './FloorPlan.logic';
+// FloorPlanComponent.jsx
 
-export default function FloorPlanForm() {
-    const { formik, setImageFile } = useCreateFloorPlan();
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import CreateFloorPlan from './CreateFloorPlan/CreateFloorPlan';
+import UpdateFloorPlan from './UpdateFloorPlan/UpdateFloorPlan';
+import FloorPlanDetailsComponent from './FloorPlanDetailsComponent/FloorPlanDetailsComponent';
+import { getFloorPlans } from '../../services/floorPlanService';
+import { FloorPlan } from './FloorPlan.static';
+import { useLocation } from 'react-router-dom';
+
+const FloorPlanContainer = styled.div`
+    // Add styling as needed
+`;
+
+const FloorPlanComponent = () => {
+    const [floorPlans, setFloorPlans] = useState<FloorPlan[]>([]);
+    const location = useLocation();
+    const { state } = location;
+    const { locationId } = state || {};
+
+    useEffect(() => {
+        const fetchFloorPlansData = async () => {
+            try {
+                // Fetch all floor plans
+                const fetchedFloorPlans = await getFloorPlans();
+
+                if (fetchedFloorPlans && fetchedFloorPlans.length > 0) {
+                    // Filter the floor plan that matches the locationId
+                    const matchingFloorPlan = fetchedFloorPlans.find((plan) => plan.locationId === locationId);
+
+                    if (matchingFloorPlan) {
+                        // If a matching floor plan is found, set the floor plan state
+                        setFloorPlans([matchingFloorPlan]);
+                    } else {
+                        // If no matching floor plan is found, render CreateFloorPlan
+                        setFloorPlans([]);
+                    }
+                } else {
+                    // If no floor plans are available, render CreateFloorPlan
+                    setFloorPlans([]);
+                }
+            } catch (error) {
+                console.error('Error fetching floor plans data:', error);
+            }
+        };
+
+        fetchFloorPlansData();
+    }, [locationId]);
 
     return (
-        <FormStyled onSubmit={formik.handleSubmit}>
-            <h3 className="form-title">Create new Floor Plan</h3>
+        <FloorPlanContainer>
+            <CreateFloorPlan />
 
-            <InputField
-                type="name"
-                id="name"
-                name="name"
-                label="Name"
-                placeholder="Please enter location's name"
-                onChange={formik.handleChange}
-            />
-            {formik.errors.name && formik.touched.name && <div className="error-message">{formik.errors.name}</div>}
+            <UpdateFloorPlan floorPlan={floorPlans[0]} />
 
-            <ImageInputField
-                type="file"
-                id="imgUrl"
-                name="imgUrl"
-                label="Image"
-                placeholder="Please enter location's image"
-                onChange={(event) => {
-                    const file = event.currentTarget.files?.[0] || null;
-                    setImageFile(file);
-                    formik.handleChange(event);
-                }}
-            />
-            {formik.errors.imgUrl && formik.touched.imgUrl && (
-                <div className="error-message">{formik.errors.imgUrl}</div>
-            )}
-
-            <BaseButton className="create-btn" type="submit">
-                Create
-            </BaseButton>
-        </FormStyled>
+            <FloorPlanDetailsComponent floorPlan={floorPlans[0]} />
+        </FloorPlanContainer>
     );
-}
+};
+
+export default FloorPlanComponent;
