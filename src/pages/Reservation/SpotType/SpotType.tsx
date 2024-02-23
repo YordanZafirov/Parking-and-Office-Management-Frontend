@@ -39,25 +39,32 @@ const SpotType: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
     };
     return (
         <Container>
-            <PageTitle>Reserve your spot at {singleLocation?.name}</PageTitle>
-            <SpotTypeContainer>
-                {spotTypeData?.map((spotType) => (
-                    <BaseButton
-                        key={spotType.id}
-                        className="spot-type-card"
-                        onClick={() => {
-                            navigate(`${route.createReservation}`, {
-                                state: { currentLocation: singleLocation, selectedSpotType: spotType.id },
-                            });
-                        }}
-                    >
-                        <SpotTypeCard>
-                            <SpotTypeParagraph>{spotType.name}</SpotTypeParagraph>
-                            <SpotTypeImageContainer>{renderImage(spotType.name)}</SpotTypeImageContainer>
-                        </SpotTypeCard>
-                    </BaseButton>
-                ))}
-            </SpotTypeContainer>
+            {!singleLocation && <PageTitle>The chosen location is missing</PageTitle>}
+            {!spotTypeData ? (
+                <PageTitle>Loading spot types...</PageTitle>
+            ) : (
+                <>
+                    <PageTitle>Reserve your spot at {singleLocation?.name}</PageTitle>
+                    <SpotTypeContainer>
+                        {spotTypeData.map((spotType) => (
+                            <BaseButton
+                                key={spotType.id}
+                                className="spot-type-card"
+                                onClick={() => {
+                                    navigate(`${route.createReservation}`, {
+                                        state: { currentLocation: singleLocation, selectedSpotType: spotType.id },
+                                    });
+                                }}
+                            >
+                                <SpotTypeCard>
+                                    <SpotTypeParagraph>{spotType.name}</SpotTypeParagraph>
+                                    <SpotTypeImageContainer>{renderImage(spotType.name)}</SpotTypeImageContainer>
+                                </SpotTypeCard>
+                            </BaseButton>
+                        ))}
+                    </SpotTypeContainer>
+                </>
+            )}
         </Container>
     );
 };

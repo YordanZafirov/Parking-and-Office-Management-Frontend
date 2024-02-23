@@ -18,7 +18,7 @@ const Home = () => {
     return (
         <>
             <HomeContainer>
-                {locations?.length === 0 && <div>No locations found</div>}
+                {!locations ? <Loader /> : null}
                 <h1>Choose location</h1>
                 <ul>
                     {locations?.map((location: Location) => (
