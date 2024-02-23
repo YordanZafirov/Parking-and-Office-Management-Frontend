@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const InformationContainer = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #e7f5ff;
+    background-color: var(--blue-green);
+    border-radius: 8px;
     width: 100%;
 
     span {
         display: block;
         padding: 10px;
-        margin: 15px auto;
-        background-color: #1971c2;
+        margin: auto;
         color: #fff;
         font-weight: bold;
         width: 50%;
@@ -21,7 +21,9 @@ export const InformationContainer = styled.div`
 export const LocationImage = styled.img`
     width: 100%;
     height: 200px;
-    padding: 10px;
+    margin-bottom: 10px;
+    /* padding: 10px; */
+    border-radius: 8px;
     object-fit: cover;
 `;
 
