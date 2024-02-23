@@ -24,7 +24,6 @@ export const TableCell = styled.td`
 `;
 
 export const ListContainer = styled.div`
-    background-color: var(--beige-light);
     padding: 20px;
 `;
 
@@ -53,6 +52,10 @@ export const ListItem = styled.li`
 export const ContainerCreateSerch = styled.li`
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 
 export const BaseButtonCreateLocation = styled(BaseButton)`
