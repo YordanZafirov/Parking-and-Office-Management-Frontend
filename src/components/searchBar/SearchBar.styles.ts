@@ -10,6 +10,7 @@ export const SearchBarWrapper = styled.div`
         font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 5px;
+        margin-right: 10px;
 
         @media (max-width: 768px) {
             width: 100%;
