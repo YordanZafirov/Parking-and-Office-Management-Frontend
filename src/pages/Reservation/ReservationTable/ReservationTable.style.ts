@@ -83,8 +83,8 @@ export const ReservationTableStyle = styled.table`
         }
 
         tr:last-child td:first-child {
-        border-bottom-left-radius: 0;
-    }
+            border-bottom-left-radius: 0;
+        }
         tr:last-child td:last-child {
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;

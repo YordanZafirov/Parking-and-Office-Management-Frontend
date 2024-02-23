@@ -10,13 +10,6 @@ export const SpotTypeContainer = styled.div`
     border-radius: 8px;
     text-align: center;
 
-    a {
-        color: var(--light-pink);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-    }
-
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
 
@@ -38,10 +31,10 @@ export const SpotTypeCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+`;
 
-    @media (max-width: 768px) {
-        width: 100%;
-    }
+export const SpotTypeImageContainer = styled.div`
+    width: 100%;
 `;
 
 export const SpotTypeParagraph = styled.p`
@@ -49,14 +42,13 @@ export const SpotTypeParagraph = styled.p`
     margin-bottom: 20px;
 `;
 
-export const SpotTypeImage = styled.div`
-    width: 90%;
+export const SpotTypeImage = styled.img`
+    width: 100%;
     height: 200px;
+    padding: 10px;
+    object-fit: cover;
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 8px;
+    @media (max-width: 768px) {
+        height: auto;
     }
 `;
