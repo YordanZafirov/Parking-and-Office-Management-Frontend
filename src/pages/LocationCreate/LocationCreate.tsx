@@ -1,5 +1,6 @@
 import { BaseButton } from '../../components/CommonStyledElements';
 import { FormStyled } from '../../components/InputField/Form.style';
+import ImageInputField from '../../components/InputField/ImageInputField';
 import InputField from '../../components/InputField/InputField';
 import { useCreateLocation } from './LocationCreate.logic';
 
@@ -42,7 +43,7 @@ export default function LocationCreateForm() {
                 <div className="error-message">{formik.errors.address}</div>
             )}
 
-            <InputField
+            <ImageInputField
                 type="file"
                 id="imgUrl"
                 name="imgUrl"
