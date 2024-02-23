@@ -32,19 +32,19 @@ export const ReservationTableStyle = styled.table`
         background-color: var(--blue-green);
     }
 
-    tr:first-child th:first-child{
+    tr:first-child th:first-child {
         border-top-left-radius: 10px;
     }
-    tr:first-child th:last-child{
+    tr:first-child th:last-child {
         border-top-right-radius: 10px;
     }
-    tr:last-child td:first-child{
+    tr:last-child td:first-child {
         border-bottom-left-radius: 10px;
     }
-    tr:last-child td:last-child{
+    tr:last-child td:last-child {
         border-bottom-right-radius: 10px;
     }
-    
+
     button {
         background-color: var(--beige);
         color: var(--grey-dark);
@@ -75,6 +75,19 @@ export const ReservationTableStyle = styled.table`
                 margin: 0 auto;
                 display: block;
             }
+        }
+
+        tr:first-child td:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 0;
+        }
+        tr:last-child td:last-child {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
 
         td::before {

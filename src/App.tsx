@@ -7,7 +7,6 @@ import { AuthProvider } from './context/AuthContext';
 import AddSpotForm from './pages/CreateSpots/AddSpotForm/AddSpotForm';
 import CreateSpots from './pages/CreateSpots/CreateSpotsPage';
 import Navigation from './components/navigation/Navigation';
-import styled from 'styled-components';
 
 import HomeCalendar from './pages/CalendarComponent/Home-calendar/Home';
 import UsersPage from './pages/User/UsersPage/UsersPage';
@@ -24,12 +23,6 @@ import NotFound from './pages/NotFound/NotFound';
 // import EditLocationModal from './pages/AdminPage/AdminListModal/EditModal';
 // import DeleteLocationModal from './pages/AdminPage/AdminListModal/DeleteModal';
 
-export const StyledLayout = styled.div``;
-
-export const StyledMain = styled.main`
-    flex: 1;
-    width: 100%;
-`;
 
 function App() {
     const location = useLocation();

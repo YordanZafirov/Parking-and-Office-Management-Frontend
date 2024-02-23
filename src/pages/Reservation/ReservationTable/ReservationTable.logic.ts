@@ -63,6 +63,7 @@ const useReservationTableLogic = () => {
     return {
         formattedReservations,
         deleteReservation: deleteReservationMutation.mutate,
+        refetch,
         futureReservationsByUserIdLoading,
         futureReservationsByUserIdError,
     };

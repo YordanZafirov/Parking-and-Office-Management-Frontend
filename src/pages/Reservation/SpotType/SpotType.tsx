@@ -1,5 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { SpotTypeContainer, SpotTypeCard, SpotTypeImage, SpotTypeParagraph } from './SpotType.style';
+import {
+    SpotTypeContainer,
+    SpotTypeCard,
+    SpotTypeImage,
+    SpotTypeParagraph,
+    SpotTypeImageContainer,
+} from './SpotType.style';
 import { BaseButton, Container, PageTitle } from '../../../components/CommonStyledElements';
 import { SpotTypeInterface } from './SpotType.static';
 import { LocationInterface } from '../Location.static';
@@ -20,13 +26,13 @@ const SpotType: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
     const renderImage = (name: string) => {
         switch (name) {
             case 'Office desk':
-                return <img src={officeDeskPhoto} alt="Office desk" />;
+                return <SpotTypeImage src={officeDeskPhoto} alt="Office desk" />;
             case 'Conference room':
-                return <img src={conferenceRoom} alt="Conference room" />;
+                return <SpotTypeImage src={conferenceRoom} alt="Conference room" />;
             case 'Phone booth':
-                return <img src={phoneBooth} alt="Phone booth" />;
+                return <SpotTypeImage src={phoneBooth} alt="Phone booth" />;
             case 'Parking spot':
-                return <img src={parkingSpot} alt="Parking spot" />;
+                return <SpotTypeImage src={parkingSpot} alt="Parking spot" />;
             default:
                 return null; // Return null if no matching name is found
         }
@@ -47,7 +53,7 @@ const SpotType: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
                     >
                         <SpotTypeCard>
                             <SpotTypeParagraph>{spotType.name}</SpotTypeParagraph>
-                            <SpotTypeImage>{renderImage(spotType.name)}</SpotTypeImage>
+                            <SpotTypeImageContainer>{renderImage(spotType.name)}</SpotTypeImageContainer>
                         </SpotTypeCard>
                     </BaseButton>
                 ))}

@@ -52,6 +52,7 @@ export const BaseButton = styled.button`
         text-decoration: none;
         /* box-shadow: rgba(0, 0, 0, 0.1) 1px 25px -10px 0px; */
         width: 100;
+        padding: 0;
         display: flex;
         align-items: center;
 
