@@ -20,12 +20,11 @@ import AdminPage from './pages/AdminPage/Adminpage';
 import ChangePasswordForm from './pages/User/ChangePasswordForm/ChangePasswordForm';
 import SpotInfo from './pages/CreateReservation/SpotInfo/SpotInfo';
 import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/ChangeProfilePictureForm';
+import NotFound from './pages/NotFound/NotFound';
 // import EditLocationModal from './pages/AdminPage/AdminListModal/EditModal';
 // import DeleteLocationModal from './pages/AdminPage/AdminListModal/DeleteModal';
 
-export const StyledLayout = styled.div`
-
-`;
+export const StyledLayout = styled.div``;
 
 export const StyledMain = styled.main`
     flex: 1;
@@ -64,6 +63,7 @@ function App() {
                     <Route path={route.createReservation} element={<CreateReservation />}>
                         <Route path="/create-reservation/:id" element={<SpotInfo />} />
                     </Route>
+                    <Route path={route.notFound} element={<NotFound />} />
                 </Routes>
                 {background?.background && (
                     <Routes>
