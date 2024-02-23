@@ -32,6 +32,7 @@ export const UserReservationsTableStyle = styled.table`
         background-color: var(--blue-green);
     }
 
+
     tr:first-child th:first-child {
         border-top-left-radius: 10px;
     }
@@ -44,6 +45,7 @@ export const UserReservationsTableStyle = styled.table`
     tr:last-child td:last-child {
         border-bottom-right-radius: 10px;
     }
+
 
     button {
         background-color: var(--beige);
@@ -77,6 +79,7 @@ export const UserReservationsTableStyle = styled.table`
             }
         }
 
+
         tr:first-child td:first-child {
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
@@ -89,7 +92,6 @@ export const UserReservationsTableStyle = styled.table`
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
         }
-
         td::before {
             content: attr(data-label);
             float: left;
