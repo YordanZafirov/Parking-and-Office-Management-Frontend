@@ -21,6 +21,7 @@ import SpotInfo from './pages/CreateReservation/SpotInfo/SpotInfo';
 import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/ChangeProfilePictureForm';
 import NotFound from './pages/NotFound/NotFound';
 import styled from 'styled-components';
+import FloorPlanForm from './pages/FloorPlan/FloorPlan';
 
 export const StyledApp = styled.div`
     min-height: 100vh;
@@ -40,6 +41,7 @@ function App() {
                     <Route path={route.home} element={<Home />} />
                     <Route path={`${route.location}/:id`} element={<Reservation />} />
                     <Route path={route.createLocation} element={<LocationCreateForm />} />
+                    <Route path={route.floorPlan} element={<FloorPlanForm />} />
                     <Route path={route.calendar} element={<HomeCalendar />} />
                     <Route path={route.login} element={<Login />} />
                     <Route path={route.register} element={<Register />} />
