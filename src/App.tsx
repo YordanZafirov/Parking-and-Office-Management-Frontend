@@ -19,7 +19,8 @@ import ChangePasswordForm from './pages/User/ChangePasswordForm/ChangePasswordFo
 import SpotInfo from './pages/CreateReservation/SpotInfo/SpotInfo';
 import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/ChangeProfilePictureForm';
 import NotFound from './pages/NotFound/NotFound';
-import FloorPlanForm from './pages/FloorPlan/FloorPlan';
+import styled from 'styled-components';
+import FloorPlan from './pages/FloorPlan/FloorPlan';
 
 export const StyledApp = styled.div`
     min-height: 100vh;

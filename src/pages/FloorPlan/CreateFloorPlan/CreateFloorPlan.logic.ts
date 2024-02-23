@@ -1,10 +1,10 @@
 import { useFormik } from 'formik';
 import { useNavigate, useLocation } from 'react-router-dom';
-import useToken from '../../hooks/Token/Token.hook';
+import useToken from '../../../hooks/Token/Token.hook';
 import { useState } from 'react';
-import { uploadImage } from '../../services/imageService';
-import { FloorPlan, FloorPlanCreateShema } from './FloorPlan.static';
-import { addFloorPlan } from '../../services/floorPlanService';
+import { uploadImage } from '../../../services/imageService';
+import { FloorPlan, FloorPlanCreateShema } from '../FloorPlan.static';
+import { addFloorPlan } from '../../../services/floorPlanService';
 
 function useCreateFloorPlan() {
     const [imageFile, setImageFile] = useState<File | null>(null);
