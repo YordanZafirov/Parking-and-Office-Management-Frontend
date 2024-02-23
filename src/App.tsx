@@ -20,15 +20,17 @@ import ChangePasswordForm from './pages/User/ChangePasswordForm/ChangePasswordFo
 import SpotInfo from './pages/CreateReservation/SpotInfo/SpotInfo';
 import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/ChangeProfilePictureForm';
 import NotFound from './pages/NotFound/NotFound';
-// import EditLocationModal from './pages/AdminPage/AdminListModal/EditModal';
-// import DeleteLocationModal from './pages/AdminPage/AdminListModal/DeleteModal';
+import styled from 'styled-components';
 
+export const StyledApp = styled.div`
+    background: linear-gradient(180deg, var(--pink-light) 0%, var(--pink) 100%);
+`;
 
 function App() {
     const location = useLocation();
     const background = location.state as { background?: Location };
     return (
-        <div>
+        <StyledApp>
             <GlobalStyle />
             <AuthProvider>
                 <Navigation />
@@ -67,7 +69,7 @@ function App() {
                     </Routes>
                 )}
             </AuthProvider>
-        </div>
+        </StyledApp>
     );
 }
 

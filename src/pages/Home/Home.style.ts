@@ -3,11 +3,12 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
     display: flex;
     width: 100%;
-    height: calc(100vh - 4.2rem);
+    height: 100vh;
+    /* overflow-y: hidden; */
+    flex: 1;
     flex-direction: column;
-    gap: 5rem;
+    /* gap: 5rem; */
     align-items: center;
-    background-color: #f5f5f5;
 
     h1 {
         margin-top: 3rem;
@@ -24,7 +25,6 @@ export const HomeContainer = styled.div`
     }
 
     li {
-        background-color: #fff;
         border-radius: 5px;
         overflow: hidden;
         transition: transform 0.3s ease;

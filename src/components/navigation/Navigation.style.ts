@@ -9,6 +9,8 @@ export const NavDiv = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
 
     .logo {
         padding: 15px 0;
