@@ -1,10 +1,10 @@
 import { useFormik } from 'formik';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { addLocation } from '../../services/locationService';
 import useToken from '../../hooks/Token/Token.hook';
 import { useState } from 'react';
 import { uploadImage } from '../../services/imageService';
 import { FloorPlan, FloorPlanCreateShema } from './FloorPlan.static';
+import { addFloorPlan } from '../../services/floorPlanService';
 
 function useCreateFloorPlan() {
     const [imageFile, setImageFile] = useState<File | null>(null);
@@ -36,14 +36,14 @@ function useCreateFloorPlan() {
                     const imageUrl = await uploadImage(imageFile);
                     newObj.imgUrl = imageUrl;
                 }
-                const createdLocation = await addLocation(newObj);
+                const createdFloorPlan = await addFloorPlan(newObj);
 
-                if (createdLocation.error) {
-                    throw new Error(createdLocation.error);
+                if (createdFloorPlan.error) {
+                    throw new Error(createdFloorPlan.error);
                 } else {
                     alert('Floor Plan created successfully!');
                     resetForm();
-                    navigate('/');
+                    navigate('/admin');
                 }
             } catch (e) {
                 const errorMessage = e instanceof Error ? e.message : 'An unexpected error occurred.';
