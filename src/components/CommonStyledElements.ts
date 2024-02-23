@@ -9,7 +9,7 @@ export const PageTitle = styled.h1`
 export const Container = styled.div`
     max-width: 1500px;
     margin: auto;
-    /* padding: 0 2rem; */
+    padding: 0 2rem;
     overflow: hidden;
 `;
 
@@ -50,9 +50,11 @@ export const BaseButton = styled.button`
         color: var(--light-pink);
         text-decoration: none;
         /* box-shadow: rgba(0, 0, 0, 0.1) 1px 25px -10px 0px; */
-        width: 100;
+        width: 80%;
+        margin: 0 auto;
         padding: 0;
         display: flex;
+        /* justify-content: center; */
         align-items: center;
 
         &:hover {

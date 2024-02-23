@@ -4,7 +4,7 @@ export const SpotTypeContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
     margin: 3rem auto;
     background-color: var(--blue-green);
     border-radius: 8px;
@@ -44,7 +44,7 @@ export const SpotTypeParagraph = styled.p`
 
 export const SpotTypeImage = styled.img`
     width: 100%;
-    height: 200px;
+    height: 150px;
     padding: 10px;
     object-fit: cover;
 

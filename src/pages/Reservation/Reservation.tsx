@@ -12,15 +12,21 @@ const Reservation = () => {
     const { spotTypeByLocationId, isLoading: loadingSpotType, error: errorSpotType } = useSpotType();
 
     const { futureReservationsByUserIdLoading, futureReservationsByUserIdError } = useReservationTableLogic();
+    // Check if any of the queries is loading
+    const loading = loadingLocation || loadingSpotType || futureReservationsByUserIdLoading;
 
-    if (loadingLocation && loadingSpotType && futureReservationsByUserIdLoading) {
+    // Check if any of the queries has an error
+    const hasError = errorLocation || errorSpotType || futureReservationsByUserIdError;
+
+    if (loading) {
+        // Render loader only when data is being fetched
         return <Loader />;
     }
 
-    if (errorLocation || errorSpotType || futureReservationsByUserIdError) {
-        return <div>Error loading location</div>;
+    if (hasError) {
+        // Render error message if any of the queries encountered an error
+        return <div>Error loading data</div>;
     }
-
     return (
         <ReservationContainer>
             <SpotType singleLocation={singleLocation} spotTypeData={spotTypeByLocationId} />

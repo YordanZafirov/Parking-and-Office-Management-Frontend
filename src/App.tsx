@@ -23,6 +23,8 @@ import NotFound from './pages/NotFound/NotFound';
 import styled from 'styled-components';
 
 export const StyledApp = styled.div`
+    min-height: 100vh;
+    padding-top: 4rem;
     background: linear-gradient(180deg, var(--pink-light) 0%, var(--pink) 100%);
 `;
 
