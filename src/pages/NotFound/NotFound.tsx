@@ -8,7 +8,7 @@ const NotFound = () => {
                 <p>The page you are looking for might not exist or has been moved.</p>
 
                 <GoToHome>
-                    <StyledButton href="/">Go to Profile</StyledButton>
+                    <StyledButton href="/">Go to Home</StyledButton>
                 </GoToHome>
             </NotFoundContainer>
         </>
