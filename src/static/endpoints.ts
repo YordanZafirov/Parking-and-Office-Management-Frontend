@@ -40,6 +40,7 @@ export const endpoints = {
     deleteSpot: `${BASE_URL}/spot/:spotId`,
     checkSpot: `${BASE_URL}/spot/check`,
     getBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-floorplan/search`,
+    getFreeBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-location-free/search`,
 
     // RESERVATION
     reservation: `${BASE_URL}/reservation`,

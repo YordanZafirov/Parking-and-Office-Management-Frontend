@@ -1,3 +1,4 @@
+import { GetFreeSpot } from '../pages/CreateReservation/CreateReservationPage.static';
 import { MultipleSpots, SpotMarker } from '../pages/CreateSpots/AddSpotForm/AddSpotForm.static';
 import { endpoints } from '../static/endpoints';
 import { get, post } from './fetchService';
@@ -31,11 +32,35 @@ const getSpotById = async (id: string): Promise<SpotInterface> => {
 
 const getAllBySpotTypeAndFloorPlan = async ({ floorPlanId, spotTypeId }: GetSpot): Promise<SpotMarker[]> => {
     const data = { floorPlanId: floorPlanId, spotTypeId: spotTypeId };
-    console.log('DATA', data);
 
     return await get(`${endpoints.getBySpotTypeAndFloorPlan}?floorPlanId=${floorPlanId}&spotTypeId=${spotTypeId}`, {
         data,
     });
+};
+
+const getFreeSpotsBySpotTypeAndLocation = async ({
+    floorPlanId,
+    spotTypeId,
+    start,
+    end,
+}: GetFreeSpot): Promise<SpotMarker[]> => {
+    console.log(start);
+    console.log(end);
+
+    const data = {
+        floorPlanId: floorPlanId,
+        spotTypeId: spotTypeId,
+        startDateTime: start,
+        endDateTime: end,
+    };
+    console.log('SERVICE', data);
+
+    return await get(
+        `${endpoints.getFreeBySpotTypeAndFloorPlan}?floorPlanId=${floorPlanId}&spotTypeId=${spotTypeId}&startDateTime=${start}&endDateTime=${end}`,
+        {
+            data,
+        },
+    );
 };
 
 const checkSpot = async ({
@@ -64,4 +89,11 @@ const createMultipleSpots = async ({ markers }: MultipleSpots): Promise<Multiple
     return await post(`${endpoints.createSpot}`, { markers });
 };
 
-export { getAll, getSpotById, checkSpot, createMultipleSpots, getAllBySpotTypeAndFloorPlan };
+export {
+    getAll,
+    getSpotById,
+    checkSpot,
+    createMultipleSpots,
+    getAllBySpotTypeAndFloorPlan,
+    getFreeSpotsBySpotTypeAndLocation,
+};

@@ -3,7 +3,8 @@ import { FloorPlan, getAllBySpotTypeAndLocation } from '../../services/floorPlan
 import { useLocation } from 'react-router';
 import { useState } from 'react';
 import { SpotMarker } from '../CreateSpots/AddSpotForm/AddSpotForm.static';
-import { getAllBySpotTypeAndFloorPlan } from '../../services/spotService';
+import { getFreeSpotsBySpotTypeAndLocation } from '../../services/spotService';
+import { DateRangeOutput } from './Calendar/Calendar.static';
 
 function useShowSpots() {
     const location = useLocation();
@@ -12,34 +13,57 @@ function useShowSpots() {
     const [spots, setSpots] = useState<SpotMarker[]>([]);
     const [currentFloorPlan, setCurrentFloorPlan] = useState<FloorPlan>();
 
-    const [showModal, setShowModal] = useState<boolean>(false);
+    const [showSpots, setShowSpots] = useState<boolean>(false);
 
-    function toggleModal() {
-        setShowModal(!showModal);
+    function toggleSpots() {
+        setShowSpots(!showSpots);
+    }
+
+    const [calendarData, setCalendarData] = useState<DateRangeOutput>();
+
+    function handleDataFromCalendar(data: DateRangeOutput) {
+        setCalendarData(data);
+        console.log('DATA', data);
     }
 
     const { floorPlans, isLoading, error } = useFloorPlansByLocation(selectedSpotType, currentLocation.id);
 
-    console.log('loc', currentLocation);
-    console.log('st', selectedSpotType);
-    console.log('fp', floorPlans);
-
     const showPlan = async (floorPlan: FloorPlan) => {
-        console.log("FP", floorPlan.id);
-        
+        console.log('FP', floorPlan.id);
+
         setCurrentFloorPlan(floorPlan);
-        const data = await getAllBySpotTypeAndFloorPlan({ floorPlanId: floorPlan.id!, spotTypeId: selectedSpotType });
+        if (floorPlan && calendarData) {
+            console.log('1', floorPlan);
+            console.log('2', calendarData);
 
-        if (data) {
-            console.log('data', data);
-            setSpots(data);
-            toggleModal();
+            const data = await getFreeSpotsBySpotTypeAndLocation({
+                floorPlanId: floorPlan.id!,
+                spotTypeId: selectedSpotType,
+                start: calendarData.startDate,
+                end: calendarData.endDate,
+            });
+
+            if (data) {
+                console.log('data', data);
+                setSpots(data);
+                if (!showSpots) {
+                    toggleSpots();
+                }
+            }
         }
-        useFloorPlansByLocation
-
-        console.log('spots', spots);
     };
-    return { isLoading, error, floorPlans, showPlan, spots, showModal, currentFloorPlan };
+
+    return {
+        isLoading,
+        error,
+        floorPlans,
+        showPlan,
+        spots,
+        showSpots,
+        currentFloorPlan,
+        handleDataFromCalendar,
+        calendarData,
+    };
 }
 
 const useFloorPlansByLocation = (spotTypeId: string, locationId: string) => {

@@ -7,8 +7,7 @@ import { AuthProvider } from './context/AuthContext';
 import AddSpotForm from './pages/CreateSpots/AddSpotForm/AddSpotForm';
 import CreateSpots from './pages/CreateSpots/CreateSpotsPage';
 import Navigation from './components/navigation/Navigation';
-
-import HomeCalendar from './pages/CalendarComponent/Home-calendar/Home';
+import styled from 'styled-components';
 import UsersPage from './pages/User/UsersPage/UsersPage';
 import Register from './pages/Register/Register';
 import LocationCreateForm from './pages/LocationCreate/LocationCreate';
@@ -42,7 +41,6 @@ function App() {
                     <Route path={`${route.location}/:id`} element={<Reservation />} />
                     <Route path={route.createLocation} element={<LocationCreateForm />} />
                     <Route path={route.floorPlan} element={<FloorPlanForm />} />
-                    <Route path={route.calendar} element={<HomeCalendar />} />
                     <Route path={route.login} element={<Login />} />
                     <Route path={route.register} element={<Register />} />
                     <Route path={route.user} element={<UsersPage />} />

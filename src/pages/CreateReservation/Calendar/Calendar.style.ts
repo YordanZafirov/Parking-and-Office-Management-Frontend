@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const CalendarContainer = styled.div`
-    background-color: gray;
+    background-color: var(--blue-green-light);
     text-align: center;
     padding: 20px;
     max-width: 600px;
+`;
+export const HomeContainer = styled.div`
+    margin: 30px;
 `;
 
 export const StyledAppContainer = styled.div`
@@ -12,16 +15,22 @@ export const StyledAppContainer = styled.div`
     justify-content: space-around;
     align-items: stretch;
     padding: 20px;
-    background-color: gray;
+    border-radius: 10px;
+    background-color:var(--beige);
     font-family: Arial, sans-serif;
+
+    &.outer-container{
+        flex-direction: column;
+        justify-content: center;
+    }
 `;
 
 export const StyledCalendarContainer = styled.div`
     flex: 1;
 
     .rdrCalendarWrapper {
-        border-radius: 6px;
-        border: 1px solid #000000;
+        border-radius: 10px;
+        border: 1px solid var( --brown);
     }
 
     .rdrStaticRanges button {
@@ -41,8 +50,8 @@ export const StyledTimePickerContainer = styled.div`
 
 export const StyledTimePicker = styled.div`
     background-color: #ffffff;
-    border: 1px solid #000000;
-    border-radius: 6px;
+    border: 1px solid var( --brown);
+    border-radius: 10px;
     padding: 25px;
     color: black;
     display: flex;
