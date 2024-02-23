@@ -1,13 +1,13 @@
 import ImageMarker from 'react-image-marker';
 import { BaseButton } from '../../components/CommonStyledElements';
 import { useShowSpots } from './CreateReservationPage.logic';
-import { FloorPlan } from '../../services/floorPlanService';
 import Loader from '../../components/loader/Loader';
 import { LocationImage } from '../Home/LocationChocie/LocationChoice.style';
 import { Card, ImageContainer, ImageStyled } from './CreateReservationPage.style';
 import { DivFlexStyled } from '../CreateSpots/CreateSpotsPage.style';
 import SpotMarkerReservation from './SpotMarker/SpotMarker';
 import CalendarPage from './Calendar/CalendarPage';
+import { FloorPlan } from '../FloorPlan/FloorPlan.static';
 
 export default function CreateReservation() {
     const {
@@ -62,7 +62,7 @@ export default function CreateReservation() {
                     <h3>Please select a spot:</h3>
                     <ImageStyled>
                         <ImageMarker
-                            src={currentFloorPlan.imgUrl}
+                            src={currentFloorPlan.imgUrl!}
                             markers={spots}
                             markerComponent={SpotMarkerReservation}
                         />
@@ -70,6 +70,5 @@ export default function CreateReservation() {
                 </ImageContainer>
             )}
         </>
-        // </Container>
     );
 }

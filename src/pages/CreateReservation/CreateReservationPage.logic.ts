@@ -1,10 +1,11 @@
 import { useQuery } from 'react-query';
-import { FloorPlan, getAllBySpotTypeAndLocation } from '../../services/floorPlanService';
+import { getAllBySpotTypeAndLocation } from '../../services/floorPlanService';
 import { useLocation } from 'react-router';
 import { useState } from 'react';
 import { SpotMarker } from '../CreateSpots/AddSpotForm/AddSpotForm.static';
 import { getFreeSpotsBySpotTypeAndLocation } from '../../services/spotService';
 import { DateRangeOutput } from './Calendar/Calendar.static';
+import { FloorPlan } from '../FloorPlan/FloorPlan.static';
 
 function useShowSpots() {
     const location = useLocation();
