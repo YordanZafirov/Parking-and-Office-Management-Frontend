@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const InputStyle = styled.div`
     margin-top: 1rem;
@@ -27,6 +27,10 @@ const InputStyle = styled.div`
         border-radius: 8px;
         padding: 10px 14px;
         margin-bottom: 1rem;
+
+        .image-input input {
+            border: none;
+        }
     }
 
     input::placeholder {

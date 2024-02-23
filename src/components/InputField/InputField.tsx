@@ -1,5 +1,5 @@
-import InputStyle from "./InputField.style";
-import { InputProps } from "./InputField.static";
+import InputStyle from './InputField.style';
+import { InputProps } from './InputField.static';
 
 export default function InputField({ ...props }: InputProps) {
     return (
