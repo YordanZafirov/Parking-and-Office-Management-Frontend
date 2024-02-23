@@ -19,7 +19,6 @@ import ChangePasswordForm from './pages/User/ChangePasswordForm/ChangePasswordFo
 import SpotInfo from './pages/CreateReservation/SpotInfo/SpotInfo';
 import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/ChangeProfilePictureForm';
 import NotFound from './pages/NotFound/NotFound';
-import styled from 'styled-components';
 
 import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
 import FloorPlanPage from './pages/FloorPlan/FloorPlan';
@@ -48,7 +47,6 @@ function App() {
                     <Route path={route.floorPlan} element={<FloorPlanPage />} />
                     <Route path={`${route.floorPlan}/:id`} element={<FloorPlanDetails />} />
 
-                    <Route path={route.calendar} element={<HomeCalendar />} />
                     <Route path={route.login} element={<Login />} />
                     <Route path={route.register} element={<Register />} />
                     <Route path={route.user} element={<UsersPage />} />
