@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const NotFoundContainer = styled.div`
     text-align: center;
     margin-top: 50px;
+
+    @media (max-width: 768px) {
+        padding: 40px;
+    }
 `;
 
 export const NotFoundTitle = styled.h1`
@@ -37,5 +41,9 @@ export const StyledButton = styled.a`
     &:hover {
         box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
         transform: translate3d(0, 2px, 0);
+    }
+
+    @media (max-width: 200px) {
+        line-height: 1rem;
     }
 `;

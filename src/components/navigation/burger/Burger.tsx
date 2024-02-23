@@ -1,4 +1,3 @@
-
 import RightNav from '../right-nav/RightNav';
 import useBurger from './Burger.logic';
 import { BurgerDiv } from './Burger.style';
@@ -8,7 +7,6 @@ const Burger = () => {
     return (
         <>
             <BurgerDiv open={open} onClick={handleClick}>
-
                 <div></div>
                 <div></div>
                 <div></div>
