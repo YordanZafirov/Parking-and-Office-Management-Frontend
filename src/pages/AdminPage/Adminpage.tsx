@@ -11,6 +11,7 @@ import DeleteLocationModal from './AdminListModal/DeleteModal';
 import EditLocationModal from './AdminListModal/EditModal';
 import SearchBar from '../../components/searchBar/SearchBar';
 import { LocationData } from './AdminPage.static';
+import DetailsIcon from '../../components/icons/DetailsIcon';
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -80,6 +81,11 @@ const AdminPage = () => {
                                 <td data-label="City:">{location.city}</td>
                                 <td data-label="Address:">{location.address}</td>
                                 <td>
+                                    <DetailsIcon
+                                        onClick={() => {
+                                            navigate('/floorPlan', { state: { locationId: location.id || '' } });
+                                        }}
+                                    />
                                     <EditIcon
                                         onClick={() => {
                                             onEditClick(
