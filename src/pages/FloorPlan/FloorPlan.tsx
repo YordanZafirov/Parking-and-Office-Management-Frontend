@@ -4,7 +4,7 @@ import CreateFloorPlan from './CreateFloorPlan/CreateFloorPlan';
 // import UpdateFloorPlan from './UpdateFloorPlan/UpdateFloorPlan';
 import FloorPlanDetails from './FloorPlanDetails/FloorPlanDetails';
 import { getFloorPlans } from '../../services/floorPlanService';
-import { FloorPlan } from './FloorPlan.static';
+import { FloorPlan as FloorPlanProp } from './FloorPlan.static';
 import { useLocation } from 'react-router-dom';
 
 const FloorPlanContainer = styled.div`
@@ -12,7 +12,7 @@ const FloorPlanContainer = styled.div`
 `;
 
 const FloorPlanComponent = () => {
-    const [floorPlans, setFloorPlans] = useState<FloorPlan[]>([]);
+    const [floorPlans, setFloorPlans] = useState<FloorPlanProp[]>([]);
     const location = useLocation();
     const { state } = location;
     const { locationId } = state || {};
@@ -25,10 +25,12 @@ const FloorPlanComponent = () => {
                 console.log('Fetch all floor plans in useEffect', fetchedFloorPlans);
 
                 if (fetchedFloorPlans && fetchedFloorPlans.length > 0) {
-                    const matchingFloorPlan = fetchedFloorPlans.find((plan) => plan.locationId === locationId);
+                    const matchingFloorPlan: FloorPlanProp[] = fetchedFloorPlans.filter(
+                        (plan) => plan.locationId === locationId,
+                    );
 
-                    if (matchingFloorPlan) {
-                        setFloorPlans([matchingFloorPlan]);
+                    if (matchingFloorPlan.length > 0) {
+                        setFloorPlans(matchingFloorPlan);
                         console.log('matchingFloorPlan', matchingFloorPlan);
                     } else {
                         setFloorPlans([]);
