@@ -19,20 +19,6 @@ export const SpotTypeContainer = styled.div`
     }
 `;
 
-export const SpotTypeCard = styled.div`
-    background-color: var(--blue-green-light);
-    width: 100%;
-    height: 90%;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`;
-
 export const SpotTypeImageContainer = styled.div`
     width: 100%;
 `;

@@ -55,12 +55,12 @@ const UserReservationsTable = ({
                                         <td data-label="End:">{new Date(reservation.end).toLocaleString()}</td>
                                         {reservationType === 'Future' && (
                                             <td>
-                                                <BigButtonLight
+                                                <button
                                                     className="remove-btn"
                                                     onClick={() => deleteReservation(reservation.id)}
                                                 >
                                                     Delete
-                                                </BigButtonLight>
+                                                </button>
                                             </td>
                                         )}
                                     </tr>

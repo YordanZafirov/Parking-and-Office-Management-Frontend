@@ -9,13 +9,12 @@ export const ToggleButtonsContainer = styled.div`
     overflow: hidden;
     align-items: center;
     justify-content: center;
-    background-color: var(--beige-light);
     border-radius: 8px;
 
     @media (max-width: 520px) {
         margin: 20px auto 30px;
         flex-direction:column;
-        gap: 5px  /* When screen width is at least 700px, use two columns */
+        gap: 5px;
     }
 `;
 
@@ -39,12 +38,14 @@ export const StyledDetailBullet = styled.li`
     border-radius: 4px;
     overflow: hidden;
     img {
-        margin-right: 8px;
+        margin-top: 3px;
+        margin-right: 5px;
         width: 40px;
         height: 40px;
     }
 
     span {
+        margin-bottom: 3px;
         font-size: 16px;
         font-weight: bold;
     }
@@ -57,7 +58,6 @@ export const UserProfileContainer = styled.div`
     gap: 20px;
     padding: 10px;
     max-width: 1500px;
-    background-color: var(--beige-light);
     border-radius: 8px;
     overflow: hidden;
 
@@ -85,6 +85,8 @@ export const UserAdditionalInfoContainer = styled.div`
     border-radius: 8px;
     text-align: center;
     justify-content: center;
+
+
 `;
 export const UserMainInfoContainer = styled.div`
     display: flex;
