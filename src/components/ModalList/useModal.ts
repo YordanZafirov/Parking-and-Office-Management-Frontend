@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface UseModalProps {
     initialVisibility?: boolean;
@@ -8,13 +8,13 @@ interface UseModalProps {
 
 const useModal = ({ initialVisibility = false, onModalOpen }: UseModalProps = {}) => {
     const [isVisible, setIsVisible] = useState(initialVisibility);
-    const [originalPath, setOriginalPath] = useState("");
+    // const [originalPath, setOriginalPath] = useState('');
     const navigate = useNavigate();
 
-    useEffect(() => {
-        // Store the current path when the component mounts
-        setOriginalPath(window.location.pathname);
-    }, []);
+    // useEffect(() => {
+    //     // Store the current path when the component mounts
+    //     setOriginalPath(window.location.pathname);
+    // }, []);
 
     const showModal = () => {
         setIsVisible(true);
@@ -24,7 +24,7 @@ const useModal = ({ initialVisibility = false, onModalOpen }: UseModalProps = {}
     const hideModal = () => {
         setIsVisible(false);
         // Reset the URL when hiding the modal
-        navigate(originalPath, { replace: true });
+        // navigate(originalPath, { replace: true });
     };
 
     return {

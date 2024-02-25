@@ -72,6 +72,7 @@ const AdminPage = () => {
                         <th className="table-head">City</th>
                         <th className="table-head">Address</th>
                         <th className="table-head">Action</th>
+                        <th className="table-head">Floor Plan</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,13 +83,6 @@ const AdminPage = () => {
                                 <td data-label="City:">{location.city}</td>
                                 <td data-label="Address:">{location.address}</td>
                                 <td>
-                                    <FloorPlansIcon
-                                        onClick={() => {
-                                            if (location.id) {
-                                                navigate('/floorPlan', { state: { locationId: location.id } });
-                                            }
-                                        }}
-                                    />
                                     <EditIcon
                                         onClick={() => {
                                             onEditClick(
@@ -104,6 +98,24 @@ const AdminPage = () => {
                                         onClick={() => {
                                             onDeleteClick(location.id || '');
                                             showDeleteModal();
+                                        }}
+                                    />
+                                </td>
+                                <td>
+                                    <button
+                                        onClick={() => {
+                                            if (location.id) {
+                                                navigate('/createFloorPlan', { state: { locationId: location.id } });
+                                            }
+                                        }}
+                                    >
+                                        +
+                                    </button>
+                                    <FloorPlansIcon
+                                        onClick={() => {
+                                            if (location.id) {
+                                                navigate('/floorPlan', { state: { locationId: location.id } });
+                                            }
                                         }}
                                     />
                                 </td>

@@ -15,7 +15,7 @@ export const FloorPlanDetailsContainer = styled.div`
 export const HeadingFloorPlan = styled.h2`
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     padding: 40px;
 
