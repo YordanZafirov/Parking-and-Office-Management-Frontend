@@ -22,6 +22,7 @@ import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/Chan
 import NotFound from './pages/NotFound/NotFound';
 import styled from 'styled-components';
 import FloorPlan from './pages/FloorPlan/FloorPlan';
+import CreateFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
 
 export const StyledApp = styled.div`
     min-height: 100vh;
@@ -41,6 +42,7 @@ function App() {
                     <Route path={route.home} element={<Home />} />
                     <Route path={`${route.location}/:id`} element={<Reservation />} />
                     <Route path={route.createLocation} element={<LocationCreateForm />} />
+                    <Route path={route.createFloorPlan} element={<CreateFloorPlanForm />} />
                     <Route path={route.floorPlan} element={<FloorPlan />} />
                     <Route path={route.calendar} element={<HomeCalendar />} />
                     <Route path={route.login} element={<Login />} />

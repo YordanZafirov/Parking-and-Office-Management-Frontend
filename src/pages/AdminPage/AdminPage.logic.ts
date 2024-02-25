@@ -42,8 +42,8 @@ const useAdminPage = () => {
         }
     };
 
-    const onDeleteClick = (soilId: string) => {
-        setSelectedLocationIdForDelete(soilId);
+    const onDeleteClick = (locationId: string) => {
+        setSelectedLocationIdForDelete(locationId);
     };
 
     const onEditClick = (locationId: string, locationName: string, locationCity: string, locationAddress: string) => {
