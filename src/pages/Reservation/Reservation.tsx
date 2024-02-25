@@ -1,17 +1,22 @@
 import Loader from '../../components/loader/Loader';
-import LocationTable from './ReservationTable/ReservationTable';
 import SpotType from './SpotType/SpotType';
 import useLocation from './Reservation.logic';
 import useSpotType from './SpotType/SpotType.logic';
 import useReservationTableLogic from './ReservationTable/ReservationTable.logic';
 import { ReservationContainer } from './Reservation.style';
+import UserReservationsTable from '../../components/UserReservationsTable/UserReservationsTable';
 
 const Reservation = () => {
     // Fetch location and spot type data
     const { singleLocation, isLoading: loadingLocation, error: errorLocation } = useLocation();
     const { spotTypeByLocationId, isLoading: loadingSpotType, error: errorSpotType } = useSpotType();
+    const {
+        allFutureReservationsByUserId,
+        futureReservationsByUserIdLoading,
+        refetch,
+        futureReservationsByUserIdError,
+    } = useReservationTableLogic();
 
-    const { futureReservationsByUserIdLoading, futureReservationsByUserIdError } = useReservationTableLogic();
     // Check if any of the queries is loading
     const loading = loadingLocation || loadingSpotType || futureReservationsByUserIdLoading;
 
@@ -30,7 +35,12 @@ const Reservation = () => {
     return (
         <ReservationContainer>
             <SpotType singleLocation={singleLocation} spotTypeData={spotTypeByLocationId} />
-            <LocationTable />
+            <UserReservationsTable
+                reservations={allFutureReservationsByUserId}
+                isLoading={futureReservationsByUserIdLoading}
+                refetch={refetch}
+                reservationType="Future"
+            />
         </ReservationContainer>
     );
 };
