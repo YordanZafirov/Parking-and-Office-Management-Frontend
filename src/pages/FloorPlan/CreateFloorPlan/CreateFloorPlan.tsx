@@ -4,7 +4,7 @@ import ImageInputField from '../../../components/InputField/ImageInputField';
 import InputField from '../../../components/InputField/InputField';
 import { useCreateFloorPlan } from './CreateFloorPlan.logic';
 
-export default function CreateFloorPlanForm() {
+const CreateNewFloorPlanForm = () => {
     const { formik, setImageFile } = useCreateFloorPlan();
 
     return (
@@ -42,4 +42,6 @@ export default function CreateFloorPlanForm() {
             </BaseButton>
         </FormStyled>
     );
-}
+};
+
+export default CreateNewFloorPlanForm;

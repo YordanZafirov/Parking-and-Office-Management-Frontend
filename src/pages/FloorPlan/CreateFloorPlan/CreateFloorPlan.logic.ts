@@ -54,8 +54,6 @@ function useCreateFloorPlan() {
         },
     });
 
-    console.log(locationId);
-
     return { formik, imageFile, setImageFile };
 }
 
