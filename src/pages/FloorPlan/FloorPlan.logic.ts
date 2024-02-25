@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
-import { deleteFloorPlan, getFloorPlans } from '../../services/floorPlanService';
+import { deleteFloorPlan, getFloorPlans, updateFloorPlan } from '../../services/floorPlanService';
 import { FloorPlan as FloorPlanProp } from './FloorPlan.static';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import useToken from '../../hooks/Token/Token.hook';
 
 function useFloorPlan() {
+    const { data: floorPlans, isLoading, error, refetch } = useQuery('floorPlan', () => getFloorPlans());
+    const decodedToken = useToken();
+
     const [floorPlan, setFloorPlan] = useState<FloorPlanProp[]>([]);
     const location = useLocation();
     const { state } = location;
@@ -11,6 +16,10 @@ function useFloorPlan() {
     const navigate = useNavigate();
 
     const [selectedFloorPlanIdForDelete, setSelectedFloorPlanIdForDelete] = useState<string | null>(null);
+    const [selectedFloorPlanIdForEdit, setSelectedFloorPlanIdForEdit] = useState<string | null>(null);
+    const [currentFloorPlanName, setCurrentFloorPlanName] = useState<string>('');
+    const [currentFloorPlanImage, setCurrentFloorPlanImage] = useState<string>('');
+    const [originalFloorPlanName, setOriginalFloorPlanName] = useState<string>('');
 
     useEffect(() => {
         const fetchFloorPlansData = async () => {
@@ -59,7 +68,60 @@ function useFloorPlan() {
         }
     };
 
-    return { floorPlan, onDeleteClick, onDeleteConfirm };
+    const onEditFloorPlan = async (floorPlanId: string, newFloorPlanData: FloorPlanProp) => {
+        try {
+            if (newFloorPlanData.name !== originalFloorPlanName) {
+                await updateFloorPlan(floorPlanId, newFloorPlanData);
+            } else {
+                const { name: _, ...updatedFloorPlanData } = newFloorPlanData;
+                await updateFloorPlan(floorPlanId, updatedFloorPlanData);
+            }
+
+            refetch();
+        } catch (error) {
+            console.error('Error editing location:', error);
+        }
+    };
+
+    const onEditClick = (floorPlanId: string, floorPlanName: string, floorPlanImage: string) => {
+        setSelectedFloorPlanIdForEdit(floorPlanId);
+        setCurrentFloorPlanName(floorPlanName);
+        setCurrentFloorPlanImage(floorPlanImage);
+        setOriginalFloorPlanName(floorPlanName);
+    };
+
+    const onEditConfirm = async () => {
+        try {
+            if (selectedFloorPlanIdForEdit) {
+                const newFloorPlanData = {
+                    name: currentFloorPlanName,
+                    image: currentFloorPlanImage,
+                    modifiedBy: decodedToken?.id,
+                };
+
+                await onEditFloorPlan(selectedFloorPlanIdForEdit, newFloorPlanData);
+            }
+
+            setSelectedFloorPlanIdForEdit(null);
+            setCurrentFloorPlanName('');
+            setCurrentFloorPlanImage('');
+        } catch (error) {
+            console.error('Error handling edit confirmation:', error);
+        }
+    };
+    return {
+        floorPlan,
+        onDeleteClick,
+        onDeleteConfirm,
+        onEditClick,
+        onEditConfirm,
+        currentFloorPlanName,
+        setCurrentFloorPlanName,
+        currentFloorPlanImage,
+        setCurrentFloorPlanImage,
+        originalFloorPlanName,
+        setOriginalFloorPlanName,
+    };
 }
 
 export default useFloorPlan;
