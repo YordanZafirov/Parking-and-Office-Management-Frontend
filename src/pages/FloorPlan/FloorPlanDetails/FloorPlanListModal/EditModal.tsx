@@ -1,71 +1,80 @@
 import React, { useState } from 'react';
-import Modal from '../../../../components/ModalList/Modal';
+import Modal from '../../../components/ModalList/Modal';
 import { HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
-import ImageInputField from '../../../../components/InputField/ImageInputField';
-import { useCreateFloorPlan } from '../../CreateFloorPlan/CreateFloorPlan.logic';
 
 interface EditModalProps {
     isVisible: boolean;
     hideModal: () => void;
-    currentFloorPlanName: string;
-    currentFloorPlanImage: string;
-    setCurrentFloorPlanName: (newFloorPlanName: string) => void;
-    setCurrentFloorPlanImage: (newFloorPlanImage: string) => void;
-    onConfirm: (newFloorPlanName: string, newFloorPlanImage: string) => void;
+    currentLocationName: string;
+    currentLocationCity: string;
+    currentLocationAddress: string;
+    setCurrentLocationName: (newLocationName: string) => void;
+    setCurrentLocationCity: (newLocationCity: string) => void;
+    setCurrentLocationAddress: (newLocationAddress: string) => void;
+    onConfirm: (newLocationName: string, newLocationCity: string, newLocationAddress: string) => void;
 }
 
-const EditFloorPlanModal: React.FC<EditModalProps> = ({
+const EditLocationModal: React.FC<EditModalProps> = ({
     isVisible,
     hideModal,
-    currentFloorPlanName,
-    currentFloorPlanImage,
-    setCurrentFloorPlanName,
+    currentLocationName,
+    currentLocationCity,
+    currentLocationAddress,
+    setCurrentLocationName,
+    setCurrentLocationCity,
+    setCurrentLocationAddress,
     onConfirm,
 }) => {
-    const [newFloorPlanName, setNewFloorPlanName] = useState(currentFloorPlanName);
-    const [newFloorPlanImage, setNewFloorPlanImage] = useState(currentFloorPlanImage);
+    const [newLocationName, setNewLocationName] = useState(currentLocationName);
+    const [newLocationCity, setNewLocationCity] = useState(currentLocationCity);
+    const [newLocationAddress, setNewLocationAddress] = useState(currentLocationAddress);
 
     const handleConfirm = () => {
-        onConfirm(newFloorPlanName, newFloorPlanImage);
+        onConfirm(newLocationName, newLocationCity, newLocationAddress);
         hideModal();
     };
-
-    const { formik, setImageFile } = useCreateFloorPlan();
 
     return (
         <Modal isVisible={isVisible} hideModal={hideModal} onConfirm={handleConfirm} showConfirmButton={true}>
             <HeaderModal>Update Location</HeaderModal>
             <ItemsModal>
-                <LabelModal>Floor Plan Name</LabelModal>
+                <LabelModal>Location Name</LabelModal>
                 <InputModal
                     type="text"
                     placeholder="Enter new location name"
-                    value={newFloorPlanName}
+                    value={newLocationName}
                     onChange={(e) => {
-                        setNewFloorPlanName(e.target.value);
-                        setCurrentFloorPlanName(e.target.value);
+                        setNewLocationName(e.target.value);
+                        setCurrentLocationName(e.target.value);
                     }}
                 />
             </ItemsModal>
-
-            <ImageInputField
-                type="file"
-                id="imgUrl"
-                name="imgUrl"
-                label="Image"
-                placeholder="Please enter location's image"
-                onChange={(event) => {
-                    const file = event.currentTarget.files?.[0] || null;
-                    setImageFile(file);
-                    formik.handleChange(event);
-                }}
-            />
-
-            {formik.errors.imgUrl && formik.touched.imgUrl && (
-                <div className="error-message">{formik.errors.imgUrl}</div>
-            )}
+            <ItemsModal>
+                <LabelModal>Location City</LabelModal>
+                <InputModal
+                    type="text"
+                    placeholder="Enter new location city"
+                    value={newLocationCity}
+                    onChange={(e) => {
+                        setNewLocationCity(e.target.value);
+                        setCurrentLocationCity(e.target.value);
+                    }}
+                />
+            </ItemsModal>
+            <ItemsModal>
+                <LabelModal>Location Address</LabelModal>
+                <InputModal
+                    type="text"
+                    placeholder="Enter new location address"
+                    value={newLocationAddress}
+                    onChange={(e) => {
+                        setNewLocationAddress(e.target.value);
+                        setCurrentLocationAddress(e.target.value);
+                    }}
+                />
+            </ItemsModal>
         </Modal>
     );
 };
 
-export default EditFloorPlanModal;
+export default EditLocationModal;

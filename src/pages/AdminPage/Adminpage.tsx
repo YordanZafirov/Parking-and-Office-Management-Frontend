@@ -83,13 +83,6 @@ const AdminPage = () => {
                                 <td data-label="City:">{location.city}</td>
                                 <td data-label="Address:">{location.address}</td>
                                 <td>
-                                    <FloorPlansIcon
-                                        onClick={() => {
-                                            if (location.id) {
-                                                navigate('/floorPlan', { state: { locationId: location.id } });
-                                            }
-                                        }}
-                                    />
                                     <EditIcon
                                         onClick={() => {
                                             onEditClick(
