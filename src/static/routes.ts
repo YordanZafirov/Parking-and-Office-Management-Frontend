@@ -4,6 +4,7 @@ export const route = {
     location: '/location',
     admin: '/admin',
     createSpot: '/spot',
+    createFloorPlan: '/floor-plan',
     createLocation: '/createLocation',
     createNewFloorPlan: '/createNewFloorPlan',
     floorPlan: '/floorPlan',
