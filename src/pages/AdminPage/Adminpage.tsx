@@ -105,7 +105,7 @@ const AdminPage = () => {
                                     <button
                                         onClick={() => {
                                             if (location.id) {
-                                                navigate('/createFloorPlan', { state: { locationId: location.id } });
+                                                navigate('/createNewFloorPlan', { state: { locationId: location.id } });
                                             }
                                         }}
                                     >

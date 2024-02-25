@@ -1,60 +1,40 @@
-import React from 'react';
-import { FloorPlan as FloorPlanProp } from '../FloorPlan.static';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { FloorPlanDetailsContainer, HeadingFloorPlan } from './FloorPlanDetails.style';
-// import EditIcon from '../../../components/icons/EditIcon';
-import DeleteIcon from '../../../components/icons/DeleteIcon';
-import useModal from '../../../components/ModalList/useModal';
-import DeleteFloorPlanModal from './FloorPlanListModal/DeleteModal';
-import useFloorPlanDetails from './FloorPlanDetails.logic';
+import { getFloorPlan } from '../../../services/floorPlanService';
+import { FloorPlan } from '../FloorPlan.static';
 
-interface FloorPlansDetailsProps {
-    floorPlans: FloorPlanProp[];
-}
+const FloorPlanDetails = () => {
+    const { id } = useParams();
+    console.log('useParams ID:', id);
+    const [floorPlan, setFloorPlan] = useState<FloorPlan | null>(null);
 
-const FloorPlanDetails: React.FC<FloorPlansDetailsProps> = ({ floorPlans }) => {
-    const { onDeleteClick, onDeleteConfirm } = useFloorPlanDetails();
+    useEffect(() => {
+        console.log('Effect is running');
+        console.log('ID:', id);
+        if (id) {
+            // Fetch floor plan details based on the ID
+            getFloorPlan(id)
+                .then((data: FloorPlan) => {
+                    console.log('Fetched data:', data);
+                    setFloorPlan(data);
+                })
+                .catch((error) => console.error('Error fetching floor plan details:', error));
+        }
+    }, [id]);
 
-    const { isVisible: isDeleteModalVisible, showModal: showDeleteModal, hideModal: hideDeleteModal } = useModal();
+    console.log('Floor Plan State:', floorPlan);
+
+    if (!floorPlan) {
+        return <div>Loading...</div>; // You may want to add a loading state
+    }
 
     return (
         <FloorPlanDetailsContainer>
-            {floorPlans.length > 0 ? (
-                floorPlans.map((floorPlan: FloorPlanProp) => (
-                    <div key={floorPlan.id}>
-                        <HeadingFloorPlan>
-                            {floorPlan.name}
-                            {/* <EditIcon
-                                onClick={() => {
-                                    onEditClick(
-                                        floorPlan.id || '',
-                                        floorPlan.name || '',
-                                        location.city || '',
-                                        location.address || '',
-                                    );
-                                    showEditModal();
-                                }}
-                            /> */}
-                            <DeleteIcon
-                                onClick={() => {
-                                    onDeleteClick(floorPlan.id || '');
-                                    showDeleteModal();
-                                }}
-                            />
-                        </HeadingFloorPlan>
-                        <img src={floorPlan.imgUrl} alt="Floor Plan" style={{ maxWidth: '100%' }} />
-                    </div>
-                ))
-            ) : (
-                <div>No Floor Plan available</div>
-            )}
-
-            {isDeleteModalVisible && (
-                <DeleteFloorPlanModal
-                    isVisible={isDeleteModalVisible}
-                    hideModal={hideDeleteModal}
-                    onDeleteConfirm={onDeleteConfirm}
-                />
-            )}
+            <div key={floorPlan.id}>
+                <HeadingFloorPlan>{floorPlan.name}</HeadingFloorPlan>
+                <img src={floorPlan.imgUrl} alt="Floor Plan" style={{ maxWidth: '100%' }} />
+            </div>
         </FloorPlanDetailsContainer>
     );
 };

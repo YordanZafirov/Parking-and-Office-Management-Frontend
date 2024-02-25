@@ -20,8 +20,10 @@ import SpotInfo from './pages/CreateReservation/SpotInfo/SpotInfo';
 import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/ChangeProfilePictureForm';
 import NotFound from './pages/NotFound/NotFound';
 import styled from 'styled-components';
-import FloorPlan from './pages/FloorPlan/FloorPlan';
-import CreateFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
+
+import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
+import FloorPlanPage from './pages/FloorPlan/FloorPlan';
+import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetails';
 
 export const StyledApp = styled.div`
     min-height: 100vh;
@@ -32,6 +34,7 @@ export const StyledApp = styled.div`
 function App() {
     const location = useLocation();
     const background = location.state as { background?: Location };
+
     return (
         <StyledApp>
             <GlobalStyle />
@@ -41,8 +44,10 @@ function App() {
                     <Route path={route.home} element={<Home />} />
                     <Route path={`${route.location}/:id`} element={<Reservation />} />
                     <Route path={route.createLocation} element={<LocationCreateForm />} />
-                    <Route path={route.createFloorPlan} element={<CreateFloorPlanForm />} />
-                    <Route path={route.floorPlan} element={<FloorPlan />} />
+                    <Route path={route.createNewFloorPlan} element={<CreateNewFloorPlanForm />} />
+                    <Route path={route.floorPlan} element={<FloorPlanPage />} />
+                    <Route path={`${route.floorPlan}/:id`} element={<FloorPlanDetails />} />
+
                     <Route path={route.calendar} element={<HomeCalendar />} />
                     <Route path={route.login} element={<Login />} />
                     <Route path={route.register} element={<Register />} />

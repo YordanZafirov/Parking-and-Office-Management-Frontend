@@ -5,7 +5,7 @@ export const route = {
     admin: '/admin',
     createSpot: '/spot',
     createLocation: '/createLocation',
-    createFloorPlan: '/createFloorPlan',
+    createNewFloorPlan: '/createNewFloorPlan',
     floorPlan: '/floorPlan',
     createReservation: '/create-reservation',
     calendar: '/calendar',
