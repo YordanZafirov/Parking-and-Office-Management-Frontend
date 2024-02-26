@@ -1,45 +1,99 @@
-import { BaseButton } from '../../components/CommonStyledElements';
-import { FormStyled } from '../../components/InputField/Form.style';
-import ImageInputField from '../../components/InputField/ImageInputField';
-import InputField from '../../components/InputField/InputField';
-import { useCreateFloorPlan } from './FloorPlan.logic';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import useFloorPlan from './FloorPlan.logic';
+import { ListContainer, LocationTableStyle } from './FloorPlan.style';
+import DeleteIcon from '../../components/icons/DeleteIcon';
+import useModal from '../../components/ModalList/useModal';
+import DeleteFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/DeleteModal';
+import EditIcon from '../../components/icons/EditIcon';
+import EditFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/EditModal';
 
-export default function FloorPlanForm() {
-    const { formik, setImageFile } = useCreateFloorPlan();
+const FloorPlanPage = () => {
+    const {
+        floorPlan,
+        onDeleteClick,
+        onDeleteConfirm,
+        onEditClick,
+        onEditConfirm,
+        setCurrentFloorPlanName,
+        currentFloorPlanImage,
+        setCurrentFloorPlanImage,
+        originalFloorPlanName,
+    } = useFloorPlan();
+
+    const { isVisible: isDeleteModalVisible, showModal: showDeleteModal, hideModal: hideDeleteModal } = useModal();
+    const { isVisible: isEditModalVisible, showModal: showEditModal, hideModal: hideEditModal } = useModal();
 
     return (
-        <FormStyled onSubmit={formik.handleSubmit}>
-            <h3 className="form-title">Create new Floor Plan</h3>
+        <ListContainer>
+            <LocationTableStyle>
+                <caption>Location List</caption>
+                <thead>
+                    <tr>
+                        <th className="table-head">Floor Plan</th>
+                        <th className="table-head">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {floorPlan.length > 0 ? (
+                        floorPlan.map((floorPlanItem) => (
+                            <tr key={floorPlanItem.id}>
+                                <td data-label="Name:">{floorPlanItem.name}</td>
 
-            <InputField
-                type="name"
-                id="name"
-                name="name"
-                label="Name"
-                placeholder="Please enter location's name"
-                onChange={formik.handleChange}
-            />
-            {formik.errors.name && formik.touched.name && <div className="error-message">{formik.errors.name}</div>}
+                                <td>
+                                    <Link to={`/floorPlan/${floorPlanItem.id}`}>Show Floor Plan</Link>
+                                </td>
 
-            <ImageInputField
-                type="file"
-                id="imgUrl"
-                name="imgUrl"
-                label="Image"
-                placeholder="Please enter location's image"
-                onChange={(event) => {
-                    const file = event.currentTarget.files?.[0] || null;
-                    setImageFile(file);
-                    formik.handleChange(event);
-                }}
-            />
-            {formik.errors.imgUrl && formik.touched.imgUrl && (
-                <div className="error-message">{formik.errors.imgUrl}</div>
+                                <td>
+                                    <EditIcon
+                                        onClick={() => {
+                                            onEditClick(
+                                                floorPlanItem.id || '',
+                                                floorPlanItem.name || '',
+                                                floorPlanItem.imgUrl || '',
+                                            );
+                                            showEditModal();
+                                        }}
+                                    />
+
+                                    <DeleteIcon
+                                        onClick={() => {
+                                            onDeleteClick(floorPlanItem.id || '');
+                                            showDeleteModal();
+                                        }}
+                                    />
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan={4}>No floor plans available</td>
+                        </tr>
+                    )}
+                </tbody>
+            </LocationTableStyle>
+
+            {isDeleteModalVisible && (
+                <DeleteFloorPlanModal
+                    isVisible={isDeleteModalVisible}
+                    hideModal={hideDeleteModal}
+                    onDeleteConfirm={onDeleteConfirm}
+                />
             )}
 
-            <BaseButton className="create-btn" type="submit">
-                Create
-            </BaseButton>
-        </FormStyled>
+            {isEditModalVisible && (
+                <EditFloorPlanModal
+                    isVisible={isEditModalVisible}
+                    hideModal={hideEditModal}
+                    onConfirm={onEditConfirm}
+                    currentFloorPlanName={originalFloorPlanName}
+                    currentFloorPlanImage={currentFloorPlanImage}
+                    setCurrentFloorPlanName={setCurrentFloorPlanName}
+                    setCurrentFloorPlanImage={setCurrentFloorPlanImage}
+                />
+            )}
+        </ListContainer>
     );
-}
+};
+
+export default FloorPlanPage;

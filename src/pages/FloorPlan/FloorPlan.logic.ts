@@ -1,60 +1,127 @@
-import { useFormik } from 'formik';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { deleteFloorPlan, getFloorPlans, updateFloorPlan } from '../../services/floorPlanService';
+import { FloorPlan as FloorPlanProp } from './FloorPlan.static';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
 import useToken from '../../hooks/Token/Token.hook';
-import { useState } from 'react';
-import { uploadImage } from '../../services/imageService';
-import { FloorPlan, FloorPlanCreateShema } from './FloorPlan.static';
-import { addFloorPlan } from '../../services/floorPlanService';
 
-function useCreateFloorPlan() {
-    const [imageFile, setImageFile] = useState<File | null>(null);
-    const navigate = useNavigate();
-    const location = useLocation();
-    const { locationId } = location.state || {};
-
+function useFloorPlan() {
+    const { data: floorPlans, isLoading, error, refetch } = useQuery('floorPlan', () => getFloorPlans());
     const decodedToken = useToken();
 
-    const formik = useFormik({
-        initialValues: {
-            name: '',
-            locationId: '',
-            imgUrl: '',
-            modifiedBy: '',
-            error: '',
-        },
-        validationSchema: FloorPlanCreateShema,
+    const [floorPlan, setFloorPlan] = useState<FloorPlanProp[]>([]);
+    const location = useLocation();
+    const { state } = location;
+    const { locationId } = state || {};
+    const navigate = useNavigate();
 
-        onSubmit: async (values: FloorPlan, { setFieldError, setSubmitting, resetForm }) => {
-            const newObj = {
-                name: values.name,
-                locationId: locationId,
-                imgUrl: values.imgUrl,
-                modifiedBy: decodedToken?.id,
-            };
+    const [selectedFloorPlanIdForDelete, setSelectedFloorPlanIdForDelete] = useState<string | null>(null);
+    const [selectedFloorPlanIdForEdit, setSelectedFloorPlanIdForEdit] = useState<string | null>(null);
+    const [currentFloorPlanName, setCurrentFloorPlanName] = useState<string>('');
+    const [currentFloorPlanImage, setCurrentFloorPlanImage] = useState<string>('');
+    const [originalFloorPlanName, setOriginalFloorPlanName] = useState<string>('');
+
+    useEffect(() => {
+        const fetchFloorPlansData = async () => {
             try {
-                if (imageFile) {
-                    const imageUrl = await uploadImage(imageFile);
-                    newObj.imgUrl = imageUrl;
-                }
-                const createdFloorPlan = await addFloorPlan(newObj);
+                const fetchedFloorPlans = await getFloorPlans();
 
-                if (createdFloorPlan.error) {
-                    throw new Error(createdFloorPlan.error);
+                if (fetchedFloorPlans && fetchedFloorPlans.length > 0) {
+                    const matchingFloorPlan: FloorPlanProp[] = fetchedFloorPlans.filter(
+                        (plan) => plan.locationId === locationId,
+                    );
+
+                    if (matchingFloorPlan.length > 0) {
+                        setFloorPlan(matchingFloorPlan);
+                    } else {
+                        setFloorPlan([]);
+                    }
                 } else {
-                    alert('Floor Plan created successfully!');
-                    resetForm();
-                    navigate('/admin');
+                    setFloorPlan([]);
                 }
-            } catch (e) {
-                const errorMessage = e instanceof Error ? e.message : 'An unexpected error occurred.';
-
-                setFieldError('error', errorMessage);
-                setSubmitting(false);
+            } catch (error) {
+                console.error('Error fetching floor plans data:', error);
             }
-        },
-    });
+        };
 
-    return { formik, imageFile, setImageFile };
+        fetchFloorPlansData();
+    }, [locationId, navigate]);
+
+    const onDeleteFloorPlan = async (floorPlanId: string) => {
+        try {
+            console.log('Deleting floor plan...');
+            await deleteFloorPlan(floorPlanId);
+            console.log('Floor plan deleted successfully');
+        } catch (error) {
+            console.error('Error deleting floor plan:', error);
+        }
+    };
+
+    const onDeleteClick = (floorPlanId: string) => {
+        setSelectedFloorPlanIdForDelete(floorPlanId);
+    };
+
+    const onDeleteConfirm = async () => {
+        if (selectedFloorPlanIdForDelete) {
+            await onDeleteFloorPlan(selectedFloorPlanIdForDelete);
+            setSelectedFloorPlanIdForDelete(null);
+        }
+    };
+
+    const onEditFloorPlan = async (floorPlanId: string, newFloorPlanData: FloorPlanProp) => {
+        try {
+            if (newFloorPlanData.name !== originalFloorPlanName) {
+                await updateFloorPlan(floorPlanId, newFloorPlanData);
+            } else {
+                const { name: _, ...updatedFloorPlanData } = newFloorPlanData;
+                await updateFloorPlan(floorPlanId, updatedFloorPlanData);
+            }
+
+            refetch();
+        } catch (error) {
+            console.error('Error editing location:', error);
+        }
+    };
+
+    const onEditClick = (floorPlanId: string, floorPlanName: string, floorPlanImage: string) => {
+        setSelectedFloorPlanIdForEdit(floorPlanId);
+        setCurrentFloorPlanName(floorPlanName);
+        setCurrentFloorPlanImage(floorPlanImage);
+        setOriginalFloorPlanName(floorPlanName);
+    };
+
+    const onEditConfirm = async () => {
+        try {
+            if (selectedFloorPlanIdForEdit) {
+                const newFloorPlanData = {
+                    name: currentFloorPlanName,
+                    image: currentFloorPlanImage,
+                    modifiedBy: decodedToken?.id,
+                };
+
+                await onEditFloorPlan(selectedFloorPlanIdForEdit, newFloorPlanData);
+            }
+
+            setSelectedFloorPlanIdForEdit(null);
+            setCurrentFloorPlanName('');
+            setCurrentFloorPlanImage('');
+        } catch (error) {
+            console.error('Error handling edit confirmation:', error);
+        }
+    };
+    return {
+        floorPlan,
+        onDeleteClick,
+        onDeleteConfirm,
+        onEditClick,
+        onEditConfirm,
+        currentFloorPlanName,
+        setCurrentFloorPlanName,
+        currentFloorPlanImage,
+        setCurrentFloorPlanImage,
+        originalFloorPlanName,
+        setOriginalFloorPlanName,
+    };
 }
 
-export { useCreateFloorPlan };
+export default useFloorPlan;

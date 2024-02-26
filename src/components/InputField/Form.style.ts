@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FormStyled = styled.form`
     // margin: 1rem auto;
@@ -10,11 +10,12 @@ export const FormStyled = styled.form`
     width: auto;
     height: auto;
     min-width: 300px;
-    /* background-color: transparent;
+    /* background-color: transparent; */
     border-radius: 0.5rem;
-    box-shadow: 0 10px 20px 0 darkgrey; */
+    box-shadow: 0 10px 20px 0 darkgrey;
     padding: 0.3rem;
     z-index: 20;
+    padding: 20px;
 
     h3 {
         color: black;
