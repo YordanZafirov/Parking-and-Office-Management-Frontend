@@ -23,20 +23,23 @@ const ModalBox = styled.div`
     width: auto;
     height: auto;
     min-width: 300px;
-    background-color: whitesmoke;
+    background-color: var(--beige-light);
     border-radius: 0.5rem;
     box-shadow: 0 10px 20px 0 darkgrey;
     padding: 0.3rem;
     z-index: 20;
 
-    h4 {
+    h3, h4 {
         color: black;
         text-align: center;
+        padding:1rem ;
+        padding-bottom: 1rem;
     }
 
-    p {
+    p, div {
         text-align: center;
         padding: 1rem;
+        padding-bottom: 0;
     }
 
     &.close-btn {

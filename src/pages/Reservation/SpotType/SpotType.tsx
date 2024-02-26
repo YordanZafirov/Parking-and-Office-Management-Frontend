@@ -46,7 +46,7 @@ const SpotType: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
                                 className="spot-type-card"
                                 onClick={() => {
                                     navigate(`${route.createReservation}`, {
-                                        state: { currentLocation: singleLocation, selectedSpotType: spotType.id },
+                                        state: { currentLocation: singleLocation, selectedSpotType: spotType },
                                     });
                                 }}
                             >

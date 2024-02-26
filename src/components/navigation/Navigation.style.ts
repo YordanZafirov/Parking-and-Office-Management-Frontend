@@ -11,6 +11,7 @@ export const NavDiv = styled.div`
     align-items: center;
     position: fixed;
     top: 0;
+    z-index: 10;
 
     .logo {
         padding: 15px 0;

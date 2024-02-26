@@ -14,10 +14,10 @@ import { useCalendar } from './Calendar.logic';
 import { useEffect } from 'react';
 import { dataProps } from './Calendar.static';
 
-const CalendarPage = ({ sendDateTime = () => {} }: dataProps) => {
+const CalendarPage = ({ sendDateTime = () => {}, spotType }: dataProps) => {
     const {
         dateTime,
-        setDateTime,
+        handleMakeReservation,
         state,
         handleTimeChange,
         dateRangePickerProps,
@@ -26,35 +26,6 @@ const CalendarPage = ({ sendDateTime = () => {} }: dataProps) => {
         selectedTime,
     } = useCalendar();
 
-    const handleMakeReservation = () => {
-        const selectedStartTime = selectedTime.startTime;
-        const selectedEndTime = selectedTime.endTime;
-
-        const formattedStartDate = state[0]?.startDate ? new Date(state[0]?.startDate) : null;
-        const formattedEndDate = state[0]?.endDate ? new Date(state[0]?.endDate) : null;
-
-        if (formattedStartDate && formattedEndDate) {
-            formattedStartDate.setHours(parseInt(selectedStartTime.split(':')[0], 10));
-            formattedStartDate.setMinutes(parseInt(selectedStartTime.split(':')[1], 10));
-            const startDateOutput = new Date(formattedStartDate).toISOString();
-
-            const newFormattedEndDate = new Date(formattedEndDate);
-            newFormattedEndDate.setHours(parseInt(selectedEndTime.split(':')[0], 10));
-            newFormattedEndDate.setMinutes(parseInt(selectedEndTime.split(':')[1], 10));
-            const newEndDate = newFormattedEndDate;
-            const endDateOutput = new Date(newEndDate).toISOString();
-
-            if (startDateOutput && endDateOutput) {
-                setDateTime({
-                    startDate: startDateOutput,
-                    endDate: endDateOutput,
-                    key: 'selection',
-                });
-
-                console.log('1', dateTime);
-            }
-        }
-    };
     useEffect(() => {
         if (dateTime) {
             sendDateTime(dateTime);
@@ -66,48 +37,65 @@ const CalendarPage = ({ sendDateTime = () => {} }: dataProps) => {
             <CalendarContainer>
                 <StyledAppContainer className="outer-container">
                     <StyledAppContainer>
-                        <StyledCalendarContainer>
-                            <DateRangePicker {...dateRangePickerProps} />
-                        </StyledCalendarContainer>
-                        <StyledTimePickerContainer>
-                            {state[0]?.startDate && (
-                                <StyledTimePicker>
-                                    <label>Start Time:</label>
-                                    <Select
-                                        options={timeOptions}
-                                        value={
-                                            selectedTime.startTime
-                                                ? { value: selectedTime.startTime, label: selectedTime.startTime }
-                                                : null
-                                        }
-                                        onChange={(selectedOption) =>
-                                            handleTimeChange(selectedOption || { value: '', label: '' }, 'startTime')
-                                        }
-                                        className="custom-time-picker"
-                                    />
-                                    {state[0]?.endDate && (
-                                        <>
-                                            <label>End Time:</label>
+                        {spotType.name === 'Office desk' || spotType.name === 'Parking spot' ? (
+                            <StyledCalendarContainer>
+                                <DateRangePicker {...dateRangePickerProps} />
+                            </StyledCalendarContainer>
+                        ) : (
+                            <>
+                                <StyledCalendarContainer>
+                                    <DateRangePicker {...dateRangePickerProps} />
+                                </StyledCalendarContainer>
+                                <StyledTimePickerContainer>
+                                    {state[0]?.startDate && (
+                                        <StyledTimePicker>
+                                            <label>Start Time:</label>
                                             <Select
-                                                options={endTimeOptions.filter((option) => !option.isDisabled)}
+                                                options={timeOptions}
                                                 value={
-                                                    selectedTime.endTime
-                                                        ? { value: selectedTime.endTime, label: selectedTime.endTime }
+                                                    selectedTime.startTime
+                                                        ? {
+                                                              value: selectedTime.startTime,
+                                                              label: selectedTime.startTime,
+                                                          }
                                                         : null
                                                 }
                                                 onChange={(selectedOption) =>
                                                     handleTimeChange(
                                                         selectedOption || { value: '', label: '' },
-                                                        'endTime',
+                                                        'startTime',
                                                     )
                                                 }
                                                 className="custom-time-picker"
                                             />
-                                        </>
+                                            {state[0]?.endDate && (
+                                                <>
+                                                    <label>End Time:</label>
+                                                    <Select
+                                                        options={endTimeOptions.filter((option) => !option.isDisabled)}
+                                                        value={
+                                                            selectedTime.endTime
+                                                                ? {
+                                                                      value: selectedTime.endTime,
+                                                                      label: selectedTime.endTime,
+                                                                  }
+                                                                : null
+                                                        }
+                                                        onChange={(selectedOption) =>
+                                                            handleTimeChange(
+                                                                selectedOption || { value: '', label: '' },
+                                                                'endTime',
+                                                            )
+                                                        }
+                                                        className="custom-time-picker"
+                                                    />
+                                                </>
+                                            )}
+                                        </StyledTimePicker>
                                     )}
-                                </StyledTimePicker>
-                            )}
-                        </StyledTimePickerContainer>
+                                </StyledTimePickerContainer>
+                            </>
+                        )}
                     </StyledAppContainer>
                     <BaseButton
                         className="reservation-btn"

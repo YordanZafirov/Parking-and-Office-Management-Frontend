@@ -20,9 +20,8 @@ export default function CreateReservation() {
         currentFloorPlan,
         handleDataFromCalendar,
         calendarData,
+        selectedSpotType,
     } = useShowSpots();
-
-    console.log('CALENDAR', calendarData);
 
     if (isLoading) {
         return <Loader />;
@@ -35,7 +34,7 @@ export default function CreateReservation() {
     return (
         <>
             <DivFlexStyled className="create-reservation-container">
-                <CalendarPage sendDateTime={handleDataFromCalendar} />
+                <CalendarPage sendDateTime={handleDataFromCalendar} spotType={selectedSpotType} />
                 {calendarData && (
                     <DivFlexStyled>
                         {floorPlans?.map((floorPlan: FloorPlan) => {

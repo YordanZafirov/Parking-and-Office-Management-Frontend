@@ -1,16 +1,9 @@
-interface CustomSpotMarker {
-    id?: string;
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    top?: Number;
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    left?: Number;
-    name?: string;
-    description?: string;
-    isPermanent?: boolean;
-    spotTypeId?: string;
-    floorPlanId?: string;
-    modifiedBy?: string;
-    error?: string;
+import { SpotMarker } from '../../CreateSpots/AddSpotForm/AddSpotForm.static';
+import { DateRangeOutput } from '../Calendar/Calendar.static';
+
+interface CustomSpotMarker extends SpotMarker{
+    period?: DateRangeOutput;
+    spotType?: string;
 }
 
 export type { CustomSpotMarker };
