@@ -24,6 +24,7 @@ function useCreateFloorPlan() {
         },
         validationSchema: FloorPlanCreateShema,
 
+
         // Function to handle the form submission
         onSubmit: async (values: FloorPlan, { setFieldError, setSubmitting, resetForm }) => {
             const newObj = {
@@ -54,8 +55,6 @@ function useCreateFloorPlan() {
             }
         },
     });
-
-    console.log(locationId);
 
     return { formik, imageFile, setImageFile };
 }

@@ -7,6 +7,9 @@ import { AuthProvider } from './context/AuthContext';
 import AddSpotForm from './pages/CreateSpots/AddSpotForm/AddSpotForm';
 import CreateSpots from './pages/CreateSpots/CreateSpotsPage';
 import Navigation from './components/navigation/Navigation';
+
+import styled from 'styled-components';
+
 import UsersPage from './pages/User/UsersPage/UsersPage';
 import Register from './pages/Register/Register';
 import LocationCreateForm from './pages/LocationCreate/LocationCreate';
@@ -18,7 +21,10 @@ import ChangePasswordForm from './pages/User/ChangePasswordForm/ChangePasswordFo
 import SpotInfo from './pages/CreateReservation/SpotInfo/SpotInfo';
 import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/ChangeProfilePictureForm';
 import NotFound from './pages/NotFound/NotFound';
-import styled from 'styled-components';
+
+import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
+import FloorPlanPage from './pages/FloorPlan/FloorPlan';
+import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetails';
 
 import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
 import FloorPlanPage from './pages/FloorPlan/FloorPlan';
@@ -44,6 +50,7 @@ function App() {
                     <Route path={route.home} element={<Home />} />
                     <Route path={`${route.location}/:id`} element={<Reservation />} />
                     <Route path={route.createLocation} element={<LocationCreateForm />} />
+
                     <Route path={route.createNewFloorPlan} element={<CreateNewFloorPlanForm />} />
                     <Route path={route.floorPlan} element={<FloorPlanPage />} />
                     <Route path={`${route.floorPlan}/:id`} element={<FloorPlanDetails />} />

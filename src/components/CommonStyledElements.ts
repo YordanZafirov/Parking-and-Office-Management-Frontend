@@ -57,6 +57,16 @@ export const BaseButton = styled.button`
         background-color: var(--blue-green-light);
     }
 
+    &.reservation-card {
+        background-color: var(--beige);
+        padding: 0;
+        max-width: 10rem;
+    }
+
+    &.reservation-btn{
+        background-color: var(--blue-green-light);
+    }
+
     &.spot-type-card {
         color: var(--light-pink);
         text-decoration: none;

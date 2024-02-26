@@ -12,7 +12,9 @@ import EditLocationModal from './AdminListModal/EditModal';
 import SearchBar from '../../components/searchBar/SearchBar';
 import { LocationData } from './AdminPage.static';
 import FloorPlansIcon from '../../components/icons/FloorPlanIcon';
+
 import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
+
 
 const AdminPage = () => {
     const navigate = useNavigate();

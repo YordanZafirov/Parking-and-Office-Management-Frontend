@@ -22,6 +22,7 @@ function useShowSpots() {
 
     const [calendarData, setCalendarData] = useState<DateRangeOutput>();
 
+
     // Function to handle the data from the calendar
     function handleDataFromCalendar(data: DateRangeOutput) {
         setCalendarData(data);

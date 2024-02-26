@@ -67,6 +67,7 @@ const getFreeSpotsBySpotTypeAndLocation = async ({
     );
 };
 
+
 // Function to check a spot
 const checkSpot = async ({
     top,

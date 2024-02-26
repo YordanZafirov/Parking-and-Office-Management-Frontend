@@ -83,10 +83,12 @@ export const useCalendar = () => {
         };
     });
 
+
     // Disable end times that are before the selected start time
     const disabledEndTimes = timeOptions
         .map((option) => option.value)
         .filter((value) => value <= selectedTime.startTime);
+
 
     // Disable start times that are after the selected end time
     const endTimeOptions = timeOptions.map((option) => ({
