@@ -12,9 +12,9 @@ import EditLocationModal from './AdminListModal/EditModal';
 import SearchBar from '../../components/searchBar/SearchBar';
 import { LocationData } from './AdminPage.static';
 import FloorPlansIcon from '../../components/icons/FloorPlanIcon';
+import FloorPlansAddIcon from '../../components/icons/FloorPlanAddIcon';
 
 import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
-
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -84,7 +84,7 @@ const AdminPage = () => {
                                 <td data-label="Name:">{location.name}</td>
                                 <td data-label="City:">{location.city}</td>
                                 <td data-label="Address:">{location.address}</td>
-                                <td>
+                                <td data-label="Action:">
                                     <EditIcon
                                         onClick={() => {
                                             onEditClick(
@@ -103,16 +103,15 @@ const AdminPage = () => {
                                         }}
                                     />
                                 </td>
-                                <td>
-                                    <button
+                                <td data-label="Floor Plan:">
+                                    <FloorPlansAddIcon
                                         onClick={() => {
                                             if (location.id) {
                                                 navigate('/createNewFloorPlan', { state: { locationId: location.id } });
                                             }
                                         }}
-                                    >
-                                        +
-                                    </button>
+                                    />
+
                                     <FloorPlansIcon
                                         onClick={() => {
                                             if (location.id) {
