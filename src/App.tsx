@@ -7,8 +7,7 @@ import { AuthProvider } from './context/AuthContext';
 import AddSpotForm from './pages/CreateSpots/AddSpotForm/AddSpotForm';
 import CreateSpots from './pages/CreateSpots/CreateSpotsPage';
 import Navigation from './components/navigation/Navigation';
-
-import HomeCalendar from './pages/CalendarComponent/Home-calendar/Home';
+import styled from 'styled-components';
 import UsersPage from './pages/User/UsersPage/UsersPage';
 import Register from './pages/Register/Register';
 import LocationCreateForm from './pages/LocationCreate/LocationCreate';
@@ -25,6 +24,7 @@ import styled from 'styled-components';
 import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
 import FloorPlanPage from './pages/FloorPlan/FloorPlan';
 import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetails';
+
 
 export const StyledApp = styled.div`
     min-height: 100vh;
@@ -45,11 +45,13 @@ function App() {
                     <Route path={route.home} element={<Home />} />
                     <Route path={`${route.location}/:id`} element={<Reservation />} />
                     <Route path={route.createLocation} element={<LocationCreateForm />} />
+
                     <Route path={route.createNewFloorPlan} element={<CreateNewFloorPlanForm />} />
                     <Route path={route.floorPlan} element={<FloorPlanPage />} />
                     <Route path={`${route.floorPlan}/:id`} element={<FloorPlanDetails />} />
 
                     <Route path={route.calendar} element={<HomeCalendar />} />
+
                     <Route path={route.login} element={<Login />} />
                     <Route path={route.register} element={<Register />} />
                     <Route path={route.user} element={<UsersPage />} />

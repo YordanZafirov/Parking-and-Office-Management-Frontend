@@ -1,15 +1,28 @@
 import ImageMarker from 'react-image-marker';
-import { BaseButton, Container } from '../../components/CommonStyledElements';
+import { BaseButton } from '../../components/CommonStyledElements';
 import { useShowSpots } from './CreateReservationPage.logic';
-import { FloorPlan } from '../../services/floorPlanService';
 import Loader from '../../components/loader/Loader';
 import { LocationImage } from '../Home/LocationChocie/LocationChoice.style';
-import { Card, ImageContainer } from './CreateReservationPage.style';
+import { Card, ImageContainer, ImageStyled } from './CreateReservationPage.style';
 import { DivFlexStyled } from '../CreateSpots/CreateSpotsPage.style';
 import SpotMarkerReservation from './SpotMarker/SpotMarker';
+import CalendarPage from './Calendar/CalendarPage';
+import { FloorPlan } from '../FloorPlan/FloorPlan.static';
 
 export default function CreateReservation() {
-    const { isLoading, error, floorPlans, showPlan, spots, showModal, currentFloorPlan } = useShowSpots();
+    const {
+        isLoading,
+        error,
+        floorPlans,
+        showSpots,
+        spots,
+        showPlan,
+        currentFloorPlan,
+        handleDataFromCalendar,
+        calendarData,
+    } = useShowSpots();
+
+    console.log('CALENDAR', calendarData);
 
     if (isLoading) {
         return <Loader />;
@@ -20,32 +33,42 @@ export default function CreateReservation() {
     }
 
     return (
-        <Container className="App">
-            <DivFlexStyled>
-                {floorPlans?.map((floorPlan: FloorPlan) => {
-                    return (
-                        <BaseButton
-                            onClick={() => {
-                                showPlan(floorPlan);
-                            }}
-                        >
-                            <Card key={floorPlan.id}>
-                                <LocationImage src={floorPlan.imgUrl} alt="floor-plan-image" />
-                                <h3>{floorPlan.name}</h3>
-                            </Card>
-                        </BaseButton>
-                    );
-                })}
+        <>
+            <DivFlexStyled className="create-reservation-container">
+                <CalendarPage sendDateTime={handleDataFromCalendar} />
+                {calendarData && (
+                    <DivFlexStyled>
+                        {floorPlans?.map((floorPlan: FloorPlan) => {
+                            return (
+                                <BaseButton
+                                    className="reservation-card"
+                                    onClick={() => {
+                                        showPlan(floorPlan);
+                                    }}
+                                >
+                                    <Card key={floorPlan.id}>
+                                        <LocationImage src={floorPlan.imgUrl} alt="floor-plan-image" />
+                                        <h3>{floorPlan.name}</h3>
+                                    </Card>
+                                </BaseButton>
+                            );
+                        })}
+                    </DivFlexStyled>
+                )}
             </DivFlexStyled>
-            {showModal && currentFloorPlan && spots && (
+
+            {showSpots && calendarData && currentFloorPlan && spots && (
                 <ImageContainer>
-                    <ImageMarker
-                        src={currentFloorPlan.imgUrl}
-                        markers={spots}
-                        markerComponent={SpotMarkerReservation}
-                    />
+                    <h3>Please select a spot:</h3>
+                    <ImageStyled>
+                        <ImageMarker
+                            src={currentFloorPlan.imgUrl!}
+                            markers={spots}
+                            markerComponent={SpotMarkerReservation}
+                        />
+                    </ImageStyled>
                 </ImageContainer>
             )}
-        </Container>
+        </>
     );
 }

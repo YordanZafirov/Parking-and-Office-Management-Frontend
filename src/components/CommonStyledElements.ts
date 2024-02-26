@@ -17,7 +17,7 @@ export const BaseButton = styled.button`
     align-self: center;
     background-color: var(--green);
     border: transparent;
-    border-radius: 0.7rem;
+    border-radius: 10px;
     box-shadow: darkgrey 15px 28px 25px -18px;
     box-sizing: border-box;
     color: black;
@@ -46,6 +46,16 @@ export const BaseButton = styled.button`
         margin: 0.5rem;
     }
 
+    &.reservation-card {
+        background-color: var(--beige);
+        padding: 0;
+        max-width: 10rem;
+    }
+
+    &.reservation-btn{
+        background-color: var(--blue-green-light);
+    }
+
     &.spot-type-card {
         color: var(--light-pink);
         text-decoration: none;
@@ -70,7 +80,7 @@ export const BaseButton = styled.button`
 
     &.edit-btn,
     &.create-btn {
-        background-color: lightblue;
+        background-color: var(--beige);
         margin: 0.5rem;
     }
     &.close-btn {

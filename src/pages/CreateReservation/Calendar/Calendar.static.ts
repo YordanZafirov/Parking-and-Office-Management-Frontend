@@ -1,4 +1,4 @@
-import { DateRange } from "react-date-range";
+import { DateRange } from 'react-date-range';
 
 export interface DateRangePickerProps {
     onChange: (item: { [key: string]: DateRange }) => void;
@@ -12,7 +12,22 @@ export interface DateRangePickerProps {
     maxDate?: Date | null | undefined;
 }
 
+export interface CalendarData {
+    data: DateRangeOutput;
+}
+
 export interface TimeOption {
     value: string;
     label: string;
+}
+
+export interface DateRangeOutput {
+    startDate: string;
+    endDate: string;
+    key: string;
+}
+
+
+export interface dataProps {
+    sendDateTime: (data: DateRangeOutput) => void;
 }

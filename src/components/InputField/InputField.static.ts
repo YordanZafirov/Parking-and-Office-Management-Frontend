@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent } from 'react';
 
 interface InputProps {
     type?: string;
@@ -13,6 +13,7 @@ interface InputProps {
     disabled?: boolean;
     defaultValue?: string | number;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onClick?: () => void;
     readonly?: boolean;
 }
 
