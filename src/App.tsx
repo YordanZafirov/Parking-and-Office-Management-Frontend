@@ -18,11 +18,12 @@ import ChangePasswordForm from './pages/User/ChangePasswordForm/ChangePasswordFo
 import SpotInfo from './pages/CreateReservation/SpotInfo/SpotInfo';
 import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/ChangeProfilePictureForm';
 import NotFound from './pages/NotFound/NotFound';
+import styled from 'styled-components';
+
 import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
 import FloorPlanPage from './pages/FloorPlan/FloorPlan';
 import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetails';
 
-import styled from 'styled-components';
 
 export const StyledApp = styled.div`
     min-height: 100vh;
