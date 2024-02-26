@@ -58,12 +58,12 @@ export const BaseButton = styled.button`
     }
 
     &.reservation-card {
-        background-color: var(--beige);
+        background-color: var(--blue-green-light);
         padding: 0;
         max-width: 10rem;
     }
 
-    &.reservation-btn{
+    &.reservation-btn {
         background-color: var(--blue-green-light);
     }
 
@@ -91,7 +91,7 @@ export const BaseButton = styled.button`
 
     &.edit-btn,
     &.create-btn {
-        background-color: var(--beige);
+        background-color: var(--blue-green-light);
         margin: 0.5rem;
     }
     &.close-btn {
