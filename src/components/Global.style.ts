@@ -18,5 +18,12 @@ export const GlobalStyle = createGlobalStyle`
   --brown-light: #7d7061;
   --brown-dark: #3e3831;
   --spot-green: #90EE90;
+
+  --font-family: 'Noto Sans', sans-serif;
 }
+
+body {
+  font-family: var(--font-family);
+}
+
 `;
