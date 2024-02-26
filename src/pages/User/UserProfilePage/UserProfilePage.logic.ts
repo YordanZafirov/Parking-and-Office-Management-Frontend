@@ -10,11 +10,14 @@ import { route } from '../../../static/routes';
 import { SetStateAction, useState } from 'react';
 import { useAuth } from '../../../context/AuthContext';
 
+
+// Custom hook to fetch user data
 export const useUser = (userId: string | undefined) => {
     const { data: user, refetch: userRefetch } = useQuery(['user', userId], () => getUser(userId));
     return { user, userRefetch };
 };
 
+// Custom hook to fetch past reservations by user
 export const usePastReservationsByUser = (userId: string | undefined) => {
     const {
         data: reservations,
@@ -23,6 +26,8 @@ export const usePastReservationsByUser = (userId: string | undefined) => {
     } = useQuery(['pastReservationsByUserId'], () => getPastReservationsByUser(userId));
     return { pastReservations: reservations, pastReservationsRefetch: refetch, arePastReservationsLoading: isLoading };
 };
+
+// Custom hook to fetch current reservations by user
 export const useCurrentReservationsByUser = (userId: string | undefined) => {
     const {
         data: reservations,
@@ -35,6 +40,8 @@ export const useCurrentReservationsByUser = (userId: string | undefined) => {
         areCurrentReservationsLoading: isLoading,
     };
 };
+
+// Custom hook to fetch future reservations by user
 export const useFutureReservationsByUser = (userId: string | undefined) => {
     const {
         data: reservations,
@@ -48,6 +55,7 @@ export const useFutureReservationsByUser = (userId: string | undefined) => {
     };
 };
 
+// Logic for the UserProfilePage component
 export const UserProfilePageLogic = () => {
     const { id: userId } = useParams();
     const { user, userRefetch } = useUser(userId);

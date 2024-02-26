@@ -24,6 +24,8 @@ function useCreateFloorPlan() {
         },
         validationSchema: FloorPlanCreateShema,
 
+
+        // Function to handle the form submission
         onSubmit: async (values: FloorPlan, { setFieldError, setSubmitting, resetForm }) => {
             const newObj = {
                 name: values.name,

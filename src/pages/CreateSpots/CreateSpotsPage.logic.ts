@@ -12,6 +12,7 @@ function useCreateSpots() {
         query.setQueryData('markers', []);
     };
 
+    // Function to create spots
     const createSpots = async () => {
         const markers: SpotMarker[] | undefined = query.getQueryData('markers');
         if (markers) {

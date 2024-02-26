@@ -21,15 +21,18 @@ export interface GetSpot {
     spotTypeId: string;
 }
 
+// Function to get all spots
 const getAll = async (): Promise<SpotMarker[]> => {
     return await get(`${endpoints.getSpots}`, {});
 };
 
+// Function to get a spot by id
 const getSpotById = async (id: string): Promise<SpotInterface> => {
     const response = await get(`${endpoints.getSpots}/${id}`, {});
     return response;
 };
 
+// Function to get all spots by spot type and floor plan
 const getAllBySpotTypeAndFloorPlan = async ({ floorPlanId, spotTypeId }: GetSpot): Promise<SpotMarker[]> => {
     const data = { floorPlanId: floorPlanId, spotTypeId: spotTypeId };
 
@@ -38,6 +41,7 @@ const getAllBySpotTypeAndFloorPlan = async ({ floorPlanId, spotTypeId }: GetSpot
     });
 };
 
+// Function to get free spots by spot type and location
 const getFreeSpotsBySpotTypeAndLocation = async ({
     floorPlanId,
     spotTypeId,
@@ -63,6 +67,8 @@ const getFreeSpotsBySpotTypeAndLocation = async ({
     );
 };
 
+
+// Function to check a spot
 const checkSpot = async ({
     top,
     left,
@@ -85,6 +91,7 @@ const checkSpot = async ({
     });
 };
 
+// Function to create multiple spots
 const createMultipleSpots = async ({ markers }: MultipleSpots): Promise<MultipleSpots> => {
     return await post(`${endpoints.createSpot}`, { markers });
 };

@@ -1,4 +1,4 @@
-import { BigButtonLight, Container, PageTitle } from '../CommonStyledElements';
+import { Container, PageTitle } from '../CommonStyledElements';
 import Loader from '../loader/Loader';
 import { ReservationToFix } from '../../services/userService';
 import useUserReservationsTableLogic from './UserReservationsTable.logic';
@@ -55,12 +55,12 @@ const UserReservationsTable = ({
                                         <td data-label="End:">{new Date(reservation.end).toLocaleString()}</td>
                                         {reservationType === 'Future' && (
                                             <td>
-                                                <BigButtonLight
+                                                <button
                                                     className="remove-btn"
                                                     onClick={() => deleteReservation(reservation.id)}
                                                 >
                                                     Delete
-                                                </BigButtonLight>
+                                                </button>
                                             </td>
                                         )}
                                     </tr>

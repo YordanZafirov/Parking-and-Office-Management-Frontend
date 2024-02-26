@@ -7,7 +7,6 @@ export const HomeContainer = styled.div`
     flex-direction: column;
     gap: 5rem;
     align-items: center;
-    /* background-color: #f5f5f5; */
 
     h1 {
         margin-top: 3rem;
@@ -18,6 +17,10 @@ export const HomeContainer = styled.div`
         list-style: none;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+        }
     }
 
     li {

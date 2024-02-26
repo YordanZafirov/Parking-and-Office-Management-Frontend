@@ -22,6 +22,7 @@ export const useCalendar = () => {
     const maxDate = new Date();
     maxDate.setDate(maxDate.getDate() + 365); // User will see next 1 year
 
+    // Function to handle the time change
     const handleTimeChange = (selectedOption: { value: string; label: string }, type: 'startTime' | 'endTime') => {
         const time = selectedOption.value;
         setSelectedTime((prev) => ({
@@ -82,15 +83,20 @@ export const useCalendar = () => {
         };
     });
 
+
+    // Disable end times that are before the selected start time
     const disabledEndTimes = timeOptions
         .map((option) => option.value)
         .filter((value) => value <= selectedTime.startTime);
 
+
+    // Disable start times that are after the selected end time
     const endTimeOptions = timeOptions.map((option) => ({
         ...option,
         isDisabled: disabledEndTimes.includes(option.value),
     }));
 
+    // Date range picker props
     const dateRangePickerProps: DateRangePickerProps = {
         onChange: (item) => setState([item.selection]),
         showPreview: true,

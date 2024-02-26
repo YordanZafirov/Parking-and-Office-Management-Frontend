@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import Modal from '../../../../components/ModalList/Modal';
 import { HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
 import ImageInputField from '../../../../components/InputField/ImageInputField';
@@ -36,6 +37,7 @@ const EditFloorPlanModal: React.FC<EditModalProps> = ({
         <Modal isVisible={isVisible} hideModal={hideModal} onConfirm={handleConfirm} showConfirmButton={true}>
             <HeaderModal>Update Location</HeaderModal>
             <ItemsModal>
+
                 <LabelModal>Floor Plan Name</LabelModal>
                 <InputModal
                     type="text"

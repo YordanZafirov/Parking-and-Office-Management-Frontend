@@ -1,7 +1,7 @@
 import { Location } from '../Home/Home.static';
 import Loader from '../../components/loader/Loader';
 import { useNavigate } from 'react-router-dom';
-import { BaseButtonCreateLocation, ContainerCreateSerch, ListContainer, LocationTableStyle } from './Adminpage.style';
+import { BaseButtonCreateLocation, ContainerCreateSerch, ListContainer } from './Adminpage.style';
 import EditIcon from '../../components/icons/EditIcon';
 import DeleteIcon from '../../components/icons/DeleteIcon';
 import useAdminPage from './AdminPage.logic';
@@ -12,6 +12,9 @@ import EditLocationModal from './AdminListModal/EditModal';
 import SearchBar from '../../components/searchBar/SearchBar';
 import { LocationData } from './AdminPage.static';
 import FloorPlansIcon from '../../components/icons/FloorPlanIcon';
+
+import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
+
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -63,7 +66,7 @@ const AdminPage = () => {
                 <SearchBar placeholder="Search by locations" onSearch={setSearchQuery} />
             </ContainerCreateSerch>
 
-            <LocationTableStyle>
+            <UserReservationsTableStyle>
                 <caption>Location List</caption>
                 <thead>
                     <tr>
@@ -126,7 +129,7 @@ const AdminPage = () => {
                         </tr>
                     )}
                 </tbody>
-            </LocationTableStyle>
+            </UserReservationsTableStyle>
 
             {isDeleteModalVisible && (
                 <DeleteLocationModal

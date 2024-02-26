@@ -22,6 +22,7 @@ const useChangeProfilePicture = () => {
 
         onSubmit: async (values: ChangeProfilePicture, { setFieldError, setSubmitting, resetForm }) => {
             try {
+                // Call the change profile picture service
                 const newObj = {
                     id: values.id,
                     imgUrl: values.imgUrl

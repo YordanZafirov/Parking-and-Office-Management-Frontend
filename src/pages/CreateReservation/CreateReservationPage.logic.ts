@@ -22,6 +22,8 @@ function useShowSpots() {
 
     const [calendarData, setCalendarData] = useState<DateRangeOutput>();
 
+
+    // Function to handle the data from the calendar
     function handleDataFromCalendar(data: DateRangeOutput) {
         setCalendarData(data);
         console.log('DATA', data);
@@ -29,6 +31,7 @@ function useShowSpots() {
 
     const { floorPlans, isLoading, error } = useFloorPlansByLocation(selectedSpotType, currentLocation.id);
 
+    // Function to show the floor plan and the spots
     const showPlan = async (floorPlan: FloorPlan) => {
         console.log('FP', floorPlan.id);
 

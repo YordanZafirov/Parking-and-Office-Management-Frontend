@@ -44,6 +44,17 @@ export const BaseButton = styled.button`
     &.remove-btn {
         background-color: lightsteelblue;
         margin: 0.5rem;
+        width: 75px;
+    }
+
+    &.reservation-card {
+        background-color: var(--beige);
+        padding: 0;
+        max-width: 10rem;
+    }
+
+    &.reservation-btn{
+        background-color: var(--blue-green-light);
     }
 
     &.reservation-card {
@@ -100,9 +111,10 @@ export const BaseButton = styled.button`
 
 export const BigButtonLight = styled(BaseButton)`
     background-color: var(--beige-light);
+    width: 150px;
     font-size: 0.8rem;
     line-height: 1rem;
-    padding: 0.9rem;
+    padding: 0.6rem;
 `;
 export const BigButtonDark = styled(BaseButton)`
     background-color: var(--blue--green-light);
@@ -110,4 +122,22 @@ export const BigButtonDark = styled(BaseButton)`
     font-size: 0.8rem;
     line-height: 1rem;
     padding: 0.9rem;
+
+    @media (max-width: 768px) {
+        width: 80%;
+    }
+`;
+
+export const StyledCard = styled.div`
+    background-color: var(--blue-green-light);
+    width: 100%;
+    height: 90%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;

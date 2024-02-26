@@ -7,10 +7,10 @@ import greenCalendar from '../../../assets/calendarFuture.png';
 const UserProfileInfo = ({ pastReservations, currentReservations, futureReservations }: UserDetailsInterface) => {
     return (
         <div>
-            <DetailBullet icon={redCalendar} value={pastReservations} />
-            <DetailBullet icon={blueCalendar} value={currentReservations} />
+            <DetailBullet icon={redCalendar} value={`Past reservations: ${pastReservations}`} />
+            <DetailBullet icon={blueCalendar} value={`Current reservations: ${currentReservations}`} />
             {/* Add other details as needed */}
-            <DetailBullet icon={greenCalendar} value={futureReservations} />
+            <DetailBullet icon={greenCalendar} value={`Future reservations: ${futureReservations}`} />
         </div>
     );
 };

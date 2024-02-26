@@ -7,7 +7,9 @@ import { AuthProvider } from './context/AuthContext';
 import AddSpotForm from './pages/CreateSpots/AddSpotForm/AddSpotForm';
 import CreateSpots from './pages/CreateSpots/CreateSpotsPage';
 import Navigation from './components/navigation/Navigation';
+
 import styled from 'styled-components';
+
 import UsersPage from './pages/User/UsersPage/UsersPage';
 import Register from './pages/Register/Register';
 import LocationCreateForm from './pages/LocationCreate/LocationCreate';
@@ -23,6 +25,11 @@ import NotFound from './pages/NotFound/NotFound';
 import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
 import FloorPlanPage from './pages/FloorPlan/FloorPlan';
 import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetails';
+
+import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
+import FloorPlanPage from './pages/FloorPlan/FloorPlan';
+import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetails';
+
 
 export const StyledApp = styled.div`
     min-height: 100vh;
