@@ -20,6 +20,7 @@ const useChangePassword = () => {
 
         onSubmit: async (values: ChangePassword, { setFieldError, setSubmitting, resetForm }) => {
             try {
+                // Call the change password service
                 const { id, password, newPassword } = values;
                 const response = await changePassword({ id, password, newPassword });
                 if (response.error) {

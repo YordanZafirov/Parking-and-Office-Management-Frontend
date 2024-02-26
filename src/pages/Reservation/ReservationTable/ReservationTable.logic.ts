@@ -5,6 +5,8 @@ import { deleteReservation, getFutureReservationsByUserId } from '../../../servi
 const useReservationTableLogic = () => {
     const decodedToken = useToken();
     const { id: userId } = decodedToken || {};
+
+    // Fetch all future reservations for the current user
     const {
         data: allFutureReservationsByUserId,
         isLoading: futureReservationsByUserIdLoading,
@@ -16,6 +18,7 @@ const useReservationTableLogic = () => {
         }
     });
 
+    // Mutation to delete a reservation
     const deleteReservationMutation = useMutation(deleteReservation, {
         onSuccess: () => {
             refetch();

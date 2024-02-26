@@ -5,6 +5,7 @@ interface UserRoleHOCProps {
     children: ReactNode;
 }
 
+// Higher Order Component to check if the user is an admin
 const UserRoleHOC: React.FC<UserRoleHOCProps> = ({ children }) => {
     const decodedToken = useToken();
     const canUserViewForm = decodedToken?.role === "ADMIN";

@@ -28,6 +28,7 @@ function useAddSpot() {
         },
         validationSchema: AddSpotShema,
 
+        // Function to handle the form submission
         onSubmit: async (values: SpotMarker, { setFieldError, setSubmitting, resetForm }) => {
             console.log('values', values);
             try {

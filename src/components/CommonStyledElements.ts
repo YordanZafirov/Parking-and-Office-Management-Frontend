@@ -112,6 +112,10 @@ export const BigButtonDark = styled(BaseButton)`
     font-size: 0.8rem;
     line-height: 1rem;
     padding: 0.9rem;
+
+    @media (max-width: 768px) {
+        width: 80%;
+    }
 `;
 
 export const StyledCard = styled.div`

@@ -11,7 +11,7 @@ export const ToggleButtonsContainer = styled.div`
     justify-content: center;
     border-radius: 8px;
 
-    @media (max-width: 520px) {
+    @media (max-width: 768px) {
         margin: 20px auto 30px;
         flex-direction:column;
         gap: 5px;

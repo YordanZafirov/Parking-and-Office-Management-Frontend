@@ -17,6 +17,10 @@ export const HomeContainer = styled.div`
         list-style: none;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+        }
     }
 
     li {
