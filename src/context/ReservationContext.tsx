@@ -6,7 +6,7 @@ import { endpoints } from '../static/endpoints';
 // Define the context interface
 interface ReservationContextInterface {
     addReservation: (reservationsToAdd: ReservationInterface[]) => void;
-    reservation: ReservationInterface[];
+    reservations: ReservationInterface[];
 }
 
 // Specify the type of children prop
@@ -17,7 +17,7 @@ interface ReservationProviderProps {
 const ReservationContext = createContext<ReservationContextInterface | undefined>(undefined);
 
 export const ReservationProvider = ({ children }: ReservationProviderProps) => {
-    const [reservation, setReservation] = useState<ReservationInterface[]>([]);
+    const [reservations, setReservation] = useState<ReservationInterface[]>([]);
 
     useEffect(() => {
         // Load cart items from localStorage on component mount
@@ -29,14 +29,14 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
 
     useEffect(() => {
         // Save cart items to localStorage whenever items change
-        if (reservation.length > 0) {
-            sessionStorage.setItem('reservation', JSON.stringify(reservation));
+        if (reservations.length > 0) {
+            sessionStorage.setItem('reservation', JSON.stringify(reservations));
         }
-    }, [reservation]);
+    }, [reservations]);
 
     const addReservation = (reservationsToAdd: ReservationInterface[]) => {
         // Add the reservations to the state
-        setReservation([...reservation, ...reservationsToAdd]);
+        setReservation([...reservations, ...reservationsToAdd]);
 
         // Send the reservations to the backend
         sendReservationsToBackend(reservationsToAdd);
@@ -60,7 +60,7 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
     };
 
     return (
-        <ReservationContext.Provider value={{ addReservation, reservation }}>{children}</ReservationContext.Provider>
+        <ReservationContext.Provider value={{ addReservation, reservations }}>{children}</ReservationContext.Provider>
     );
 };
 

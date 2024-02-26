@@ -17,6 +17,8 @@ export const HomeContainer = styled.div`
         list-style: none;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-bottom: 20px;
 
         @media (max-width: 900px) {
             grid-template-columns: 1fr;
