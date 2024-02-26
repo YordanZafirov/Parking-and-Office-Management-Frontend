@@ -4,6 +4,7 @@ import Home from './pages/Home/Home';
 import { GlobalStyle } from './components/Global.style';
 import { route } from './static/routes';
 import { AuthProvider } from './context/AuthContext';
+import { ReservationProvider } from './context/ReservationContext';
 import AddSpotForm from './pages/CreateSpots/AddSpotForm/AddSpotForm';
 import CreateSpots from './pages/CreateSpots/CreateSpotsPage';
 import Navigation from './components/navigation/Navigation';
@@ -26,11 +27,6 @@ import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloo
 import FloorPlanPage from './pages/FloorPlan/FloorPlan';
 import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetails';
 
-import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
-import FloorPlanPage from './pages/FloorPlan/FloorPlan';
-import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetails';
-
-
 export const StyledApp = styled.div`
     min-height: 100vh;
     padding-top: 4rem;
@@ -45,45 +41,47 @@ function App() {
         <StyledApp>
             <GlobalStyle />
             <AuthProvider>
-                <Navigation />
-                <Routes location={background?.background || location}>
-                    <Route path={route.home} element={<Home />} />
-                    <Route path={`${route.location}/:id`} element={<Reservation />} />
-                    <Route path={route.createLocation} element={<LocationCreateForm />} />
-
+                <ReservationProvider>
+                    <Navigation />
+                    <Routes location={background?.background || location}>
+                        <Route path={route.home} element={<Home />} />
+                        <Route path={`${route.location}/:id`} element={<Reservation />} />
+                        <Route path={route.createLocation} element={<LocationCreateForm />} />
+    
                     <Route path={route.createNewFloorPlan} element={<CreateNewFloorPlanForm />} />
                     <Route path={route.floorPlan} element={<FloorPlanPage />} />
                     <Route path={`${route.floorPlan}/:id`} element={<FloorPlanDetails />} />
-
+    
                     <Route path={route.login} element={<Login />} />
-                    <Route path={route.register} element={<Register />} />
-                    <Route path={route.user} element={<UsersPage />} />
-                    <Route path={`${route.user}/:id`} element={<UserProfilePage />}>
-                        <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
-                        <Route path={`${route.user}/:id/change-picture`} element={<ChangeProfilePictureForm />} />
-                    </Route>
+                        <Route path={route.register} element={<Register />} />
+                        <Route path={route.user} element={<UsersPage />} />
+                        <Route path={`${route.user}/:id`} element={<UserProfilePage />}>
+                            <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
+                            <Route path={`${route.user}/:id/change-picture`} element={<ChangeProfilePictureForm />} />
+                        </Route>
 
-                    <Route path={route.admin} element={<AdminPage />}>
-                        {/* <Route path=":id/edit" element={<EditLocationModal />} />
+                        <Route path={route.admin} element={<AdminPage />}>
+                            {/* <Route path=":id/edit" element={<EditLocationModal />} />
                         <Route path=":id/delete" element={<DeleteLocationModal />} /> */}
-                    </Route>
+                        </Route>
 
-                    <Route path={route.createSpot} element={<CreateSpots />}>
-                        <Route path="/spot/create" element={<AddSpotForm />} />
-                    </Route>
-                    <Route path={route.createReservation} element={<CreateReservation />}>
-                        <Route path="/create-reservation/:id" element={<SpotInfo />} />
-                    </Route>
-                    <Route path={route.notFound} element={<NotFound />} />
-                </Routes>
-                {background?.background && (
-                    <Routes>
-                        <Route path="/spot/create" element={<AddSpotForm />} />
-                        <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
-                        <Route path={`${route.user}/:id/change-picture`} element={<ChangeProfilePictureForm />} />
-                        <Route path="/create-reservation/:id" element={<SpotInfo />} />
+                        <Route path={route.createSpot} element={<CreateSpots />}>
+                            <Route path="/spot/create" element={<AddSpotForm />} />
+                        </Route>
+                        <Route path={route.createReservation} element={<CreateReservation />}>
+                            <Route path="/create-reservation/:id" element={<SpotInfo />} />
+                        </Route>
+                        <Route path={route.notFound} element={<NotFound />} />
                     </Routes>
-                )}
+                    {background?.background && (
+                        <Routes>
+                            <Route path="/spot/create" element={<AddSpotForm />} />
+                            <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
+                            <Route path={`${route.user}/:id/change-picture`} element={<ChangeProfilePictureForm />} />
+                            <Route path="/create-reservation/:id" element={<SpotInfo />} />
+                        </Routes>
+                    )}
+                </ReservationProvider>
             </AuthProvider>
         </StyledApp>
     );

@@ -10,8 +10,9 @@ export const InformationContainer = styled.div`
     span {
         display: block;
         padding: 10px;
-        margin: auto;
-        color: #fff;
+        margin: 15px auto;
+        /* background-color: #1971c2; */
+        /* color: #fff; */
         font-weight: bold;
         width: 50%;
         border-radius: 5px;

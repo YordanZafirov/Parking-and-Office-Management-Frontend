@@ -1,14 +1,14 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { jwtDecode } from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { createContext, useContext, useEffect, useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 // import { loginService } from "../services/userService";
-import { LoginUser } from "../pages/Login/Login.static";
-import { loginService } from "../services/userService";
+import { LoginUser } from '../pages/Login/Login.static';
+import { loginService } from '../services/userService';
 
 interface AuthContextType {
-  isAuthenticated: boolean;
-  loginUser: ({ email, password }: LoginUser) => void;
-  logout: () => void;
+    isAuthenticated: boolean;
+    loginUser: ({ email, password }: LoginUser) => void;
+    logout: () => void;
 }
 
 interface AuthProviderProps {
@@ -37,45 +37,47 @@ const isTokenValid = (token: string) => {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-        const storedToken = localStorage.getItem("access_token");
+        const storedToken = localStorage.getItem('access_token');
         return !!storedToken && isTokenValid(storedToken);
     });
     const currentPath = window.location.pathname;
 
-  const loginUser = async ({ email, password }: LoginUser) => {
-    try {
-      // LoginService returns a User object or a Response object
-      const response: Response | LoginUser = await loginService({ email, password });
+    const loginUser = async ({ email, password }: LoginUser) => {
+        try {
+            // LoginService returns a User object or a Response object
+            const response: LoginUser = await loginService({ email, password });
 
-            if (response) {
-                localStorage.setItem("access_token", response.access_token);
+            if (response && response.access_token) {
+                localStorage.setItem('access_token', response.access_token);
                 setIsAuthenticated(true);
-                navigate("/");
+                navigate('/');
             } else {
                 setIsAuthenticated(false);
             }
         } catch (error) {
-            console.error("Error logging in:", error);
+            console.error('Error logging in:', error);
             setIsAuthenticated(false);
         }
     };
 
     const logout = () => {
-        localStorage.removeItem("access_token");
+        localStorage.removeItem('access_token');
+        sessionStorage.removeItem('reservation');
         setIsAuthenticated(false);
-        navigate("/login");
+        navigate('/login');
     };
 
     useEffect(() => {
-        const publicRoutes = ["/login"];
-        const storedToken = localStorage.getItem("access_token");
+        const publicRoutes = ['/login'];
+        const storedToken = localStorage.getItem('access_token');
         const tokenIsValid = storedToken && isTokenValid(storedToken);
 
         if (!isAuthenticated && tokenIsValid) {
             setIsAuthenticated(true);
         } else if (!tokenIsValid && !publicRoutes.includes(currentPath)) {
-            localStorage.removeItem("access_token");
-            navigate("/login");
+            localStorage.removeItem('access_token');
+            sessionStorage.removeItem('reservation');
+            navigate('/login');
         }
     }, [navigate, isAuthenticated, currentPath]);
 
@@ -85,7 +87,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 export const useAuth = (): AuthContextType => {
     const context = useContext(AuthContext);
     if (!context) {
-        throw new Error("useAuth must be used within an AuthProvider");
+        throw new Error('useAuth must be used within an AuthProvider');
     }
     return context;
 };
