@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useFloorPlan from './FloorPlan.logic';
 import { ListContainer, LocationTableStyle } from './FloorPlan.style';
 import DeleteIcon from '../../components/icons/DeleteIcon';
 import useModal from '../../components/ModalList/useModal';
 import DeleteFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/DeleteModal';
 import EditIcon from '../../components/icons/EditIcon';
 import EditFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/EditModal';
+import useFloorPlan from './FloorPlan.logic';
 
 const FloorPlanPage = () => {
     const {

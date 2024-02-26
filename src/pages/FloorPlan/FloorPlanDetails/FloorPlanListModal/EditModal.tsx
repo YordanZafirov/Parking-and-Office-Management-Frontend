@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Modal from '../../../components/ModalList/Modal';
+
 import { HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
+import Modal from '../../../../components/Modal/Modal';
 
 interface EditModalProps {
     isVisible: boolean;
