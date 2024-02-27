@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FloorPlanDetailsContainer, HeadingFloorPlan } from './FloorPlanDetails.style';
 import { getFloorPlan } from '../../../services/floorPlanService';
 import { FloorPlan } from '../FloorPlan.static';
+import { BackButton, ListContainer } from '../FloorPlan.style';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const FloorPlanDetails = () => {
+    const navigate = useNavigate();
+
     const { id } = useParams();
     console.log('useParams ID:', id);
     const [floorPlan, setFloorPlan] = useState<FloorPlan | null>(null);
@@ -28,13 +32,23 @@ const FloorPlanDetails = () => {
         return <div>Loading...</div>;
     }
 
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
     return (
-        <FloorPlanDetailsContainer>
-            <div key={floorPlan.id}>
-                <HeadingFloorPlan>{floorPlan.name}</HeadingFloorPlan>
-                <img src={floorPlan.imgUrl} alt="Floor Plan" style={{ maxWidth: '100%' }} />
-            </div>
-        </FloorPlanDetailsContainer>
+        <ListContainer>
+            <BackButton onClick={handleGoBack}>
+                <FaArrowLeft />
+            </BackButton>
+
+            <FloorPlanDetailsContainer>
+                <div key={floorPlan.id}>
+                    <HeadingFloorPlan>{floorPlan.name}</HeadingFloorPlan>
+                    <img src={floorPlan.imgUrl} alt="Floor Plan" style={{ maxWidth: '100%' }} />
+                </div>
+            </FloorPlanDetailsContainer>
+        </ListContainer>
     );
 };
 
