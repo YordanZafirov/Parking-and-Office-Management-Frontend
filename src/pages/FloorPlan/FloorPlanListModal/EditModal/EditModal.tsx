@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Modal from '../../../../../components/ModalList/Modal';
+import Modal from '../../../../components/ModalList/Modal';
 import { ErrorStyles, HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
 import { useEditModalError } from './EditModalErrors';
 

@@ -9,7 +9,7 @@ export const getSpotTypes = async (): Promise<SpotTypeInterface[]> => {
 };
 
 // Function to get a spot type by id
-export const getSpotType = async (id: string): Promise<SpotTypeInterface[]> => {
+export const getSpotType = async (id: string): Promise<SpotTypeInterface> => {
     const response = await get(`${endpoints.getSpotTypes}/${id}`, {});
     return response;
 };

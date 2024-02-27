@@ -4,10 +4,11 @@ import { SpotUpdate, UpdateSpotShema } from './SpotUpdate.static';
 import { merge } from 'lodash';
 import { delSpot, updateSpot } from '../../../../services/spotService';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useFloorPlanDetails from '../FloorPlanDetails.logic';
 import { useQuery } from 'react-query';
 import { getResevationsBySpot } from '../../../../services/reservationService';
 import { useState } from 'react';
+import { useFloorPlanDetails } from '../FloorPlanDetails.logic';
+import { getSpotType } from '../../../../services/spotTypeService';
 
 function useUpdateSpot() {
     const location = useLocation();
@@ -15,6 +16,7 @@ function useUpdateSpot() {
     const navigate = useNavigate();
     const user = useToken();
     const { refetchSpots, isLoading } = useFloorPlanDetails();
+    const { data: spotType } = useQuery('spotType', () => getSpotType(spotProps.spotTypeId));
 
     const formik = useFormik({
         initialValues: {
@@ -67,7 +69,7 @@ function useUpdateSpot() {
         },
     });
 
-    return { formik, spotProps, navigate, isLoading };
+    return { formik, spotProps, navigate, isLoading, spotType };
 }
 
 function useDeleteSpot() {

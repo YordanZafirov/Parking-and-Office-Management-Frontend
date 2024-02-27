@@ -8,7 +8,7 @@ import { DivFlexStyled } from '../../../CreateSpots/CreateSpotsPage.style';
 import Loader from '../../../../components/loader/Loader';
 
 export default function SpotUpdate() {
-    const { formik, navigate, isLoading } = useUpdateSpot();
+    const { formik, navigate, isLoading, spotType } = useUpdateSpot();
     const { onDelete, errMessage } = useDeleteSpot();
 
     if (isLoading) {
@@ -40,20 +40,21 @@ export default function SpotUpdate() {
                     {formik.errors.description && formik.touched.description ? (
                         <div>{formik.errors.description}</div>
                     ) : null}
-
-                    <DivFlexStyled>
-                        <label>
-                            {'Is Permanent: '}
-                            <Field
-                                type="checkbox"
-                                name={'isPermanent'}
-                                id={'isPermanent'}
-                                value={formik.values.isPermanent}
-                                checked={formik.values.isPermanent}
-                                onChange={formik.handleChange}
-                            />
-                        </label>
-                    </DivFlexStyled>
+                    {spotType && (spotType.name === 'Office desk' || spotType.name === 'Parking place') && (
+                        <DivFlexStyled>
+                            <label>
+                                {'Is Permanent: '}
+                                <Field
+                                    type="checkbox"
+                                    name={'isPermanent'}
+                                    id={'isPermanent'}
+                                    value={formik.values.isPermanent}
+                                    checked={formik.values.isPermanent}
+                                    onChange={formik.handleChange}
+                                />
+                            </label>
+                        </DivFlexStyled>
+                    )}
                     <BaseButton type="submit" className="edit-btn">
                         Update
                     </BaseButton>
