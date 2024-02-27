@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { getLocation } from '../../services/locationService';
 
-const useLocation = () => {
+const useChoseLocation = () => {
     const { id } = useParams();
 
     // Fetch a single location by its id
@@ -19,4 +19,4 @@ const useLocation = () => {
     return { singleLocation, isLoading, error };
 };
 
-export default useLocation;
+export default useChoseLocation;

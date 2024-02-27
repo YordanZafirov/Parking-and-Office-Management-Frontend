@@ -3,16 +3,6 @@ import { User } from '../pages/User/UsersPage/UsersPage.static';
 import { endpoints } from '../static/endpoints';
 import { del, get, patch, post } from './fetchService';
 
-export interface ReservationToFix {
-    id: string;
-    start: Date;
-    end: Date;
-    comment: string;
-    spotId: string;
-    userId: string;
-    modifiedBy: string;
-}
-
 export interface RegisterUser {
     email: string;
     password: string;
@@ -43,25 +33,6 @@ export const getUser = async (id: string | undefined): Promise<User> => {
 // Function to delete a user
 export const deleteUser = async (id: string): Promise<User> => {
     const response = await del(`${endpoints.user}/${id}`, {});
-    return response;
-};
-
-// Function to get all past reservations by user
-// TODO
-export const getPastReservationsByUser = async (id: string | undefined): Promise<ReservationToFix[]> => {
-    const response = await get(`${endpoints.getPastReservationsByUser}${id}`, {});
-    return response;
-};
-
-// Function to get all current reservations by user
-export const getCurrentReservationsByUser = async (id: string | undefined): Promise<ReservationToFix[]> => {
-    const response = await get(`${endpoints.getCurrentReservationsByUser}${id}`, {});
-    return response;
-};
-
-// Function to get all future reservations by user
-export const getFutureReservationsByUser = async (id: string | undefined): Promise<ReservationToFix[]> => {
-    const response = await get(`${endpoints.getFutureReservationsByUser}${id}`, {});
     return response;
 };
 

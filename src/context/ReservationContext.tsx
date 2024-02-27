@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
-import { ReservationInterface } from '../pages/Reservation/Reservation.static';
+import { ReservationInterface } from '../pages/SpotType/Reservation.static';
 import { post } from '../services/fetchService';
 import { endpoints } from '../static/endpoints';
 

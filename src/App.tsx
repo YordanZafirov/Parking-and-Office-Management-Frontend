@@ -14,7 +14,7 @@ import styled from 'styled-components';
 import UsersPage from './pages/User/UsersPage/UsersPage';
 import Register from './pages/Register/Register';
 import LocationCreateForm from './pages/LocationCreate/LocationCreate';
-import Reservation from './pages/Reservation/Reservation';
+import SpotType from './pages/SpotType/SpotType';
 import CreateReservation from './pages/CreateReservation/CreateReservationPage';
 import UserProfilePage from './pages/User/UserProfilePage/UserProfilePage';
 import AdminPage from './pages/AdminPage/Adminpage';
@@ -25,6 +25,7 @@ import NotFound from './pages/NotFound/NotFound';
 import CreateNewFloorPlanForm from './pages/FloorPlan/CreateFloorPlan/CreateFloorPlan';
 import FloorPlanPage from './pages/FloorPlan/FloorPlan';
 import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetails';
+import ReservationSummary from './pages/ReservationSummary/ReservationSummary';
 
 import SpotSelection from './pages/CreateReservation/SpotSelection/SpotSelection';
 
@@ -46,12 +47,14 @@ function App() {
                     <Navigation />
                     <Routes location={background?.background || location}>
                         <Route path={route.home} element={<Home />} />
-                        <Route path={`${route.location}/:id`} element={<Reservation />} />
+                        <Route path={`${route.location}/:id`} element={<SpotType />} />
                         <Route path={route.createLocation} element={<LocationCreateForm />} />
+                        <Route path={route.reservationSummary} element={<ReservationSummary />} />
 
                         <Route path={route.createNewFloorPlan} element={<CreateNewFloorPlanForm />} />
                         <Route path={route.floorPlan} element={<FloorPlanPage />} />
                         <Route path={`${route.floorPlan}/:id`} element={<FloorPlanDetails />} />
+
                         <Route path={route.login} element={<Login />} />
                         <Route path={route.register} element={<Register />} />
                         <Route path={route.user} element={<UsersPage />} />

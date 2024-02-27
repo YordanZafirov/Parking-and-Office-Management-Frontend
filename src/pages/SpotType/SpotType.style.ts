@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ReservationContainer = styled.div`
+export const ChooseLocationContainer = styled.div`
     color: var(--brown-dark);
     padding: 1rem;
     height: calc(100vh - 4.2rem);
