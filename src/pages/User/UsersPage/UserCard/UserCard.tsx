@@ -1,6 +1,4 @@
-import { useNavigate } from 'react-router';
 import { UserCardProps } from './UserCard.static';
-import { route } from '../../../../static/routes';
 import { StyledUserCard, UserImage } from './UserCard.styles';
 import UserCardDetails from './UserCardDetails';
 import userImg from '../../../../assets/default-profile.jpg';
