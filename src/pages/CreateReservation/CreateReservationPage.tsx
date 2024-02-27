@@ -8,6 +8,7 @@ import { DivFlexStyled } from '../CreateSpots/CreateSpotsPage.style';
 import SpotMarkerReservation from './SpotMarker/SpotMarker';
 import CalendarPage from './Calendar/CalendarPage';
 import { FloorPlan } from '../FloorPlan/FloorPlan.static';
+import SpotCardsContainer from './CombinationReservation/SpotCardsContainer';
 
 export default function CreateReservation() {
     const {
@@ -21,6 +22,7 @@ export default function CreateReservation() {
         handleDataFromCalendar,
         calendarData,
         selectedSpotType,
+        isCombination,
     } = useShowSpots();
 
     if (isLoading) {
@@ -56,17 +58,22 @@ export default function CreateReservation() {
                 )}
             </DivFlexStyled>
 
-            {showSpots && calendarData && currentFloorPlan && spots && (
-                <ImageContainer>
-                    <h3>Please select a spot:</h3>
-                    <ImageStyled>
-                        <ImageMarker
-                            src={currentFloorPlan.imgUrl!}
-                            markers={spots}
-                            markerComponent={SpotMarkerReservation}
-                        />
-                    </ImageStyled>
-                </ImageContainer>
+            {isCombination ? (
+                <SpotCardsContainer spots={spots} />
+                
+            ) : (
+                showSpots && calendarData && currentFloorPlan && spots && (
+                    <ImageContainer>
+                        <h3>Please select a spot:</h3>
+                        <ImageStyled>
+                            <ImageMarker
+                                src={currentFloorPlan.imgUrl!}
+                                markers={spots}
+                                markerComponent={SpotMarkerReservation}
+                            />
+                        </ImageStyled>
+                    </ImageContainer>
+                )
             )}
         </>
     );

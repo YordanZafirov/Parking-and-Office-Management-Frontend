@@ -42,6 +42,7 @@ export const endpoints = {
     getSpotsByFloorPlanId: `${BASE_URL}/spot/by-floorPlan`,
     getBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-floorplan/search`,
     getFreeBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-location-free/search`,
+    getFreeSpotsCombinationBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-floor-plan-combination/search`,
 
     // RESERVATION
     reservation: `${BASE_URL}/reservation`,
