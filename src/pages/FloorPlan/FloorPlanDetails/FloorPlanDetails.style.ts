@@ -5,10 +5,10 @@ export const FloorPlanDetailsContainer = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
 
     @media (max-width: 768px) {
-        padding: 20px;
+        padding: 10px;
     }
 `;
 

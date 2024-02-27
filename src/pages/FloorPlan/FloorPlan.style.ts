@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { BaseButton } from '../../components/CommonStyledElements';
+import { Link } from 'react-router-dom';
 
 export const AdminPageContainer = styled.div`
     max-width: 800px;
@@ -141,4 +142,45 @@ export const LocationTableStyle = styled.table`
             margin-right: 10px;
         }
     }
+`;
+
+export const BackButton = styled.button`
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: var(--blue-green);
+    cursor: pointer;
+
+    transition: font-size 0.3s ease-in-out;
+
+    &:hover {
+        font-size: 36px;
+    }
+`;
+
+export const LinkFloorPlan = styled(Link)`
+    display: inline-block;
+    padding: 7px 5px 5px 12px;
+    background-color: darkblue;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    vertical-align: middle;
+
+    &:hover {
+        background-color: blue;
+    }
+`;
+
+import { IoIosArrowForward } from 'react-icons/io';
+export const ArrowIcon = styled(IoIosArrowForward)`
+    font-size: 22px;
+    color: white;
+    vertical-align: middle;
+    margin-left: 8px;
+    position: relative;
+    top: -2px;
 `;

@@ -1,14 +1,16 @@
-import { Link } from 'react-router-dom';
-import { ListContainer, LocationTableStyle } from './FloorPlan.style';
+import { useNavigate } from 'react-router-dom';
+import { ArrowIcon, BackButton, LinkFloorPlan, ListContainer, LocationTableStyle } from './FloorPlan.style';
 import DeleteIcon from '../../components/icons/DeleteIcon';
 import useModal from '../../components/ModalList/useModal';
 import DeleteFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/DeleteModal/DeleteModal';
 import EditIcon from '../../components/icons/EditIcon';
 import EditFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/EditModal/EditModal';
-
 import useFloorPlan from './FloorPlan.logic';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const FloorPlanPage = () => {
+    const navigate = useNavigate();
+
     const {
         floorPlan,
         isLoading,
@@ -25,8 +27,15 @@ const FloorPlanPage = () => {
     const { isVisible: isDeleteModalVisible, showModal: showDeleteModal, hideModal: hideDeleteModal } = useModal();
     const { isVisible: isEditModalVisible, showModal: showEditModal, hideModal: hideEditModal } = useModal();
 
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
     return (
         <ListContainer>
+            <BackButton onClick={handleGoBack}>
+                <FaArrowLeft />
+            </BackButton>
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
@@ -46,7 +55,10 @@ const FloorPlanPage = () => {
                                     <td data-label="Name:">{floorPlanItem.name}</td>
 
                                     <td data-label="Open Floor Plan:">
-                                        <Link to={`/floorPlan/${floorPlanItem.id}`}>Show Floor Plan</Link>
+                                        <LinkFloorPlan to={`/floorPlan/${floorPlanItem.id}`}>
+                                            Show Floor Plan
+                                            <ArrowIcon />
+                                        </LinkFloorPlan>
                                     </td>
 
                                     <td data-label="Action:">
