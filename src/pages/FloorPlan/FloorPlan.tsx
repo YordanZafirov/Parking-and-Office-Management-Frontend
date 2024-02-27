@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowIcon, BackButton, LinkFloorPlan, ListContainer, LocationTableStyle } from './FloorPlan.style';
+import { ArrowIcon, BackButton, LinkFloorPlan, ListContainer } from './FloorPlan.style';
 import DeleteIcon from '../../components/icons/DeleteIcon';
 import useModal from '../../components/ModalList/useModal';
 import DeleteFloorPlanModal from './FloorPlanListModal/DeleteModal/DeleteModal';
@@ -7,6 +7,7 @@ import EditIcon from '../../components/icons/EditIcon';
 import EditFloorPlanModal from './FloorPlanListModal/EditModal/EditModal';
 import useFloorPlan from './FloorPlan.logic';
 import { FaArrowLeft } from 'react-icons/fa';
+import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
 
 const FloorPlanPage = () => {
     const navigate = useNavigate();
@@ -39,8 +40,8 @@ const FloorPlanPage = () => {
             {isLoading ? (
                 <p>Loading...</p>
             ) : (
-                <LocationTableStyle>
-                    <caption>Location List</caption>
+                <UserReservationsTableStyle>
+                    <caption>Floor Plan List</caption>
                     <thead>
                         <tr>
                             <th className="table-head">Floor Plan</th>
@@ -88,7 +89,7 @@ const FloorPlanPage = () => {
                             </tr>
                         )}
                     </tbody>
-                </LocationTableStyle>
+                </UserReservationsTableStyle>
             )}
 
             {isDeleteModalVisible && (

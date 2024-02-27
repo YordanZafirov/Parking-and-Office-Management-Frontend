@@ -29,7 +29,7 @@ export const UserReservationsTableStyle = styled.table`
     }
 
     tr:nth-child(even) {
-        background-color: var(--blue-green);
+        /* background-color: var(--blue-green); */
     }
 
     tr:first-child th:first-child {
