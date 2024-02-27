@@ -9,8 +9,8 @@ export const endpoints = {
     user: `${BASE_URL}/user`,
     getSingleUser: `${BASE_URL}/user/:userId`,
     deleteUser: `${BASE_URL}/user/:userId`,
-  changePassword: `${BASE_URL}/user/change-password`,
-  changeProfilePicture: `${BASE_URL}/user/change-picture`,
+    changePassword: `${BASE_URL}/user/change-password`,
+    changeProfilePicture: `${BASE_URL}/user/change-picture`,
 
     // LOCATION
     getLocations: `${BASE_URL}/location`,
@@ -42,16 +42,17 @@ export const endpoints = {
     getBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-floorplan/search`,
     getFreeBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-location-free/search`,
 
-  // RESERVATION
-  reservation: `${BASE_URL}/reservation`,
-  getPastReservationsByUser: `${BASE_URL}/reservation/by-user-past/`,
-  getCurrentReservationsByUser: `${BASE_URL}/reservation/by-user-current/`,
-  getFutureReservationsByUser: `${BASE_URL}/reservation/by-user-future/`,
-  getReservationsByUser: `${BASE_URL}/reservation/by-user/:userId`,
-  getReservationsBySpot: `${BASE_URL}/reservation/by-spot/:spotId`,
-  getSingleReservation: `${BASE_URL}/reservation/:reservationId`,
-  createReservation: `${BASE_URL}/reservation`,
-  createMultipleReservations: `${BASE_URL}/reservation/create-multiple`,
-  updateReservation: `${BASE_URL}/reservation/:reservationId`,
-  deleteReservation: `${BASE_URL}/reservation/:reservationId`,
+    // RESERVATION
+    reservation: `${BASE_URL}/reservation`,
+    getPastReservationsByUser: `${BASE_URL}/reservation/by-user-past/`,
+    getCurrentReservationsByUser: `${BASE_URL}/reservation/by-user-current/`,
+    getFutureReservationsByUser: `${BASE_URL}/reservation/by-user-future/`,
+    getReservationsByUser: `${BASE_URL}/reservation/by-user/:userId`,
+    getReservationsBySpot: `${BASE_URL}/reservation/by-spot/:spotId`,
+    getSingleReservation: `${BASE_URL}/reservation/:reservationId`,
+    createReservation: `${BASE_URL}/reservation`,
+    createMultipleReservations: `${BASE_URL}/reservation/create-multiple`,
+    updateReservation: `${BASE_URL}/reservation/:reservationId`,
+    deleteReservation: `${BASE_URL}/reservation/:reservationId`,
+    checkReservation: `${BASE_URL}/reservation/check`,
 };

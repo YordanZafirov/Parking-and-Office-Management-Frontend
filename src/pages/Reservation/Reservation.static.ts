@@ -9,4 +9,5 @@ export interface ReservationInterface {
     updatedAt?: Date;
     deletedAt?: null;
     modifiedBy: string;
+    error?:string
 }

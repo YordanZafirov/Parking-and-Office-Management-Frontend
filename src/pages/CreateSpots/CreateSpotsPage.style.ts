@@ -9,8 +9,15 @@ const DivFlexStyled = styled.div`
     padding: 1rem;
 
     &.create-reservation-container {
-        max-width: 100vw;
+        max-width: 100%;
         background-color: var(--blue-green-light);
+    }
+
+    .image-marker{
+        .image-marker__marker{
+            display: flex;
+            justify-content: center;
+        }
     }
 `;
 

@@ -5,8 +5,9 @@ import { endpoints } from '../static/endpoints';
 
 // Define the context interface
 interface ReservationContextInterface {
-    addReservation: (reservationsToAdd: ReservationInterface[]) => void;
+    addReservation: (reservationsToAdd: ReservationInterface) => void;
     reservations: ReservationInterface[];
+    sendReservationsToBackend: (reservations: ReservationInterface[]) => void;
 }
 
 // Specify the type of children prop
@@ -34,12 +35,12 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
         }
     }, [reservations]);
 
-    const addReservation = (reservationsToAdd: ReservationInterface[]) => {
+    const addReservation = (reservationsToAdd: ReservationInterface) => {
         // Add the reservations to the state
-        setReservation([...reservations, ...reservationsToAdd]);
+        setReservation([...reservations, reservationsToAdd]);
 
         // Send the reservations to the backend
-        sendReservationsToBackend(reservationsToAdd);
+        // sendReservationsToBackend(reservationsToAdd);
     };
 
     const sendReservationsToBackend = async (reservations: ReservationInterface[]) => {
@@ -60,7 +61,9 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
     };
 
     return (
-        <ReservationContext.Provider value={{ addReservation, reservations }}>{children}</ReservationContext.Provider>
+        <ReservationContext.Provider value={{ addReservation, reservations, sendReservationsToBackend }}>
+            {children}
+        </ReservationContext.Provider>
     );
 };
 

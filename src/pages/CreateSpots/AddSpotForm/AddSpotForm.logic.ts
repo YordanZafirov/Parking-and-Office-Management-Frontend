@@ -33,6 +33,9 @@ function useAddSpot() {
             console.log('values', values);
             try {
                 const marker: Marker | undefined = query.getQueryData('currentMarker');
+
+                console.log("MARKER", marker);
+                
                 if (marker) {
                     const newMarker: SpotMarker = {
                         top: marker.top,
@@ -41,7 +44,7 @@ function useAddSpot() {
                         description: values.description,
                         spotTypeId: values.spotTypeId,
                         isPermanent: values.isPermanent,
-                        floorPlanId: 'f3624366-89e0-494e-91bb-37f57b211665', //TODO GET FLOOR PLAN ID
+                        floorPlanId: 'e878280b-3e82-472b-913b-4ee5862aa4d1', //TODO GET FLOOR PLAN ID
                         modifiedBy: user?.id,
                     };
                     console.log('new Marker', newMarker);

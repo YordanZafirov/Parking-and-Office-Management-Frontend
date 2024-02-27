@@ -9,7 +9,8 @@ import { useCreateSpots } from './CreateSpotsPage.logic';
 import { BaseButton, Container } from '../../components/CommonStyledElements';
 import { route } from '../../static/routes';
 
-const floorPlan = 'https://parking-and-office-management.s3.amazonaws.com/1708009292684-office-planning-software.png';
+const floorPlan =
+    'https://parking-and-office-management.s3.amazonaws.com/1708921481292-YARA OFFICE VARNA _lighter_2nd.jpg';
 
 export default function CreateSpots() {
     const navigate = useNavigate();

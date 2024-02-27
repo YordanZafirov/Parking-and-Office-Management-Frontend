@@ -15,8 +15,8 @@ export const useCalendar = () => {
     const [dateTime, setDateTime] = useState<DateRangeOutput>();
 
     const [selectedTime, setSelectedTime] = useState({
-        startTime: '09:00',
-        endTime: '18:00',
+        startTime: '00:00',
+        endTime: '24:00',
     });
 
     const maxDate = new Date();
@@ -31,48 +31,38 @@ export const useCalendar = () => {
         }));
     };
 
-    // const handleMakeReservation = () => {
-    //     const selectedStartTime = selectedTime.startTime;
-    //     const selectedEndTime = selectedTime.endTime;
-    //     const formattedStartDate = state[0]?.startDate ? new Date(state[0]?.startDate) : null;
-    //     const formattedEndDate = state[0]?.endDate ? new Date(state[0]?.endDate) : null;
+    const handleMakeReservation = () => {
+        const selectedStartTime = selectedTime.startTime;
+        const selectedEndTime = selectedTime.endTime;
 
-    //     if (formattedStartDate) {
-    //         formattedStartDate.setHours(parseInt(selectedStartTime.split(':')[0], 10));
-    //         formattedStartDate.setMinutes(parseInt(selectedStartTime.split(':')[1], 10));
-    //     }
+        const formattedStartDate = state[0]?.startDate ? new Date(state[0]?.startDate) : null;
+        const formattedEndDate = state[0]?.endDate ? new Date(state[0]?.endDate) : null;
 
-    //     if (formattedEndDate) {
-    //         const newFormattedEndDate = new Date(formattedEndDate);
-    //         newFormattedEndDate.setHours(parseInt(selectedEndTime.split(':')[0], 10));
-    //         newFormattedEndDate.setMinutes(parseInt(selectedEndTime.split(':')[1], 10));
-    //         const newEndDate = newFormattedEndDate;
+        if (formattedStartDate && formattedEndDate) {
+            formattedStartDate.setHours(parseInt(selectedStartTime.split(':')[0], 10));
+            formattedStartDate.setMinutes(parseInt(selectedStartTime.split(':')[1], 10));
+            const startDateOutput = new Date(formattedStartDate).toISOString();
 
-    //         // const newReservation: Reservation = {
-    //         //     id: reservations.length + 1,
-    //         //     startDate: formattedStartDate,
-    //         //     endDate: newEndDate,
-    //         //     ...selectedTime,
-    //         // };
+            const newFormattedEndDate = new Date(formattedEndDate);
+            newFormattedEndDate.setHours(parseInt(selectedEndTime.split(':')[0], 10));
+            newFormattedEndDate.setMinutes(parseInt(selectedEndTime.split(':')[1], 10));
+            const newEndDate = newFormattedEndDate;
+            const endDateOutput = new Date(newEndDate).toISOString();
 
-    //         // onAddReservation(newReservation);
-    //         setDateTime([
-    //             {
-    //                 startDate: formattedStartDate || new Date(),
-    //                 endDate: newEndDate || new Date(),
-    //                 key: 'selection',
-    //             },
-    //         ]);
+            if (startDateOutput && endDateOutput) {
+                setDateTime({
+                    startDate: startDateOutput,
+                    endDate: endDateOutput,
+                    key: 'selection',
+                });
 
-    //         // sendDateTime(dateTime);
-    //     }
-    // };
-    // useEffect(() => {
-    //     sendDateTime(dateTime);
-    // }, [dateTime, sendDateTime]);
+                console.log('1', dateTime);
+            }
+        }
+    };
 
-    const startHour = 9;
-    const endHour = 18;
+    const startHour = 0;
+    const endHour = 24;
 
     // Check end hours to after start hours
     const timeOptions = Array.from({ length: endHour - startHour + 1 }, (_, i) => {
@@ -83,12 +73,10 @@ export const useCalendar = () => {
         };
     });
 
-
     // Disable end times that are before the selected start time
     const disabledEndTimes = timeOptions
         .map((option) => option.value)
         .filter((value) => value <= selectedTime.startTime);
-
 
     // Disable start times that are after the selected end time
     const endTimeOptions = timeOptions.map((option) => ({
@@ -111,12 +99,11 @@ export const useCalendar = () => {
 
     return {
         dateTime,
-        setDateTime,
         state,
         handleTimeChange,
         dateRangePickerProps,
         endTimeOptions,
-        // handleMakeReservation,
+        handleMakeReservation,
         timeOptions,
         selectedTime,
     };

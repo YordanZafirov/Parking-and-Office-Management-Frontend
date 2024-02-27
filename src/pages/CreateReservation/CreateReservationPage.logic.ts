@@ -2,16 +2,16 @@ import { useQuery } from 'react-query';
 import { getAllBySpotTypeAndLocation } from '../../services/floorPlanService';
 import { useLocation } from 'react-router';
 import { useState } from 'react';
-import { SpotMarker } from '../CreateSpots/AddSpotForm/AddSpotForm.static';
 import { getFreeSpotsBySpotTypeAndLocation } from '../../services/spotService';
 import { DateRangeOutput } from './Calendar/Calendar.static';
 import { FloorPlan } from '../FloorPlan/FloorPlan.static';
+import { CustomSpotMarker } from './SpotMarker/SpotMarker.static';
 
 function useShowSpots() {
     const location = useLocation();
     const currentLocation = location.state.currentLocation;
     const selectedSpotType = location.state.selectedSpotType;
-    const [spots, setSpots] = useState<SpotMarker[]>([]);
+    const [spots, setSpots] = useState<CustomSpotMarker[]>([]);
     const [currentFloorPlan, setCurrentFloorPlan] = useState<FloorPlan>();
 
     const [showSpots, setShowSpots] = useState<boolean>(false);
@@ -26,30 +26,33 @@ function useShowSpots() {
     // Function to handle the data from the calendar
     function handleDataFromCalendar(data: DateRangeOutput) {
         setCalendarData(data);
-        console.log('DATA', data);
     }
 
-    const { floorPlans, isLoading, error } = useFloorPlansByLocation(selectedSpotType, currentLocation.id);
+    const { floorPlans, isLoading, error } = useFloorPlansByLocation(selectedSpotType.id, currentLocation.id);
 
     // Function to show the floor plan and the spots
     const showPlan = async (floorPlan: FloorPlan) => {
-        console.log('FP', floorPlan.id);
 
         setCurrentFloorPlan(floorPlan);
         if (floorPlan && calendarData) {
-            console.log('1', floorPlan);
-            console.log('2', calendarData);
 
             const data = await getFreeSpotsBySpotTypeAndLocation({
                 floorPlanId: floorPlan.id!,
-                spotTypeId: selectedSpotType,
+                spotTypeId: selectedSpotType.id,
                 start: calendarData.startDate,
                 end: calendarData.endDate,
             });
 
             if (data) {
                 console.log('data', data);
-                setSpots(data);
+
+                const outputSpots = data.map((spot: CustomSpotMarker) => {
+                    spot.spotType = selectedSpotType.name;
+                    spot.period = calendarData;
+                    return spot;
+                });
+
+                setSpots(outputSpots);
                 if (!showSpots) {
                     toggleSpots();
                 }
@@ -67,6 +70,7 @@ function useShowSpots() {
         currentFloorPlan,
         handleDataFromCalendar,
         calendarData,
+        selectedSpotType,
     };
 }
 

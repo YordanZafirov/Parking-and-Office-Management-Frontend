@@ -26,6 +26,8 @@ function useCreateSpots() {
     };
 
     const handleAddMarker = (marker: Marker) => {
+        console.log("1", marker);
+        
         query.setQueryData('currentMarker', marker);
     };
 

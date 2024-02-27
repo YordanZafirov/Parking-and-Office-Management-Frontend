@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const BaseButton = styled.button`
     align-self: center;
-    background-color: var(--green);
+    background-color: var(--brown);
     border: transparent;
     border-radius: 10px;
     box-shadow: darkgrey 15px 28px 25px -18px;
@@ -25,7 +25,6 @@ export const BaseButton = styled.button`
     display: inline-block;
     font-size: 0.7rem;
     font-weight: 500;
-    line-height: 0.6rem;
     outline: none;
     padding: 0.6rem;
     text-decoration: none;
@@ -37,7 +36,7 @@ export const BaseButton = styled.button`
 
     &:hover {
         box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
-        transform: translate3d(0, 2px, 0);
+        /* transform: translate3d(0, 2px, 0); */
     }
 
     &.delete-btn,
