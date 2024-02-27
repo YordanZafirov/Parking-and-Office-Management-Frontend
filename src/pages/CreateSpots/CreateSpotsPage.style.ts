@@ -22,4 +22,4 @@ const DivFlexStyled = styled.div`
 `;
 
 
-export { DivFlexStyled, ButtonsContainer };
+export { DivFlexStyled};
