@@ -15,3 +15,7 @@ const FloorPlanCreateShema = Yup.object().shape({
 });
 
 export { FloorPlanCreateShema };
+
+export interface EditFormErrors {
+    name: string;
+}

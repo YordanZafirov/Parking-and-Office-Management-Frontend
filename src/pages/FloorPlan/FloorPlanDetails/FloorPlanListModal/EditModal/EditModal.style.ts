@@ -29,3 +29,9 @@ export const InputModal = styled.input`
     padding: 10px 14px;
     margin-bottom: 1rem;
 `;
+
+export const ErrorStyles = styled.p`
+    color: orange;
+    font-size: 16px;
+    padding-bottom: 10px;
+`;

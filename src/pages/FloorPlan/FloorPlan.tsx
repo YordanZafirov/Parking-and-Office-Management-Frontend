@@ -1,18 +1,17 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { ListContainer, LocationTableStyle } from './FloorPlan.style';
 import DeleteIcon from '../../components/icons/DeleteIcon';
 import useModal from '../../components/ModalList/useModal';
-import DeleteFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/DeleteModal';
+import DeleteFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/DeleteModal/DeleteModal';
 import EditIcon from '../../components/icons/EditIcon';
-import EditFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/EditModal';
+import EditFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/EditModal/EditModal';
 
 import useFloorPlan from './FloorPlan.logic';
 
 const FloorPlanPage = () => {
     const {
         floorPlan,
+        isLoading,
         onDeleteClick,
         onDeleteConfirm,
         onEditClick,
@@ -28,52 +27,57 @@ const FloorPlanPage = () => {
 
     return (
         <ListContainer>
-            <LocationTableStyle>
-                <caption>Location List</caption>
-                <thead>
-                    <tr>
-                        <th className="table-head">Floor Plan</th>
-                        <th className="table-head">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {floorPlan.length > 0 ? (
-                        floorPlan.map((floorPlanItem) => (
-                            <tr key={floorPlanItem.id}>
-                                <td data-label="Name:">{floorPlanItem.name}</td>
-
-                                <td>
-                                    <Link to={`/floorPlan/${floorPlanItem.id}`}>Show Floor Plan</Link>
-                                </td>
-
-                                <td>
-                                    <EditIcon
-                                        onClick={() => {
-                                            onEditClick(
-                                                floorPlanItem.id || '',
-                                                floorPlanItem.name || '',
-                                                floorPlanItem.imgUrl || '',
-                                            );
-                                            showEditModal();
-                                        }}
-                                    />
-
-                                    <DeleteIcon
-                                        onClick={() => {
-                                            onDeleteClick(floorPlanItem.id || '');
-                                            showDeleteModal();
-                                        }}
-                                    />
-                                </td>
-                            </tr>
-                        ))
-                    ) : (
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : (
+                <LocationTableStyle>
+                    <caption>Location List</caption>
+                    <thead>
                         <tr>
-                            <td colSpan={4}>No floor plans available</td>
+                            <th className="table-head">Floor Plan</th>
+                            <th className="table-head">Open Floor Plan</th>
+                            <th className="table-head">Action</th>
                         </tr>
-                    )}
-                </tbody>
-            </LocationTableStyle>
+                    </thead>
+                    <tbody>
+                        {floorPlan.length > 0 ? (
+                            floorPlan.map((floorPlanItem) => (
+                                <tr key={floorPlanItem.id}>
+                                    <td data-label="Name:">{floorPlanItem.name}</td>
+
+                                    <td data-label="Open Floor Plan:">
+                                        <Link to={`/floorPlan/${floorPlanItem.id}`}>Show Floor Plan</Link>
+                                    </td>
+
+                                    <td data-label="Action:">
+                                        <EditIcon
+                                            onClick={() => {
+                                                onEditClick(
+                                                    floorPlanItem.id || '',
+                                                    floorPlanItem.name || '',
+                                                    floorPlanItem.imgUrl || '',
+                                                );
+                                                showEditModal();
+                                            }}
+                                        />
+
+                                        <DeleteIcon
+                                            onClick={() => {
+                                                onDeleteClick(floorPlanItem.id || '');
+                                                showDeleteModal();
+                                            }}
+                                        />
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan={4}>No floor plans available</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </LocationTableStyle>
+            )}
 
             {isDeleteModalVisible && (
                 <DeleteFloorPlanModal

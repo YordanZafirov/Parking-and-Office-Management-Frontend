@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-
-import Modal from '../../../../components/ModalList/Modal';
-import { HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
-import ImageInputField from '../../../../components/InputField/ImageInputField';
-import { useCreateFloorPlan } from '../../CreateFloorPlan/CreateFloorPlan.logic';
+import Modal from '../../../../../components/ModalList/Modal';
+import { ErrorStyles, HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
+import { useEditModalError } from './EditModalErrors';
 
 interface EditModalProps {
     isVisible: boolean;
@@ -23,21 +21,27 @@ const EditFloorPlanModal: React.FC<EditModalProps> = ({
     setCurrentFloorPlanName,
     onConfirm,
 }) => {
+    const { formErrors, validateName } = useEditModalError();
     const [newFloorPlanName, setNewFloorPlanName] = useState(currentFloorPlanName);
-    const [newFloorPlanImage, setNewFloorPlanImage] = useState(currentFloorPlanImage);
+    const [newFloorPlanImage] = useState(currentFloorPlanImage);
 
-    const handleConfirm = () => {
-        onConfirm(newFloorPlanName, newFloorPlanImage);
-        hideModal();
+    const handlePasswordBlur = () => {
+        validateName(newFloorPlanName);
     };
 
-    const { formik, setImageFile } = useCreateFloorPlan();
+    const handleConfirm = () => {
+        const isNameValid = validateName(newFloorPlanName);
+
+        if (isNameValid) {
+            onConfirm(newFloorPlanName, newFloorPlanImage);
+            hideModal();
+        }
+    };
 
     return (
         <Modal isVisible={isVisible} hideModal={hideModal} onConfirm={handleConfirm} showConfirmButton={true}>
             <HeaderModal>Update Location</HeaderModal>
             <ItemsModal>
-
                 <LabelModal>Floor Plan Name</LabelModal>
                 <InputModal
                     type="text"
@@ -47,25 +51,10 @@ const EditFloorPlanModal: React.FC<EditModalProps> = ({
                         setNewFloorPlanName(e.target.value);
                         setCurrentFloorPlanName(e.target.value);
                     }}
+                    onBlur={handlePasswordBlur}
                 />
+                {formErrors.name && <ErrorStyles>{formErrors.name}</ErrorStyles>}
             </ItemsModal>
-
-            <ImageInputField
-                type="file"
-                id="imgUrl"
-                name="imgUrl"
-                label="Image"
-                placeholder="Please enter location's image"
-                onChange={(event) => {
-                    const file = event.currentTarget.files?.[0] || null;
-                    setImageFile(file);
-                    formik.handleChange(event);
-                }}
-            />
-
-            {formik.errors.imgUrl && formik.touched.imgUrl && (
-                <div className="error-message">{formik.errors.imgUrl}</div>
-            )}
         </Modal>
     );
 };
