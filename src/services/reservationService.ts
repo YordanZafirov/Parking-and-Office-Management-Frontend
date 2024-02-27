@@ -29,6 +29,11 @@ export const getFutureReservationsByUserId = async (id: string | undefined): Pro
     return response;
 };
 
+export const getResevationsBySpot = async (spotId: string): Promise<ReservationInterface[]> => {
+    const response = await get(`${endpoints.getResevationsBySpotId}/${spotId}`, {});
+    return response;
+};
+
 export const checkReservation = async ({
     spotId,
     start,
@@ -55,6 +60,3 @@ export const createReservation = async ({ reservations }: MultipleReservations):
 export const deleteReservation = async (reservationId: string): Promise<void> => {
     await del(`${endpoints.reservation}/${reservationId}`, {});
 };
-
-//endpoints.deleteReservation + reservationId
-

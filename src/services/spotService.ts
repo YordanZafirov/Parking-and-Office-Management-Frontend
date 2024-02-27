@@ -1,25 +1,9 @@
 import { GetFreeSpot } from '../pages/CreateReservation/CreateReservationPage.static';
+import { GetSpot, SpotInterface } from '../pages/CreateReservation/SpotMarker/SpotMarker.static';
 import { MultipleSpots, SpotMarker } from '../pages/CreateSpots/AddSpotForm/AddSpotForm.static';
+import { SpotUpdate } from '../pages/FloorPlan/FloorPlanDetails/SpotUpdate/SpotUpdate.static';
 import { endpoints } from '../static/endpoints';
-import { get, post } from './fetchService';
-export interface SpotInterface {
-    id: string;
-    name: string;
-    description: string;
-    isPermanent: string;
-    top: number;
-    left: number;
-    spotTypeId: string;
-    floorPlanId: string;
-    createdAt: Date;
-    updatedAt: Date;
-    modifiedBy: string;
-}
-
-export interface GetSpot {
-    floorPlanId: string;
-    spotTypeId: string;
-}
+import { del, get, patch, post } from './fetchService';
 
 // Function to get all spots
 const getAll = async (): Promise<SpotMarker[]> => {
@@ -30,6 +14,12 @@ const getAll = async (): Promise<SpotMarker[]> => {
 const getSpotById = async (id: string): Promise<SpotInterface> => {
     const response = await get(`${endpoints.getSpots}/${id}`, {});
     return response;
+};
+
+// Function to get a spot by floor plan id
+const getSpotsByFloorPlanId = async (floorPlanId: string): Promise<SpotMarker[]> => {
+    const spots = await get(`${endpoints.getSpotsByFloorPlanId}?floorPlanId=${floorPlanId}`, {});
+    return spots;
 };
 
 // Function to get all spots by spot type and floor plan
@@ -67,7 +57,6 @@ const getFreeSpotsBySpotTypeAndLocation = async ({
     );
 };
 
-
 // Function to check a spot
 const checkSpot = async ({
     top,
@@ -96,11 +85,22 @@ const createMultipleSpots = async ({ markers }: MultipleSpots): Promise<Multiple
     return await post(`${endpoints.createSpot}`, { markers });
 };
 
+const updateSpot = async ({ id, name, description, isPermanent, modifiedBy }: SpotUpdate): Promise<SpotMarker> => {
+    return await patch(`${endpoints.updateSpot}/${id}`, { name, description, isPermanent, modifiedBy });
+};
+
+const delSpot = async (id: string) => {
+    return await del(endpoints.deleteSpot + id, {});
+};
+
 export {
     getAll,
     getSpotById,
     checkSpot,
     createMultipleSpots,
+    getSpotsByFloorPlanId,
     getAllBySpotTypeAndFloorPlan,
     getFreeSpotsBySpotTypeAndLocation,
+    updateSpot,
+    delSpot,
 };

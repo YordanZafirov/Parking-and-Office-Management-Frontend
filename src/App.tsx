@@ -28,6 +28,7 @@ import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetail
 import ReservationSummary from './pages/ReservationSummary/ReservationSummary';
 
 import SpotSelection from './pages/CreateReservation/SpotSelection/SpotSelection';
+import SpotUpdate from './pages/FloorPlan/FloorPlanDetails/SpotUpdate/SpotUpdate';
 
 export const StyledApp = styled.div`
     min-height: 100vh;
@@ -53,8 +54,9 @@ function App() {
 
                         <Route path={route.createNewFloorPlan} element={<CreateNewFloorPlanForm />} />
                         <Route path={route.floorPlan} element={<FloorPlanPage />} />
-                        <Route path={`${route.floorPlan}/:id`} element={<FloorPlanDetails />} />
-
+                        <Route path={`${route.floorPlan}/:id`} element={<FloorPlanDetails />}>
+                            <Route path={`${route.floorPlan}/:id/:spotid`} element={<SpotUpdate />} />
+                        </Route>
                         <Route path={route.login} element={<Login />} />
                         <Route path={route.register} element={<Register />} />
                         <Route path={route.user} element={<UsersPage />} />
@@ -82,7 +84,8 @@ function App() {
                             <Route path="/spot/create" element={<AddSpotForm />} />
                             <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
                             <Route path={`${route.user}/:id/change-picture`} element={<ChangeProfilePictureForm />} />
-                            <Route path="/create-reservation/:id" element={<SpotSelection />} />
+                            <Route path={`${route.createReservation}/:id`} element={<SpotSelection />} />
+                            <Route path={`${route.floorPlan}/:id/:spotid`} element={<SpotUpdate />} />
                         </Routes>
                     )}
                 </ReservationProvider>

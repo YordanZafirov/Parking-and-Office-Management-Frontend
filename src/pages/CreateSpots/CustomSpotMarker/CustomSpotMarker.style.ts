@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Tooltip } from 'react-tooltip';
 
 const MarkerStyled = styled.div`
     width: 1rem;
@@ -9,8 +10,13 @@ const MarkerStyled = styled.div`
     position: relative;
     transform: rotate(45deg);
     border: 0.1rem solid var(--blue-green-dark);
-    
-    @media screen and (max-width:800px) {
+    cursor: pointer;
+
+    &.custom-marker_true {
+        background: red;
+    }
+
+    @media screen and (max-width: 800px) {
         width: 0.85rem;
         height: 0.85rem;
     }
@@ -28,4 +34,14 @@ const MarkerStyled = styled.div`
     }
 `;
 
-export { MarkerStyled };
+const StyledToolTip = styled(Tooltip)`
+    &.spot-info {
+        background: var(--beige-light);
+        color: black;
+        text-align: center;
+        padding: 0.5rem;
+        z-index: 1;
+    }
+`;
+
+export { MarkerStyled, StyledToolTip };

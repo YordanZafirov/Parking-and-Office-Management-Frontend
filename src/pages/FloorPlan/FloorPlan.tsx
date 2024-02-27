@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowIcon, BackButton, LinkFloorPlan, ListContainer, LocationTableStyle } from './FloorPlan.style';
 import DeleteIcon from '../../components/icons/DeleteIcon';
 import useModal from '../../components/ModalList/useModal';
-import DeleteFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/DeleteModal/DeleteModal';
+import DeleteFloorPlanModal from './FloorPlanListModal/DeleteModal/DeleteModal';
 import EditIcon from '../../components/icons/EditIcon';
-import EditFloorPlanModal from './FloorPlanDetails/FloorPlanListModal/EditModal/EditModal';
+import EditFloorPlanModal from './FloorPlanListModal/EditModal/EditModal';
 import useFloorPlan from './FloorPlan.logic';
 import { FaArrowLeft } from 'react-icons/fa';
 

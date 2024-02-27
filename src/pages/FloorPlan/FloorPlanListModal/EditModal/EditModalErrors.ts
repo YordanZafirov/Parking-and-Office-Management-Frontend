@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { EditFormErrors } from '../../../FloorPlan.static';
+import { EditFormErrors } from '../../FloorPlan.static';
 
 export function useEditModalError() {
     const [formErrors, setFormErrors] = useState<EditFormErrors>({
