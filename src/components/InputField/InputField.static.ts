@@ -4,10 +4,11 @@ interface InputProps {
     type?: string;
     id?: string;
     label?: string;
-    value?: string | number;
+    value?: string | number | boolean;
     name?: string;
     className?: string;
     placeholder?: string;
+    checked?: boolean;
     error?: boolean;
     errorMessage?: string;
     disabled?: boolean;

@@ -10,6 +10,7 @@ const MarkerStyled = styled.div`
     position: relative;
     transform: rotate(45deg);
     border: 0.1rem solid var(--blue-green-dark);
+    cursor: pointer;
 
     &.custom-marker_true {
         background: red;
@@ -39,6 +40,7 @@ const StyledToolTip = styled(Tooltip)`
         color: black;
         text-align: center;
         padding: 0.5rem;
+        z-index: 1;
     }
 `;
 

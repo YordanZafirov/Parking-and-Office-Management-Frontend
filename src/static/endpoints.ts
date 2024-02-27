@@ -36,8 +36,8 @@ export const endpoints = {
     getSpots: `${BASE_URL}/spot`,
     getSingleSpot: `${BASE_URL}/spot/:spotId`,
     createSpot: `${BASE_URL}/spot`,
-    updateSpot: `${BASE_URL}/spot/:spotId`,
-    deleteSpot: `${BASE_URL}/spot/:spotId`,
+    updateSpot: `${BASE_URL}/spot`,
+    deleteSpot: `${BASE_URL}/spot/`,
     checkSpot: `${BASE_URL}/spot/check`,
     getSpotsByFloorPlanId: `${BASE_URL}/spot/by-floorPlan`,
     getBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-floorplan/search`,
@@ -45,6 +45,7 @@ export const endpoints = {
 
     // RESERVATION
     reservation: `${BASE_URL}/reservation`,
+    getResevationsBySpotId: `${BASE_URL}/reservation/by-spot`,
     getPastReservationsByUser: `${BASE_URL}/reservation/by-user-past/`,
     getCurrentReservationsByUser: `${BASE_URL}/reservation/by-user-current/`,
     getFutureReservationsByUser: `${BASE_URL}/reservation/by-user-future/`,
