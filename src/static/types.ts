@@ -1,4 +1,5 @@
 export interface ReservationInterface {
+  error?: any;
   id?: string;
   start: Date;
   end: Date;
@@ -9,4 +10,5 @@ export interface ReservationInterface {
   updatedAt?: Date;
   deletedAt?: null;
   modifiedBy: string;
+  
 }
