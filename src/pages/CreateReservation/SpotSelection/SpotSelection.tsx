@@ -1,9 +1,8 @@
-import { BaseButton } from '../../../components/CommonStyledElements';
+import { BaseButton, FormButtonsContainer } from '../../../components/CommonStyledElements';
 import Modal from '../../../components/Modal/Modal';
 import { FormStyled } from '../../CreateSpots/AddSpotForm/AddSpotForm.style';
 import InputField from '../../../components/InputField/InputField';
 import { useReservSpot } from './SpotSelection.logic';
-import { ButtonsContainer } from '../../CreateSpots/CreateSpotsPage.style';
 
 export default function SpotSelection() {
     const { formik, navigate, spotProps, startPeriodDate, startPeriodTime, endPeriodDate, endPeriodTime } =
@@ -36,18 +35,18 @@ export default function SpotSelection() {
                     onChange={formik.handleChange}
                 />
                 {formik.errors.comment && formik.touched.comment ? <div>{formik.errors.comment}</div> : null}
-                <ButtonsContainer>
+                <FormButtonsContainer>
                     <BaseButton type={'submit'}>Add reservation</BaseButton>
                     <BaseButton
                         type="button"
-                        className="create-btn"
+                        className="close-btn"
                         onClick={() => {
                             navigate(-1);
                         }}
                     >
                         Close
                     </BaseButton>
-                </ButtonsContainer>
+                </FormButtonsContainer>
                 {formik.errors.error ? <div>{formik.errors.error}</div> : null}
             </FormStyled>
         </Modal>

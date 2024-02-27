@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const BaseButton = styled.button`
     align-self: center;
-    background-color: var(--brown);
+    background-color: var(--blue-green-light);
     border: transparent;
     border-radius: 10px;
     box-shadow: darkgrey 15px 28px 25px -18px;
@@ -94,13 +94,8 @@ export const BaseButton = styled.button`
         margin: 0.5rem;
     }
     &.close-btn {
-        background-color: transparent;
-        position: relative;
-        padding: 0.2rem;
-        right: 0.5rem;
-        top: 0.5rem;
-        align-self: flex-end;
-        margin: 0;
+        background-color: var(--brown);
+        margin: 0.5rem;
     }
     &:disabled {
         opacity: 0.5;
@@ -137,6 +132,12 @@ export const StyledCard = styled.div`
     padding: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const FormButtonsContainer = styled.div`
+    display: flex;
     justify-content: center;
     align-items: center;
 `;

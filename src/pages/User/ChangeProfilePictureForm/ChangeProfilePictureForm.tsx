@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import Modal from "../../../components/Modal/Modal";
 import useChangeProfilePicture from "./ChangeProfilePictureForm.logic";
-import { BaseButton } from "../../../components/CommonStyledElements";
+import { BaseButton, FormButtonsContainer } from "../../../components/CommonStyledElements";
 import { StyledProfilePictureForm } from "./ChangeProfilePictureForm.styles";
 import InputField from "../../../components/InputField/InputField";
 
@@ -12,9 +12,6 @@ const ChangeProfilePictureForm = () => {
     return (
         <Modal>
             <StyledProfilePictureForm onSubmit={formik.handleSubmit}>
-                <BaseButton type="button" className="close-btn" onClick={() => navigate(-1)}>
-                    Close
-                </BaseButton>
                 <h2 className="form-title">Change Profile Picture</h2>
                 
                 <InputField
@@ -32,7 +29,18 @@ const ChangeProfilePictureForm = () => {
                 {formik.errors.imgUrl && formik.touched.imgUrl ? (
                     <div>{formik.errors.imgUrl}</div>
                 ) : null}
-                <button type="submit">Change Profile Picture</button>
+                <FormButtonsContainer>
+                    <BaseButton type={'submit'}>Change Picture</BaseButton>
+                    <BaseButton
+                        type="button"
+                        className="close-btn"
+                        onClick={() => {
+                            navigate(-1);
+                        }}
+                    >
+                        Close
+                    </BaseButton>
+                </FormButtonsContainer>
                 {formik.errors.error ? <div>{formik.errors.error}</div> : null}
             </StyledProfilePictureForm>
         </Modal>

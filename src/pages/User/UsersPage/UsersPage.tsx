@@ -1,4 +1,4 @@
-import { BaseButton, PageTitle } from "../../../components/CommonStyledElements";
+import { PageTitle } from "../../../components/CommonStyledElements";
 import Loader from "../../../components/loader/Loader";
 import SearchBar from "../../../components/searchBar/SearchBar";
 import UserCardsContainer from "./UserCard/UserCardsContainer";
