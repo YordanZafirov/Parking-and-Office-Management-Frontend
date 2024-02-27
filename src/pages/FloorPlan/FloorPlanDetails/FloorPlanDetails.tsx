@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FloorPlanDetailsContainer, HeadingFloorPlan } from './FloorPlanDetails.style';
+import { FloorPlanDetailsContainer, HeadingFloorPlan, ImageStyled } from './FloorPlanDetails.style';
 import { getFloorPlan } from '../../../services/floorPlanService';
 import { FloorPlan } from '../FloorPlan.static';
+import CustomMarker from '../../CreateSpots/CustomSpotMarker/CustomSpotMarker';
+import ImageMarker from 'react-image-marker';
+import Loader from '../../../components/loader/Loader';
 import { BackButton, ListContainer } from '../FloorPlan.style';
 import { FaArrowLeft } from 'react-icons/fa';
+import { getSpotsByFloorPlanId } from '../../../services/spotService';
+import { useQuery } from 'react-query';
 
 const FloorPlanDetails = () => {
     const navigate = useNavigate();
@@ -12,10 +17,9 @@ const FloorPlanDetails = () => {
     const { id } = useParams();
     console.log('useParams ID:', id);
     const [floorPlan, setFloorPlan] = useState<FloorPlan | null>(null);
+    const { data: spotsByFloorPlan, error, isLoading } = useQuery('spotsByFloorPlan', () => getSpotsByFloorPlanId(id!));
 
     useEffect(() => {
-        console.log('Effect is running');
-        console.log('ID:', id);
         if (id) {
             getFloorPlan(id)
                 .then((data: FloorPlan) => {
@@ -32,6 +36,14 @@ const FloorPlanDetails = () => {
         return <div>Loading...</div>;
     }
 
+    if (isLoading) {
+        return <Loader />;
+    }
+
+    if (error) {
+        return <p>Error at Floor Plan Details page</p>;
+    }
+
     const handleGoBack = () => {
         navigate(-1);
     };
@@ -45,7 +57,15 @@ const FloorPlanDetails = () => {
             <FloorPlanDetailsContainer>
                 <div key={floorPlan.id}>
                     <HeadingFloorPlan>{floorPlan.name}</HeadingFloorPlan>
-                    <img src={floorPlan.imgUrl} alt="Floor Plan" style={{ maxWidth: '100%' }} />
+                    <ImageStyled>
+                        {floorPlan && spotsByFloorPlan && (
+                            <ImageMarker
+                                src={floorPlan.imgUrl!}
+                                markers={spotsByFloorPlan}
+                                markerComponent={CustomMarker}
+                            />
+                        )}
+                    </ImageStyled>
                 </div>
             </FloorPlanDetailsContainer>
         </ListContainer>

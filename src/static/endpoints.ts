@@ -39,6 +39,7 @@ export const endpoints = {
     updateSpot: `${BASE_URL}/spot/:spotId`,
     deleteSpot: `${BASE_URL}/spot/:spotId`,
     checkSpot: `${BASE_URL}/spot/check`,
+    getSpotsByFloorPlanId: `${BASE_URL}/spot/by-floorPlan`,
     getBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-floorplan/search`,
     getFreeBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-location-free/search`,
 
