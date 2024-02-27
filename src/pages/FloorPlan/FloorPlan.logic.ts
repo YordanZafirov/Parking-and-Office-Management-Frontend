@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 import useToken from '../../hooks/Token/Token.hook';
 
 function useFloorPlan() {
-    const { data: floorPlans, isLoading, error, refetch } = useQuery('floorPlan', () => getFloorPlans());
+    const { isLoading, refetch } = useQuery('floorPlan', () => getFloorPlans());
     const decodedToken = useToken();
 
     const [floorPlan, setFloorPlan] = useState<FloorPlanProp[]>([]);
@@ -49,9 +49,9 @@ function useFloorPlan() {
 
     const onDeleteFloorPlan = async (floorPlanId: string) => {
         try {
-            console.log('Deleting floor plan...');
             await deleteFloorPlan(floorPlanId);
-            console.log('Floor plan deleted successfully');
+            refetch();
+            setFloorPlan((prevFloorPlans) => prevFloorPlans.filter((plan) => plan.id !== floorPlanId));
         } catch (error) {
             console.error('Error deleting floor plan:', error);
         }
@@ -72,6 +72,14 @@ function useFloorPlan() {
         try {
             if (newFloorPlanData.name !== originalFloorPlanName) {
                 await updateFloorPlan(floorPlanId, newFloorPlanData);
+                setFloorPlan((prevFloorPlans) =>
+                    prevFloorPlans.map((plan) => {
+                        if (plan.id === floorPlanId) {
+                            return { ...plan, name: newFloorPlanData.name };
+                        }
+                        return plan;
+                    }),
+                );
             } else {
                 const { name: _, ...updatedFloorPlanData } = newFloorPlanData;
                 await updateFloorPlan(floorPlanId, updatedFloorPlanData);
@@ -95,7 +103,6 @@ function useFloorPlan() {
             if (selectedFloorPlanIdForEdit) {
                 const newFloorPlanData = {
                     name: currentFloorPlanName,
-                    image: currentFloorPlanImage,
                     modifiedBy: decodedToken?.id,
                 };
 
@@ -109,8 +116,10 @@ function useFloorPlan() {
             console.error('Error handling edit confirmation:', error);
         }
     };
+
     return {
         floorPlan,
+        isLoading,
         onDeleteClick,
         onDeleteConfirm,
         onEditClick,

@@ -13,7 +13,6 @@ const FloorPlanDetails = () => {
         console.log('Effect is running');
         console.log('ID:', id);
         if (id) {
-            // Fetch floor plan details based on the ID
             getFloorPlan(id)
                 .then((data: FloorPlan) => {
                     console.log('Fetched data:', data);
@@ -26,7 +25,7 @@ const FloorPlanDetails = () => {
     console.log('Floor Plan State:', floorPlan);
 
     if (!floorPlan) {
-        return <div>Loading...</div>; // You may want to add a loading state
+        return <div>Loading...</div>;
     }
 
     return (
