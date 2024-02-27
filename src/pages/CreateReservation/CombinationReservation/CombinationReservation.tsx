@@ -3,7 +3,6 @@ import InputField from '../../../components/InputField/InputField';
 import { FormStyled } from '../../CreateSpots/AddSpotForm/AddSpotForm.style';
 import { useReserveSpotCombination } from './CombinationReservation.logic';
 import CombinationReservationModal from './CombinationReservationModal/CombinationReservationModal';
-import SpotCard from './SpotCard';
 
 export default function CombinationReservation() {
     const { formik, navigate } = useReserveSpotCombination();

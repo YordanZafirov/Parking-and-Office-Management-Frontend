@@ -3,9 +3,9 @@ import { useReservationContext } from "../../../context/ReservationContext";
 import useToken from "../../../hooks/Token/Token.hook";
 import { useFormik } from "formik";
 import { CombinationReservationSchema } from "./CombinationReservation.static";
-import { ReservationInterface } from "../../Reservation/Reservation.static";
 import { checkReservation } from "../../../services/reservationService";
 import { route } from "../../../static/routes";
+import { ReservationInterface } from "../../../static/types";
 
 function useReserveSpotCombination() {
     const { addReservation } = useReservationContext();
