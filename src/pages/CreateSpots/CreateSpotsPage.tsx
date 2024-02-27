@@ -4,9 +4,9 @@ import { useAddSpot } from './AddSpotForm/AddSpotForm.logic';
 import CustomMarker from './CustomSpotMarker/CustomSpotMarker';
 import { useLocation } from 'react-router-dom';
 import { SpotMarker } from './AddSpotForm/AddSpotForm.static';
-import { ButtonsContainer, DivFlexStyled } from './CreateSpotsPage.style';
+import { DivFlexStyled } from './CreateSpotsPage.style';
 import { useCreateSpots } from './CreateSpotsPage.logic';
-import { BaseButton, Container } from '../../components/CommonStyledElements';
+import { BaseButton, Container, FormButtonsContainer } from '../../components/CommonStyledElements';
 import { route } from '../../static/routes';
 
 const floorPlan =
@@ -33,14 +33,14 @@ export default function CreateSpots() {
                     markerComponent={CustomMarker}
                 />
             </DivFlexStyled>
-            <ButtonsContainer>
+            <FormButtonsContainer>
                 <BaseButton className="remove-btn" onClick={handleClear}>
                     Clear All Spots
                 </BaseButton>
                 <BaseButton className="create-btn" onClick={createSpots}>
                     Save All Spots
                 </BaseButton>
-            </ButtonsContainer>
+            </FormButtonsContainer>
         </Container>
     );
 }
