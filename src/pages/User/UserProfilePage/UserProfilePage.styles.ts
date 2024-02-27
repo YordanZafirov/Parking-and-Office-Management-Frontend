@@ -55,7 +55,6 @@ export const UserProfileContainer = styled.div`
     margin: 30px 10px;
     display: grid;
     grid-template-columns: 60% 40%;
-    gap: 20px;
     padding: 10px;
     max-width: 1500px;
     border-radius: 8px;
