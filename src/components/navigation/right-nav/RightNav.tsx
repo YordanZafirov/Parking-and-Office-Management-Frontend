@@ -2,11 +2,12 @@ import { NavLink } from 'react-router-dom';
 import { route } from '../../../static/routes';
 
 import { Ul } from './RightNav.style';
-// import { PopoverContainer, PopoverContent, PopoverLink, ProfileSpan } from './Popover.style';
 import { useAuth } from '../../../context/AuthContext';
 import useToken from '../../../hooks/Token/Token.hook';
+import useRightNav from './RightNav.logic';
 
 import UserRoleHOC from '../../../pages/UserRoleHOC';
+import CalendarIcon from '../../../pages/ReservationSummary/CalendarIcon/CalendarIcon';
 
 interface NavProps {
     open: boolean;
@@ -18,28 +19,31 @@ interface NavProps {
 // `;
 
 const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
-    const { isAuthenticated, logout } = useAuth();
+    const { isAuthenticated } = useAuth();
     const decodedToken = useToken();
-    // const { showPopover, handleProfileClick, handlePopoverClose, handleCloseNav } = useRightNav(handleClick);
+    const { handleCloseNav } = useRightNav(handleClick);
 
     return (
         <nav>
             <Ul open={open}>
                 {isAuthenticated ? (
                     <>
+                        <NavLink to={route.reservationSummary} className="nav-link" onClick={handleCloseNav}>
+                            <CalendarIcon />
+                        </NavLink>
                         <UserRoleHOC>
-                            <NavLink to={`/admin`}>
+                            <NavLink to={`/admin`} className="nav-link" onClick={handleCloseNav}>
                                 <li>Admin</li>
                             </NavLink>
                         </UserRoleHOC>
 
-                        <NavLink to={`/user/${decodedToken?.id}`}>
+                        <NavLink to={`/user/${decodedToken?.id}`} className="nav-link" onClick={handleCloseNav}>
                             <li>Profile</li>
                         </NavLink>
                     </>
                 ) : (
                     <>
-                        <NavLink to={route.login}>
+                        <NavLink to={route.login} className="nav-link" onClick={handleCloseNav}>
                             <li>Login</li>
                         </NavLink>
                     </>

@@ -4,6 +4,7 @@ import { NavProps } from "./RightNav.static";
 export const Ul = styled.ul<NavProps>`
   list-style: none;
   display: flex;
+  align-items: center;
   flex-flow: row nowrap;
 
   li {

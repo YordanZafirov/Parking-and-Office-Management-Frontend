@@ -1,5 +1,6 @@
 import { MultipleReservations } from '../pages/CreateReservation/SpotSelection/SpotSelection.static';
-import { ReservationInterface } from '../pages/Reservation/Reservation.static';
+import { ReservationInterface } from '../static/types';
+
 import { endpoints } from '../static/endpoints';
 import { get, del, post } from './fetchService';
 
@@ -9,9 +10,22 @@ export const getAllReservations = async (): Promise<ReservationInterface[]> => {
     return response;
 };
 
-// Function to get all reservations by user id
-export const getFutureReservationsByUserId = async (userId: string): Promise<ReservationInterface[]> => {
-    const response = await get(endpoints.getFutureReservationsByUser + userId, {});
+// Function to get all past reservations by user
+// TODO
+export const getPastReservationsByUserId = async (id: string | undefined): Promise<ReservationInterface[]> => {
+    const response = await get(`${endpoints.getPastReservationsByUser}${id}`, {});
+    return response;
+};
+
+// Function to get all current reservations by user
+export const getCurrentReservationsByUserId = async (id: string | undefined): Promise<ReservationInterface[]> => {
+    const response = await get(`${endpoints.getCurrentReservationsByUser}${id}`, {});
+    return response;
+};
+
+// Function to get all future reservations by user
+export const getFutureReservationsByUserId = async (id: string | undefined): Promise<ReservationInterface[]> => {
+    const response = await get(`${endpoints.getFutureReservationsByUser}${id}`, {});
     return response;
 };
 

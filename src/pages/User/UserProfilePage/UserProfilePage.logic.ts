@@ -1,15 +1,11 @@
 import { useLocation, useNavigate, useParams } from 'react-router';
 import { useQuery } from 'react-query';
-import {
-    getCurrentReservationsByUser,
-    getFutureReservationsByUser,
-    getPastReservationsByUser,
-    getUser,
-} from '../../../services/userService';
+import { getUser } from '../../../services/userService';
 import { route } from '../../../static/routes';
 import { SetStateAction, useState } from 'react';
 import { useAuth } from '../../../context/AuthContext';
-
+import { getCurrentReservationsByUserId, getFutureReservationsByUserId, getPastReservationsByUserId } from '../../../services/reservationService';
+import useToken from '../../../hooks/Token/Token.hook';
 
 // Custom hook to fetch user data
 export const useUser = (userId: string | undefined) => {
@@ -23,17 +19,17 @@ export const usePastReservationsByUser = (userId: string | undefined) => {
         data: reservations,
         refetch,
         isLoading,
-    } = useQuery(['pastReservationsByUserId'], () => getPastReservationsByUser(userId));
+    } = useQuery(['pastReservationsByUserId'], () => getPastReservationsByUserId(userId));
     return { pastReservations: reservations, pastReservationsRefetch: refetch, arePastReservationsLoading: isLoading };
 };
 
 // Custom hook to fetch current reservations by user
-export const useCurrentReservationsByUser = (userId: string | undefined) => {
+export const useCurrentReservationsByUserId = (userId: string | undefined) => {
     const {
         data: reservations,
         refetch,
         isLoading,
-    } = useQuery(['currentReservationsByUserId'], () => getCurrentReservationsByUser(userId));
+    } = useQuery(['currentReservationsByUserId'], () => getCurrentReservationsByUserId(userId));
     return {
         currentReservations: reservations,
         currentReservationsRefetch: refetch,
@@ -42,12 +38,14 @@ export const useCurrentReservationsByUser = (userId: string | undefined) => {
 };
 
 // Custom hook to fetch future reservations by user
-export const useFutureReservationsByUser = (userId: string | undefined) => {
+export const useFutureReservationsByUserId = () => {
+    const decodedToken = useToken();
+    const { id: userId } = decodedToken || {};
     const {
         data: reservations,
         refetch,
         isLoading,
-    } = useQuery(['futureReservationsByUserId'], () => getFutureReservationsByUser(userId));
+    } = useQuery(['futureReservationsByUserId', userId], () => getFutureReservationsByUserId(userId));
     return {
         futureReservations: reservations,
         futureReservationsRefetch: refetch,
@@ -61,9 +59,9 @@ export const UserProfilePageLogic = () => {
     const { user, userRefetch } = useUser(userId);
     const { pastReservations, arePastReservationsLoading, pastReservationsRefetch } = usePastReservationsByUser(userId);
     const { currentReservations, areCurrentReservationsLoading, currentReservationsRefetch } =
-        useCurrentReservationsByUser(userId);
+        useCurrentReservationsByUserId(userId);
     const { futureReservations, areFutureReservationsLoading, futureReservationsRefetch } =
-        useFutureReservationsByUser(userId);
+        useFutureReservationsByUserId();
     console.log([futureReservations]);
     const [activeTab, setActiveTab] = useState('future'); // State to track active tab
     const { logout } = useAuth();
@@ -73,7 +71,7 @@ export const UserProfilePageLogic = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const reservationTypes = {past: 'Past', current: 'Current', future: 'Future'};
+    const reservationTypes = { past: 'Past', current: 'Current', future: 'Future' };
 
     return {
         user,

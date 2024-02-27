@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { SpotTypeContainer, SpotTypeImage, SpotTypeParagraph, SpotTypeImageContainer } from './SpotType.style';
+import { SpotTypeContainer, SpotTypeImage, SpotTypeParagraph, SpotTypeImageContainer } from './SpotTypeCards.style';
 import { BaseButton, Container, PageTitle, StyledCard } from '../../../components/CommonStyledElements';
-import { SpotTypeInterface } from './SpotType.static';
-import { LocationInterface } from '../Location.static';
+import { SpotTypeInterface } from './SpotTypeCards.static';
+import { LocationInterface } from '../SpotType.static';
 import { route } from '../../../static/routes';
 import officeDeskPhoto from '../../../assets/office-desk.jpg';
 import conferenceRoom from '../../../assets/conference-room.jpg';
@@ -14,7 +14,7 @@ interface Location {
     spotTypeData: SpotTypeInterface[] | undefined;
 }
 
-const SpotType: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
+const SpotTypeCards: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
     const navigate = useNavigate();
 
     const renderImage = (name: string) => {
@@ -63,4 +63,4 @@ const SpotType: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
     );
 };
 
-export default SpotType;
+export default SpotTypeCards;
