@@ -13,6 +13,7 @@ import { userProfileConstants } from './UserProfilePage.static';
 import UserProfileInfo from './UserProfileInfo';
 import defaultPicture from '../../../assets/default-profile.jpg';
 import UserReservationsTable from '../../../components/UserReservationsTable/UserReservationsTable';
+import NotFound from '../../NotFound/NotFound';
 
 const UserProfilePage = () => {
     const {
@@ -32,7 +33,12 @@ const UserProfilePage = () => {
         handleTabClick,
         logout,
         reservationTypes,
+        tokenId,
     } = UserProfilePageLogic();
+
+    if (tokenId !== user?.id) {
+        return <NotFound/>;
+    }
     return (
         <div>
             {user && (

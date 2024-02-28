@@ -7,13 +7,11 @@ import { useAuth } from '../../../context/AuthContext';
 import { getCurrentReservationsByUserId, getFutureReservationsByUserId, getPastReservationsByUserId } from '../../../services/reservationService';
 import useToken from '../../../hooks/Token/Token.hook';
 
-// Custom hook to fetch user data
 export const useUser = (userId: string | undefined) => {
     const { data: user, refetch: userRefetch } = useQuery(['user', userId], () => getUser(userId));
     return { user, userRefetch };
 };
 
-// Custom hook to fetch past reservations by user
 export const usePastReservationsByUser = (userId: string | undefined) => {
     const {
         data: reservations,
@@ -23,7 +21,6 @@ export const usePastReservationsByUser = (userId: string | undefined) => {
     return { pastReservations: reservations, pastReservationsRefetch: refetch, arePastReservationsLoading: isLoading };
 };
 
-// Custom hook to fetch current reservations by user
 export const useCurrentReservationsByUserId = (userId: string | undefined) => {
     const {
         data: reservations,
@@ -37,7 +34,6 @@ export const useCurrentReservationsByUserId = (userId: string | undefined) => {
     };
 };
 
-// Custom hook to fetch future reservations by user
 export const useFutureReservationsByUserId = () => {
     const decodedToken = useToken();
     const { id: userId } = decodedToken || {};
@@ -53,9 +49,10 @@ export const useFutureReservationsByUserId = () => {
     };
 };
 
-// Logic for the UserProfilePage component
 export const UserProfilePageLogic = () => {
     const { id: userId } = useParams();
+    const decodedToken = useToken();
+    const { id: tokenId } = decodedToken || {};
     const { user, userRefetch } = useUser(userId);
     const { pastReservations, arePastReservationsLoading, pastReservationsRefetch } = usePastReservationsByUser(userId);
     const { currentReservations, areCurrentReservationsLoading, currentReservationsRefetch } =
@@ -63,7 +60,7 @@ export const UserProfilePageLogic = () => {
     const { futureReservations, areFutureReservationsLoading, futureReservationsRefetch } =
         useFutureReservationsByUserId();
     console.log([futureReservations]);
-    const [activeTab, setActiveTab] = useState('future'); // State to track active tab
+    const [activeTab, setActiveTab] = useState('future');
     const { logout } = useAuth();
     const handleTabClick = (tab: SetStateAction<string>) => {
         setActiveTab(tab);
@@ -89,6 +86,7 @@ export const UserProfilePageLogic = () => {
         userRefetch,
         logout,
         reservationTypes,
+        tokenId,
         handleUpdateUserProfilePicture: (id: string) =>
             navigate(`${route.user}/${id}/change-picture`, { state: { background: location } }),
         handleUpdateUserPassword: (id: string) =>
