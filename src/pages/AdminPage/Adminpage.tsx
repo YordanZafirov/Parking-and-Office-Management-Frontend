@@ -124,7 +124,7 @@ const AdminPage = () => {
                         ))
                     ) : (
                         <tr>
-                            <td colSpan={4}>No Locations available</td>
+                            <td colSpan={5}>No Locations available</td>
                         </tr>
                     )}
                 </tbody>
