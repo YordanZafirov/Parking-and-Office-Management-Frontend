@@ -22,7 +22,7 @@ export const StyledModalContainer = styled.div<ModalProps>`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: var(--beige-light);
     padding: 20px;
     border-radius: 5px;
     text-align: center;

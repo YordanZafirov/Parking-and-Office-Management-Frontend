@@ -32,7 +32,10 @@ const useAdminPage = () => {
             if (newLocationData.name !== originalLocationName) {
                 await updateLocation(locationId, newLocationData);
             } else {
-                const { name: _, ...updatedLocationData } = newLocationData;
+                const updatedLocationData = { ...newLocationData };
+                if ('name' in updatedLocationData) {
+                    delete updatedLocationData.name;
+                }
                 await updateLocation(locationId, updatedLocationData);
             }
 

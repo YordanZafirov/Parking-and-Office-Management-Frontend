@@ -81,7 +81,10 @@ function useFloorPlan() {
                     }),
                 );
             } else {
-                const { name: _, ...updatedFloorPlanData } = newFloorPlanData;
+                const updatedFloorPlanData = { ...newFloorPlanData };
+                if ('name' in updatedFloorPlanData) {
+                    delete updatedFloorPlanData.name;
+                }
                 await updateFloorPlan(floorPlanId, updatedFloorPlanData);
             }
 

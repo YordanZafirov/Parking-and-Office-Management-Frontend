@@ -10,11 +10,12 @@ export const ItemsModal = styled.div`
     color: var(--white-smoke);
     display: block;
     text-align: left;
-    padding-left: 0.8rem;
+    padding-left: 10px;
+    padding-right: 10px;
 `;
 
 export const LabelModal = styled.div`
-    margin-right: 10px;
+    margin-left: 15px;
 `;
 
 export const InputModal = styled.input`
