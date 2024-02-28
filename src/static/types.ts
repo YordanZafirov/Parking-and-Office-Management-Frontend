@@ -1,5 +1,5 @@
 export interface ReservationInterface {
-  error?: any;
+  error?: string;
   id?: string;
   start: Date;
   end: Date;

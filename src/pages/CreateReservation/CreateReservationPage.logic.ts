@@ -8,8 +8,7 @@ import {
 } from '../../services/spotService';
 import { DateRangeOutput } from './Calendar/Calendar.static';
 import { FloorPlan } from '../FloorPlan/FloorPlan.static';
-import { CustomSpotMarker } from './SpotMarker/SpotMarker.static';
-
+import { CombinedReservationSpotMarker, CustomSpotMarker } from './SpotMarker/SpotMarker.static';
 
 function useShowSpots() {
     const location = useLocation();
@@ -18,6 +17,7 @@ function useShowSpots() {
     const selectedSpotType = location.state.selectedSpotType;
     const [isCombination, setIsCombination] = useState(false);
     const [spots, setSpots] = useState<CustomSpotMarker[]>([]);
+    const [combinedSpots, setCombinedSpots] = useState<CombinedReservationSpotMarker[]>([]);
     const [currentFloorPlan, setCurrentFloorPlan] = useState<FloorPlan>();
 
     const [showSpots, setShowSpots] = useState<boolean>(false);
@@ -65,7 +65,7 @@ function useShowSpots() {
                     start: calendarData.startDate,
                     end: calendarData.endDate,
                 });
-                const outputSpots = spotCombination.map((s: CustomSpotMarker) => {
+                const outputSpots = spotCombination.map((s: CombinedReservationSpotMarker) => {
                     s.floorPlanId = s.spot.floorPlanId;
                     s.description = s.spot.description;
                     s.id = s.spot.id;
@@ -76,18 +76,12 @@ function useShowSpots() {
                     s.modifiedBy = s.spot.modifiedBy;
                     s.spotTypeId = s.spot.spotTypeId;
                     s.spotType = selectedSpotType.name;
-                    s.period = {
-                        startDate: s.start,
-                        endDate: s.end,
-                        key: 'selection'
-                    } ;
                     return s;
                 });
 
-                setSpots(outputSpots);
+                setCombinedSpots(outputSpots);
                 setIsCombination(true);
                 console.log('props', outputSpots);
-                
             }
         }
     };
@@ -98,6 +92,7 @@ function useShowSpots() {
         floorPlans,
         showPlan,
         spots,
+        combinedSpots,
         showSpots,
         currentFloorPlan,
         handleDataFromCalendar,

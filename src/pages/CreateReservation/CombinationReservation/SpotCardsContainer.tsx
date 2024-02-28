@@ -1,13 +1,10 @@
 import { useLocation, useNavigate } from "react-router";
 import { BaseButton } from "../../../components/CommonStyledElements";
 import { route } from "../../../static/routes";
-import { CustomSpotMarker } from "../SpotMarker/SpotMarker.static";
 import SpotCard from "./SpotCard";
 import { ContainerDivFlex, StyledContainer } from "./SpotCardsContainer.styles";
+import { SpotCardsContainerProps } from "./SpotCardsContainer.static";
 
-interface SpotCardsContainerProps {
-    spots: CustomSpotMarker[];
-}
 const SpotCardsContainer: React.FC<SpotCardsContainerProps> = ({ spots }) => {
     const navigate = useNavigate();
     const location = useLocation();

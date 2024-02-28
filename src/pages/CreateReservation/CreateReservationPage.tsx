@@ -23,6 +23,7 @@ export default function CreateReservation() {
         calendarData,
         selectedSpotType,
         isCombination,
+        combinedSpots,
     } = useShowSpots();
 
     if (isLoading) {
@@ -59,7 +60,7 @@ export default function CreateReservation() {
             </DivFlexStyled>
 
             {isCombination ? (
-                <SpotCardsContainer spots={spots} />
+                <SpotCardsContainer spots={combinedSpots} />
                 
             ) : (
                 showSpots && calendarData && currentFloorPlan && spots && (

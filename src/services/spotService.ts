@@ -1,5 +1,5 @@
 import { GetFreeSpot } from '../pages/CreateReservation/CreateReservationPage.static';
-import { GetSpot, SpotInterface } from '../pages/CreateReservation/SpotMarker/SpotMarker.static';
+import { CombinedReservationSpotMarker, GetSpot, SpotInterface } from '../pages/CreateReservation/SpotMarker/SpotMarker.static';
 import { MultipleSpots, SpotMarker } from '../pages/CreateSpots/AddSpotForm/AddSpotForm.static';
 import { SpotUpdate } from '../pages/FloorPlan/FloorPlanDetails/SpotUpdate/SpotUpdate.static';
 import { endpoints } from '../static/endpoints';
@@ -61,7 +61,7 @@ const getFreeSpotsCombinationBySpotTypeAndFloorPlan = async ({
     spotTypeId,
     start,
     end,
-}: GetFreeSpot): Promise<SpotMarker[]> => {
+}: GetFreeSpot): Promise<CombinedReservationSpotMarker[]> => {
     console.log(start);
     console.log(end);
 
