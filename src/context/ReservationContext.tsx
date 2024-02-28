@@ -1,13 +1,14 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
-import { ReservationInterface } from '../pages/SpotType/Reservation.static';
 import { post } from '../services/fetchService';
 import { endpoints } from '../static/endpoints';
+import { ReservationInterface } from '../static/types';
 
 // Define the context interface
 interface ReservationContextInterface {
     addReservation: (reservationsToAdd: ReservationInterface) => void;
     reservations: ReservationInterface[];
     sendReservationsToBackend: (reservations: ReservationInterface[]) => void;
+    removeReservation: (id: string, start: Date, end: Date) => void;
 }
 
 // Specify the type of children prop
@@ -21,7 +22,6 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
     const [reservations, setReservation] = useState<ReservationInterface[]>([]);
 
     useEffect(() => {
-        // Load cart items from localStorage on component mount
         const storedReservation = sessionStorage.getItem('reservation');
         if (storedReservation) {
             setReservation(JSON.parse(storedReservation));
@@ -29,39 +29,47 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
     }, []);
 
     useEffect(() => {
-        // Save cart items to localStorage whenever items change
         if (reservations.length > 0) {
             sessionStorage.setItem('reservation', JSON.stringify(reservations));
         }
     }, [reservations]);
 
     const addReservation = (reservationsToAdd: ReservationInterface) => {
-        // Add the reservations to the state
         setReservation([...reservations, reservationsToAdd]);
-
-        // Send the reservations to the backend
-        // sendReservationsToBackend(reservationsToAdd);
     };
 
     const sendReservationsToBackend = async (reservations: ReservationInterface[]) => {
-        const response = await post(`${endpoints.createMultipleReservations}`, reservations);
-
-        if (response.status === 201) {
-            // If the reservations were successfully added to the backend, remove them from the state and sessionStorage
-            setReservation([]);
-            sessionStorage.removeItem('reservation');
+        const dataToSend = { reservations };
+        try {
+            const response = await post(`${endpoints.createMultipleReservations}`, dataToSend);
+            console.log('Full Response:', response);
+            if (response.status >= 200 && response.status < 300) {
+                setReservation([]);
+                sessionStorage.removeItem('reservation');
+            } else {
+                console.error('Error:', response.statusText);
+                return null;
+            }
+        } catch (error) {
+            console.error('Exception:', error.message);
+            throw error;
         }
+    };
 
-        // If the reservations were not successfully added to the backend, show an error message
-        if (response.status !== 201) {
-            console.error('Error adding reservations to the backend');
-        }
-
-        return response;
+    const removeReservation = (id: string, start: Date, end: Date) => {
+        setReservation((prevReservations) => {
+            const updatedReservations = prevReservations.filter(
+                (reservation) => reservation.spotId !== id || reservation.start !== start || reservation.end !== end,
+            );
+            sessionStorage.setItem('reservation', JSON.stringify(updatedReservations));
+            return updatedReservations;
+        });
     };
 
     return (
-        <ReservationContext.Provider value={{ addReservation, reservations, sendReservationsToBackend }}>
+        <ReservationContext.Provider
+            value={{ addReservation, reservations, sendReservationsToBackend, removeReservation }}
+        >
             {children}
         </ReservationContext.Provider>
     );
