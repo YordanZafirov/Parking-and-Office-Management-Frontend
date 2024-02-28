@@ -5,6 +5,7 @@ import { addLocation } from '../../services/locationService';
 import useToken from '../../hooks/Token/Token.hook';
 import { useState } from 'react';
 import { uploadImage } from '../../services/imageService';
+import { toast } from 'react-toastify';
 
 function useCreateLocation() {
     const [imageFile, setImageFile] = useState<File | null>(null);
@@ -42,13 +43,13 @@ function useCreateLocation() {
                 if (createdLocation.error) {
                     throw new Error(createdLocation.error);
                 } else {
-                    alert('Location created successfully!');
+                    toast.success('Location created successfully!');
                     resetForm();
                     navigate('/');
                 }
             } catch (e) {
                 const errorMessage = e instanceof Error ? e.message : 'An unexpected error occurred.';
-
+                toast.error('An unexpected error occurred.');
                 setFieldError('error', errorMessage);
                 setSubmitting(false);
             }

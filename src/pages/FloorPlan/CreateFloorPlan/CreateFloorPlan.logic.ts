@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { uploadImage } from '../../../services/imageService';
 import { FloorPlan, FloorPlanCreateShema } from '../FloorPlan.static';
 import { addFloorPlan } from '../../../services/floorPlanService';
+import { toast } from 'react-toastify';
 
 function useCreateFloorPlan() {
     const [imageFile, setImageFile] = useState<File | null>(null);
@@ -41,13 +42,13 @@ function useCreateFloorPlan() {
                 if (createdFloorPlan.error) {
                     throw new Error(createdFloorPlan.error);
                 } else {
-                    alert('Floor Plan created successfully!');
+                    toast.success('Floor Plan created successfully!');
                     resetForm();
                     navigate('/admin');
                 }
             } catch (e) {
                 const errorMessage = e instanceof Error ? e.message : 'An unexpected error occurred.';
-
+                toast.error('An unexpected error occurred.');
                 setFieldError('error', errorMessage);
                 setSubmitting(false);
             }
