@@ -4,7 +4,11 @@ import { getUser } from '../../../services/userService';
 import { route } from '../../../static/routes';
 import { SetStateAction, useState } from 'react';
 import { useAuth } from '../../../context/AuthContext';
-import { getCurrentReservationsByUserId, getFutureReservationsByUserId, getPastReservationsByUserId } from '../../../services/reservationService';
+import {
+    getCurrentReservationsByUserId,
+    getFutureReservationsByUserId,
+    getPastReservationsByUserId,
+} from '../../../services/reservationService';
 import useToken from '../../../hooks/Token/Token.hook';
 
 export const useUser = (userId: string | undefined) => {
@@ -34,9 +38,7 @@ export const useCurrentReservationsByUserId = (userId: string | undefined) => {
     };
 };
 
-export const useFutureReservationsByUserId = () => {
-    const decodedToken = useToken();
-    const { id: userId } = decodedToken || {};
+export const useFutureReservationsByUserId = (userId: string | undefined) => {
     const {
         data: reservations,
         refetch,
@@ -58,7 +60,7 @@ export const UserProfilePageLogic = () => {
     const { currentReservations, areCurrentReservationsLoading, currentReservationsRefetch } =
         useCurrentReservationsByUserId(userId);
     const { futureReservations, areFutureReservationsLoading, futureReservationsRefetch } =
-        useFutureReservationsByUserId();
+        useFutureReservationsByUserId(userId);
     console.log([futureReservations]);
     const [activeTab, setActiveTab] = useState('future');
     const { logout } = useAuth();

@@ -2,6 +2,7 @@ import { ReactNode, createContext, useContext, useEffect, useState } from 'react
 import { post } from '../services/fetchService';
 import { endpoints } from '../static/endpoints';
 import { ReservationInterface } from '../static/types';
+import { toast } from 'react-toastify';
 
 // Define the context interface
 interface ReservationContextInterface {
@@ -43,15 +44,12 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
         try {
             const response = await post(`${endpoints.createMultipleReservations}`, dataToSend);
             console.log('Full Response:', response);
-            if (response.status >= 200 && response.status < 300) {
-                setReservation([]);
-                sessionStorage.removeItem('reservation');
-            } else {
-                console.error('Error:', response.statusText);
-                return null;
-            }
+            toast.success('Reservations sent successfully');
+            setReservation([]);
+            sessionStorage.removeItem('reservation');
         } catch (error) {
-            console.error('Exception:', error.message);
+            console.error('Error occurred while sending reservations:', error);
+            toast.error('Something went wrong');
             throw error;
         }
     };
@@ -62,6 +60,7 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
                 (reservation) => reservation.spotId !== id || reservation.start !== start || reservation.end !== end,
             );
             sessionStorage.setItem('reservation', JSON.stringify(updatedReservations));
+            toast.success('Reservation removed');
             return updatedReservations;
         });
     };

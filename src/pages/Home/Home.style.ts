@@ -33,6 +33,11 @@ export const HomeContainer = styled.div`
         &:hover {
             transform: translateY(-5px);
         }
+
+        @media (max-width: 900px) {
+            width: 100%;
+            margin: 0 auto;
+        }
     }
 
     a {
@@ -40,5 +45,7 @@ export const HomeContainer = styled.div`
         text-decoration: none;
         color: #000;
         text-align: center;
+        overflow: hidden;
+        margin: 0 auto;
     }
 `;

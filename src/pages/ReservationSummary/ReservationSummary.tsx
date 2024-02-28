@@ -7,15 +7,20 @@ import { ReservationInterface } from '../../static/types';
 import Loader from '../../components/loader/Loader';
 import { useReservationContext } from '../../context/ReservationContext';
 import {
+    AddNewReservationButton,
     ReservationRemveButton,
     ReservationSummaryButton,
     ReservationSummaryContainer,
     ReservationSummaryList,
     ReservationSummaryListItem,
+    ReservationSummaryNoItems,
+    SummaryButtonContainer,
 } from './ReservationSummary.style';
 import { PageTitle } from '../../components/CommonStyledElements';
+import { useNavigate } from 'react-router-dom';
 
 const ReservationSummary = () => {
+    const navigation = useNavigate();
     const { reservations, sendReservationsToBackend, removeReservation } = useReservationContext();
     const { isLoading, error, spotNames } = useReservationSummary();
 
@@ -39,7 +44,7 @@ const ReservationSummary = () => {
         <ReservationSummaryContainer>
             <PageTitle>Reservation Summary</PageTitle>
             {reservations.length === 0 && !isLoading ? (
-                <div>No reservations</div>
+                <ReservationSummaryNoItems>No reservations</ReservationSummaryNoItems>
             ) : (
                 <>
                     <ReservationSummaryList>
@@ -62,7 +67,12 @@ const ReservationSummary = () => {
                             </ReservationSummaryListItem>
                         ))}
                     </ReservationSummaryList>
-                    <ReservationSummaryButton onClick={handleConfirm}>Confirm</ReservationSummaryButton>
+                    <SummaryButtonContainer>
+                        <AddNewReservationButton onClick={() => navigation('/')}>
+                            Add new reservation
+                        </AddNewReservationButton>
+                        <ReservationSummaryButton onClick={handleConfirm}>Confirm</ReservationSummaryButton>
+                    </SummaryButtonContainer>
                 </>
             )}
         </ReservationSummaryContainer>

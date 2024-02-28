@@ -1,16 +1,17 @@
 import Loader from '../../components/loader/Loader';
 import SpotTypeCards from './SpotTypeCards/SpotTypeCards';
 import useChoseLocation from './SpotType.logic';
-import useSpotType from './SpotTypeCards/SpotTypeCards.logic';
+import useSpotTypeCard from './SpotTypeCards/SpotTypeCards.logic';
 import { ChooseLocationContainer } from './SpotType.style';
 import UserReservationsTable from '../../components/UserReservationsTable/UserReservationsTable';
-import { UserProfilePageLogic } from '../User/UserProfilePage/UserProfilePage.logic';
+import { useFutureReservationsByUserId } from '../User/UserProfilePage/UserProfilePage.logic';
 
 const SpotType = () => {
     // Fetch location and spot type data
-    const { singleLocation, isLoading: loadingLocation, error: errorLocation } = useChoseLocation();
-    const { spotTypeByLocationId, isLoading: loadingSpotType, error: errorSpotType } = useSpotType();
-    const { futureReservations, areFutureReservationsLoading, futureReservationsRefetch } = UserProfilePageLogic();
+    const { singleLocation, isLoading: loadingLocation, error: errorLocation, userId } = useChoseLocation();
+    const { spotTypeByLocationId, isLoading: loadingSpotType, error: errorSpotType } = useSpotTypeCard();
+    const { futureReservations, areFutureReservationsLoading, futureReservationsRefetch } =
+        useFutureReservationsByUserId(userId);
 
     // Check if any of the queries is loading
     const loading = loadingLocation || loadingSpotType || areFutureReservationsLoading;
