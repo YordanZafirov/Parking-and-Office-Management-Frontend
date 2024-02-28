@@ -39,7 +39,6 @@ export const deleteUser = async (id: string): Promise<User> => {
 // Function to get all reservations by user
 export const register = async ({ email, password, modifiedBy }: RegisterUser): Promise<RegisterUser> => {
     const response = await post(`${endpoints.register}`, { email, password, modifiedBy });
-    console.log(response);
     return response;
 };
 
@@ -54,7 +53,6 @@ export const changePassword = async ({
     newPassword: string | undefined;
 }): Promise<ChangePasswordResponse> => {
     const response = await patch(`${endpoints.changePassword}/${id}`, { id, password, newPassword });
-    console.log(response);
     return response;
 };
 

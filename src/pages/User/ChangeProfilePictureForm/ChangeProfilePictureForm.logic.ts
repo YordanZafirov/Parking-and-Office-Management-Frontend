@@ -6,6 +6,7 @@ import { ChangeProfilePicture, ChangeProfilePictureSchema } from "./ChangeProfil
 import { useState } from "react";
 import { uploadImage } from "../../../services/imageService";
 import { UserProfilePageLogic } from "../UserProfilePage/UserProfilePage.logic";
+import { toast } from "react-toastify";
 
 const useChangeProfilePicture = () => {
     const navigate = useNavigate();
@@ -22,7 +23,6 @@ const useChangeProfilePicture = () => {
 
         onSubmit: async (values: ChangeProfilePicture, { setFieldError, setSubmitting, resetForm }) => {
             try {
-                // Call the change profile picture service
                 const newObj = {
                     id: values.id,
                     imgUrl: values.imgUrl
@@ -35,12 +35,12 @@ const useChangeProfilePicture = () => {
                 if (response.error) {
                     throw new Error(response.error);
                 }
+                toast.success("Profile picture changed successfully");
                 resetForm();
                 userRefetch();
                 navigate(-1);
             } catch (error) {
                 const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred.';
-                console.error('Error while change password:', error);
                 setFieldError('error', errorMessage);
                 setSubmitting(false);
             }
