@@ -1,19 +1,19 @@
 import { useFormik } from 'formik';
 import { AddSpotShema, SpotMarker } from './AddSpotForm.static';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { Marker } from 'react-image-marker';
 import { checkSpot } from '../../../services/spotService';
-import { useNavigate } from 'react-router';
-import { useQuery, useQueryClient } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
 import { getSpotTypes } from '../../../services/spotTypeService';
 import useToken from '../../../hooks/Token/Token.hook';
+import { useSpotsContext } from '../../../context/SpotsContext';
 
 function useAddSpot() {
-    const [markers, setMarkers] = useState<Array<SpotMarker>>([]);
     const navigate = useNavigate();
-    const query = useQueryClient();
-
     const user = useToken();
+
+    const { markerData, saveNewSpots } = useSpotsContext();
 
     const formik = useFormik({
         initialValues: {
@@ -28,14 +28,13 @@ function useAddSpot() {
         },
         validationSchema: AddSpotShema,
 
-        // Function to handle the form submission
         onSubmit: async (values: SpotMarker, { setFieldError, setSubmitting, resetForm }) => {
             console.log('values', values);
             try {
-                const marker: Marker | undefined = query.getQueryData('currentMarker');
+                const marker: Marker | undefined = markerData?.marker;
 
-                console.log("MARKER", marker);
-                
+                console.log('MARKER', marker);
+
                 if (marker) {
                     const newMarker: SpotMarker = {
                         top: marker.top,
@@ -44,7 +43,7 @@ function useAddSpot() {
                         description: values.description,
                         spotTypeId: values.spotTypeId,
                         isPermanent: values.isPermanent,
-                        floorPlanId: 'e878280b-3e82-472b-913b-4ee5862aa4d1', //TODO GET FLOOR PLAN ID
+                        floorPlanId: markerData?.floorPlan.id,
                         modifiedBy: user?.id,
                     };
                     console.log('new Marker', newMarker);
@@ -54,17 +53,11 @@ function useAddSpot() {
                     if (spot.error) {
                         throw new Error(spot.error);
                     } else {
-                        query.setQueryData<SpotMarker[]>('markers', (prevMarkers) => {
-                            if (!prevMarkers) {
-                                return [newMarker];
-                            }
-                            return [...prevMarkers, newMarker];
-                        });
-                        setMarkers([...markers, newMarker]);
+                        saveNewSpots(newMarker);
+                        resetForm();
+                        navigate(-1);
                     }
                 }
-                resetForm();
-                navigate(-1);
             } catch (e) {
                 const errorMessage = e instanceof Error ? e.message : 'An unexpected error occurred.';
 
@@ -73,13 +66,13 @@ function useAddSpot() {
             }
         },
     });
-    const data: SpotMarker[] | undefined = query.getQueryData('markers');
 
-    return { formik, markers: data };
+    return { formik };
 }
 
 const useSpotTypes = () => {
     const { data: spotTypes, isLoading, error, refetch } = useQuery({ queryKey: ['spotTypes'], queryFn: getSpotTypes });
+    useEffect(() => {}, [spotTypes]);
     return { spotTypes, isLoading, error, refetch };
 };
 

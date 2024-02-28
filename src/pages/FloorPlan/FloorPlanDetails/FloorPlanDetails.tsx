@@ -1,11 +1,10 @@
 import { FloorPlanDetailsContainer, HeadingFloorPlan, ImageStyled } from './FloorPlanDetails.style';
-import CustomMarker from '../../CreateSpots/CustomSpotMarker/CustomSpotMarker';
 import ImageMarker from 'react-image-marker';
 import Loader from '../../../components/loader/Loader';
 import { BackButton, ListContainer } from '../FloorPlan.style';
-
 import { useFloorPlanDetails } from './FloorPlanDetails.logic';
 import { FaArrowLeft } from 'react-icons/fa6';
+import SpotUpdateMarker from './SpotUpdateMarker/SpotUpdateMarker';
 
 const FloorPlanDetails = () => {
     const { floorPlan, spotsByFloorPlan, error, isLoading, handleGoBack } = useFloorPlanDetails();
@@ -36,7 +35,7 @@ const FloorPlanDetails = () => {
                             <ImageMarker
                                 src={floorPlan.imgUrl!}
                                 markers={spotsByFloorPlan}
-                                markerComponent={CustomMarker}
+                                markerComponent={SpotUpdateMarker}
                             />
                         )}
                     </ImageStyled>

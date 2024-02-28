@@ -8,7 +8,7 @@ import {
 } from '../../services/spotService';
 import { DateRangeOutput } from './Calendar/Calendar.static';
 import { FloorPlan } from '../FloorPlan/FloorPlan.static';
-import { CombinedReservationSpotMarker, CustomSpotMarker } from './SpotMarker/SpotMarker.static';
+import { CombinedReservationSpotMarker, CustomSpotMarker } from './SpotMarkerReservation/SpotMarkerReservation.static';
 
 function useShowSpots() {
     const location = useLocation();

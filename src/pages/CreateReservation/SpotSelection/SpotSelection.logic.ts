@@ -4,8 +4,9 @@ import { useFormik } from 'formik';
 import { SelectSpotShema } from './SpotSelection.static';
 import { checkReservation } from '../../../services/reservationService';
 import { useReservationContext } from '../../../context/ReservationContext';
-import { ReservationInterface } from '../../Reservation/Reservation.static';
+
 import { route } from '../../../static/routes';
+import { ReservationInterface } from '../../../static/types';
 
 function useReservSpot() {
     const { addReservation } = useReservationContext();

@@ -3,7 +3,7 @@ export const route = {
     login: '/login',
     location: '/location',
     admin: '/admin',
-    createSpot: '/spot',
+    createSpot: '/spots',
     createLocation: '/createLocation',
     createNewFloorPlan: '/createNewFloorPlan',
     floorPlan: '/floorPlan',

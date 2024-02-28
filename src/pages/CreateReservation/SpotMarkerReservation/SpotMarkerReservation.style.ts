@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MarkerStyled } from '../../CreateSpots/CustomSpotMarker/CustomSpotMarker.style';
+import { MarkerStyled } from '../../CreateSpots/SpotCreationMarker/SpotCreationMarker.style';
 
 const SpotStyled = styled(MarkerStyled)`
     cursor: pointer;

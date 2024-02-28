@@ -1,3 +1,4 @@
+import { IoIosArrowForward } from 'react-icons/io';
 import styled from 'styled-components';
 import { BaseButton } from '../../components/CommonStyledElements';
 import { Link } from 'react-router-dom';
@@ -175,7 +176,6 @@ export const LinkFloorPlan = styled(Link)`
     }
 `;
 
-import { IoIosArrowForward } from 'react-icons/io';
 export const ArrowIcon = styled(IoIosArrowForward)`
     font-size: 22px;
     color: white;
@@ -183,4 +183,14 @@ export const ArrowIcon = styled(IoIosArrowForward)`
     margin-left: 8px;
     position: relative;
     top: -2px;
+`;
+
+export const AddSpotIcon = styled.span`
+    font-size: 22px;
+    color: var(--blue-green-dark);
+    vertical-align: middle;
+    margin: 0 10px 0 10px;
+    position: relative;
+    top: -2px;
+    cursor: pointer;
 `;
