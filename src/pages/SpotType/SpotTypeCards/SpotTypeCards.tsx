@@ -8,14 +8,16 @@ import officeDeskPhoto from '../../../assets/office-desk.jpg';
 import conferenceRoom from '../../../assets/conference-room.jpg';
 import phoneBooth from '../../../assets/phone-booth.jpg';
 import parkingSpot from '../../../assets/parking-spot.jpg';
+import { SpotTypeCardsOccupancyLogic } from './SpotsOccupancyLogic';
 
 interface Location {
     singleLocation: LocationInterface | undefined;
-    spotTypeData: SpotTypeInterface[] | undefined;
+    spotTypeData: SpotTypeInterface[]
 }
 
 const SpotTypeCards: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
     const navigate = useNavigate();
+    const {updatedSpotTypeData} = SpotTypeCardsOccupancyLogic(spotTypeData);
 
     const renderImage = (name: string) => {
         switch (name) {
@@ -40,7 +42,7 @@ const SpotTypeCards: React.FC<Location> = ({ singleLocation, spotTypeData }) => 
                 <>
                     <PageTitle>Reserve your spot at {singleLocation?.name}</PageTitle>
                     <SpotTypeContainer>
-                        {spotTypeData.map((spotType) => (
+                        {updatedSpotTypeData?.map((spotType) => (
                             <BaseButton
                                 key={spotType.id}
                                 className="spot-type-card"
@@ -52,6 +54,7 @@ const SpotTypeCards: React.FC<Location> = ({ singleLocation, spotTypeData }) => 
                             >
                                 <StyledCard>
                                     <SpotTypeParagraph>{spotType.name}</SpotTypeParagraph>
+                                    <SpotTypeParagraph>{`Occupancy Tomorrow: ${spotType.occupancy}%`}</SpotTypeParagraph>
                                     <SpotTypeImageContainer>{renderImage(spotType.name)}</SpotTypeImageContainer>
                                 </StyledCard>
                             </BaseButton>

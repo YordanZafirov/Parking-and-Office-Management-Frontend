@@ -1,4 +1,4 @@
-import { GetFreeSpot } from '../pages/CreateReservation/CreateReservationPage.static';
+import { GetFreeSpot, GetSpotOccupancy } from '../pages/CreateReservation/CreateReservationPage.static';
 import { CombinedReservationSpotMarker, GetSpot, SpotInterface } from '../pages/CreateReservation/SpotMarker/SpotMarker.static';
 import { MultipleSpots, SpotMarker } from '../pages/CreateSpots/AddSpotForm/AddSpotForm.static';
 import { SpotUpdate } from '../pages/FloorPlan/FloorPlanDetails/SpotUpdate/SpotUpdate.static';
@@ -38,8 +38,6 @@ const getFreeSpotsBySpotTypeAndLocation = async ({
     start,
     end,
 }: GetFreeSpot): Promise<SpotMarker[]> => {
-    console.log(start);
-    console.log(end);
 
     const data = {
         floorPlanId: floorPlanId,
@@ -62,8 +60,6 @@ const getFreeSpotsCombinationBySpotTypeAndFloorPlan = async ({
     start,
     end,
 }: GetFreeSpot): Promise<CombinedReservationSpotMarker[]> => {
-    console.log(start);
-    console.log(end);
 
     const data = {
         floorPlanId: floorPlanId,
@@ -78,6 +74,18 @@ const getFreeSpotsCombinationBySpotTypeAndFloorPlan = async ({
         {
             data,
         },
+    );
+};
+const getSpotsOccupancyBySpotTypeAndLocation = async ({
+    locationId,
+    spotTypeId,
+    start,
+    end,
+}: GetSpotOccupancy): Promise<number> => {
+
+    return await get(
+        `${endpoints.getSpotsOccupancyBySpotTypeAndLocation}?locationId=${locationId}&spotTypeId=${spotTypeId}&startDateTime=${start}&endDateTime=${end}`,
+        {},
     );
 };
 
@@ -128,4 +136,5 @@ export {
     getFreeSpotsCombinationBySpotTypeAndFloorPlan,
     updateSpot,
     delSpot,
+    getSpotsOccupancyBySpotTypeAndLocation,
 };

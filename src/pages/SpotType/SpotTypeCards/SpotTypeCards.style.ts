@@ -25,7 +25,7 @@ export const SpotTypeImageContainer = styled.div`
 
 export const SpotTypeParagraph = styled.p`
     font-size: 22px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 `;
 
 export const SpotTypeImage = styled.img`
