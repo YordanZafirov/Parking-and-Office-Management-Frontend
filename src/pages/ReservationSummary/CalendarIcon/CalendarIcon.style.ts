@@ -24,8 +24,8 @@ export const StyledCalendarIcon = styled.div`
 
 export const CalendarCount = styled.span`
   position: absolute;
-  top: 0;
-  right: -10px;
+  top: -7px;
+  right: 12px;
   background-color: #3498db;
   color: #fff;
   width: 20px;

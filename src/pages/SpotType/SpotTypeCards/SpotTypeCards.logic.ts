@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { getSpotTypeByLocationId } from "../../../services/spotTypeService";
 
-const useSpotType = () => {
+const useSpotTypeCard = () => {
   const { id } = useParams();
 
   // Fetch spot type data by location id
@@ -16,4 +16,4 @@ const useSpotType = () => {
   return { spotTypeByLocationId, isLoading, error };
 };
 
-export default useSpotType;
+export default useSpotTypeCard;

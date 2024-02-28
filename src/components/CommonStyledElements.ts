@@ -134,6 +134,10 @@ export const StyledCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+        width: 80%;
+    }
 `;
 
 export const FormButtonsContainer = styled.div`

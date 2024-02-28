@@ -15,6 +15,17 @@ export const ReservationSummaryList = styled.ul`
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     height: 100%;
+    width: 50%;
+    margin: 20px auto;
+
+    @media (max-width: 768px) {
+        width: 80%;
+    }
+`;
+
+export const ReservationSummaryNoItems = styled.div`
+    text-align: center;
+    margin: 20px 0;
 `;
 
 export const ReservationSummaryListItem = styled.li`
@@ -42,6 +53,18 @@ export const ReservationRemveButton = styled.button`
     }
 `;
 
+export const SummaryButtonContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: 20px auto;
+
+    @media (max-width: 768px) {
+        width: 80%;
+        gap: 20px;
+    }
+`;
+
 export const ReservationSummaryButton = styled.button`
     display: block;
     background-color: var(--blue-green);
@@ -57,4 +80,8 @@ export const ReservationSummaryButton = styled.button`
     &:hover {
         background-color: #0056b3;
     }
+`;
+
+export const AddNewReservationButton = styled(ReservationSummaryButton)`
+    background-color: var(--brown-light);
 `;
