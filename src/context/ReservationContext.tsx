@@ -36,7 +36,7 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
     }, [reservations]);
 
     const addReservation = (reservationToAdd: ReservationInterface) => {
-        setReservation(prevReservations => [...prevReservations, reservationToAdd]);
+        setReservation((prevReservations) => [...prevReservations, reservationToAdd]);
     };
 
     const sendReservationsToBackend = async (reservations: ReservationInterface[]) => {

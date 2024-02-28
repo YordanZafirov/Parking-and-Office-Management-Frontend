@@ -5,7 +5,7 @@ import Loader from '../../components/loader/Loader';
 import { LocationImage } from '../Home/LocationChocie/LocationChoice.style';
 import { Card, ImageContainer, ImageStyled } from './CreateReservationPage.style';
 import { DivFlexStyled } from '../CreateSpots/CreateSpotsPage.style';
-import SpotMarkerReservation from './SpotMarker/SpotMarker';
+import SpotMarkerReservation from './SpotMarkerReservation/SpotMarkerReservation';
 import CalendarPage from './Calendar/CalendarPage';
 import { FloorPlan } from '../FloorPlan/FloorPlan.static';
 import SpotCardsContainer from './CombinationReservation/SpotCardsContainer';
@@ -43,12 +43,13 @@ export default function CreateReservation() {
                         {floorPlans?.map((floorPlan: FloorPlan) => {
                             return (
                                 <BaseButton
+                                    key={floorPlan.id}
                                     className="reservation-card"
                                     onClick={() => {
                                         showPlan(floorPlan);
                                     }}
                                 >
-                                    <Card key={floorPlan.id}>
+                                    <Card>
                                         <LocationImage src={floorPlan.imgUrl} alt="floor-plan-image" />
                                         <h3>{floorPlan.name}</h3>
                                     </Card>

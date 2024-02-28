@@ -1,9 +1,9 @@
-import { SpotMarker } from '../AddSpotForm/AddSpotForm.static';
-import { MarkerStyled, StyledToolTip } from './CustomSpotMarker.style';
-import { route } from '../../../static/routes';
+import { route } from '../../../../static/routes';
+import { SpotMarker } from '../../../CreateSpots/AddSpotForm/AddSpotForm.static';
+import { MarkerStyled, StyledToolTip } from './SpotUpdateMarker.style';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-export default function CustomMarker(props: SpotMarker) {
+export default function SpotUpdateMarker(props: SpotMarker) {
     const navigate = useNavigate();
     const location = useLocation();
     const { id } = useParams();

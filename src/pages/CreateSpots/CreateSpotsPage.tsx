@@ -1,37 +1,59 @@
 import ImageMarker, { Marker } from 'react-image-marker';
 import { useNavigate } from 'react-router';
-import { useAddSpot } from './AddSpotForm/AddSpotForm.logic';
-import CustomMarker from './CustomSpotMarker/CustomSpotMarker';
 import { useLocation } from 'react-router-dom';
-import { SpotMarker } from './AddSpotForm/AddSpotForm.static';
 import { DivFlexStyled } from './CreateSpotsPage.style';
 import { useCreateSpots } from './CreateSpotsPage.logic';
 import { BaseButton, Container, FormButtonsContainer } from '../../components/CommonStyledElements';
-import { route } from '../../static/routes';
-
-const floorPlan =
-    'https://parking-and-office-management.s3.amazonaws.com/1708921481292-YARA OFFICE VARNA _lighter_2nd.jpg';
+import { useSpotsContext } from '../../context/SpotsContext';
+import Loader from '../../components/loader/Loader';
+import { BackButton } from '../FloorPlan/FloorPlan.style';
+import { FaArrowLeft } from 'react-icons/fa6';
+import SpotCreationMarker from './SpotCreationMarker/SpotCreationMarker';
 
 export default function CreateSpots() {
     const navigate = useNavigate();
     const location = useLocation();
-    const { handleAddMarker, handleClear, createSpots } = useCreateSpots();
-    const { markers } = useAddSpot();
-    let spots: SpotMarker[] = [];
-    markers ? (spots = markers) : [];
+    const {
+        handleClear,
+        handleGoBack,
+        createSpots,
+        floorPlan,
+        floorPlanError,
+        floorPlanLoading,
+        spotsError,
+        spotsLoading,
+    } = useCreateSpots();
+    const { addMarker, existingSpots } = useSpotsContext();
+
+    console.log('spots1', existingSpots);
+
+    if (floorPlanLoading || spotsLoading) {
+        return <Loader />;
+    }
+
+    if (floorPlanError || spotsError) {
+        return <p>Error at Create Spots page</p>;
+    }
 
     return (
         <Container className="App">
+            <BackButton onClick={handleGoBack}>
+                <FaArrowLeft />
+            </BackButton>
             <DivFlexStyled className="frame">
-                <ImageMarker
-                    src={floorPlan}
-                    markers={spots}
-                    onAddMarker={(marker: Marker) => {
-                        navigate(`${route.createSpot}/create`, { state: { background: location } });
-                        handleAddMarker(marker);
-                    }}
-                    markerComponent={CustomMarker}
-                />
+                {floorPlan && existingSpots && (
+                    <ImageMarker
+                        src={floorPlan.imgUrl!}
+                        markers={existingSpots}
+                        onAddMarker={(marker: Marker) => {
+                            addMarker({ marker, floorPlan });
+                            navigate(`/spots/${floorPlan.id}/create`, {
+                                state: { background: location },
+                            });
+                        }}
+                        markerComponent={SpotCreationMarker}
+                    />
+                )}
             </DivFlexStyled>
             <FormButtonsContainer>
                 <BaseButton className="remove-btn" onClick={handleClear}>

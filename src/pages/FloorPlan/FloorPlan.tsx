@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowIcon, BackButton, LinkFloorPlan, ListContainer } from './FloorPlan.style';
+import { AddSpotIcon, ArrowIcon, BackButton, LinkFloorPlan, ListContainer } from './FloorPlan.style';
 import DeleteIcon from '../../components/icons/DeleteIcon';
 import useModal from '../../components/ModalList/useModal';
 import DeleteFloorPlanModal from './FloorPlanListModal/DeleteModal/DeleteModal';
@@ -8,6 +8,7 @@ import EditFloorPlanModal from './FloorPlanListModal/EditModal/EditModal';
 import useFloorPlan from './FloorPlan.logic';
 import { FaArrowLeft } from 'react-icons/fa';
 import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
+import { useSpotsContext } from '../../context/SpotsContext';
 
 const FloorPlanPage = () => {
     const navigate = useNavigate();
@@ -27,6 +28,7 @@ const FloorPlanPage = () => {
 
     const { isVisible: isDeleteModalVisible, showModal: showDeleteModal, hideModal: hideDeleteModal } = useModal();
     const { isVisible: isEditModalVisible, showModal: showEditModal, hideModal: hideEditModal } = useModal();
+    const { setExistingSpots } = useSpotsContext();
 
     const handleGoBack = () => {
         navigate(-1);
@@ -63,6 +65,15 @@ const FloorPlanPage = () => {
                                     </td>
 
                                     <td data-label="Action:">
+                                        <AddSpotIcon
+                                            className="material-icons"
+                                            onClick={() => {
+                                                navigate(`/spots/${floorPlanItem.id}`);
+                                                setExistingSpots([]);
+                                            }}
+                                        >
+                                            maps_ugc
+                                        </AddSpotIcon>
                                         <EditIcon
                                             onClick={() => {
                                                 onEditClick(

@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router';
 import { route } from '../../../static/routes';
-import { CustomSpotMarker } from './SpotMarker.static';
-import { SpotStyled } from './SpotMarker.style';
+import { CustomSpotMarker } from './SpotMarkerReservation.static';
+import { SpotStyled } from './SpotMarkerReservation.style';
 
 export default function SpotMarkerReservation(props: CustomSpotMarker) {
     const navigate = useNavigate();
