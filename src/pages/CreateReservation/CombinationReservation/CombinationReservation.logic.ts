@@ -6,6 +6,7 @@ import { CombinationReservationSchema } from "./CombinationReservation.static";
 import { checkReservation } from "../../../services/reservationService";
 import { route } from "../../../static/routes";
 import { ReservationInterface } from "../../../static/types";
+import { CombinedReservationSpotMarker } from "../SpotMarker/SpotMarker.static";
 
 function useReserveSpotCombination() {
     const { addReservation } = useReservationContext();
@@ -25,11 +26,11 @@ function useReserveSpotCombination() {
             console.log('values', values);
             try {
                 if (user) {
-                    spots.forEach(async (spot) => {
+                    spots.forEach(async (spot: CombinedReservationSpotMarker) => {
                         const reservationData: ReservationInterface = {
                             spotId: spot.id,
-                            start: spot.period.startDate,
-                            end: spot.period.endDate,
+                            start: spot.start,
+                            end: spot.end,
                             comment: values.comment,
                             userId: user?.id,
                             modifiedBy: user?.id,

@@ -4,3 +4,9 @@ export interface GetFreeSpot {
     start: string;
     end: string;
 }
+export interface GetSpotOccupancy {
+    locationId: string | undefined;
+    spotTypeId: string;
+    start: string;
+    end: string;
+}

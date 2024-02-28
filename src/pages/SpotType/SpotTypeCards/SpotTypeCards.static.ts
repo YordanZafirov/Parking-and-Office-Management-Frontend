@@ -5,4 +5,5 @@ export interface SpotTypeInterface {
   updatedAt: Date;
   deletedAt: Date | null;
   modifiedBy: string;
+  occupancy?: number;
 }

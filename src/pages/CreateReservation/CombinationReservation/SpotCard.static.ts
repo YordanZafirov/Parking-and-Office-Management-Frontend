@@ -1,5 +1,5 @@
-import { CustomSpotMarker } from "../SpotMarker/SpotMarker.static";
+import { CombinedReservationSpotMarker } from "../SpotMarker/SpotMarker.static";
 
 export interface SpotCardProps {
-    spot: CustomSpotMarker;
+    spot: CombinedReservationSpotMarker;
 }

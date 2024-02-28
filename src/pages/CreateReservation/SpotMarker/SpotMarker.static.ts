@@ -5,6 +5,23 @@ interface CustomSpotMarker extends SpotMarker {
     period?: DateRangeOutput;
     spotType?: string;
 }
+interface CombinedReservationSpotMarker {
+    id: string;
+    name: string;
+    description: string;
+    isPermanent: string;
+    top: number;
+    left: number;
+    spotTypeId: string;
+    floorPlanId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    modifiedBy: string;
+    spotType: string;
+    spot: SpotInterface;
+    start: Date;
+    end: Date;
+}
 
 interface SpotInterface {
     id: string;
@@ -25,4 +42,4 @@ interface GetSpot {
     spotTypeId: string;
 }
 
-export type { CustomSpotMarker, SpotInterface, GetSpot };
+export type { CustomSpotMarker, CombinedReservationSpotMarker, SpotInterface, GetSpot };
