@@ -56,6 +56,30 @@ const getFreeSpotsBySpotTypeAndLocation = async ({
         },
     );
 };
+const getFreeSpotsCombinationBySpotTypeAndFloorPlan = async ({
+    floorPlanId,
+    spotTypeId,
+    start,
+    end,
+}: GetFreeSpot): Promise<SpotMarker[]> => {
+    console.log(start);
+    console.log(end);
+
+    const data = {
+        floorPlanId: floorPlanId,
+        spotTypeId: spotTypeId,
+        startDateTime: start,
+        endDateTime: end,
+    };
+    console.log('SERVICE', data);
+
+    return await get(
+        `${endpoints.getFreeSpotsCombinationBySpotTypeAndFloorPlan}?floorPlanId=${floorPlanId}&spotTypeId=${spotTypeId}&startDateTime=${start}&endDateTime=${end}`,
+        {
+            data,
+        },
+    );
+};
 
 // Function to check a spot
 const checkSpot = async ({
@@ -101,6 +125,7 @@ export {
     getSpotsByFloorPlanId,
     getAllBySpotTypeAndFloorPlan,
     getFreeSpotsBySpotTypeAndLocation,
+    getFreeSpotsCombinationBySpotTypeAndFloorPlan,
     updateSpot,
     delSpot,
 };

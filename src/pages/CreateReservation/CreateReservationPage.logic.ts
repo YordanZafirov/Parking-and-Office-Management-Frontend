@@ -2,15 +2,21 @@ import { useQuery } from 'react-query';
 import { getAllBySpotTypeAndLocation } from '../../services/floorPlanService';
 import { useLocation } from 'react-router';
 import { useState } from 'react';
-import { getFreeSpotsBySpotTypeAndLocation } from '../../services/spotService';
+import {
+    getFreeSpotsBySpotTypeAndLocation,
+    getFreeSpotsCombinationBySpotTypeAndFloorPlan,
+} from '../../services/spotService';
 import { DateRangeOutput } from './Calendar/Calendar.static';
 import { FloorPlan } from '../FloorPlan/FloorPlan.static';
 import { CustomSpotMarker } from './SpotMarker/SpotMarker.static';
 
+
 function useShowSpots() {
     const location = useLocation();
+
     const currentLocation = location.state.currentLocation;
     const selectedSpotType = location.state.selectedSpotType;
+    const [isCombination, setIsCombination] = useState(false);
     const [spots, setSpots] = useState<CustomSpotMarker[]>([]);
     const [currentFloorPlan, setCurrentFloorPlan] = useState<FloorPlan>();
 
@@ -22,20 +28,15 @@ function useShowSpots() {
 
     const [calendarData, setCalendarData] = useState<DateRangeOutput>();
 
-
-    // Function to handle the data from the calendar
     function handleDataFromCalendar(data: DateRangeOutput) {
         setCalendarData(data);
     }
 
     const { floorPlans, isLoading, error } = useFloorPlansByLocation(selectedSpotType.id, currentLocation.id);
 
-    // Function to show the floor plan and the spots
     const showPlan = async (floorPlan: FloorPlan) => {
-
         setCurrentFloorPlan(floorPlan);
         if (floorPlan && calendarData) {
-
             const data = await getFreeSpotsBySpotTypeAndLocation({
                 floorPlanId: floorPlan.id!,
                 spotTypeId: selectedSpotType.id,
@@ -43,7 +44,7 @@ function useShowSpots() {
                 end: calendarData.endDate,
             });
 
-            if (data) {
+            if (data.length > 0) {
                 console.log('data', data);
 
                 const outputSpots = data.map((spot: CustomSpotMarker) => {
@@ -53,9 +54,40 @@ function useShowSpots() {
                 });
 
                 setSpots(outputSpots);
+                console.log(outputSpots);
                 if (!showSpots) {
                     toggleSpots();
                 }
+            } else {
+                const spotCombination = await getFreeSpotsCombinationBySpotTypeAndFloorPlan({
+                    floorPlanId: floorPlan.id!,
+                    spotTypeId: selectedSpotType.id,
+                    start: calendarData.startDate,
+                    end: calendarData.endDate,
+                });
+                const outputSpots = spotCombination.map((s: CustomSpotMarker) => {
+                    s.floorPlanId = s.spot.floorPlanId;
+                    s.description = s.spot.description;
+                    s.id = s.spot.id;
+                    s.isPermanent = s.spot.isPermanent;
+                    s.left = s.spot.left;
+                    s.top = s.spot.top;
+                    s.name = s.spot.name;
+                    s.modifiedBy = s.spot.modifiedBy;
+                    s.spotTypeId = s.spot.spotTypeId;
+                    s.spotType = selectedSpotType.name;
+                    s.period = {
+                        startDate: s.start,
+                        endDate: s.end,
+                        key: 'selection'
+                    } ;
+                    return s;
+                });
+
+                setSpots(outputSpots);
+                setIsCombination(true);
+                console.log('props', outputSpots);
+                
             }
         }
     };
@@ -71,6 +103,7 @@ function useShowSpots() {
         handleDataFromCalendar,
         calendarData,
         selectedSpotType,
+        isCombination,
     };
 }
 

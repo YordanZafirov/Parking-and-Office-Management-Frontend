@@ -28,6 +28,7 @@ import FloorPlanDetails from './pages/FloorPlan/FloorPlanDetails/FloorPlanDetail
 import ReservationSummary from './pages/ReservationSummary/ReservationSummary';
 
 import SpotSelection from './pages/CreateReservation/SpotSelection/SpotSelection';
+import CombinationReservation from './pages/CreateReservation/CombinationReservation/CombinationReservation';
 import SpotUpdate from './pages/FloorPlan/FloorPlanDetails/SpotUpdate/SpotUpdate';
 
 export const StyledApp = styled.div`
@@ -75,6 +76,7 @@ function App() {
                         </Route>
                         <Route path={route.createReservation} element={<CreateReservation />}>
                             <Route path="/create-reservation/:id" element={<SpotSelection />} />
+                            <Route path="/create-reservation/combination" element={<CombinationReservation />} />
                         </Route>
                         <Route path={route.notFound} element={<NotFound />} />
                     </Routes>
@@ -85,6 +87,7 @@ function App() {
                             <Route path={`${route.user}/:id/change-password`} element={<ChangePasswordForm />} />
                             <Route path={`${route.user}/:id/change-picture`} element={<ChangeProfilePictureForm />} />
                             <Route path={`${route.createReservation}/:id`} element={<SpotSelection />} />
+                            <Route path="/create-reservation/combination" element={<CombinationReservation />} />
                             <Route path={`${route.floorPlan}/:id/:spotid`} element={<SpotUpdate />} />
                         </Routes>
                     )}
