@@ -1,5 +1,5 @@
 import ImageMarker from 'react-image-marker';
-import { BaseButton } from '../../components/CommonStyledElements';
+import { BaseButton, StyledToolTip } from '../../components/CommonStyledElements';
 import { useShowSpots } from './CreateReservationPage.logic';
 import Loader from '../../components/loader/Loader';
 import { LocationImage } from '../Home/LocationChocie/LocationChoice.style';
@@ -51,10 +51,16 @@ export default function CreateReservation() {
                                             showPlan(floorPlan);
                                         }}
                                     >
-                                        <Card>
+                                        <Card
+                                            data-tooltip-id={`component_${floorPlan.id}`}
+                                            data-tooltip-place="right-start"
+                                        >
                                             <LocationImage src={floorPlan.imgUrl} alt="floor-plan-image" />
                                             <h3>{floorPlan.name}</h3>
                                         </Card>
+                                        <StyledToolTip id={`component_${floorPlan.id}`} className="spot-info">
+                                            {<p>Select an option</p>}
+                                        </StyledToolTip>
                                     </BaseButton>
                                 );
                             })}

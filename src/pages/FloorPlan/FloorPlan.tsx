@@ -9,6 +9,7 @@ import useFloorPlan from './FloorPlan.logic';
 import { FaArrowLeft } from 'react-icons/fa';
 import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
 import { useSpotsContext } from '../../context/SpotsContext';
+import { StyledToolTip } from '../../components/CommonStyledElements';
 
 const FloorPlanPage = () => {
     const navigate = useNavigate();
@@ -66,6 +67,8 @@ const FloorPlanPage = () => {
 
                                     <td data-label="Action:">
                                         <AddSpotIcon
+                                            data-tooltip-id={`component_add_spots`}
+                                            data-tooltip-place="left"
                                             className="material-icons"
                                             onClick={() => {
                                                 navigate(`/spots/${floorPlanItem.id}`);
@@ -74,6 +77,9 @@ const FloorPlanPage = () => {
                                         >
                                             maps_ugc
                                         </AddSpotIcon>
+                                        <StyledToolTip id={`component_add_spots`} className="spot-info">
+                                            {<p>Add new spots to the floor plan</p>}
+                                        </StyledToolTip>
                                         <EditIcon
                                             onClick={() => {
                                                 onEditClick(

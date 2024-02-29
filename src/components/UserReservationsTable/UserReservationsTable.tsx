@@ -1,9 +1,9 @@
-import DeleteLocationModal from '../../pages/AdminPage/AdminListModal/DeleteModal/DeleteModal';
 import { Reservation } from '../../static/types';
 import { Container, PageTitle } from '../CommonStyledElements';
 import useModal from '../ModalList/useModal';
 import DeleteIcon from '../icons/DeleteIcon';
 import Loader from '../loader/Loader';
+import DeleteReservationModal from './DeleteModal/DeleteModal';
 import useUserReservationsTableLogic from './UserReservationsTable.logic';
 import { ReservationsTable } from './UserReservationsTable.static';
 import { UserReservationsTableStyle } from './UserReservationsTable.styles';
@@ -77,7 +77,7 @@ const UserReservationsTable = ({
             </div>
 
             {isDeleteModalVisible && (
-                <DeleteLocationModal
+                <DeleteReservationModal
                     isVisible={isDeleteModalVisible}
                     hideModal={hideDeleteModal}
                     onDeleteConfirm={onDeleteConfirm}

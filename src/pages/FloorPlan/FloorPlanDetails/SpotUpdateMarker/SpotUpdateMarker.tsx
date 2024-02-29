@@ -1,6 +1,7 @@
+import { StyledToolTip } from '../../../../components/CommonStyledElements';
 import { route } from '../../../../static/routes';
 import { SpotMarker } from '../../../CreateSpots/AddSpotForm/AddSpotForm.static';
-import { MarkerStyled, StyledToolTip } from './SpotUpdateMarker.style';
+import { MarkerStyled } from './SpotUpdateMarker.style';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export default function SpotUpdateMarker(props: SpotMarker) {
