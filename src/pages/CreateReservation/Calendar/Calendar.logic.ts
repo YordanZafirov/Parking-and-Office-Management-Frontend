@@ -44,8 +44,6 @@ const useCalendar = () => {
             formattedStartDate.setMilliseconds(0);
             const startDateOutput = new Date(formattedStartDate).toISOString();
 
-
-            // const newFormattedEndDate = new Date(formattedEndDate);
             formattedEndDate.setHours(parseInt(selectedEndTime.split(':')[0], 10));
             formattedEndDate.setMinutes(parseInt(selectedEndTime.split(':')[1], 10));
             formattedEndDate.setSeconds(0);
@@ -53,8 +51,6 @@ const useCalendar = () => {
             const newEndDate = formattedEndDate;
             const endDateOutput = new Date(newEndDate).toISOString();
 
-            console.log(formattedStartDate);
-            console.log(formattedEndDate);
             if (startDateOutput && endDateOutput) {
                 setDateTime({
                     startDate: startDateOutput,
