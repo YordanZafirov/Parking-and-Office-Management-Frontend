@@ -9,6 +9,7 @@ import { getResevationsBySpot } from '../../../../services/reservationService';
 import { useState } from 'react';
 import { useFloorPlanDetails } from '../FloorPlanDetails.logic';
 import { getSpotType } from '../../../../services/spotTypeService';
+import { toast } from 'react-toastify';
 
 function useUpdateSpot() {
     const location = useLocation();
@@ -56,6 +57,7 @@ function useUpdateSpot() {
                 if (updatedSpot.error) {
                     throw new Error(updatedSpot.error);
                 } else {
+                    toast.success("Spot is successfully updated!")
                     resetForm();
                     refetchSpots();
                     navigate(-1);
@@ -93,6 +95,7 @@ function useDeleteSpot() {
 
             const deleted = await delSpot(id);
             if (deleted) {
+                toast.success("Spot is successfully deleted!")
                 refetchSpots();
                 navigate(-1);
             }
