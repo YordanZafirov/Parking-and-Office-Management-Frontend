@@ -14,7 +14,7 @@ const ImageContainer = styled.div`
     flex-direction: column;
     width: auto;
     height: auto;
-    /* margin:2rem; */
+
     padding: 1rem;
     justify-content: center;
     background-color: var(--beige-light);
@@ -31,11 +31,11 @@ const ImageStyled = styled.div`
     width: 50%;
     border-radius: 10px;
 
-    @media screen and (max-width:900px) {
-        width: 60%
+    @media screen and (max-width: 900px) {
+        width: 60%;
     }
-    @media screen and (max-width:780px) {
-        width: 70%
+    @media screen and (max-width: 780px) {
+        width: 70%;
     }
 
     @media screen and (max-width: 640px) {
@@ -45,8 +45,8 @@ const ImageStyled = styled.div`
         width: 100%;
     }
 
-    .image-marker{
-        .image-marker__marker{
+    .image-marker {
+        .image-marker__marker {
             display: flex;
             justify-content: center;
         }

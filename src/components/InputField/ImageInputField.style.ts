@@ -14,7 +14,6 @@ const ImageInputStyle = styled.div`
         padding-left: 0.8rem;
     }
 
-    /* Input field */
     input {
         font-size: 16px;
         font-weight: 400;

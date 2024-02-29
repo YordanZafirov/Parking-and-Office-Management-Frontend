@@ -37,16 +37,12 @@ const UserProfilePage = () => {
     } = UserProfilePageLogic();
 
     if (tokenId !== user?.id) {
-        return <NotFound/>;
+        return <NotFound />;
     }
     return (
         <div>
             {user && (
                 <div>
-                    {/* <PageTitle>
-              <TitleImage src={farmIcon} alt="Farm Icon" />
-              {farm.name}
-            </PageTitle> */}
                     <UserProfileContainer>
                         <UserMainInfoContainer>
                             <UserProfilePictureContainer>

@@ -12,7 +12,6 @@ export default function SpotMarkerReservation(props: CustomSpotMarker) {
                 navigate(`${route.createReservation}/${props.id}`, {
                     state: { background: location, spotProps: props },
                 });
-                console.log('props', props);
             }}
         />
     );

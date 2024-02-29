@@ -9,7 +9,7 @@ const UserProfileInfo = ({ pastReservations, currentReservations, futureReservat
         <div>
             <DetailBullet icon={redCalendar} value={`Past reservations: ${pastReservations}`} />
             <DetailBullet icon={blueCalendar} value={`Current reservations: ${currentReservations}`} />
-            {/* Add other details as needed */}
+
             <DetailBullet icon={greenCalendar} value={`Future reservations: ${futureReservations}`} />
         </div>
     );

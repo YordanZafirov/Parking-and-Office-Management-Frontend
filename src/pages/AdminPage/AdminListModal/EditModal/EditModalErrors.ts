@@ -18,7 +18,6 @@ export function useEditModalError() {
             setFormErrors((errors) => ({ ...errors, name: 'Name must be at least 3 characters' }));
             isNameValid = false;
         } else {
-            // Clear the error
             setFormErrors((errors) => ({ ...errors, name: '' }));
         }
         return isNameValid;
@@ -34,7 +33,6 @@ export function useEditModalError() {
             setFormErrors((errors) => ({ ...errors, city: 'City must be at least 2 characters' }));
             isCityValid = false;
         } else {
-            // Clear the error
             setFormErrors((errors) => ({ ...errors, city: '' }));
         }
         return isCityValid;
@@ -50,7 +48,6 @@ export function useEditModalError() {
             setFormErrors((errors) => ({ ...errors, address: 'Address must be at least 4 characters' }));
             isAddressValid = false;
         } else {
-            // Clear the error
             setFormErrors((errors) => ({ ...errors, address: '' }));
         }
         return isAddressValid;

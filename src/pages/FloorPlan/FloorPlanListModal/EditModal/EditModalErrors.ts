@@ -16,7 +16,6 @@ export function useEditModalError() {
             setFormErrors((errors) => ({ ...errors, name: 'Name must be at least 3 characters' }));
             isNameValid = false;
         } else {
-            // Clear the error
             setFormErrors((errors) => ({ ...errors, name: '' }));
         }
         return isNameValid;

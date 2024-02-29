@@ -45,7 +45,6 @@ const useReservationSummary = () => {
 
         const spotNames = await Promise.all(spotNamesPromises);
 
-        // Map through the transformed reservations and add spotName to each reservation
         const updatedReservations = transformedReservations.map((reservation: ReservationInterface, index: number) => {
             return { ...reservation, spotName: spotNames[index] };
         });

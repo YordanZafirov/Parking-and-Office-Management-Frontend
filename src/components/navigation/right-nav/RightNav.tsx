@@ -14,10 +14,6 @@ interface NavProps {
     handleClick: () => void;
 }
 
-// const StyledProfile = styled.div`
-//     position: relative;
-// `;
-
 const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
     const { isAuthenticated } = useAuth();
     const decodedToken = useToken();

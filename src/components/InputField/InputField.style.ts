@@ -12,10 +12,8 @@ const InputStyle = styled.div`
         display: block;
         text-align: left;
         padding-left: 0.8rem;
-        //margin-bottom: 8px;
     }
 
-    /* Input field */
     input {
         font-size: 16px;
         font-weight: 400;
@@ -39,7 +37,6 @@ const InputStyle = styled.div`
         color: var(--grey);
     }
 
-    /* Input field focus */
     input:focus {
     }
 

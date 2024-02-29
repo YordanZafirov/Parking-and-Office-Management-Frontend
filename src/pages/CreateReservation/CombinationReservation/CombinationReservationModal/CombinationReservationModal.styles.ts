@@ -19,7 +19,7 @@ const CombinationReservationModalBox = styled.div`
     display: flex;
     flex-direction: row;
     justify-items: center;
-    /* align-content: flex-start; */
+
     width: auto;
     height: auto;
     min-width: 300px;
@@ -29,14 +29,16 @@ const CombinationReservationModalBox = styled.div`
     padding: 0.3rem;
     z-index: 20;
 
-    h3, h4 {
+    h3,
+    h4 {
         color: black;
         text-align: center;
-        padding:1rem ;
+        padding: 1rem;
         padding-bottom: 1rem;
     }
 
-    p, div {
+    p,
+    div {
         text-align: center;
         padding: 1rem;
         padding-bottom: 0;

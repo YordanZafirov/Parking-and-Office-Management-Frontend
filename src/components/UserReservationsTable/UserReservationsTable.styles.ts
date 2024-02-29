@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const UserReservationsTableStyle = styled.table`
-    /* border-collapse: collapse; */
     width: 100%;
     margin: 0 auto;
     margin: 1rem 0;
@@ -20,16 +19,12 @@ export const UserReservationsTableStyle = styled.table`
     th,
     td {
         background-color: var(--blue-green-light);
-        /* border: 1px solid var(--blue-green-dark); */
+
         padding: 8px;
     }
 
     th {
         background-color: #f2f2f2;
-    }
-
-    tr:nth-child(even) {
-        /* background-color: var(--blue-green); */
     }
 
     tr:first-child th:first-child {

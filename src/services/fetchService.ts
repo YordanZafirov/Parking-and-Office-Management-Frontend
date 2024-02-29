@@ -1,13 +1,12 @@
 const universalRequest = async (method: string, url: string, data) => {
     const userAuth = localStorage.getItem('access_token');
-    // let auth: AuthToken;
+
     const headers: HeadersInit = {};
 
     if (userAuth) {
         headers['Authorization'] = `Bearer ${userAuth}`;
     }
 
-    // Check if the method is GET
     if (method === 'GET') {
         try {
             const response = await fetch(url, { headers });
@@ -21,7 +20,6 @@ const universalRequest = async (method: string, url: string, data) => {
         } catch (error) {
             console.error('Error:', error);
         }
-        // Check for other methods
     } else {
         try {
             const response = await fetch(url, {
@@ -33,7 +31,6 @@ const universalRequest = async (method: string, url: string, data) => {
                 body: JSON.stringify(data),
             });
 
-            // Fetch the data
             const fetchedData = await response.json();
             if (fetchedData.error) {
                 const backendError = fetchedData.error.message;
