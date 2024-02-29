@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { SpotTypeContainer, SpotTypeImage, SpotTypeParagraph, SpotTypeImageContainer } from './SpotTypeCards.style';
 import { BaseButton, Container, PageTitle, StyledCard } from '../../../components/CommonStyledElements';
-import { SpotTypeInterface } from './SpotTypeCards.static';
-import { LocationInterface } from '../SpotType.static';
+import { SpotType } from './SpotTypeCards.static';
+import { Location } from '../SpotType.static';
 import { route } from '../../../static/routes';
 import officeDeskPhoto from '../../../assets/office-desk.jpg';
 import conferenceRoom from '../../../assets/conference-room.jpg';
@@ -10,14 +10,16 @@ import phoneBooth from '../../../assets/phone-booth.jpg';
 import parkingSpot from '../../../assets/parking-spot.jpg';
 import { SpotTypeCardsOccupancyLogic } from './SpotsOccupancyLogic';
 
-interface Location {
-    singleLocation: LocationInterface | undefined;
-    spotTypeData: SpotTypeInterface[];
+interface SpotTypeCardProps {
+    singleLocation: Location | undefined;
+    spotTypeData: SpotType[] | undefined;
 }
 
-const SpotTypeCards: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
+const SpotTypeCards: React.FC<SpotTypeCardProps> = ({ singleLocation, spotTypeData }) => {
     const navigate = useNavigate();
+    if(!spotTypeData) return;
     const { updatedSpotTypeData } = SpotTypeCardsOccupancyLogic(spotTypeData);
+    
 
     const renderImage = (name: string) => {
         switch (name) {

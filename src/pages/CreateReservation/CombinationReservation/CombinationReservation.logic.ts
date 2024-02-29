@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { CombinationReservationSchema } from './CombinationReservation.static';
 import { checkReservation } from '../../../services/reservationService';
 import { route } from '../../../static/routes';
-import { ReservationInterface } from '../../../static/types';
+import { Reservation } from '../../../static/types';
 import { CombinedReservationSpotMarker } from '../SpotMarker/SpotMarker.static';
 
 function useReserveSpotCombination() {
@@ -26,7 +26,7 @@ function useReserveSpotCombination() {
             try {
                 if (user) {
                     spots.forEach(async (spot: CombinedReservationSpotMarker) => {
-                        const reservationData: ReservationInterface = {
+                        const reservationData: Reservation = {
                             spotId: spot.id,
                             start: spot.start,
                             end: spot.end,

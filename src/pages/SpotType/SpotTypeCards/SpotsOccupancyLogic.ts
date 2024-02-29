@@ -1,11 +1,11 @@
 import { useParams } from 'react-router';
 import { getSpotsOccupancyBySpotTypeAndLocation } from '../../../services/spotService';
 
-import { SpotTypeInterface } from './SpotTypeCards.static';
+import { SpotType } from './SpotTypeCards.static';
 import { useEffect, useState } from 'react';
 
-export const SpotTypeCardsOccupancyLogic = (spotTypeData: SpotTypeInterface[]) => {
-    const [updatedSpotTypeData, setUpdatedSpotData] = useState<SpotTypeInterface[]>(spotTypeData);
+export const SpotTypeCardsOccupancyLogic = (spotTypeData: SpotType[]) => {
+    const [updatedSpotTypeData, setUpdatedSpotData] = useState<SpotType[]>(spotTypeData);
     const { id: locationId } = useParams();
     const today = new Date();
 

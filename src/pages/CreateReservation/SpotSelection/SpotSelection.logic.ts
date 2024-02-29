@@ -6,7 +6,7 @@ import { checkReservation } from '../../../services/reservationService';
 import { useReservationContext } from '../../../context/ReservationContext';
 
 import { route } from '../../../static/routes';
-import { ReservationInterface } from '../../../static/types';
+import { Reservation } from '../../../static/types';
 
 function useReservSpot() {
     const { addReservation } = useReservationContext();
@@ -30,7 +30,7 @@ function useReservSpot() {
         onSubmit: async (values, { setFieldError, setSubmitting, resetForm }) => {
             try {
                 if (user) {
-                    const reservationData: ReservationInterface = {
+                    const reservationData: Reservation = {
                         spotId: spotProps.id,
                         start: spotProps.period.startDate,
                         end: spotProps.period.endDate,

@@ -1,12 +1,12 @@
 import { useMutation } from 'react-query';
 import { deleteReservation } from '../../services/reservationService';
 import { useEffect, useState } from 'react';
-import { ReservationToFix } from '../../services/userService';
 import { getSpotById } from '../../services/spotService';
 import { getSpotType } from '../../services/spotTypeService';
+import { Reservation } from '../../static/types';
 
 const useUserReservationsTableLogic = (
-    reservations: ReservationToFix[] | undefined,
+    reservations: Reserva[] | undefined,
     areLoading: boolean,
     refetch: () => void,
 ) => {
@@ -23,7 +23,7 @@ const useUserReservationsTableLogic = (
 
         const fetchSpotData = async () => {
             const formattedData = await Promise.all(
-                reservations.map(async (reservation: ReservationToFix) => {
+                reservations.map(async (reservation: Reservation) => {
                     const spotId = reservation.spotId;
                     try {
                         const spot = await getSpotById(spotId);

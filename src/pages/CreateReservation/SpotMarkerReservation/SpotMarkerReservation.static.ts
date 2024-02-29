@@ -18,12 +18,12 @@ interface CombinedReservationSpotMarker {
     updatedAt: Date;
     modifiedBy: string;
     spotType: string;
-    spot: SpotInterface;
+    spot: Spot;
     start: Date;
     end: Date;
 }
 
-interface SpotInterface {
+interface Spot {
     id: string;
     name: string;
     description: string;
@@ -42,4 +42,4 @@ interface GetSpot {
     spotTypeId: string;
 }
 
-export type { CustomSpotMarker, CombinedReservationSpotMarker, SpotInterface, GetSpot };
+export type { CustomSpotMarker, CombinedReservationSpotMarker, Spot, GetSpot };

@@ -1,5 +1,5 @@
 import { DateRange } from 'react-date-range';
-import { SpotTypeInterface } from '../../Reservation/SpotType/SpotType.static';
+import { SpotType } from '../../Reservation/SpotType/SpotType.static';
 
 export interface DateRangePickerProps {
     onChange: (item: { [key: string]: DateRange }) => void;
@@ -28,8 +28,7 @@ export interface DateRangeOutput {
     key: string;
 }
 
-
 export interface dataProps {
     sendDateTime: (data: DateRangeOutput) => void;
-    spotType: SpotTypeInterface
+    spotType: SpotType;
 }

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { RiCloseFill } from 'react-icons/ri';
 
 import useReservationSummary from './ReservationSummary.logic';
-import { ReservationInterface } from '../../static/types';
+import { Reservation } from '../../static/types';
 import Loader from '../../components/loader/Loader';
 import { useReservationContext } from '../../context/ReservationContext';
 import {
@@ -46,7 +46,7 @@ const ReservationSummary = () => {
             ) : (
                 <>
                     <ReservationSummaryList>
-                        {reservations.map((reservation: ReservationInterface) => (
+                        {reservations.map((reservation: Reservation) => (
                             <ReservationSummaryListItem
                                 key={`${reservation.spotId}_${reservation.start}_${reservation.end}`}
                             >

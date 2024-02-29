@@ -1,13 +1,13 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import { post } from '../services/fetchService';
 import { endpoints } from '../static/endpoints';
-import { ReservationInterface } from '../static/types';
+import { Reservation } from '../static/types';
 import { toast } from 'react-toastify';
 
-interface ReservationContextInterface {
-    addReservation: (reservationsToAdd: ReservationInterface) => void;
-    reservations: ReservationInterface[];
-    sendReservationsToBackend: (reservations: ReservationInterface[]) => void;
+interface ReservationContextProps {
+    addReservation: (reservationsToAdd: Reservation) => void;
+    reservations: Reservation[];
+    sendReservationsToBackend: (reservations: Reservation[]) => void;
     removeReservation: (id: string, start: Date, end: Date) => void;
 }
 
@@ -15,10 +15,10 @@ interface ReservationProviderProps {
     children: ReactNode;
 }
 
-const ReservationContext = createContext<ReservationContextInterface | undefined>(undefined);
+const ReservationContext = createContext<ReservationContextProps | undefined>(undefined);
 
 export const ReservationProvider = ({ children }: ReservationProviderProps) => {
-    const [reservations, setReservation] = useState<ReservationInterface[]>([]);
+    const [reservations, setReservation] = useState<Reservation[]>([]);
 
     useEffect(() => {
         const storedReservation = sessionStorage.getItem('reservation');
@@ -33,14 +33,14 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
         }
     }, [reservations]);
 
-    const addReservation = (reservationToAdd: ReservationInterface) => {
+    const addReservation = (reservationToAdd: Reservation) => {
         setReservation((prevReservations) => [...prevReservations, reservationToAdd]);
     };
 
-    const sendReservationsToBackend = async (reservations: ReservationInterface[]) => {
+    const sendReservationsToBackend = async (reservations: Reservation[]) => {
         const dataToSend = { reservations };
         try {
-            const response = await post(`${endpoints.createMultipleReservations}`, dataToSend);
+            await post(`${endpoints.createMultipleReservations}`, dataToSend);
 
             toast.success('Reservations sent successfully');
             setReservation([]);
