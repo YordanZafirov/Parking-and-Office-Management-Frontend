@@ -1,5 +1,6 @@
 import { Reservation } from '../../static/types';
 import { Container, PageTitle } from '../CommonStyledElements';
+import DeleteIcon from '../icons/DeleteIcon';
 import Loader from '../loader/Loader';
 import useUserReservationsTableLogic from './UserReservationsTable.logic';
 import { ReservationsTable } from './UserReservationsTable.static';
@@ -55,12 +56,7 @@ const UserReservationsTable = ({
                                         <td data-label="End:">{new Date(reservation.end).toLocaleString()}</td>
                                         {reservationType === 'Future' && (
                                             <td>
-                                                <button
-                                                    className="remove-btn"
-                                                    onClick={() => deleteReservation(reservation.id)}
-                                                >
-                                                    Delete
-                                                </button>
+                                                <DeleteIcon onClick={() => deleteReservation(reservation.id)} />
                                             </td>
                                         )}
                                     </tr>

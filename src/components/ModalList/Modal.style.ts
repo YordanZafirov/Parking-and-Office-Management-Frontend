@@ -32,6 +32,7 @@ const StyledModalContainer = styled.div<ModalProps>`
 
 const ModalContent = styled.div`
     color: black;
+    font-size: 1.2rem;
 `;
 
 const ModalActions = styled.div`

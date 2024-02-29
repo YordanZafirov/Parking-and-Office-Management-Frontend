@@ -21,7 +21,6 @@ const ImageStyled = styled.div`
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
 
     @media screen and (max-width: 780px) {
         width: 70%;

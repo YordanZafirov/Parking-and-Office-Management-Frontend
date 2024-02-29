@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 const DivFlexStyled = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
     width: auto;
     padding: 1rem;
