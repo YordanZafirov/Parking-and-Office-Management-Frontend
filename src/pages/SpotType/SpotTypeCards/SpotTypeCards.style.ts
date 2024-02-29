@@ -4,11 +4,13 @@ const SpotTypeContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    padding: 10px;
+    padding: 20px 10px;
     margin: 3rem auto;
     background-color: var(--blue-green);
     border-radius: 8px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 
     @media (max-width: 768px) {
         grid-template-columns: 1fr;

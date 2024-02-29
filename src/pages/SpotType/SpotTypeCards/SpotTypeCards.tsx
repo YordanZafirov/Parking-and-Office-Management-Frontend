@@ -29,7 +29,7 @@ const SpotTypeCards: React.FC<SpotTypeCardProps> = ({ singleLocation, spotTypeDa
                 return <SpotTypeImage src={conferenceRoom} alt="Conference room" />;
             case 'Phone booth':
                 return <SpotTypeImage src={phoneBooth} alt="Phone booth" />;
-            case 'Parking spot':
+            case 'Parking place':
                 return <SpotTypeImage src={parkingSpot} alt="Parking spot" />;
             default:
                 return null;

@@ -15,14 +15,12 @@ const HomeContainer = styled.div`
 
     ul {
         list-style: none;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
         gap: 2rem;
         margin-bottom: 20px;
-
-        @media (max-width: 900px) {
-            grid-template-columns: 1fr;
-        }
     }
 
     li {
@@ -35,7 +33,7 @@ const HomeContainer = styled.div`
         }
 
         @media (max-width: 900px) {
-            width: 100%;
+            width: 80%;
             margin: 0 auto;
         }
     }

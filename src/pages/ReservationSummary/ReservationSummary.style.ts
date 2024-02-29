@@ -5,21 +5,14 @@ const ReservationSummaryContainer = styled.div`
 `;
 
 const ReservationSummaryList = styled.ul`
-    list-style-type: none;
-    padding: 0;
-    margin: 20px 0;
-    display: grid;
-    align-items: center;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    height: 100%;
-    width: 50%;
-    margin: 20px auto;
+    margin-top: 20px;
 
-    @media (max-width: 768px) {
-        width: 80%;
-    }
+    gap: 2rem;
+    margin-bottom: 20px;
 `;
 
 const ReservationSummaryNoItems = styled.div`
@@ -30,6 +23,7 @@ const ReservationSummaryNoItems = styled.div`
 const ReservationSummaryListItem = styled.li`
     position: relative;
     border: 1px solid #ccc;
+    width: 300px;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
@@ -69,8 +63,9 @@ const ReservationSummaryButton = styled.button`
     background-color: var(--blue-green);
     color: #fff;
     border: none;
-    padding: 8px 16px;
+    padding: 12px 20px;
     border-radius: 5px;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s;
     width: 10rem;
@@ -78,6 +73,11 @@ const ReservationSummaryButton = styled.button`
 
     &:hover {
         background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        padding: 8px 12px;
+        font-size: 1rem;
     }
 `;
 

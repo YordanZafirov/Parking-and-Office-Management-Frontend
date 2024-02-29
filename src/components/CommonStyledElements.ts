@@ -70,6 +70,7 @@ const BaseButton = styled.button`
         width: 80%;
         margin: 0 auto;
         padding: 0;
+        box-shadow: darkgrey 15px 15px 18px -18px;
         display: flex;
         align-items: center;
 
