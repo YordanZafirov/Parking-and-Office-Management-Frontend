@@ -15,6 +15,21 @@ const DivFlexStyled = styled.div`
     &.create-reservation-container {
         max-width: 100%;
         background-color: var(--blue-green-light);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        h4{
+            padding-top: 2rem;
+        }
+    }
+
+    &.create-reservation-container-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: auto;
+        padding: 1rem;
     }
 
     .image-marker {

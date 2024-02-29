@@ -19,6 +19,7 @@ const HeadingFloorPlan = styled.h2`
 
 const ImageStyled = styled.div`
     display: block;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 

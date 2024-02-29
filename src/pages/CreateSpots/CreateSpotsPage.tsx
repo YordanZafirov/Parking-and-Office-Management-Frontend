@@ -9,6 +9,7 @@ import Loader from '../../components/loader/Loader';
 import { BackButton } from '../FloorPlan/FloorPlan.style';
 import { FaArrowLeft } from 'react-icons/fa6';
 import SpotCreationMarker from './SpotCreationMarker/SpotCreationMarker';
+import { ImageStyled } from '../FloorPlan/FloorPlanDetails/FloorPlanDetails.style';
 
 export default function CreateSpots() {
     const navigate = useNavigate();
@@ -35,7 +36,7 @@ export default function CreateSpots() {
 
     return (
         <Container className="App">
-            <BackButton className='floor-plan' onClick={handleGoBack}>
+            <BackButton className="floor-plan" onClick={handleGoBack}>
                 <FaArrowLeft />
             </BackButton>
             <FormButtonsContainer>
@@ -48,17 +49,19 @@ export default function CreateSpots() {
             </FormButtonsContainer>
             <DivFlexStyled className="frame">
                 {floorPlan && existingSpots && (
-                    <ImageMarker
-                        src={floorPlan.imgUrl!}
-                        markers={existingSpots}
-                        onAddMarker={(marker: Marker) => {
-                            addMarker({ marker, floorPlan });
-                            navigate(`/spots/${floorPlan.id}/create`, {
-                                state: { background: location },
-                            });
-                        }}
-                        markerComponent={SpotCreationMarker}
-                    />
+                    <ImageStyled>
+                        <ImageMarker
+                            src={floorPlan.imgUrl!}
+                            markers={existingSpots}
+                            onAddMarker={(marker: Marker) => {
+                                addMarker({ marker, floorPlan });
+                                navigate(`/spots/${floorPlan.id}/create`, {
+                                    state: { background: location },
+                                });
+                            }}
+                            markerComponent={SpotCreationMarker}
+                        />
+                    </ImageStyled>
                 )}
             </DivFlexStyled>
         </Container>
