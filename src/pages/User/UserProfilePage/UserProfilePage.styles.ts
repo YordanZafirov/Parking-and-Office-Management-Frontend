@@ -124,6 +124,10 @@ const UserProfilePicture = styled.img`
     margin-bottom: 10px;
 `;
 
+const UserProfileEmail = styled.p`
+    font-size: 1.2rem;
+`;
+
 export {
     ToggleButtonsContainer,
     UpdateButtonContainer,
@@ -133,4 +137,5 @@ export {
     UserMainInfoContainer,
     UserProfilePicture,
     UserProfilePictureContainer,
+    UserProfileEmail,
 };

@@ -1,11 +1,12 @@
 import { UserProfilePageLogic } from './UserProfilePage.logic';
-import { BaseButton, BigButtonDark, BigButtonLight } from '../../../components/CommonStyledElements';
+import { BaseButtonLogout, BigButtonDark, BigButtonLight } from '../../../components/CommonStyledElements';
 import {
     ToggleButtonsContainer,
     UpdateButtonContainer,
     UserAdditionalInfoContainer,
     UserMainInfoContainer,
     UserProfileContainer,
+    UserProfileEmail,
     UserProfilePicture,
     UserProfilePictureContainer,
 } from './UserProfilePage.styles';
@@ -14,6 +15,7 @@ import UserProfileInfo from './UserProfileInfo';
 import defaultPicture from '../../../assets/default-profile.jpg';
 import UserReservationsTable from '../../../components/UserReservationsTable/UserReservationsTable';
 import NotFound from '../../NotFound/NotFound';
+import { TbLogout2 } from 'react-icons/tb';
 
 const UserProfilePage = () => {
     const {
@@ -47,7 +49,7 @@ const UserProfilePage = () => {
                         <UserMainInfoContainer>
                             <UserProfilePictureContainer>
                                 <UserProfilePicture src={user.imgUrl ?? defaultPicture} alt="Profile" />
-                                <p>{user.email}</p>
+                                <UserProfileEmail>{user.email}</UserProfileEmail>
                             </UserProfilePictureContainer>
                             <UpdateButtonContainer>
                                 <BigButtonLight onClick={() => handleUpdateUserProfilePicture(user.id)}>
@@ -56,9 +58,10 @@ const UserProfilePage = () => {
                                 <BigButtonLight onClick={() => handleUpdateUserPassword(user.id)}>
                                     {userProfileConstants.changePasswordButton}
                                 </BigButtonLight>
-                                <BaseButton className="remove-btn" onClick={() => logout()}>
+                                <BaseButtonLogout className="remove-btn" onClick={() => logout()}>
                                     {userProfileConstants.logout}
-                                </BaseButton>
+                                    <TbLogout2 />
+                                </BaseButtonLogout>
                             </UpdateButtonContainer>
                         </UserMainInfoContainer>
                         <UserAdditionalInfoContainer>

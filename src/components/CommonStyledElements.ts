@@ -23,10 +23,10 @@ const BaseButton = styled.button`
     color: black;
     cursor: pointer;
     display: inline-block;
-    font-size: 0.7rem;
+    font-size: 1.2rem;
     font-weight: 500;
     outline: none;
-    padding: 0.6rem;
+    padding: 0.6rem 1rem 0.6rem 1rem;
     text-decoration: none;
     transition: all 200ms ease-in-out;
     user-select: none;
@@ -42,7 +42,6 @@ const BaseButton = styled.button`
     &.remove-btn {
         background-color: lightsteelblue;
         margin: 0.5rem;
-        width: 75px;
     }
 
     &.reservation-card {
@@ -103,10 +102,16 @@ const BaseButton = styled.button`
 
 const BigButtonLight = styled(BaseButton)`
     background-color: var(--beige-light);
-    width: 150px;
+    width: 250px;
     font-size: 0.8rem;
     line-height: 1rem;
     padding: 0.6rem;
+    font-size: 1.2rem;
+    line-height: 1.2;
+
+    @media (max-width: 930px) {
+        width: 80%;
+    }
 `;
 const BigButtonDark = styled(BaseButton)`
     background-color: var(--blue--green-light);
@@ -117,6 +122,94 @@ const BigButtonDark = styled(BaseButton)`
 
     @media (max-width: 768px) {
         width: 80%;
+    }
+`;
+
+const BaseButtonLogout = styled.button`
+    align-self: center;
+    background-color: var(--blue-green-light);
+    border: transparent;
+    border-radius: 10px;
+    box-shadow: darkgrey 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    outline: none;
+    padding: 0.6rem 1rem 0.6rem 1rem;
+    text-decoration: none;
+    transition: all 200ms ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 0.5rem;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+    }
+
+    &.delete-btn,
+    &.remove-btn {
+        background-color: lightsteelblue;
+        margin: 0.5rem;
+    }
+
+    &.reservation-card {
+        background-color: var(--beige);
+        padding: 0;
+        max-width: 10rem;
+    }
+
+    &.reservation-btn,
+    &.reservation-card {
+        background-color: var(--blue-green-light);
+    }
+
+    &.spot-type-card {
+        color: var(--light-pink);
+        text-decoration: none;
+        width: 80%;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            box-shadow: rgba(0, 0, 0, 0.1) 2px 3px 3px -5px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            width: 100%;
+            box-shadow: none;
+            margin: 0 auto;
+        }
+    }
+
+    &.edit-btn,
+    &.create-btn {
+        background-color: var(--blue-green-light);
+        margin: 0.5rem;
+    }
+
+    &.close-btn {
+        background-color: var(--brown);
+        margin: 0.5rem;
+    }
+
+    svg {
+        margin-left: 0.7rem;
+        margin-right: 0.3rem;
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
     }
 `;
 
@@ -133,7 +226,7 @@ const StyledCard = styled.div`
     justify-content: center;
     align-items: center;
 
-    &.home-card{
+    &.home-card {
         width: 90%;
     }
 `;
@@ -144,4 +237,13 @@ const FormButtonsContainer = styled.div`
     align-items: center;
 `;
 
-export { FormButtonsContainer, BaseButton, BigButtonDark, BigButtonLight, StyledCard, PageTitle, Container };
+export {
+    FormButtonsContainer,
+    BaseButton,
+    BigButtonDark,
+    BigButtonLight,
+    StyledCard,
+    PageTitle,
+    Container,
+    BaseButtonLogout,
+};
