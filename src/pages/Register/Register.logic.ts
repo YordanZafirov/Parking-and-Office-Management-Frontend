@@ -16,15 +16,14 @@ const useRegister = () => {
             error: '',
         },
         validationSchema: RegisterSchema,
-        
-        // Function to handle the form submission
+
         onSubmit: async (values: RegisterUser) => {
             try {
                 await register(values);
                 navigate(route.user);
             } catch (error) {
                 console.error('Error while register user:', error);
-                console.log(typeof error);
+
                 formik.setFieldValue('error', error.message);
             }
         },

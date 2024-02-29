@@ -36,7 +36,6 @@ export const BaseButton = styled.button`
 
     &:hover {
         box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
-        /* transform: translate3d(0, 2px, 0); */
     }
 
     &.delete-btn,
@@ -52,7 +51,7 @@ export const BaseButton = styled.button`
         max-width: 10rem;
     }
 
-    &.reservation-btn{
+    &.reservation-btn {
         background-color: var(--blue-green-light);
     }
 
@@ -69,12 +68,12 @@ export const BaseButton = styled.button`
     &.spot-type-card {
         color: var(--light-pink);
         text-decoration: none;
-        /* box-shadow: rgba(0, 0, 0, 0.1) 1px 25px -10px 0px; */
+
         width: 80%;
         margin: 0 auto;
         padding: 0;
         display: flex;
-        /* justify-content: center; */
+
         align-items: center;
 
         &:hover {

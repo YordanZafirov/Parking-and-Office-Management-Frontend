@@ -12,12 +12,12 @@ import { SpotTypeCardsOccupancyLogic } from './SpotsOccupancyLogic';
 
 interface Location {
     singleLocation: LocationInterface | undefined;
-    spotTypeData: SpotTypeInterface[]
+    spotTypeData: SpotTypeInterface[];
 }
 
 const SpotTypeCards: React.FC<Location> = ({ singleLocation, spotTypeData }) => {
     const navigate = useNavigate();
-    const {updatedSpotTypeData} = SpotTypeCardsOccupancyLogic(spotTypeData);
+    const { updatedSpotTypeData } = SpotTypeCardsOccupancyLogic(spotTypeData);
 
     const renderImage = (name: string) => {
         switch (name) {
@@ -30,7 +30,7 @@ const SpotTypeCards: React.FC<Location> = ({ singleLocation, spotTypeData }) => 
             case 'Parking spot':
                 return <SpotTypeImage src={parkingSpot} alt="Parking spot" />;
             default:
-                return null; // Return null if no matching name is found
+                return null;
         }
     };
     return (

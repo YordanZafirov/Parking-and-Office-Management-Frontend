@@ -24,7 +24,6 @@ function useCreateLocation() {
         },
         validationSchema: LocationCreateShema,
 
-        // Function to handle the form submission
         onSubmit: async (values: LocationCreate, { setFieldError, setSubmitting, resetForm }) => {
             const newObj = {
                 name: values.name,

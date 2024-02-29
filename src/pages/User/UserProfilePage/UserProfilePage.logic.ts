@@ -61,7 +61,7 @@ export const UserProfilePageLogic = () => {
         useCurrentReservationsByUserId(userId);
     const { futureReservations, areFutureReservationsLoading, futureReservationsRefetch } =
         useFutureReservationsByUserId(userId);
-    console.log([futureReservations]);
+
     const [activeTab, setActiveTab] = useState('future');
     const { logout } = useAuth();
     const handleTabClick = (tab: SetStateAction<string>) => {

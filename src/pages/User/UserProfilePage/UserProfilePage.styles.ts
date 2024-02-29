@@ -13,7 +13,7 @@ export const ToggleButtonsContainer = styled.div`
 
     @media (max-width: 768px) {
         margin: 20px auto 30px;
-        flex-direction:column;
+        flex-direction: column;
         gap: 5px;
     }
 `;
@@ -84,8 +84,6 @@ export const UserAdditionalInfoContainer = styled.div`
     border-radius: 8px;
     text-align: center;
     justify-content: center;
-
-
 `;
 export const UserMainInfoContainer = styled.div`
     display: flex;
@@ -101,7 +99,7 @@ export const UserMainInfoContainer = styled.div`
     text-align: center;
 
     @media (max-width: 510px) {
-        flex-direction:column;
+        flex-direction: column;
     }
 `;
 export const UserProfilePictureContainer = styled.div`
@@ -110,7 +108,7 @@ export const UserProfilePictureContainer = styled.div`
     margin: 10px auto;
     width: 90%;
     height: 90%;
-    /* background-color: lightskyblue; */
+
     border-radius: 8px;
     align-items: center;
     justify-content: center;

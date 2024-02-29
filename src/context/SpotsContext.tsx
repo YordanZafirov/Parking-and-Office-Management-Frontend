@@ -71,7 +71,6 @@ export const SpotsProvider = ({ children }: SpotsProviderProps) => {
     );
 };
 
-// Custom hook that shorthands the context
 export const useSpotsContext = () => {
     const context = useContext(SpotsContext);
     if (!context) {

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
-// import { loginService } from "../services/userService";
+
 import { LoginUser } from '../pages/Login/Login.static';
 import { loginService } from '../services/userService';
 
@@ -44,7 +44,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const loginUser = async ({ email, password }: LoginUser) => {
         try {
-            // LoginService returns a User object or a Response object
             const response: LoginUser = await loginService({ email, password });
 
             if (response && response.access_token) {

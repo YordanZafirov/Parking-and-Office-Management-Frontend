@@ -24,9 +24,7 @@ const ReservationSummary = () => {
     const { reservations, sendReservationsToBackend, removeReservation } = useReservationContext();
     const { isLoading, error, spotNames } = useReservationSummary();
 
-    useEffect(() => {
-        console.log('Transformed reservation', reservations);
-    }, [reservations]);
+    useEffect(() => {}, [reservations]);
 
     const handleConfirm = () => {
         sendReservationsToBackend(reservations);
@@ -56,7 +54,7 @@ const ReservationSummary = () => {
                                 <div>Start: {new Date(reservation.start).toDateString()}</div>
                                 <div>End: {new Date(reservation.end).toDateString()}</div>
                                 <div>Comment: {reservation.comment}</div>
-                                {/* Add start and end date to handleRemove */}
+
                                 <ReservationRemveButton
                                     onClick={() =>
                                         removeReservation(reservation.spotId, reservation.start, reservation.end)

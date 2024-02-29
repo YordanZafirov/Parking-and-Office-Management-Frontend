@@ -21,7 +21,6 @@ const useUserReservationsTableLogic = (
     useEffect(() => {
         if (!reservations) return;
 
-        // Fetch spot data for each reservation
         const fetchSpotData = async () => {
             const formattedData = await Promise.all(
                 reservations.map(async (reservation: ReservationToFix) => {

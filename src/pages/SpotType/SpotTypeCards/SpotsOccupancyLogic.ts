@@ -1,12 +1,11 @@
 import { useParams } from 'react-router';
 import { getSpotsOccupancyBySpotTypeAndLocation } from '../../../services/spotService';
-// import { useQuery } from 'react-query';
+
 import { SpotTypeInterface } from './SpotTypeCards.static';
 import { useEffect, useState } from 'react';
 
-
 export const SpotTypeCardsOccupancyLogic = (spotTypeData: SpotTypeInterface[]) => {
-    const [updatedSpotTypeData, setUpdatedSpotData] = useState<SpotTypeInterface[]>(spotTypeData)
+    const [updatedSpotTypeData, setUpdatedSpotData] = useState<SpotTypeInterface[]>(spotTypeData);
     const { id: locationId } = useParams();
     const today = new Date();
 
@@ -37,14 +36,13 @@ export const SpotTypeCardsOccupancyLogic = (spotTypeData: SpotTypeInterface[]) =
                         ...spotType,
                         occupancy: response,
                     };
-                })
+                }),
             );
             setUpdatedSpotData(updatedData);
         };
-    
+
         fetchData();
     }, [spotTypeData, locationId, tomorrowStartString, tomorrowEndString]);
 
-
-    return {updatedSpotTypeData};
+    return { updatedSpotTypeData };
 };

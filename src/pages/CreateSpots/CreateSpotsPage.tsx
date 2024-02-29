@@ -25,8 +25,6 @@ export default function CreateSpots() {
     } = useCreateSpots();
     const { addMarker, existingSpots } = useSpotsContext();
 
-    console.log('spots1', existingSpots);
-
     if (floorPlanLoading || spotsLoading) {
         return <Loader />;
     }

@@ -17,7 +17,6 @@ export default function SpotUpdateMarker(props: SpotMarker) {
                     navigate(`${route.floorPlan}/${id}/${props.id}`, {
                         state: { background: location, spotProps: props },
                     });
-                    console.log('props', props);
                 }}
             />
             <StyledToolTip id={`component_${props.id}`} className="spot-info">
