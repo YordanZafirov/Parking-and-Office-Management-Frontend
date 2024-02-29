@@ -22,7 +22,6 @@ const LocationImage = styled.img`
     height: 200px;
     margin-bottom: 10px;
     border-radius: 8px;
-    object-fit: cover;
 `;
 
 const DeleteButton = styled.div`

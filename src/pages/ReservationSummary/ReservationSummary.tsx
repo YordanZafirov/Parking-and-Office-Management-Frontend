@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import { RiCloseFill } from 'react-icons/ri';
 
 import useReservationSummary from './ReservationSummary.logic';
@@ -23,8 +21,6 @@ const ReservationSummary = () => {
     const navigation = useNavigate();
     const { reservations, sendReservationsToBackend, removeReservation } = useReservationContext();
     const { isLoading, error, spotNames } = useReservationSummary();
-
-    useEffect(() => {}, [reservations]);
 
     const handleConfirm = () => {
         sendReservationsToBackend(reservations);

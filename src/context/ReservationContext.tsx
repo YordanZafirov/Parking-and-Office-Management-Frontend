@@ -3,6 +3,9 @@ import { post } from '../services/fetchService';
 import { endpoints } from '../static/endpoints';
 import { Reservation } from '../static/types';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import useToken from '../hooks/Token/Token.hook';
+import { route } from '../static/routes';
 
 interface ReservationContextProps {
     addReservation: (reservationsToAdd: Reservation) => void;
@@ -19,6 +22,11 @@ const ReservationContext = createContext<ReservationContextProps | undefined>(un
 
 const ReservationProvider = ({ children }: ReservationProviderProps) => {
     const [reservations, setReservation] = useState<Reservation[]>([]);
+    const navigation = useNavigate();
+
+    const decodedToken = useToken();
+
+    const id = decodedToken?.id;
 
     useEffect(() => {
         const storedReservation = sessionStorage.getItem('reservation');
@@ -43,6 +51,7 @@ const ReservationProvider = ({ children }: ReservationProviderProps) => {
             await post(`${endpoints.createMultipleReservations}`, dataToSend);
 
             toast.success('Reservations sent successfully');
+            navigation(route.user + '/' + id);
             setReservation([]);
             sessionStorage.removeItem('reservation');
         } catch (error) {
