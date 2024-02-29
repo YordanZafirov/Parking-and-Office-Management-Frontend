@@ -35,7 +35,7 @@ export default function CreateSpots() {
 
     return (
         <Container className="App">
-            <BackButton onClick={handleGoBack}>
+            <BackButton className='floor-plan' onClick={handleGoBack}>
                 <FaArrowLeft />
             </BackButton>
             <DivFlexStyled className="frame">

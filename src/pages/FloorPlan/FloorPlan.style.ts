@@ -162,12 +162,16 @@ export const BackButton = styled.button`
     &:hover {
         font-size: 36px;
     }
+
+    &.floor-plan {
+        margin-top: 20px;
+    }
 `;
 
 export const LinkFloorPlan = styled(Link)`
     display: inline-block;
     padding: 7px 5px 5px 12px;
-    background-color: darkblue;
+    background-color: var(--grey);
     color: white;
     text-decoration: none;
     position: relative;
@@ -176,7 +180,7 @@ export const LinkFloorPlan = styled(Link)`
     vertical-align: middle;
 
     &:hover {
-        background-color: blue;
+        background-color: var(--blue-green-dark);
     }
 `;
 

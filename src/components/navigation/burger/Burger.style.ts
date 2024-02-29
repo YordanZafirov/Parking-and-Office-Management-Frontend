@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavProps } from "../Navigation.style";
+import { NavProps } from "../right-nav/RightNav.static";
 
 export const BurgerDiv = styled.div<NavProps>`
   width: 2rem;

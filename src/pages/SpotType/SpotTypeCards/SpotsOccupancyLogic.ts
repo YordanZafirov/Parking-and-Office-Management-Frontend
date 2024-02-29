@@ -34,7 +34,7 @@ export const SpotTypeCardsOccupancyLogic = (spotTypeData: SpotTypeInterface[]) =
                     });
                     return {
                         ...spotType,
-                        occupancy: response,
+                        occupancy: Math.floor(response),
                     };
                 }),
             );

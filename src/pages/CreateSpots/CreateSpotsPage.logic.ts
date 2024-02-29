@@ -41,6 +41,7 @@ function useCreateSpots() {
     }, [existingSpots, id, newSpots, refetchSpots, setSpots, spotsByFloorPlan]);
 
     const handleGoBack = () => {
+        setMarkerData({ marker: undefined, floorPlan: {} });
         navigate(-1);
     };
 
