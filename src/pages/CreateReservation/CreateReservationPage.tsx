@@ -39,32 +39,37 @@ export default function CreateReservation() {
             <DivFlexStyled className="create-reservation-container">
                 <CalendarPage sendDateTime={handleDataFromCalendar} spotType={selectedSpotType} />
                 {calendarData && (
-                    <DivFlexStyled>
-                        {floorPlans?.map((floorPlan: FloorPlan) => {
-                            return (
-                                <BaseButton
-                                    key={floorPlan.id}
-                                    className="reservation-card"
-                                    onClick={() => {
-                                        showPlan(floorPlan);
-                                    }}
-                                >
-                                    <Card>
-                                        <LocationImage src={floorPlan.imgUrl} alt="floor-plan-image" />
-                                        <h3>{floorPlan.name}</h3>
-                                    </Card>
-                                </BaseButton>
-                            );
-                        })}
-                    </DivFlexStyled>
+                    <>
+                        <h4>Select an option:</h4>
+                        <DivFlexStyled className="create-reservation-container-cards">
+                            {floorPlans?.map((floorPlan: FloorPlan) => {
+                                return (
+                                    <BaseButton
+                                        key={floorPlan.id}
+                                        className="reservation-card"
+                                        onClick={() => {
+                                            showPlan(floorPlan);
+                                        }}
+                                    >
+                                        <Card>
+                                            <LocationImage src={floorPlan.imgUrl} alt="floor-plan-image" />
+                                            <h3>{floorPlan.name}</h3>
+                                        </Card>
+                                    </BaseButton>
+                                );
+                            })}
+                        </DivFlexStyled>
+                    </>
                 )}
             </DivFlexStyled>
 
             {isCombination ? (
                 <SpotCardsContainer spots={combinedSpots} />
-                
             ) : (
-                showSpots && calendarData && currentFloorPlan && spots && (
+                showSpots &&
+                calendarData &&
+                currentFloorPlan &&
+                spots && (
                     <ImageContainer>
                         <h3>Please select a spot:</h3>
                         <ImageStyled>

@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { Tooltip } from 'react-tooltip';
 
 const MarkerStyled = styled.div`
-    width: 1rem;
-    height: 1rem;
-    border-radius: 100%;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50% 50% 0 50%;
     background: var(--spot-green);
     display: inline-block;
     position: relative;
@@ -25,18 +25,18 @@ const MarkerStyled = styled.div`
         height: 0.7rem;
     }
     @media screen and (max-width: 400px) {
-        width: 0.5rem;
-        height: 0.5rem;
+        width: 0.6rem;
+        height: 0.6rem;
     }
     @media screen and (max-width: 300px) {
-        width: 0.4rem;
-        height: 0.4rem;
+        width: 0.5rem;
+        height: 0.5rem;
     }
 `;
 
 const StyledToolTip = styled(Tooltip)`
     &.spot-info {
-        background: var(--beige-light);
+        background: var(--beige);
         color: black;
         text-align: center;
         padding: 0.5rem;
