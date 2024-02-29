@@ -17,9 +17,8 @@ interface SpotTypeCardProps {
 
 const SpotTypeCards: React.FC<SpotTypeCardProps> = ({ singleLocation, spotTypeData }) => {
     const navigate = useNavigate();
-    if(!spotTypeData) return;
+    if (!spotTypeData) return;
     const { updatedSpotTypeData } = SpotTypeCardsOccupancyLogic(spotTypeData);
-    
 
     const renderImage = (name: string) => {
         switch (name) {
@@ -56,7 +55,9 @@ const SpotTypeCards: React.FC<SpotTypeCardProps> = ({ singleLocation, spotTypeDa
                             >
                                 <StyledCard>
                                     <SpotTypeParagraph>{spotType.name}</SpotTypeParagraph>
-                                    <SpotTypeParagraph>{`Occupancy Tomorrow: ${spotType.occupancy}%`}</SpotTypeParagraph>
+                                    {(spotType.name === 'Office desk' || spotType.name === 'Parking place') && (
+                                        <SpotTypeParagraph>{`Occupancy Tomorrow: ${spotType.occupancy}%`}</SpotTypeParagraph>
+                                    )}
                                     <SpotTypeImageContainer>{renderImage(spotType.name)}</SpotTypeImageContainer>
                                 </StyledCard>
                             </BaseButton>
