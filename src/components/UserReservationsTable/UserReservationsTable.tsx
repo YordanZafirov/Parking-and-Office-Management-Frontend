@@ -1,5 +1,7 @@
+import DeleteLocationModal from '../../pages/AdminPage/AdminListModal/DeleteModal/DeleteModal';
 import { Reservation } from '../../static/types';
 import { Container, PageTitle } from '../CommonStyledElements';
+import useModal from '../ModalList/useModal';
 import DeleteIcon from '../icons/DeleteIcon';
 import Loader from '../loader/Loader';
 import useUserReservationsTableLogic from './UserReservationsTable.logic';
@@ -17,11 +19,13 @@ const UserReservationsTable = ({
     refetch: () => void;
     reservationType: string;
 }) => {
-    const { formattedReservations, deleteReservation, areLoading } = useUserReservationsTableLogic(
+    const { formattedReservations, areLoading, onDeleteConfirm, onDeleteClick } = useUserReservationsTableLogic(
         reservations,
         isLoading,
         refetch,
     );
+
+    const { isVisible: isDeleteModalVisible, showModal: showDeleteModal, hideModal: hideDeleteModal } = useModal();
 
     if (areLoading) {
         return <Loader />;
@@ -56,7 +60,12 @@ const UserReservationsTable = ({
                                         <td data-label="End:">{new Date(reservation.end).toLocaleString()}</td>
                                         {reservationType === 'Future' && (
                                             <td>
-                                                <DeleteIcon onClick={() => deleteReservation(reservation.id)} />
+                                                <DeleteIcon
+                                                    onClick={() => {
+                                                        onDeleteClick(reservation.id);
+                                                        showDeleteModal();
+                                                    }}
+                                                />
                                             </td>
                                         )}
                                     </tr>
@@ -66,6 +75,14 @@ const UserReservationsTable = ({
                     </UserReservationsTableStyle>
                 )}
             </div>
+
+            {isDeleteModalVisible && (
+                <DeleteLocationModal
+                    isVisible={isDeleteModalVisible}
+                    hideModal={hideDeleteModal}
+                    onDeleteConfirm={onDeleteConfirm}
+                />
+            )}
         </Container>
     );
 };
