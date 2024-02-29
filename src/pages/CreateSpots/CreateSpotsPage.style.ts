@@ -8,18 +8,24 @@ const DivFlexStyled = styled.div`
     width: auto;
     padding: 1rem;
 
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+    }
+
     &.create-reservation-container {
         max-width: 100%;
         background-color: var(--blue-green-light);
     }
 
-    .image-marker{
-        .image-marker__marker{
+    .image-marker {
+        .image-marker__marker {
             display: flex;
             justify-content: center;
         }
     }
 `;
 
-
-export { DivFlexStyled};
+export { DivFlexStyled };

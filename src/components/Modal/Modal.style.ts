@@ -22,23 +22,24 @@ const ModalBox = styled.div`
     align-content: flex-start;
     width: auto;
     height: auto;
-    min-width: 300px;
     background-color: var(--beige-light);
     border-radius: 0.5rem;
     box-shadow: 0 10px 20px 0 darkgrey;
     padding: 0.3rem;
     z-index: 20;
 
-    h3, h4 {
+    h3,
+    h4 {
         color: black;
         text-align: center;
-        padding:1rem ;
+        padding: 1rem;
         padding-bottom: 1rem;
     }
 
-    p, div {
+    p,
+    div {
         text-align: center;
-        padding: 1rem;
+        padding: 0.5rem;
         padding-bottom: 0;
     }
 
@@ -50,6 +51,39 @@ const ModalBox = styled.div`
         top: 0.5rem;
         align-self: flex-end;
         margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        h3,
+        h4 {
+            font-size: 0.8rem;
+        }
+
+        p,
+        div {
+            font-size: 0.8rem;
+        }
+    }
+
+    @media (max-width: 450px) {
+        h3,
+        h4 {
+            font-size: 1rem;
+        }
+
+        p,
+        div {
+            font-size: 0.8rem;
+        }
+
+        label {
+            font-size: 0.8rem;
+        }
+
+        input {
+            font-size: 0.8rem;
+            padding: 0.5rem;
+        }
     }
 `;
 

@@ -1,17 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import Burger from './burger/Burger';
-import { ListItem, NavDiv } from './Navigation.style';
+import { NavContainer, NavDiv } from './Navigation.style';
 
 const Navigation = () => {
     return (
         <NavDiv>
-            <NavLink to={`/`} className="logo">
-                <ListItem>Logo</ListItem>
-            </NavLink>
+            <NavContainer>
+                <NavLink to={`/`} className="logo">
+                    <p>Home</p>
+                </NavLink>
 
-            <div style={{ flex: 1 }}></div>
+                <div style={{ flex: 1 }}></div>
 
-            <Burger />
+                <Burger />
+            </NavContainer>
         </NavDiv>
     );
 };

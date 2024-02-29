@@ -30,11 +30,8 @@ export const SpotTypeParagraph = styled.p`
 
 export const SpotTypeImage = styled.img`
     width: 100%;
-    height: 150px;
-    padding: 10px;
+    height: 200px;
+    margin-bottom: 10px;
+    border-radius: 8px;
     object-fit: cover;
-
-    @media (max-width: 768px) {
-        height: auto;
-    }
 `;

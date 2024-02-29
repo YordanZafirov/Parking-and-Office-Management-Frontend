@@ -19,7 +19,7 @@ export default function SpotUpdate() {
         <Modal>
             <FormikProvider value={formik}>
                 <FormStyled onSubmit={formik.handleSubmit}>
-                    <h4>Update Spot:</h4>
+                    <h3>Update Spot:</h3>
                     <InputField
                         type="name"
                         name={'name'}
@@ -42,7 +42,7 @@ export default function SpotUpdate() {
                     ) : null}
                     {spotType && (spotType.name === 'Office desk' || spotType.name === 'Parking place') && (
                         <DivFlexStyled>
-                            <label>
+                            <label className='checkbox-label'>
                                 {'Is Permanent: '}
                                 <Field
                                     type="checkbox"

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const CalendarContainer = styled.div`
     background-color: var(--blue-green-light);
     text-align: center;
-    padding: 20px;
+    /* padding: 20px; */
     max-width: 600px;
     width: auto;
 
-    @media screen and (max-width: 470px) {
+    /* @media screen and (max-width: 470px) {
         padding: 10px;
-    }
+    } */
     @media screen and (max-width: 400px) {
         padding: 0;
     }
@@ -19,7 +19,6 @@ export const StyledAppContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: stretch;
-    padding: 20px;
     border-radius: 10px;
     background-color: var(--beige);
     font-family: Arial, sans-serif;
@@ -31,12 +30,11 @@ export const StyledAppContainer = styled.div`
 
     @media screen and (max-width: 640px) {
         flex-direction: column;
-        padding: 10px;
     }
     @media screen and (max-width: 400px) {
+        font-size: 0.8rem;
         &.outer-container,
         .calendar {
-            max-width: 330px;
             padding: 0;
             width: auto;
         }

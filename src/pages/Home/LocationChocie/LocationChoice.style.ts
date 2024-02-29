@@ -11,7 +11,6 @@ export const InformationContainer = styled.div`
         display: block;
         padding: 10px;
         margin: 15px auto;
-
         font-weight: bold;
         width: 50%;
         border-radius: 5px;
@@ -22,7 +21,6 @@ export const LocationImage = styled.img`
     width: 100%;
     height: 200px;
     margin-bottom: 10px;
-
     border-radius: 8px;
     object-fit: cover;
 `;

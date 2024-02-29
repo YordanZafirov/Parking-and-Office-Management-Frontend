@@ -37,9 +37,6 @@ const InputStyle = styled.div`
         color: var(--grey);
     }
 
-    input:focus {
-    }
-
     input.number-field {
         width: 10rem;
     }
@@ -50,6 +47,15 @@ const InputStyle = styled.div`
         font-weight: 500;
         margin-left: 1.2rem;
         margin-top: 0.4rem;
+    }
+
+    @media (max-width: 450px) {
+        margin: 0;
+        padding: 0;
+
+        input {
+            width: 100%;
+        }
     }
 `;
 export default InputStyle;

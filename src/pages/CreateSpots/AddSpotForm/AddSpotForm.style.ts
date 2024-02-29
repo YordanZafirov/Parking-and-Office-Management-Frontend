@@ -17,7 +17,6 @@ const FormStyled = styled.form`
     align-content: flex-start;
     width: auto;
     height: auto;
-    min-width: 300px;
     padding: 0.3rem;
     z-index: 20;
 

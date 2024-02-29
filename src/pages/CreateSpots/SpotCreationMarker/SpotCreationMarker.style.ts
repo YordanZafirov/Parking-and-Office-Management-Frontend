@@ -24,14 +24,6 @@ const MarkerStyled = styled.div`
         width: 0.7rem;
         height: 0.7rem;
     }
-    @media screen and (max-width: 400px) {
-        width: 0.5rem;
-        height: 0.5rem;
-    }
-    @media screen and (max-width: 300px) {
-        width: 0.4rem;
-        height: 0.4rem;
-    }
 `;
 
 const StyledToolTip = styled(Tooltip)`

@@ -14,7 +14,7 @@ export const NavDiv = styled.div`
     z-index: 10;
 
     .logo {
-        padding: 15px 0;
+        font-size: 1.2rem;
         text-decoration: none;
         color: inherit;
     }
@@ -26,9 +26,15 @@ export const NavDiv = styled.div`
     }
 `;
 
-export const ListItem = styled.p`
+export const NavContainer = styled.div`
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     a {
-        text-decoration: none;
-        color: inherit;
+        font-weight: 700;
     }
 `;
