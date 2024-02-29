@@ -1,3 +1,4 @@
+import { Tooltip } from 'react-tooltip';
 import { styled } from 'styled-components';
 
 const PageTitle = styled.h1`
@@ -238,7 +239,20 @@ const FormButtonsContainer = styled.div`
     align-items: center;
 `;
 
+const StyledToolTip = styled(Tooltip)`
+    &.spot-info {
+        background: var(--beige);
+        color: black;
+        text-align: center;
+        padding: 0.5rem;
+        z-index: 2;
+    }
+    & p{
+        text-align: center;
+    }
+`;
 export {
+    StyledToolTip,
     FormButtonsContainer,
     BaseButton,
     BigButtonDark,

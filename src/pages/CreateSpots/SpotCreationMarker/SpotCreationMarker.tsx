@@ -1,5 +1,6 @@
+import { StyledToolTip } from '../../../components/CommonStyledElements';
 import { SpotMarker } from '../AddSpotForm/AddSpotForm.static';
-import { MarkerStyled, StyledToolTip } from './SpotCreationMarker.style';
+import { MarkerStyled } from './SpotCreationMarker.style';
 
 export default function SpotCreationMarker(props: SpotMarker) {
     return (

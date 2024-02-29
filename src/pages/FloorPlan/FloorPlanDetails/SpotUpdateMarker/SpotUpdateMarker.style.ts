@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Tooltip } from 'react-tooltip';
 
 const MarkerStyled = styled.div`
     width: 1.5rem;
@@ -34,14 +33,4 @@ const MarkerStyled = styled.div`
     }
 `;
 
-const StyledToolTip = styled(Tooltip)`
-    &.spot-info {
-        background: var(--beige);
-        color: black;
-        text-align: center;
-        padding: 0.5rem;
-        z-index: 1;
-    }
-`;
-
-export { MarkerStyled, StyledToolTip };
+export { MarkerStyled };

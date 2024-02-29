@@ -8,6 +8,7 @@ import useRightNav from './RightNav.logic';
 
 import UserRoleHOC from '../../../pages/UserRoleHOC';
 import CalendarIcon from '../../../pages/ReservationSummary/CalendarIcon/CalendarIcon';
+import { StyledToolTip } from '../../CommonStyledElements';
 
 interface NavProps {
     open: boolean;
@@ -24,9 +25,18 @@ const RightNav: React.FC<NavProps> = ({ open, handleClick }) => {
             <Ul open={open}>
                 {isAuthenticated ? (
                     <>
-                        <NavLink to={route.reservationSummary} className="nav-link" onClick={handleCloseNav}>
+                        <NavLink
+                            to={route.reservationSummary}
+                            className="nav-link"
+                            onClick={handleCloseNav}
+                            data-tooltip-id={`component_calendar_icon`}
+                            data-tooltip-place="top"
+                        >
                             <CalendarIcon />
                         </NavLink>
+                        <StyledToolTip id={`component_calendar_icon`} className="spot-info">
+                            {<p>Reservation Summary</p>}
+                        </StyledToolTip>
                         <UserRoleHOC>
                             <NavLink to={`/admin`} className="nav-link" onClick={handleCloseNav}>
                                 <li>Admin</li>

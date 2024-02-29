@@ -111,7 +111,6 @@ const AdminPage = () => {
                                             }
                                         }}
                                     />
-
                                     <FloorPlansIcon
                                         onClick={() => {
                                             if (location.id) {
