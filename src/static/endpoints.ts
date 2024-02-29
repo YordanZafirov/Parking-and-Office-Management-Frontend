@@ -34,10 +34,10 @@ export const endpoints = {
 
     // SPOT
     getSpots: `${BASE_URL}/spot`,
-    getSingleSpot: `${BASE_URL}/spot/:spotId`,
+    getSingleSpot: `${BASE_URL}/spot/:id`,
     createSpot: `${BASE_URL}/spot`,
-    updateSpot: `${BASE_URL}/spot`,
-    deleteSpot: `${BASE_URL}/spot/`,
+    updateSpot: `${BASE_URL}/spot/:id`,
+    deleteSpot: `${BASE_URL}/spot/:id`,
     checkSpot: `${BASE_URL}/spot/check`,
     getSpotsByFloorPlanId: `${BASE_URL}/spot/by-floorPlan`,
     getBySpotTypeAndFloorPlan: `${BASE_URL}/spot/by-type-and-floorplan/search`,

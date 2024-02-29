@@ -8,6 +8,7 @@ import { useQuery } from 'react-query';
 import { getSpotTypes } from '../../../services/spotTypeService';
 import useToken from '../../../hooks/Token/Token.hook';
 import { useSpotsContext } from '../../../context/SpotsContext';
+import { toast } from 'react-toastify';
 
 function useAddSpot() {
     const navigate = useNavigate();
@@ -54,6 +55,7 @@ function useAddSpot() {
                         throw new Error(spot.error);
                     } else {
                         saveNewSpots(newMarker);
+                        toast.success("New spot was added!")
                         resetForm();
                         navigate(-1);
                     }

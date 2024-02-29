@@ -1,5 +1,10 @@
 import { GetFreeSpot, GetSpotOccupancy } from '../pages/CreateReservation/CreateReservationPage.static';
-import { CombinedReservationSpotMarker, GetSpot, SpotInterface } from '../pages/CreateReservation/SpotMarker/SpotMarker.static';
+import {
+    CombinedReservationSpotMarker,
+    GetSpot,
+    SpotInterface,
+} from '../pages/CreateReservation/SpotMarkerReservation/SpotMarkerReservation.static';
+
 import { MultipleSpots, SpotMarker } from '../pages/CreateSpots/AddSpotForm/AddSpotForm.static';
 import { SpotUpdate } from '../pages/FloorPlan/FloorPlanDetails/SpotUpdate/SpotUpdate.static';
 import { endpoints } from '../static/endpoints';
@@ -38,7 +43,6 @@ const getFreeSpotsBySpotTypeAndLocation = async ({
     start,
     end,
 }: GetFreeSpot): Promise<SpotMarker[]> => {
-
     const data = {
         floorPlanId: floorPlanId,
         spotTypeId: spotTypeId,
@@ -60,7 +64,6 @@ const getFreeSpotsCombinationBySpotTypeAndFloorPlan = async ({
     start,
     end,
 }: GetFreeSpot): Promise<CombinedReservationSpotMarker[]> => {
-
     const data = {
         floorPlanId: floorPlanId,
         spotTypeId: spotTypeId,
@@ -82,7 +85,6 @@ const getSpotsOccupancyBySpotTypeAndLocation = async ({
     start,
     end,
 }: GetSpotOccupancy): Promise<number> => {
-
     return await get(
         `${endpoints.getSpotsOccupancyBySpotTypeAndLocation}?locationId=${locationId}&spotTypeId=${spotTypeId}&startDateTime=${start}&endDateTime=${end}`,
         {},
@@ -118,11 +120,11 @@ const createMultipleSpots = async ({ markers }: MultipleSpots): Promise<Multiple
 };
 
 const updateSpot = async ({ id, name, description, isPermanent, modifiedBy }: SpotUpdate): Promise<SpotMarker> => {
-    return await patch(`${endpoints.updateSpot}/${id}`, { name, description, isPermanent, modifiedBy });
+    return await patch(endpoints.getSpots + '/' + id, { name, description, isPermanent, modifiedBy });
 };
 
 const delSpot = async (id: string) => {
-    return await del(endpoints.deleteSpot + id, {});
+    return await del(endpoints.getSpots + '/' + id, {});
 };
 
 export {
