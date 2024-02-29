@@ -1,12 +1,12 @@
-import { useLocation, useNavigate } from "react-router";
-import { useReservationContext } from "../../../context/ReservationContext";
-import useToken from "../../../hooks/Token/Token.hook";
-import { useFormik } from "formik";
-import { CombinationReservationSchema } from "./CombinationReservation.static";
-import { checkReservation } from "../../../services/reservationService";
-import { route } from "../../../static/routes";
-import { ReservationInterface } from "../../../static/types";
-import { CombinedReservationSpotMarker } from "../SpotMarker/SpotMarker.static";
+import { useLocation, useNavigate } from 'react-router';
+import { useReservationContext } from '../../../context/ReservationContext';
+import useToken from '../../../hooks/Token/Token.hook';
+import { useFormik } from 'formik';
+import { CombinationReservationSchema } from './CombinationReservation.static';
+import { checkReservation } from '../../../services/reservationService';
+import { route } from '../../../static/routes';
+import { ReservationInterface } from '../../../static/types';
+import { CombinedReservationSpotMarker } from '../SpotMarker/SpotMarker.static';
 
 function useReserveSpotCombination() {
     const { addReservation } = useReservationContext();
@@ -23,7 +23,6 @@ function useReserveSpotCombination() {
         validationSchema: CombinationReservationSchema,
 
         onSubmit: async (values, { setFieldError, setSubmitting, resetForm }) => {
-            console.log('values', values);
             try {
                 if (user) {
                     spots.forEach(async (spot: CombinedReservationSpotMarker) => {
@@ -55,7 +54,7 @@ function useReserveSpotCombination() {
         },
     });
 
-    return { formik, navigate, spots,};
+    return { formik, navigate, spots };
 }
 
-export {useReserveSpotCombination};
+export { useReserveSpotCombination };

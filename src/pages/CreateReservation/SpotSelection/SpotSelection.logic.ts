@@ -28,7 +28,6 @@ function useReservSpot() {
         validationSchema: SelectSpotShema,
 
         onSubmit: async (values, { setFieldError, setSubmitting, resetForm }) => {
-            console.log('values', values);
             try {
                 if (user) {
                     const reservationData: ReservationInterface = {

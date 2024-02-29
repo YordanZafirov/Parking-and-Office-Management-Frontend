@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// Styled components
 export const ReservationSummaryContainer = styled.div`
     padding: 20px;
 `;

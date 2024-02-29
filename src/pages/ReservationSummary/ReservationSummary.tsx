@@ -24,9 +24,7 @@ const ReservationSummary = () => {
     const { reservations, sendReservationsToBackend, removeReservation } = useReservationContext();
     const { isLoading, error, spotNames } = useReservationSummary();
 
-    useEffect(() => {
-        console.log('Transformed reservation', reservations);
-    }, [reservations]);
+    useEffect(() => {}, [reservations]);
 
     const handleConfirm = () => {
         sendReservationsToBackend(reservations);

@@ -4,7 +4,6 @@ import { endpoints } from '../static/endpoints';
 import { ReservationInterface } from '../static/types';
 import { toast } from 'react-toastify';
 
-// Define the context interface
 interface ReservationContextInterface {
     addReservation: (reservationsToAdd: ReservationInterface) => void;
     reservations: ReservationInterface[];
@@ -12,7 +11,6 @@ interface ReservationContextInterface {
     removeReservation: (id: string, start: Date, end: Date) => void;
 }
 
-// Specify the type of children prop
 interface ReservationProviderProps {
     children: ReactNode;
 }
@@ -43,7 +41,6 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
         const dataToSend = { reservations };
         try {
             const response = await post(`${endpoints.createMultipleReservations}`, dataToSend);
-            console.log('Full Response:', response);
             toast.success('Reservations sent successfully');
             setReservation([]);
             sessionStorage.removeItem('reservation');
@@ -74,7 +71,6 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
     );
 };
 
-// Custom hook that shorthands the context
 export const useReservationContext = () => {
     const context = useContext(ReservationContext);
     if (!context) {

@@ -29,11 +29,8 @@ function useAddSpot() {
         validationSchema: AddSpotShema,
 
         onSubmit: async (values: SpotMarker, { setFieldError, setSubmitting, resetForm }) => {
-            console.log('values', values);
             try {
                 const marker: Marker | undefined = markerData?.marker;
-
-                console.log('MARKER', marker);
 
                 if (marker) {
                     const newMarker: SpotMarker = {
@@ -46,7 +43,6 @@ function useAddSpot() {
                         floorPlanId: markerData?.floorPlan.id,
                         modifiedBy: user?.id,
                     };
-                    console.log('new Marker', newMarker);
 
                     const spot = await checkSpot(newMarker);
 

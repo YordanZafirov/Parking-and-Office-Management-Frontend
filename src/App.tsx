@@ -71,10 +71,7 @@ function App() {
                                 />
                             </Route>
 
-                            <Route path={route.admin} element={<AdminPage />}>
-                                {/* <Route path=":id/edit" element={<EditLocationModal />} />
-                        <Route path=":id/delete" element={<DeleteLocationModal />} /> */}
-                            </Route>
+                            <Route path={route.admin} element={<AdminPage />}></Route>
                             <Route path={`/spots/:id`} element={<CreateSpots />}>
                                 <Route path={`/spots/:id/create`} element={<AddSpotForm />} />
                             </Route>

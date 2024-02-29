@@ -11,7 +11,6 @@ const useLogin = () => {
             error: '',
         },
         validationSchema: LoginSchema,
-        // Function to handle the form submission
         onSubmit: (values: LoginUser) => {
             try {
                 loginUser(values);

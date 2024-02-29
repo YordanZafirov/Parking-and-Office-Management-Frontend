@@ -45,8 +45,6 @@ function useShowSpots() {
             });
 
             if (data.length > 0) {
-                console.log('data', data);
-
                 const outputSpots = data.map((spot: CustomSpotMarker) => {
                     spot.spotType = selectedSpotType.name;
                     spot.period = calendarData;
@@ -54,7 +52,6 @@ function useShowSpots() {
                 });
 
                 setSpots(outputSpots);
-                console.log(outputSpots);
                 if (!showSpots) {
                     toggleSpots();
                 }
@@ -81,7 +78,6 @@ function useShowSpots() {
 
                 setCombinedSpots(outputSpots);
                 setIsCombination(true);
-                console.log('props', outputSpots);
             }
         }
     };
@@ -114,18 +110,5 @@ const useFloorPlansByLocation = (spotTypeId: string, locationId: string) => {
     });
     return { floorPlans, isLoading, error };
 };
-
-// const useSpotsByFloorPlan = ({ floorPlanId, spotTypeId }: { floorPlanId: string; spotTypeId: string }) => {
-//     const {
-//         data: spots,
-//         isLoading,
-//         error,
-//     } = useQuery(['spots', floorPlanId, spotTypeId], () => {
-//         if (spotTypeId && floorPlanId) {
-//             return getAllBySpotTypeAndFloorPlan({ floorPlanId, spotTypeId });
-//         }
-//     });
-//     return { spots, isLoading, error };
-// };
 
 export { useShowSpots };

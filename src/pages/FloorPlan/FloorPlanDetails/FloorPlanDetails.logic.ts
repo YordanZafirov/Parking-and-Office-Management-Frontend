@@ -9,7 +9,6 @@ function useFloorPlanDetails() {
     const navigate = useNavigate();
 
     const { id } = useParams();
-    console.log('useParams ID:', id);
     const [floorPlan, setFloorPlan] = useState<FloorPlan | null>(null);
     const {
         data: spotsByFloorPlan,

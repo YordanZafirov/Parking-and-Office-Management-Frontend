@@ -9,7 +9,6 @@ const useChoseLocation = () => {
 
     const { id: userId } = decodedToken || {};
 
-    // Fetch a single location by its id
     const {
         data: singleLocation,
         isLoading,

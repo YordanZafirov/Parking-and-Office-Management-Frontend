@@ -21,7 +21,6 @@ const Modal: React.FC<ModalProps> = ({ isVisible, hideModal, onConfirm, showConf
                             className="create-btn"
                             onClick={() => {
                                 onConfirm && onConfirm();
-                                // hideModal(); // -> remove this to not close modal with errors
                             }}
                         >
                             Confirm

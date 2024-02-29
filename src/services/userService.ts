@@ -18,31 +18,26 @@ export interface ChangeProfilePictureResponse {
     error?: string;
 }
 
-// Function to get all users
 export const getUsers = async (): Promise<User[]> => {
     const response = await get(`${endpoints.user}`, {});
     return response;
 };
 
-// Function to get a user by id
 export const getUser = async (id: string | undefined): Promise<User> => {
     const response = await get(`${endpoints.user}/${id}`, {});
     return response;
 };
 
-// Function to delete a user
 export const deleteUser = async (id: string): Promise<User> => {
     const response = await del(`${endpoints.user}/${id}`, {});
     return response;
 };
 
-// Function to get all reservations by user
 export const register = async ({ email, password, modifiedBy }: RegisterUser): Promise<RegisterUser> => {
     const response = await post(`${endpoints.register}`, { email, password, modifiedBy });
     return response;
 };
 
-// Function to change password
 export const changePassword = async ({
     id,
     password,
@@ -56,7 +51,6 @@ export const changePassword = async ({
     return response;
 };
 
-// Function to change profile picture
 export const changeProfilePicture = async ({
     id,
     imgUrl,
@@ -68,7 +62,6 @@ export const changeProfilePicture = async ({
     return response;
 };
 
-// Function to delete a reservation
 export const loginService = async ({ email, password }: LoginUser): Promise<LoginUser> => {
     try {
         const response = await post(`${endpoints.login}`, { email, password });
@@ -78,7 +71,6 @@ export const loginService = async ({ email, password }: LoginUser): Promise<Logi
     }
 };
 
-// Function to delete a reservation
 export const logout = async () => {
     localStorage.removeItem('access_token');
 };
