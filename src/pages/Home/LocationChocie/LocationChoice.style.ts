@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const InformationContainer = styled.div`
+const InformationContainer = styled.div`
     display: flex;
     flex-direction: column;
     background-color: var(--blue-green);
@@ -17,7 +17,7 @@ export const InformationContainer = styled.div`
     }
 `;
 
-export const LocationImage = styled.img`
+const LocationImage = styled.img`
     width: 100%;
     height: 200px;
     margin-bottom: 10px;
@@ -25,7 +25,7 @@ export const LocationImage = styled.img`
     object-fit: cover;
 `;
 
-export const DeleteButton = styled.div`
+const DeleteButton = styled.div`
     top: 10px;
     right: 10px;
     cursor: pointer;
@@ -40,3 +40,5 @@ export const DeleteButton = styled.div`
     justify-content: center;
     z-index: 20;
 `;
+
+export { DeleteButton, LocationImage, InformationContainer };

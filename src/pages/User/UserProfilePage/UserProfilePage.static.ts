@@ -1,4 +1,4 @@
-export const userProfileConstants = {
+const userProfileConstants = {
     changePasswordButton: 'Change Password',
     changeProfilePictureButton: 'Change Profile Picture',
     showPastReservations: 'Show Past Reservations',
@@ -7,13 +7,15 @@ export const userProfileConstants = {
     logout: 'Logout',
 };
 
-export interface UserDetails {
+interface UserDetails {
     pastReservations: number;
     currentReservations: number;
     futureReservations: number;
 }
 
-export interface DetailBulletProps {
+interface DetailBulletProps {
     icon?: string;
-    value: string | number | undefined;
 }
+
+export type { UserDetails, DetailBulletProps };
+export { userProfileConstants };

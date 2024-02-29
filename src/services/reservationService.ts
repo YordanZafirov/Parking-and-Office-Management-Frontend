@@ -4,32 +4,32 @@ import { Reservation } from '../static/types';
 import { endpoints } from '../static/endpoints';
 import { get, del, post } from './fetchService';
 
-export const getAllReservations = async (): Promise<Reservation[]> => {
+const getAllReservations = async (): Promise<Reservation[]> => {
     const response = await get(endpoints.reservation, {});
     return response;
 };
 
-export const getPastReservationsByUserId = async (id: string | undefined): Promise<Reservation[]> => {
+const getPastReservationsByUserId = async (id: string | undefined): Promise<Reservation[]> => {
     const response = await get(`${endpoints.getPastReservationsByUser}${id}`, {});
     return response;
 };
 
-export const getCurrentReservationsByUserId = async (id: string | undefined): Promise<Reservation[]> => {
+const getCurrentReservationsByUserId = async (id: string | undefined): Promise<Reservation[]> => {
     const response = await get(`${endpoints.getCurrentReservationsByUser}${id}`, {});
     return response;
 };
 
-export const getFutureReservationsByUserId = async (id: string | undefined): Promise<Reservation[]> => {
+const getFutureReservationsByUserId = async (id: string | undefined): Promise<Reservation[]> => {
     const response = await get(`${endpoints.getFutureReservationsByUser}${id}`, {});
     return response;
 };
 
-export const getResevationsBySpot = async (spotId: string): Promise<Reservation[]> => {
+const getResevationsBySpot = async (spotId: string): Promise<Reservation[]> => {
     const response = await get(`${endpoints.getResevationsBySpotId}/${spotId}`, {});
     return response;
 };
 
-export const checkReservation = async ({
+const checkReservation = async ({
     spotId,
     start,
     end,
@@ -47,10 +47,21 @@ export const checkReservation = async ({
     });
 };
 
-export const createReservation = async ({ reservations }: MultipleReservations): Promise<MultipleReservations> => {
+const createReservation = async ({ reservations }: MultipleReservations): Promise<MultipleReservations> => {
     return await post(`${endpoints.createReservation}`, { reservations });
 };
 
-export const deleteReservation = async (reservationId: string): Promise<void> => {
+const deleteReservation = async (reservationId: string): Promise<void> => {
     await del(`${endpoints.reservation}/${reservationId}`, {});
+};
+
+export {
+    getAllReservations,
+    getPastReservationsByUserId,
+    getCurrentReservationsByUserId,
+    getFutureReservationsByUserId,
+    getResevationsBySpot,
+    checkReservation,
+    createReservation,
+    deleteReservation,
 };

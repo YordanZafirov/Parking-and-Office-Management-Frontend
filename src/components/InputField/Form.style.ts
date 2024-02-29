@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FormStyled = styled.form`
+const FormStyled = styled.form`
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -20,3 +20,5 @@ export const FormStyled = styled.form`
         text-align: center;
     }
 `;
+
+export { FormStyled };

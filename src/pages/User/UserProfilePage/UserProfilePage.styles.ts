@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ToggleButtonsContainer = styled.div`
+const ToggleButtonsContainer = styled.div`
     max-width: 1500px;
     display: flex;
     gap: 30px;
@@ -18,7 +18,7 @@ export const ToggleButtonsContainer = styled.div`
     }
 `;
 
-export const UpdateButtonContainer = styled.div`
+const UpdateButtonContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +29,7 @@ export const UpdateButtonContainer = styled.div`
     gap: 10px;
 `;
 
-export const StyledDetailBullet = styled.li`
+const StyledDetailBullet = styled.li`
     display: flex;
     align-items: center;
     margin: 8px 20px;
@@ -51,7 +51,7 @@ export const StyledDetailBullet = styled.li`
     }
 `;
 
-export const UserProfileContainer = styled.div`
+const UserProfileContainer = styled.div`
     margin: 30px 10px;
     display: grid;
     grid-template-columns: 60% 40%;
@@ -74,7 +74,7 @@ export const UserProfileContainer = styled.div`
     }
 `;
 
-export const UserAdditionalInfoContainer = styled.div`
+const UserAdditionalInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px auto;
@@ -85,7 +85,7 @@ export const UserAdditionalInfoContainer = styled.div`
     text-align: center;
     justify-content: center;
 `;
-export const UserMainInfoContainer = styled.div`
+const UserMainInfoContainer = styled.div`
     display: flex;
     flex-direction: row;
     margin: 10px auto;
@@ -102,7 +102,7 @@ export const UserMainInfoContainer = styled.div`
         flex-direction: column;
     }
 `;
-export const UserProfilePictureContainer = styled.div`
+const UserProfilePictureContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px auto;
@@ -115,7 +115,7 @@ export const UserProfilePictureContainer = styled.div`
     text-align: center;
 `;
 
-export const UserProfilePicture = styled.img`
+const UserProfilePicture = styled.img`
     border-radius: 50%;
     width: 200px;
     height: 200px;
@@ -123,3 +123,14 @@ export const UserProfilePicture = styled.img`
     border: 3px solid var(--blue-green-light);
     margin-bottom: 10px;
 `;
+
+export {
+    ToggleButtonsContainer,
+    UpdateButtonContainer,
+    StyledDetailBullet,
+    UserAdditionalInfoContainer,
+    UserProfileContainer,
+    UserMainInfoContainer,
+    UserProfilePicture,
+    UserProfilePictureContainer,
+};

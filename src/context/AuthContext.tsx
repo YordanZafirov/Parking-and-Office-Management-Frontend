@@ -34,7 +34,7 @@ const isTokenValid = (token: string) => {
     }
 };
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
         const storedToken = localStorage.getItem('access_token');
@@ -83,10 +83,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     return <AuthContext.Provider value={{ isAuthenticated, loginUser, logout }}>{children}</AuthContext.Provider>;
 };
 
-export const useAuth = (): AuthContextType => {
+const useAuth = (): AuthContextType => {
     const context = useContext(AuthContext);
     if (!context) {
         throw new Error('useAuth must be used within an AuthProvider');
     }
     return context;
 };
+
+export { useAuth, AuthProvider };

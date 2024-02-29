@@ -1,7 +1,7 @@
 import { DateRange } from 'react-date-range';
 import { SpotType } from '../../Reservation/SpotType/SpotType.static';
 
-export interface DateRangePickerProps {
+interface DateRangePickerProps {
     onChange: (item: { [key: string]: DateRange }) => void;
     showPreview: boolean;
     moveRangeOnFirstSelection: boolean;
@@ -13,22 +13,24 @@ export interface DateRangePickerProps {
     maxDate?: Date | null | undefined;
 }
 
-export interface CalendarData {
+interface CalendarData {
     data: DateRangeOutput;
 }
 
-export interface TimeOption {
+interface TimeOption {
     value: string;
     label: string;
 }
 
-export interface DateRangeOutput {
+interface DateRangeOutput {
     startDate: string;
     endDate: string;
     key: string;
 }
 
-export interface dataProps {
+interface dataProps {
     sendDateTime: (data: DateRangeOutput) => void;
     spotType: SpotType;
 }
+
+export type { dataProps, DateRange, DateRangeOutput, DateRangePickerProps, CalendarData, TimeOption };

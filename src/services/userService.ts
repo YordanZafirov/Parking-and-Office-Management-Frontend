@@ -3,42 +3,42 @@ import { User } from '../pages/User/UsersPage/UsersPage.static';
 import { endpoints } from '../static/endpoints';
 import { del, get, patch, post } from './fetchService';
 
-export interface RegisterUser {
+interface RegisterUser {
     email: string;
     password: string;
     modifiedBy: string | undefined;
     error?: string;
 }
-export interface ChangePasswordResponse {
+interface ChangePasswordResponse {
     message?: string;
     error?: string;
 }
-export interface ChangeProfilePictureResponse {
+interface ChangeProfilePictureResponse {
     message?: string;
     error?: string;
 }
 
-export const getUsers = async (): Promise<User[]> => {
+const getUsers = async (): Promise<User[]> => {
     const response = await get(`${endpoints.user}`, {});
     return response;
 };
 
-export const getUser = async (id: string | undefined): Promise<User> => {
+const getUser = async (id: string | undefined): Promise<User> => {
     const response = await get(`${endpoints.user}/${id}`, {});
     return response;
 };
 
-export const deleteUser = async (id: string): Promise<User> => {
+const deleteUser = async (id: string): Promise<User> => {
     const response = await del(`${endpoints.user}/${id}`, {});
     return response;
 };
 
-export const register = async ({ email, password, modifiedBy }: RegisterUser): Promise<RegisterUser> => {
+const register = async ({ email, password, modifiedBy }: RegisterUser): Promise<RegisterUser> => {
     const response = await post(`${endpoints.register}`, { email, password, modifiedBy });
     return response;
 };
 
-export const changePassword = async ({
+const changePassword = async ({
     id,
     password,
     newPassword,
@@ -51,7 +51,7 @@ export const changePassword = async ({
     return response;
 };
 
-export const changeProfilePicture = async ({
+const changeProfilePicture = async ({
     id,
     imgUrl,
 }: {
@@ -62,7 +62,7 @@ export const changeProfilePicture = async ({
     return response;
 };
 
-export const loginService = async ({ email, password }: LoginUser): Promise<LoginUser> => {
+const loginService = async ({ email, password }: LoginUser): Promise<LoginUser> => {
     try {
         const response = await post(`${endpoints.login}`, { email, password });
         return response;
@@ -71,6 +71,9 @@ export const loginService = async ({ email, password }: LoginUser): Promise<Logi
     }
 };
 
-export const logout = async () => {
+const logout = async () => {
     localStorage.removeItem('access_token');
 };
+
+export type { RegisterUser, ChangePasswordResponse, ChangeProfilePictureResponse };
+export { getUser, getUsers, deleteUser, register, changePassword, changeProfilePicture, loginService, logout };

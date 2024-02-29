@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const UserReservationsTableStyle = styled.table`
+const UserReservationsTableStyle = styled.table`
     width: 100%;
     margin: 0 auto;
     margin: 1rem 0;
@@ -92,3 +92,5 @@ export const UserReservationsTableStyle = styled.table`
         }
     }
 `;
+
+export { UserReservationsTableStyle };

@@ -79,7 +79,6 @@ function useShowSpots() {
 
                 setCombinedSpots(outputSpots);
                 setIsCombination(true);
-              
             }
         }
     };

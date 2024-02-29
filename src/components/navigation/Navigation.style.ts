@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NavDiv = styled.div`
+const NavDiv = styled.div`
     background: #fff;
     width: 100%;
     height: 4rem;
@@ -26,7 +26,7 @@ export const NavDiv = styled.div`
     }
 `;
 
-export const NavContainer = styled.div`
+const NavContainer = styled.div`
     max-width: 1500px;
     width: 100%;
     margin: 0 auto;
@@ -38,3 +38,5 @@ export const NavContainer = styled.div`
         font-weight: 700;
     }
 `;
+
+export { NavDiv, NavContainer };

@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-export interface FloorPlan {
+interface FloorPlan {
     id?: string;
     name?: string;
     imgUrl?: string;
@@ -14,8 +14,9 @@ const FloorPlanCreateShema = Yup.object().shape({
     imgUrl: Yup.string().required('Image is required'),
 });
 
-export { FloorPlanCreateShema };
-
-export interface EditFormErrors {
+interface EditFormErrors {
     name: string;
 }
+
+export type { FloorPlan, EditFormErrors };
+export { FloorPlanCreateShema };

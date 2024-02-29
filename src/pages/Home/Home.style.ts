@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HomeContainer = styled.div`
+const HomeContainer = styled.div`
     display: flex;
     width: 100%;
     height: auto;
@@ -49,3 +49,5 @@ export const HomeContainer = styled.div`
         margin: 0 auto;
     }
 `;
+
+export { HomeContainer };

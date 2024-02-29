@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavProps } from './RightNav.static';
 
-export const Ul = styled.ul<NavProps>`
+const Ul = styled.ul<NavProps>`
     list-style: none;
     display: flex;
     align-items: center;
@@ -43,3 +43,5 @@ export const Ul = styled.ul<NavProps>`
         }
     }
 `;
+
+export { Ul };

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { DateRange } from 'react-date-range';
 import { DateRangeOutput, DateRangePickerProps } from './Calendar.static';
 
-export const useCalendar = () => {
+const useCalendar = () => {
     const [state, setState] = useState<DateRange[]>([
         {
             startDate: new Date(),
@@ -101,3 +101,5 @@ export const useCalendar = () => {
         selectedTime,
     };
 };
+
+export { useCalendar };

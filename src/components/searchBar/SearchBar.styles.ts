@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SearchBarWrapper = styled.div`
+const SearchBarWrapper = styled.div`
     display: flex;
     align-items: center;
 
@@ -26,3 +26,5 @@ export const SearchBarWrapper = styled.div`
         cursor: pointer;
     }
 `;
+
+export { SearchBarWrapper };

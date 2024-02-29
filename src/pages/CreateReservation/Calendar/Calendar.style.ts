@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CalendarContainer = styled.div`
+const CalendarContainer = styled.div`
     background-color: var(--blue-green-light);
     text-align: center;
     /* padding: 20px; */
@@ -15,7 +15,7 @@ export const CalendarContainer = styled.div`
     }
 `;
 
-export const StyledAppContainer = styled.div`
+const StyledAppContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: stretch;
@@ -41,7 +41,7 @@ export const StyledAppContainer = styled.div`
     }
 `;
 
-export const StyledCalendarContainer = styled.div`
+const StyledCalendarContainer = styled.div`
     flex: 1;
 
     .rdrCalendarWrapper {
@@ -62,7 +62,7 @@ export const StyledCalendarContainer = styled.div`
     }
 `;
 
-export const StyledTimePickerContainer = styled.div`
+const StyledTimePickerContainer = styled.div`
     flex: 2;
     display: flex;
     align-items: stretch;
@@ -72,7 +72,7 @@ export const StyledTimePickerContainer = styled.div`
     }
 `;
 
-export const StyledTimePicker = styled.div`
+const StyledTimePicker = styled.div`
     background-color: #ffffff;
     border: 1px solid var(--brown);
     border-radius: 10px;
@@ -94,3 +94,5 @@ export const StyledTimePicker = styled.div`
         }
     }
 `;
+
+export { CalendarContainer, StyledTimePicker, StyledTimePickerContainer, StyledAppContainer, StyledCalendarContainer };

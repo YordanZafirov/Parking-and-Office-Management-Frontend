@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BaseButton } from '../../../../components/CommonStyledElements';
 
-export const StyledUserCard = styled.div`
+const StyledUserCard = styled.div`
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
@@ -15,13 +15,13 @@ export const StyledUserCard = styled.div`
     }
 `;
 
-export const UserImage = styled.img`
+const UserImage = styled.img`
     width: 100%;
     max-height: 250px;
     object-fit: cover;
 `;
 
-export const UserCardsContainerWrapper = styled.div`
+const UserCardsContainerWrapper = styled.div`
     background-color: var(--blue-green-light);
     margin: 10px auto;
     padding: 10px 20px;
@@ -37,13 +37,15 @@ export const UserCardsContainerWrapper = styled.div`
     }
 `;
 
-export const StyledUserDetails = styled.div`
+const StyledUserDetails = styled.div`
     padding: 16px;
     text-align: center;
     background-color: var(--pink-light);
 `;
 
-export const BaseButtonDeleteUser = styled(BaseButton)`
+const BaseButtonDeleteUser = styled(BaseButton)`
     font-size: 16px;
     padding: 15px;
 `;
+
+export { StyledUserCard, StyledUserDetails, UserImage, UserCardsContainerWrapper, BaseButtonDeleteUser };

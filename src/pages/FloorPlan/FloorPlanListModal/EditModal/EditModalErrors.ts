@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { EditFormErrors } from '../../FloorPlan.static';
 
-export function useEditModalError() {
+function useEditModalError() {
     const [formErrors, setFormErrors] = useState<EditFormErrors>({
         name: '',
     });
@@ -26,3 +26,5 @@ export function useEditModalError() {
         validateName,
     };
 }
+
+export { useEditModalError };

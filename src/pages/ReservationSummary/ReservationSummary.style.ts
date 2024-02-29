@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const ReservationSummaryContainer = styled.div`
+const ReservationSummaryContainer = styled.div`
     padding: 20px;
 `;
 
-export const ReservationSummaryList = styled.ul`
+const ReservationSummaryList = styled.ul`
     list-style-type: none;
     padding: 0;
     margin: 20px 0;
@@ -22,12 +22,12 @@ export const ReservationSummaryList = styled.ul`
     }
 `;
 
-export const ReservationSummaryNoItems = styled.div`
+const ReservationSummaryNoItems = styled.div`
     text-align: center;
     margin: 20px 0;
 `;
 
-export const ReservationSummaryListItem = styled.li`
+const ReservationSummaryListItem = styled.li`
     position: relative;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -35,7 +35,7 @@ export const ReservationSummaryListItem = styled.li`
     margin-bottom: 10px;
 `;
 
-export const ReservationRemveButton = styled.button`
+const ReservationRemveButton = styled.button`
     position: absolute;
     top: 5px;
     right: 5px;
@@ -52,7 +52,7 @@ export const ReservationRemveButton = styled.button`
     }
 `;
 
-export const SummaryButtonContainer = styled.div`
+const SummaryButtonContainer = styled.div`
     display: flex;
     justify-content: center;
     width: 50%;
@@ -64,7 +64,7 @@ export const SummaryButtonContainer = styled.div`
     }
 `;
 
-export const ReservationSummaryButton = styled.button`
+const ReservationSummaryButton = styled.button`
     display: block;
     background-color: var(--blue-green);
     color: #fff;
@@ -81,6 +81,17 @@ export const ReservationSummaryButton = styled.button`
     }
 `;
 
-export const AddNewReservationButton = styled(ReservationSummaryButton)`
+const AddNewReservationButton = styled(ReservationSummaryButton)`
     background-color: var(--brown-light);
 `;
+
+export {
+    ReservationSummaryButton,
+    ReservationSummaryContainer,
+    ReservationSummaryList,
+    ReservationSummaryListItem,
+    ReservationSummaryNoItems,
+    ReservationRemveButton,
+    AddNewReservationButton,
+    SummaryButtonContainer,
+};

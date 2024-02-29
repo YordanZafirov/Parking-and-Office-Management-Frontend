@@ -5,12 +5,12 @@ import { route } from '../../../static/routes';
 import { useMutation, useQuery } from 'react-query';
 import { RefetchFunction, User } from './UsersPage.static';
 
-export const useUsers = () => {
+const useUsers = () => {
     const { data: users, isLoading, error, refetch } = useQuery({ queryKey: ['users'], queryFn: getUsers });
     return { users, isLoading, error, refetch };
 };
 
-export const useDeleteUser = (refetch: RefetchFunction<User>) => {
+const useDeleteUser = (refetch: RefetchFunction<User>) => {
     const deleteUserMutation = useMutation(deleteUser, {
         onSuccess: () => {
             refetch();
@@ -20,7 +20,7 @@ export const useDeleteUser = (refetch: RefetchFunction<User>) => {
     return { deleteUser: deleteUserMutation.mutate };
 };
 
-export const useUsersPageLogic = () => {
+const useUsersPageLogic = () => {
     const { users, isLoading, refetch } = useUsers();
     const { deleteUser } = useDeleteUser(refetch);
     const [filteredUsers, setFilteredUsers] = useState<User[] | undefined>([]);
@@ -55,3 +55,5 @@ export const useUsersPageLogic = () => {
         searchPlaceholder,
     };
 };
+
+export { useUsers, useDeleteUser, useUsersPageLogic };
