@@ -38,7 +38,7 @@ const SpotTypeCards: React.FC<SpotTypeCardProps> = ({ singleLocation, spotTypeDa
         <Container>
             {!singleLocation && <PageTitle>The chosen location is missing</PageTitle>}
             {!spotTypeData ? (
-                <PageTitle>Loading spot types...</PageTitle>
+                <PageTitle>No Spot Types Data</PageTitle>
             ) : (
                 <>
                     <PageTitle>Reserve your spot at {singleLocation?.name}</PageTitle>

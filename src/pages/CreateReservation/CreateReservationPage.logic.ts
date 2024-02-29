@@ -16,6 +16,7 @@ function useShowSpots() {
     const currentLocation = location.state.currentLocation;
     const selectedSpotType = location.state.selectedSpotType;
     const [isCombination, setIsCombination] = useState(false);
+    const [areNoSpots, setAreNoSpots] = useState(false);
     const [spots, setSpots] = useState<CustomSpotMarker[]>([]);
     const [combinedSpots, setCombinedSpots] = useState<CombinedReservationSpotMarker[]>([]);
     const [currentFloorPlan, setCurrentFloorPlan] = useState<FloorPlan>();
@@ -56,7 +57,7 @@ function useShowSpots() {
                 if (!showSpots) {
                     toggleSpots();
                 }
-            } else {
+            } else if (data.length <= 0 && (selectedSpotType.name === "Office desk" || selectedSpotType.name === "Parking place" )){
                 const spotCombination = await getFreeSpotsCombinationBySpotTypeAndFloorPlan({
                     floorPlanId: floorPlan.id!,
                     spotTypeId: selectedSpotType.id,
@@ -79,6 +80,8 @@ function useShowSpots() {
 
                 setCombinedSpots(outputSpots);
                 setIsCombination(true);
+            } else {
+                setAreNoSpots(true);
             }
         }
     };
@@ -96,6 +99,7 @@ function useShowSpots() {
         calendarData,
         selectedSpotType,
         isCombination,
+        areNoSpots,
     };
 }
 
