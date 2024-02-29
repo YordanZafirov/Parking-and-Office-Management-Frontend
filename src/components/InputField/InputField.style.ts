@@ -12,6 +12,7 @@ const InputStyle = styled.div`
         display: block;
         text-align: left;
         padding-left: 0.8rem;
+        margin-bottom: 4px;
     }
 
     input {
@@ -26,10 +27,15 @@ const InputStyle = styled.div`
         padding: 10px 14px;
         margin-bottom: 1rem;
 
+        &:focus {
+            border: red;
+        }
+
         .image-input input {
             border: none;
         }
     }
+
 
     input::placeholder {
         font-size: var(--font-size-sm);

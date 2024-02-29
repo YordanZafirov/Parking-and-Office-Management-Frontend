@@ -2,7 +2,7 @@ import { GetFreeSpot, GetSpotOccupancy } from '../pages/CreateReservation/Create
 import {
     CombinedReservationSpotMarker,
     GetSpot,
-    SpotInterface,
+    Spot,
 } from '../pages/CreateReservation/SpotMarkerReservation/SpotMarkerReservation.static';
 
 import { MultipleSpots, SpotMarker } from '../pages/CreateSpots/AddSpotForm/AddSpotForm.static';
@@ -14,7 +14,7 @@ const getAll = async (): Promise<SpotMarker[]> => {
     return await get(`${endpoints.getSpots}`, {});
 };
 
-const getSpotById = async (id: string): Promise<SpotInterface> => {
+const getSpotById = async (id: string): Promise<Spot> => {
     const response = await get(`${endpoints.getSpots}/${id}`, {});
     return response;
 };

@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { getSpotById } from '../../services/spotService';
-import { ReservationInterface } from '../../static/types';
+import { Reservation } from '../../static/types';
 import { useReservationContext } from '../../context/ReservationContext';
 import { useEffect, useState } from 'react';
 
@@ -38,14 +38,14 @@ const useReservationSummary = () => {
             return [];
         }
 
-        const spotNamesPromises = transformedReservations.map(async (reservation: ReservationInterface) => {
+        const spotNamesPromises = transformedReservations.map(async (reservation: Reservation) => {
             const spotName = await getSpotName(reservation.spotId);
             return spotName;
         });
 
         const spotNames = await Promise.all(spotNamesPromises);
 
-        const updatedReservations = transformedReservations.map((reservation: ReservationInterface, index: number) => {
+        const updatedReservations = transformedReservations.map((reservation: Reservation, index: number) => {
             return { ...reservation, spotName: spotNames[index] };
         });
 

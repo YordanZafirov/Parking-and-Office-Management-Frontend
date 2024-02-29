@@ -3,7 +3,7 @@ import { Marker } from 'react-image-marker';
 import { FloorPlan } from '../pages/FloorPlan/FloorPlan.static';
 import { SpotMarker } from '../pages/CreateSpots/AddSpotForm/AddSpotForm.static';
 
-interface SpotsContextInterface {
+interface SpotsContext {
     addMarker: (data: Data) => void;
     markerData: Data | undefined;
     setMarkerData: (data: Data) => void;
@@ -24,7 +24,7 @@ interface SpotsProviderProps {
     children: ReactNode;
 }
 
-const SpotsContext = createContext<SpotsContextInterface | undefined>(undefined);
+const SpotsContext = createContext<SpotsContext | undefined>(undefined);
 
 export const SpotsProvider = ({ children }: SpotsProviderProps) => {
     const [markerData, setMarkerData] = useState<Data>({ marker: undefined, floorPlan: {} });

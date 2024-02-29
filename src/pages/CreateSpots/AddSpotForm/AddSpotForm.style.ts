@@ -38,6 +38,7 @@ const SelectStyle = styled.div`
         display: block;
         text-align: left;
         padding-left: 0.8rem;
+        margin-bottom: 4px;
     }
 
     select {
@@ -45,8 +46,8 @@ const SelectStyle = styled.div`
         font-weight: 400;
         width: 250px;
         color: var(--dark-grey);
-        background: var(white-smoke);
-        border: 0.17rem solid var(--dark-grey);
+        background: var(--beige);
+        border: 0.17rem solid var(--blue-green);
         box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
         border-radius: 8px;
         padding: 10px 14px;

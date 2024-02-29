@@ -1,10 +1,10 @@
 import DetailBullet from './DetailBullet';
-import { UserDetailsInterface } from './UserProfilePage.static';
+import { UserDetails } from './UserProfilePage.static';
 import redCalendar from '../../../assets/calendarPast.png';
 import blueCalendar from '../../../assets/calendarNow.png';
 import greenCalendar from '../../../assets/calendarFuture.png';
 
-const UserProfileInfo = ({ pastReservations, currentReservations, futureReservations }: UserDetailsInterface) => {
+const UserProfileInfo = ({ pastReservations, currentReservations, futureReservations }: UserDetails) => {
     return (
         <div>
             <DetailBullet icon={redCalendar} value={`Past reservations: ${pastReservations}`} />

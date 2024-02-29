@@ -1,8 +1,8 @@
+import { Reservation } from '../../static/types';
 import { Container, PageTitle } from '../CommonStyledElements';
 import Loader from '../loader/Loader';
-import { ReservationToFix } from '../../services/userService';
 import useUserReservationsTableLogic from './UserReservationsTable.logic';
-import { UserReservationsTableInterface } from './UserReservationsTable.static';
+import { ReservationsTable } from './UserReservationsTable.static';
 import { UserReservationsTableStyle } from './UserReservationsTable.styles';
 
 const UserReservationsTable = ({
@@ -11,7 +11,7 @@ const UserReservationsTable = ({
     refetch,
     reservationType,
 }: {
-    reservations: ReservationToFix[] | undefined;
+    reservations: Reservation[] | undefined;
     isLoading: boolean;
     refetch: () => void;
     reservationType: string;
@@ -45,7 +45,7 @@ const UserReservationsTable = ({
                             </tr>
                         </thead>
                         <tbody>
-                            {formattedReservations.map((reservation: UserReservationsTableInterface) => {
+                            {formattedReservations.map((reservation: ReservationsTable) => {
                                 return (
                                     <tr key={reservation.id}>
                                         <td data-label="Spot:">{reservation.spotName}</td>
