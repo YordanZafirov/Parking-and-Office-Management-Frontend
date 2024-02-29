@@ -6,7 +6,7 @@ import { getSpotType } from '../../services/spotTypeService';
 import { Reservation } from '../../static/types';
 
 const useUserReservationsTableLogic = (
-    reservations: Reserva[] | undefined,
+    reservations: Reservation[] | undefined,
     areLoading: boolean,
     refetch: () => void,
 ) => {
@@ -17,6 +17,23 @@ const useUserReservationsTableLogic = (
     });
 
     const [formattedReservations, setFormattedReservations] = useState([]);
+    const [selectedReservationIdForDelete, setSelectedReservationIdForDelete] = useState<string | null>(null);
+
+    const onDeleteClick = (reservationId: string) => {
+        setSelectedReservationIdForDelete(reservationId);
+    };
+
+    const onDeleteConfirm = async () => {
+        if (selectedReservationIdForDelete) {
+            try {
+                await deleteReservationMutation.mutate(selectedReservationIdForDelete);
+            } catch (error) {
+                console.error('Error deleting reservation:', error);
+            } finally {
+                setSelectedReservationIdForDelete(null);
+            }
+        }
+    };
 
     useEffect(() => {
         if (!reservations) return;
@@ -55,6 +72,8 @@ const useUserReservationsTableLogic = (
         formattedReservations,
         deleteReservation: deleteReservationMutation.mutate,
         areLoading,
+        onDeleteConfirm,
+        onDeleteClick,
     };
 };
 
