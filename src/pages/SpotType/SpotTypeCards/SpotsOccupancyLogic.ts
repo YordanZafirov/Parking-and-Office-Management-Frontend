@@ -4,7 +4,7 @@ import { getSpotsOccupancyBySpotTypeAndLocation } from '../../../services/spotSe
 import { SpotType } from './SpotTypeCards.static';
 import { useEffect, useState } from 'react';
 
-export const SpotTypeCardsOccupancyLogic = (spotTypeData: SpotType[]) => {
+const SpotTypeCardsOccupancyLogic = (spotTypeData: SpotType[]) => {
     const [updatedSpotTypeData, setUpdatedSpotData] = useState<SpotType[]>(spotTypeData);
     const { id: locationId } = useParams();
     const today = new Date();
@@ -46,3 +46,5 @@ export const SpotTypeCardsOccupancyLogic = (spotTypeData: SpotType[]) => {
 
     return { updatedSpotTypeData };
 };
+
+export { SpotTypeCardsOccupancyLogic };

@@ -1,29 +1,29 @@
 import styled from 'styled-components';
 import { BaseButton } from '../../components/CommonStyledElements';
 
-export const AdminPageContainer = styled.div`
+const AdminPageContainer = styled.div`
     max-width: 800px;
     margin: 0 auto;
 `;
 
-export const Table = styled.table`
+const Table = styled.table`
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 `;
 
-export const TableHeader = styled.th`
+const TableHeader = styled.th`
     padding: 10px;
     border-bottom: 1px solid #ddd;
     text-align: left;
 `;
 
-export const TableCell = styled.td`
+const TableCell = styled.td`
     padding: 10px;
     border-bottom: 1px solid #ddd;
 `;
 
-export const ListContainer = styled.div`
+const ListContainer = styled.div`
     padding: 20px;
 
     @media (max-width: 768px) {
@@ -31,18 +31,18 @@ export const ListContainer = styled.div`
     }
 `;
 
-export const ListHeader = styled.h2`
+const ListHeader = styled.h2`
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 15px;
 `;
 
-export const List = styled.ul`
+const List = styled.ul`
     list-style-type: none;
     padding: 20px;
 `;
 
-export const ListItem = styled.li`
+const ListItem = styled.li`
     display: flex;
     background-color: rgba(240, 240, 240, 0.8);
     border: 1px solid #ccc;
@@ -53,7 +53,7 @@ export const ListItem = styled.li`
     border-radius: 80px;
 `;
 
-export const ContainerCreateSerch = styled.li`
+const ContainerCreateSerch = styled.li`
     display: flex;
     justify-content: space-between;
 
@@ -62,12 +62,12 @@ export const ContainerCreateSerch = styled.li`
     }
 `;
 
-export const BaseButtonCreateLocation = styled(BaseButton)`
+const BaseButtonCreateLocation = styled(BaseButton)`
     font-size: 16px;
     padding: 15px;
 `;
 
-export const LocationTableStyle = styled.table`
+const LocationTableStyle = styled.table`
     width: 100%;
     margin: 0 auto;
     margin-top: 1rem;
@@ -146,3 +146,17 @@ export const LocationTableStyle = styled.table`
         }
     }
 `;
+
+export {
+    LocationTableStyle,
+    BaseButtonCreateLocation,
+    ListItem,
+    List,
+    ListContainer,
+    ListHeader,
+    AdminPageContainer,
+    Table,
+    TableCell,
+    TableHeader,
+    ContainerCreateSerch,
+};

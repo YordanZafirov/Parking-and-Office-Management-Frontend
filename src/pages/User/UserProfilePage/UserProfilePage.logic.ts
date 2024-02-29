@@ -11,12 +11,12 @@ import {
 } from '../../../services/reservationService';
 import useToken from '../../../hooks/Token/Token.hook';
 
-export const useUser = (userId: string | undefined) => {
+const useUser = (userId: string | undefined) => {
     const { data: user, refetch: userRefetch } = useQuery(['user', userId], () => getUser(userId));
     return { user, userRefetch };
 };
 
-export const usePastReservationsByUser = (userId: string | undefined) => {
+const usePastReservationsByUser = (userId: string | undefined) => {
     const {
         data: reservations,
         refetch,
@@ -25,7 +25,7 @@ export const usePastReservationsByUser = (userId: string | undefined) => {
     return { pastReservations: reservations, pastReservationsRefetch: refetch, arePastReservationsLoading: isLoading };
 };
 
-export const useCurrentReservationsByUserId = (userId: string | undefined) => {
+const useCurrentReservationsByUserId = (userId: string | undefined) => {
     const {
         data: reservations,
         refetch,
@@ -38,7 +38,7 @@ export const useCurrentReservationsByUserId = (userId: string | undefined) => {
     };
 };
 
-export const useFutureReservationsByUserId = (userId: string | undefined) => {
+const useFutureReservationsByUserId = (userId: string | undefined) => {
     const {
         data: reservations,
         refetch,
@@ -51,7 +51,7 @@ export const useFutureReservationsByUserId = (userId: string | undefined) => {
     };
 };
 
-export const UserProfilePageLogic = () => {
+const UserProfilePageLogic = () => {
     const { id: userId } = useParams();
     const decodedToken = useToken();
     const { id: tokenId } = decodedToken || {};
@@ -94,4 +94,12 @@ export const UserProfilePageLogic = () => {
         handleUpdateUserPassword: (id: string) =>
             navigate(`${route.user}/${id}/change-password`, { state: { background: location } }),
     };
+};
+
+export {
+    useUser,
+    UserProfilePageLogic,
+    usePastReservationsByUser,
+    useCurrentReservationsByUserId,
+    useFutureReservationsByUserId,
 };

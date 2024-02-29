@@ -17,7 +17,7 @@ interface ReservationProviderProps {
 
 const ReservationContext = createContext<ReservationContextProps | undefined>(undefined);
 
-export const ReservationProvider = ({ children }: ReservationProviderProps) => {
+const ReservationProvider = ({ children }: ReservationProviderProps) => {
     const [reservations, setReservation] = useState<Reservation[]>([]);
 
     useEffect(() => {
@@ -72,10 +72,12 @@ export const ReservationProvider = ({ children }: ReservationProviderProps) => {
     );
 };
 
-export const useReservationContext = () => {
+const useReservationContext = () => {
     const context = useContext(ReservationContext);
     if (!context) {
         throw new Error('useReservation must be used within a ReservationProvider');
     }
     return context;
 };
+
+export { ReservationProvider, useReservationContext };

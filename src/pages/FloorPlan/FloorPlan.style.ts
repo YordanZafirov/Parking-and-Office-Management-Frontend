@@ -3,29 +3,29 @@ import styled from 'styled-components';
 import { BaseButton } from '../../components/CommonStyledElements';
 import { Link } from 'react-router-dom';
 
-export const AdminPageContainer = styled.div`
+const AdminPageContainer = styled.div`
     max-width: 800px;
     margin: 0 auto;
 `;
 
-export const Table = styled.table`
+const Table = styled.table`
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 `;
 
-export const TableHeader = styled.th`
+const TableHeader = styled.th`
     padding: 10px;
     border-bottom: 1px solid #ddd;
     text-align: left;
 `;
 
-export const TableCell = styled.td`
+const TableCell = styled.td`
     padding: 10px;
     border-bottom: 1px solid #ddd;
 `;
 
-export const ListContainer = styled.div`
+const ListContainer = styled.div`
     padding: 20px;
 
     @media (max-width: 768px) {
@@ -33,18 +33,18 @@ export const ListContainer = styled.div`
     }
 `;
 
-export const ListHeader = styled.h2`
+const ListHeader = styled.h2`
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 15px;
 `;
 
-export const List = styled.ul`
+const List = styled.ul`
     list-style-type: none;
     padding: 20px;
 `;
 
-export const ListItem = styled.li`
+const ListItem = styled.li`
     display: flex;
     background-color: rgba(240, 240, 240, 0.8);
     border: 1px solid #ccc;
@@ -55,7 +55,7 @@ export const ListItem = styled.li`
     border-radius: 80px;
 `;
 
-export const ContainerCreateSerch = styled.li`
+const ContainerCreateSerch = styled.li`
     display: flex;
     justify-content: space-between;
 
@@ -64,12 +64,12 @@ export const ContainerCreateSerch = styled.li`
     }
 `;
 
-export const BaseButtonCreateLocation = styled(BaseButton)`
+const BaseButtonCreateLocation = styled(BaseButton)`
     font-size: 16px;
     padding: 15px;
 `;
 
-export const LocationTableStyle = styled.table`
+const LocationTableStyle = styled.table`
     width: 100%;
     margin: 0 auto;
     margin-top: 1rem;
@@ -149,7 +149,7 @@ export const LocationTableStyle = styled.table`
     }
 `;
 
-export const BackButton = styled.button`
+const BackButton = styled.button`
     cursor: pointer;
     background: none;
     border: none;
@@ -168,7 +168,7 @@ export const BackButton = styled.button`
     }
 `;
 
-export const LinkFloorPlan = styled(Link)`
+const LinkFloorPlan = styled(Link)`
     display: inline-block;
     padding: 7px 5px 5px 12px;
     background-color: var(--grey);
@@ -184,7 +184,7 @@ export const LinkFloorPlan = styled(Link)`
     }
 `;
 
-export const ArrowIcon = styled(IoIosArrowForward)`
+const ArrowIcon = styled(IoIosArrowForward)`
     font-size: 22px;
     color: white;
     vertical-align: middle;
@@ -193,7 +193,7 @@ export const ArrowIcon = styled(IoIosArrowForward)`
     top: -2px;
 `;
 
-export const AddSpotIcon = styled.span`
+const AddSpotIcon = styled.span`
     font-size: 22px;
     color: var(--blue-green-dark);
     vertical-align: middle;
@@ -202,3 +202,21 @@ export const AddSpotIcon = styled.span`
     top: -2px;
     cursor: pointer;
 `;
+
+export {
+    AddSpotIcon,
+    ArrowIcon,
+    LinkFloorPlan,
+    BackButton,
+    LocationTableStyle,
+    AdminPageContainer,
+    Table,
+    TableCell,
+    TableHeader,
+    List,
+    ListContainer,
+    ListHeader,
+    ListItem,
+    ContainerCreateSerch,
+    BaseButtonCreateLocation,
+};

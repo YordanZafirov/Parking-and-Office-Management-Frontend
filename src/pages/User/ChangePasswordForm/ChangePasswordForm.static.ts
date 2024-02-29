@@ -1,9 +1,8 @@
 import * as Yup from 'yup';
 
-export const ChangePasswordSchema = Yup.object().shape({
-    password: Yup.string()
-    .required('Required'),
-    
+const ChangePasswordSchema = Yup.object().shape({
+    password: Yup.string().required('Required'),
+
     newPassword: Yup.string()
         .min(6, 'Password is too short - should be 6 chars minimum.')
         .max(32, 'Password is too long - should be 32 chars maximum.')
@@ -18,10 +17,13 @@ export const ChangePasswordSchema = Yup.object().shape({
         .required('Required'),
 });
 
-export interface ChangePassword {
-    id?: string,
+interface ChangePassword {
+    id?: string;
     password?: string;
     newPassword?: string;
     confirmPassword?: string;
     error?: string;
-  }
+}
+
+export type { ChangePassword };
+export { ChangePasswordSchema };

@@ -1,4 +1,4 @@
-export interface ReservationsTable {
+interface ReservationsTable {
     id: string;
     comment: string;
     spotName: string;
@@ -7,3 +7,5 @@ export interface ReservationsTable {
     start: Date;
     end: Date;
 }
+
+export type { ReservationsTable };

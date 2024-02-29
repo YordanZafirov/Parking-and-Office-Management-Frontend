@@ -1,19 +1,19 @@
 import { styled } from 'styled-components';
 
-export const PageTitle = styled.h1`
+const PageTitle = styled.h1`
     margin-top: 3rem;
     color: var(--dark-blue);
     text-align: center;
 `;
 
-export const Container = styled.div`
+const Container = styled.div`
     max-width: 1500px;
     margin: auto;
     padding: 0 2rem;
     overflow: hidden;
 `;
 
-export const BaseButton = styled.button`
+const BaseButton = styled.button`
     align-self: center;
     background-color: var(--blue-green-light);
     border: transparent;
@@ -101,14 +101,14 @@ export const BaseButton = styled.button`
     }
 `;
 
-export const BigButtonLight = styled(BaseButton)`
+const BigButtonLight = styled(BaseButton)`
     background-color: var(--beige-light);
     width: 150px;
     font-size: 0.8rem;
     line-height: 1rem;
     padding: 0.6rem;
 `;
-export const BigButtonDark = styled(BaseButton)`
+const BigButtonDark = styled(BaseButton)`
     background-color: var(--blue--green-light);
     color: var(--beige-light);
     font-size: 0.8rem;
@@ -120,7 +120,7 @@ export const BigButtonDark = styled(BaseButton)`
     }
 `;
 
-export const StyledCard = styled.div`
+const StyledCard = styled.div`
     background-color: var(--blue-green-light);
     width: 100%;
     height: 90%;
@@ -138,8 +138,10 @@ export const StyledCard = styled.div`
     }
 `;
 
-export const FormButtonsContainer = styled.div`
+const FormButtonsContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
 `;
+
+export { FormButtonsContainer, BaseButton, BigButtonDark, BigButtonLight, StyledCard, PageTitle, Container };

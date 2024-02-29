@@ -9,29 +9,29 @@ const getAllBySpotTypeAndLocation = async (spotTypeId: string, locationId: strin
     });
 };
 
-export { getAllBySpotTypeAndLocation };
-
-export const getFloorPlans = async (): Promise<FloorPlan[]> => {
+const getFloorPlans = async (): Promise<FloorPlan[]> => {
     const response = await get(endpoints.getFloorPlans, {});
     return response;
 };
 
-export const getFloorPlan = async (id: string): Promise<FloorPlan> => {
+const getFloorPlan = async (id: string): Promise<FloorPlan> => {
     const response = await get(endpoints.getFloorPlans + '/' + id, {});
     return response;
 };
 
-export const addFloorPlan = async (floorPlanData: FloorPlan): Promise<FloorPlan> => {
+const addFloorPlan = async (floorPlanData: FloorPlan): Promise<FloorPlan> => {
     const response = await post(endpoints.createFloorPlan, floorPlanData);
     return response;
 };
 
-export const updateFloorPlan = async (id: string, updatedData: FloorPlan): Promise<FloorPlan> => {
+const updateFloorPlan = async (id: string, updatedData: FloorPlan): Promise<FloorPlan> => {
     const response = await patch(endpoints.getFloorPlans + '/' + id, updatedData);
     return response;
 };
 
-export const deleteFloorPlan = async (id: string): Promise<void> => {
+const deleteFloorPlan = async (id: string): Promise<void> => {
     const response = await del(endpoints.getFloorPlans + '/' + id, {});
     return response;
 };
+
+export { getAllBySpotTypeAndLocation, getFloorPlan, getFloorPlans, addFloorPlan, updateFloorPlan, deleteFloorPlan };

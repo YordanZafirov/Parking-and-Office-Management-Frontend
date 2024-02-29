@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SpotTypeContainer = styled.div`
+const SpotTypeContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -19,19 +19,21 @@ export const SpotTypeContainer = styled.div`
     }
 `;
 
-export const SpotTypeImageContainer = styled.div`
+const SpotTypeImageContainer = styled.div`
     width: 100%;
 `;
 
-export const SpotTypeParagraph = styled.p`
+const SpotTypeParagraph = styled.p`
     font-size: 22px;
     margin-bottom: 10px;
 `;
 
-export const SpotTypeImage = styled.img`
+const SpotTypeImage = styled.img`
     width: 100%;
     height: 200px;
     margin-bottom: 10px;
     border-radius: 8px;
     object-fit: cover;
 `;
+
+export { SpotTypeContainer, SpotTypeImage, SpotTypeImageContainer, SpotTypeParagraph };

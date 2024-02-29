@@ -1,6 +1,6 @@
 import { BASE_URL } from '../static/constants';
 
-export const uploadImage = async (imageFile: File): Promise<string> => {
+const uploadImage = async (imageFile: File): Promise<string> => {
     try {
         const formData = new FormData();
         formData.append('image', imageFile);
@@ -28,3 +28,5 @@ export const uploadImage = async (imageFile: File): Promise<string> => {
         throw error;
     }
 };
+
+export { uploadImage };

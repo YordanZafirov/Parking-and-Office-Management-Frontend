@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 :root {
   --grey: #3c4245;
   --grey-light: #8a8e8f;
@@ -27,3 +27,5 @@ body {
 }
 
 `;
+
+export { GlobalStyle };

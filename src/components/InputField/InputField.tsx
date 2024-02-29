@@ -1,7 +1,7 @@
 import InputStyle from './InputField.style';
 import { InputProps } from './InputField.static';
 
-export default function InputField({ ...props }: InputProps) {
+function InputField({ ...props }: InputProps) {
     return (
         <InputStyle>
             <label htmlFor={props.label}>{props.label}</label>
@@ -20,3 +20,5 @@ export default function InputField({ ...props }: InputProps) {
         </InputStyle>
     );
 }
+
+export default InputField;

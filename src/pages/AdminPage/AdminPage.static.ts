@@ -1,4 +1,4 @@
-export interface LocationData {
+interface LocationData {
     id?: string;
     name?: string;
     city?: string;
@@ -6,8 +6,10 @@ export interface LocationData {
     modifiedBy?: string | undefined;
 }
 
-export interface EditFormErrors {
+interface EditFormErrors {
     name: string;
     city: string;
     address: string;
 }
+
+export type { LocationData, EditFormErrors };

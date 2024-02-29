@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { EditFormErrors } from '../../AdminPage.static';
 
-export function useEditModalError() {
+function useEditModalError() {
     const [formErrors, setFormErrors] = useState<EditFormErrors>({
         name: '',
         city: '',
@@ -60,3 +60,5 @@ export function useEditModalError() {
         validateAddress,
     };
 }
+
+export { useEditModalError };

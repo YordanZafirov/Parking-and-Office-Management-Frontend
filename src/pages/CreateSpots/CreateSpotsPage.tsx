@@ -38,6 +38,14 @@ export default function CreateSpots() {
             <BackButton className='floor-plan' onClick={handleGoBack}>
                 <FaArrowLeft />
             </BackButton>
+            <FormButtonsContainer>
+                <BaseButton className="close-btn" onClick={handleClear}>
+                    Clear New Spots
+                </BaseButton>
+                <BaseButton className="create-btn" onClick={createSpots}>
+                    Save All Spots
+                </BaseButton>
+            </FormButtonsContainer>
             <DivFlexStyled className="frame">
                 {floorPlan && existingSpots && (
                     <ImageMarker
@@ -53,14 +61,6 @@ export default function CreateSpots() {
                     />
                 )}
             </DivFlexStyled>
-            <FormButtonsContainer>
-                <BaseButton className="remove-btn" onClick={handleClear}>
-                    Clear All Spots
-                </BaseButton>
-                <BaseButton className="create-btn" onClick={createSpots}>
-                    Save All Spots
-                </BaseButton>
-            </FormButtonsContainer>
         </Container>
     );
 }

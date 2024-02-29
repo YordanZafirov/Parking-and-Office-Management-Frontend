@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const HeaderModal = styled.h3`
+const HeaderModal = styled.h3`
     padding: 20px;
 `;
 
-export const ItemsModal = styled.div`
+const ItemsModal = styled.div`
     font-weight: 500;
     font-size: 18px;
     color: var(--white-smoke);
@@ -14,11 +14,11 @@ export const ItemsModal = styled.div`
     padding-right: 10px;
 `;
 
-export const LabelModal = styled.div`
+const LabelModal = styled.div`
     margin-left: 15px;
 `;
 
-export const InputModal = styled.input`
+const InputModal = styled.input`
     font-size: 16px;
     font-weight: 400;
     width: 250px;
@@ -31,8 +31,10 @@ export const InputModal = styled.input`
     margin-bottom: 1rem;
 `;
 
-export const ErrorStyles = styled.p`
+const ErrorStyles = styled.p`
     color: orange;
     font-size: 16px;
     padding-bottom: 10px;
 `;
+
+export { ErrorStyles, InputModal, LabelModal, ItemsModal, HeaderModal };

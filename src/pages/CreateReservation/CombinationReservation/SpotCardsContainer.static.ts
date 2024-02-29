@@ -1,5 +1,7 @@
-import { CombinedReservationSpotMarker } from "../SpotMarker/SpotMarker.static";
+import { CombinedReservationSpotMarker } from '../SpotMarker/SpotMarker.static';
 
-export interface SpotCardsContainerProps {
+interface SpotCardsContainerProps {
     spots: CombinedReservationSpotMarker[];
 }
+
+export type { SpotCardsContainerProps };

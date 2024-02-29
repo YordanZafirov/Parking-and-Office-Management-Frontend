@@ -6,7 +6,7 @@ interface ModalProps extends HTMLAttributes<HTMLDivElement> {
     $confirmation?: boolean;
 }
 
-export const ModalOverlay = styled.div<ModalProps>`
+const ModalOverlay = styled.div<ModalProps>`
     display: ${($props) => ($props.$show ? 'block' : 'none')};
     position: fixed;
     top: 0;
@@ -17,7 +17,7 @@ export const ModalOverlay = styled.div<ModalProps>`
     z-index: 1000;
 `;
 
-export const StyledModalContainer = styled.div<ModalProps>`
+const StyledModalContainer = styled.div<ModalProps>`
     position: fixed;
     top: 50%;
     left: 50%;
@@ -30,17 +30,17 @@ export const StyledModalContainer = styled.div<ModalProps>`
     padding-right: ${(props) => (props.$confirmation ? '20px' : '40px')};
 `;
 
-export const ModalContent = styled.div`
+const ModalContent = styled.div`
     color: black;
 `;
 
-export const ModalActions = styled.div`
+const ModalActions = styled.div`
     margin-top: 20px;
     display: flex;
     justify-content: center;
 `;
 
-export const ModalButton = styled.button`
+const ModalButton = styled.button`
     padding: 10px 20px;
     margin: 0 10px;
     cursor: pointer;
@@ -50,3 +50,5 @@ export const ModalButton = styled.button`
     border-radius: 5px;
     outline: none;
 `;
+
+export { ModalButton, ModalActions, ModalContent, ModalOverlay, StyledModalContainer };

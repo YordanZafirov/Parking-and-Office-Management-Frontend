@@ -26,7 +26,7 @@ interface SpotsProviderProps {
 
 const SpotsContext = createContext<SpotsContext | undefined>(undefined);
 
-export const SpotsProvider = ({ children }: SpotsProviderProps) => {
+const SpotsProvider = ({ children }: SpotsProviderProps) => {
     const [markerData, setMarkerData] = useState<Data>({ marker: undefined, floorPlan: {} });
     const [existingSpots, setExistingSpots] = useState<SpotMarker[]>([]);
     const [newSpots, setNewSpots] = useState<SpotMarker[]>([]);
@@ -71,10 +71,12 @@ export const SpotsProvider = ({ children }: SpotsProviderProps) => {
     );
 };
 
-export const useSpotsContext = () => {
+const useSpotsContext = () => {
     const context = useContext(SpotsContext);
     if (!context) {
         throw new Error('useSpotsContext must be used within a SpotsProvider');
     }
     return context;
 };
+
+export { useSpotsContext, SpotsProvider };

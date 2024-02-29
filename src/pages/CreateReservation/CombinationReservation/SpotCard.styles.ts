@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const SpotCardStyled = styled.div`
+const SpotCardStyled = styled.div`
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -11,3 +11,5 @@ export const SpotCardStyled = styled.div`
     padding: 16px;
     margin-bottom: 16px;
 `;
+
+export { SpotCardStyled };

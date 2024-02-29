@@ -1,14 +1,6 @@
 import styled from 'styled-components';
 
-const LoginPage = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f1f3f5;
-`;
-
-const LoginForm = styled.form`
+const StyledPasswordForm = styled.form`
     display: flex;
     flex-direction: column;
     width: 300px;
@@ -29,18 +21,9 @@ const LoginForm = styled.form`
         border: 1px solid #ccc;
         border-radius: 5px;
     }
-    button {
-        margin-top: 10px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        color: #cce5ff;
-        background-color: #007bff;
-        cursor: pointer;
-    }
     div {
         color: red;
     }
 `;
 
-export { LoginForm, LoginPage };
+export { StyledPasswordForm };

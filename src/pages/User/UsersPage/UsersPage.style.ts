@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BaseButton, Container } from '../../../components/CommonStyledElements';
 
-export const UserPageMainButtonsContainer = styled(Container)`
+const UserPageMainButtonsContainer = styled(Container)`
     margin: 50px auto 10px;
     padding: 20px;
     display: flex;
@@ -16,8 +16,10 @@ export const UserPageMainButtonsContainer = styled(Container)`
     }
 `;
 
-export const BaseButtonCreateUser = styled(BaseButton)`
+const BaseButtonCreateUser = styled(BaseButton)`
     font-size: 16px;
     padding: 15px;
     background-color: var(--blue-green-light);
 `;
+
+export { UserPageMainButtonsContainer, BaseButtonCreateUser };

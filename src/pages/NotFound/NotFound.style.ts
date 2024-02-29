@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NotFoundContainer = styled.div`
+const NotFoundContainer = styled.div`
     text-align: center;
     margin-top: 50px;
 
@@ -9,15 +9,15 @@ export const NotFoundContainer = styled.div`
     }
 `;
 
-export const NotFoundTitle = styled.h1`
+const NotFoundTitle = styled.h1`
     color: #ff6347;
 `;
 
-export const GoToHome = styled.h1`
+const GoToHome = styled.h1`
     text-decoration: none;
 `;
 
-export const StyledButton = styled.a`
+const StyledButton = styled.a`
     background-color: var(--blue-green-light);
     border: transparent;
     border-radius: 0.7rem;
@@ -47,3 +47,5 @@ export const StyledButton = styled.a`
         line-height: 1rem;
     }
 `;
+
+export { StyledButton, GoToHome, NotFoundContainer, NotFoundTitle };

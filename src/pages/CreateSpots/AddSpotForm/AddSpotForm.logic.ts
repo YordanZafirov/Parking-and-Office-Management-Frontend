@@ -51,7 +51,7 @@ function useAddSpot() {
                         throw new Error(spot.error);
                     } else {
                         saveNewSpots(newMarker);
-                        toast.success("New spot was added!")
+                        toast.success("New spot was added to the plan and is ready for saving!")
                         resetForm();
                         navigate(-1);
                     }

@@ -1,7 +1,7 @@
 import { InputProps } from './InputField.static';
 import ImageInputStyle from './ImageInputField.style';
 
-export default function ImageInputField({ ...props }: InputProps) {
+function ImageInputField({ ...props }: InputProps) {
     return (
         <ImageInputStyle>
             <label htmlFor={props.label}>{props.label}</label>
@@ -19,3 +19,5 @@ export default function ImageInputField({ ...props }: InputProps) {
         </ImageInputStyle>
     );
 }
+
+export default ImageInputField;
