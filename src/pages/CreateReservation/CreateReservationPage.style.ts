@@ -8,6 +8,12 @@ const Card = styled.div`
     height: auto;
     margin: 1rem;
 `;
+const NoSpotsMessageContainer = styled.div`
+    display: flex;
+    margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+`;
 
 const ImageContainer = styled.div`
     display: flex;
@@ -53,4 +59,4 @@ const ImageStyled = styled.div`
     }
 `;
 
-export { Card, ImageContainer, ImageStyled };
+export { Card, ImageContainer, ImageStyled, NoSpotsMessageContainer };

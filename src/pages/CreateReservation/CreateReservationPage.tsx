@@ -3,7 +3,7 @@ import { BaseButton, StyledToolTip } from '../../components/CommonStyledElements
 import { useShowSpots } from './CreateReservationPage.logic';
 import Loader from '../../components/loader/Loader';
 import { LocationImage } from '../Home/LocationChocie/LocationChoice.style';
-import { Card, ImageContainer, ImageStyled } from './CreateReservationPage.style';
+import { Card, ImageContainer, ImageStyled, NoSpotsMessageContainer } from './CreateReservationPage.style';
 import { DivFlexStyled } from '../CreateSpots/CreateSpotsPage.style';
 import SpotMarkerReservation from './SpotMarkerReservation/SpotMarkerReservation';
 import CalendarPage from './Calendar/CalendarPage';
@@ -13,6 +13,7 @@ import SpotCardsContainer from './CombinationReservation/SpotCardsContainer';
 export default function CreateReservation() {
     const {
         isLoading,
+        areNoSpots,
         error,
         floorPlans,
         showSpots,
@@ -68,25 +69,28 @@ export default function CreateReservation() {
                     </>
                 )}
             </DivFlexStyled>
-
-            {isCombination ? (
-                <SpotCardsContainer spots={combinedSpots} />
+        
+            {areNoSpots ? (
+                <NoSpotsMessageContainer>Sorry, there are no free spots of this spot type.</NoSpotsMessageContainer>
             ) : (
-                showSpots &&
-                calendarData &&
-                currentFloorPlan &&
-                spots && (
-                    <ImageContainer>
-                        <h3>Please select a spot:</h3>
-                        <ImageStyled>
-                            <ImageMarker
-                                src={currentFloorPlan.imgUrl!}
-                                markers={spots}
-                                markerComponent={SpotMarkerReservation}
-                            />
-                        </ImageStyled>
-                    </ImageContainer>
-                )
+                <>
+                    {isCombination ? (
+                        <SpotCardsContainer spots={combinedSpots} />
+                    ) : (
+                        showSpots && calendarData && currentFloorPlan && spots && (
+                            <ImageContainer>
+                                <h3>Please select a spot:</h3>
+                                <ImageStyled>
+                                    <ImageMarker
+                                        src={currentFloorPlan.imgUrl!}
+                                        markers={spots}
+                                        markerComponent={SpotMarkerReservation}
+                                    />
+                                </ImageStyled>
+                            </ImageContainer>
+                        )
+                    )}
+                </>
             )}
         </>
     );
