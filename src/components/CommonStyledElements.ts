@@ -68,12 +68,10 @@ export const BaseButton = styled.button`
     &.spot-type-card {
         color: var(--light-pink);
         text-decoration: none;
-
         width: 80%;
         margin: 0 auto;
         padding: 0;
         display: flex;
-
         align-items: center;
 
         &:hover {
@@ -82,6 +80,7 @@ export const BaseButton = styled.button`
 
         @media (max-width: 768px) {
             grid-template-columns: 1fr;
+            width: 100%;
             box-shadow: none;
             margin: 0 auto;
         }
@@ -134,8 +133,8 @@ export const StyledCard = styled.div`
     justify-content: center;
     align-items: center;
 
-    @media (max-width: 768px) {
-        width: 80%;
+    &.home-card{
+        width: 90%;
     }
 `;
 

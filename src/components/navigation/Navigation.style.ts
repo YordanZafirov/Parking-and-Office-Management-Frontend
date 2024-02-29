@@ -26,6 +26,15 @@ export const NavDiv = styled.div`
     }
 `;
 
+export const NavContainer = styled.div`
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
 export const ListItem = styled.p`
     a {
         text-decoration: none;

@@ -16,17 +16,20 @@ const Home = () => {
     }
 
     return (
-        <>
-            <HomeContainer>
-                {!locations ? <Loader /> : null}
-                <h1>Choose location</h1>
-                <ul>
-                    {locations?.map((location: Location) => (
-                        <LocationChoice key={location.id} location={location} />
-                    ))}
-                </ul>
-            </HomeContainer>
-        </>
+        <HomeContainer>
+            {locations ? (
+                <>
+                    <h1>Choose location</h1>
+                    <ul>
+                        {locations.map((location: Location) => (
+                            <LocationChoice key={location.id} location={location} />
+                        ))}
+                    </ul>
+                </>
+            ) : (
+                <Loader />
+            )}
+        </HomeContainer>
     );
 };
 

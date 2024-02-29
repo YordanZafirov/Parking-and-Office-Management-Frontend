@@ -27,6 +27,10 @@ export const TableCell = styled.td`
 
 export const ListContainer = styled.div`
     padding: 20px;
+
+    @media (max-width: 768px) {
+        padding: 0;
+    }
 `;
 
 export const ListHeader = styled.h2`
