@@ -1,7 +1,7 @@
 import { Location } from '../Home/Home.static';
 import Loader from '../../components/loader/Loader';
 import { useNavigate } from 'react-router-dom';
-import { BaseButtonCreateLocation, ContainerCreateSerch, ListContainer } from './Adminpage.style';
+import { BaseButtonCreateLocation, ContainerCreate, ContainerCreateSerch, ListContainer } from './Adminpage.style';
 import EditIcon from '../../components/icons/EditIcon';
 import DeleteIcon from '../../components/icons/DeleteIcon';
 import useAdminPage from './AdminPage.logic';
@@ -21,6 +21,9 @@ const AdminPage = () => {
 
     const handleCreateLocationClick = () => {
         navigate('/createLocation');
+    };
+    const handleManageUsersClick = () => {
+        navigate('/user');
     };
 
     const {
@@ -54,6 +57,7 @@ const AdminPage = () => {
     return (
         <ListContainer>
             <ContainerCreateSerch>
+                <ContainerCreate>
                 <BaseButtonCreateLocation
                     onClick={handleCreateLocationClick}
                     style={{
@@ -62,8 +66,16 @@ const AdminPage = () => {
                 >
                     Create Location
                 </BaseButtonCreateLocation>
-
-                <SearchBar placeholder="Search by locations" onSearch={setSearchQuery} />
+                <BaseButtonCreateLocation
+                    onClick={handleManageUsersClick}
+                    style={{
+                        backgroundColor: `var(--blue-green-light)`,
+                    }}
+                >
+                    Manage Users
+                </BaseButtonCreateLocation>
+                </ContainerCreate>
+                <SearchBar placeholder="Search locations" onSearch={setSearchQuery} />
             </ContainerCreateSerch>
 
             <UserReservationsTableStyle>

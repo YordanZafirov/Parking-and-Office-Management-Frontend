@@ -61,6 +61,14 @@ const ContainerCreateSerch = styled.li`
         flex-direction: column;
     }
 `;
+const ContainerCreate = styled.li`
+    display: flex;
+    justify-content: left;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+`;
 
 const BaseButtonCreateLocation = styled(BaseButton)`
     font-size: 16px;
@@ -159,4 +167,5 @@ export {
     TableCell,
     TableHeader,
     ContainerCreateSerch,
+    ContainerCreate,
 };
