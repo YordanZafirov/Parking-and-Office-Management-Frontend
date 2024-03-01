@@ -6,11 +6,11 @@ export default function SpotCreationMarker(props: SpotMarker) {
     return (
         <>
             <MarkerStyled
-                data-tooltip-id={`component_${props.id}`}
+                data-tooltip-id={`component_${props.name}`}
                 data-tooltip-place="top"
                 className={`custom-marker_${props.isPermanent}`}
             />
-            <StyledToolTip id={`component_${props.id}`} className="spot-info">
+            <StyledToolTip id={`component_${props.name}`} className="spot-info">
                 {
                     <>
                         <h4>{props.name}</h4>
