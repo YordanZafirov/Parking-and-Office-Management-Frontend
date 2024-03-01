@@ -6,7 +6,8 @@ import { CombinationReservationSchema } from './CombinationReservation.static';
 import { checkReservation } from '../../../services/reservationService';
 import { route } from '../../../static/routes';
 import { Reservation } from '../../../static/types';
-import { CombinedReservationSpotMarker } from '../SpotMarker/SpotMarker.static';
+import { CombinedReservationSpotMarker } from '../SpotMarkerReservation/SpotMarkerReservation.static';
+import { toast } from 'react-toastify';
 
 function useReserveSpotCombination() {
     const { addReservation } = useReservationContext();
@@ -37,6 +38,7 @@ function useReserveSpotCombination() {
                         const selectedSpot = await checkReservation(reservationData);
 
                         if (selectedSpot.error) {
+                            toast.error(selectedSpot.error);
                             throw new Error(selectedSpot.error);
                         } else {
                             addReservation(selectedSpot);

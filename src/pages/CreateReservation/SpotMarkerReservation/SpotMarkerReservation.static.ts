@@ -14,6 +14,7 @@ interface CombinedReservationSpotMarker {
     left: number;
     spotTypeId: string;
     floorPlanId: string;
+    period?: DateRangeOutput;
     createdAt: Date;
     updatedAt: Date;
     modifiedBy: string;

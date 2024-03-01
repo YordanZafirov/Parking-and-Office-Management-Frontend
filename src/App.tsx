@@ -91,6 +91,7 @@ function App() {
                                     element={<ChangeProfilePictureForm />}
                                 />
                                 <Route path={`${route.createReservation}/:id`} element={<SpotSelection />} />
+                                <Route path="/create-reservation/combination" element={<CombinationReservation />} />
                                 <Route path={`${route.floorPlan}/:id/:spotid`} element={<SpotUpdate />} />
                             </Routes>
                         )}

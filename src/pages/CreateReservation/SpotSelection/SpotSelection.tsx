@@ -13,7 +13,7 @@ export default function SpotSelection() {
             <h3>{spotProps.name}</h3>
             <p>Spot type: {spotProps.spotType}</p>
             <p>Description: {spotProps.description}</p>
-            {spotProps.spotType === 'Office desk' || spotProps.spotType === 'Parking spot' ? (
+            {spotProps.spotType === 'Office desk' || spotProps.spotType === 'Parking place' ? (
                 <div>
                     Reservation period:
                     <p>from: {startPeriodDate}</p>

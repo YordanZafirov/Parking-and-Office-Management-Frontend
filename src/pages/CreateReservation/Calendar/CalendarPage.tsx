@@ -37,7 +37,7 @@ const CalendarPage = ({ sendDateTime = () => {}, spotType }: dataProps) => {
             <CalendarContainer>
                 <StyledAppContainer className="outer-container">
                     <StyledAppContainer>
-                        {spotType.name === 'Office desk' || spotType.name === 'Parking spot' ? (
+                        {spotType.name === 'Office desk' || spotType.name === 'Parking place' ? (
                             <StyledCalendarContainer>
                                 <DateRangePicker {...dateRangePickerProps} />
                             </StyledCalendarContainer>

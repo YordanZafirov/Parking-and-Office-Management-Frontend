@@ -64,6 +64,7 @@ function useShowSpots() {
                     start: calendarData.startDate,
                     end: calendarData.endDate,
                 });
+                console.log(spotCombination);
                 const outputSpots = spotCombination.map((s: CombinedReservationSpotMarker) => {
                     s.floorPlanId = s.spot.floorPlanId;
                     s.description = s.spot.description;

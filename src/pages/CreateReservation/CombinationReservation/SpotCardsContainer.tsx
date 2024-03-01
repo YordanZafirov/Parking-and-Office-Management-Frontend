@@ -10,7 +10,7 @@ const SpotCardsContainer: React.FC<SpotCardsContainerProps> = ({ spots }) => {
     const location = useLocation();
     const handleReserveCombination = () => {
         navigate(`${route.createReservation}/combination`, {
-            state: { background: location, spots },
+            state: { background: location, spots: spots },
         })
     };
     return (
