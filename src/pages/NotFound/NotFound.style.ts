@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 const NotFoundContainer = styled.div`
     text-align: center;
-    margin-top: 50px;
+    margin-top: 3.125rem;
 
     @media (max-width: 768px) {
-        padding: 40px;
+        padding: 2.5rem;
     }
 `;
 
@@ -21,12 +21,12 @@ const StyledButton = styled.a`
     background-color: var(--blue-green-light);
     border: transparent;
     border-radius: 0.7rem;
-    box-shadow: darkgrey 15px 28px 25px -18px;
+    box-shadow: darkgrey 0.9375rem 1.75rem 1.75rem -1.125rem;
     box-sizing: border-box;
     color: black;
     cursor: pointer;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     line-height: 0.6rem;
     outline: none;
@@ -39,7 +39,7 @@ const StyledButton = styled.a`
     margin: 0.5rem;
 
     &:hover {
-        box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+        box-shadow: rgba(0, 0, 0, 0.3) 0.125rem 0.5rem 0.5rem -0.3125rem;
         transform: translate3d(0, 2px, 0);
     }
 

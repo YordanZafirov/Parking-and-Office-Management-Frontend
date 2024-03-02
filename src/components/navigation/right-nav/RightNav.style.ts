@@ -8,7 +8,7 @@ const Ul = styled.ul<NavProps>`
     flex-flow: row nowrap;
 
     li {
-        padding: 18px 10px;
+        padding: 1.125rem 0.625rem;
         font-size: 1.2rem;
     }
 
@@ -38,7 +38,7 @@ const Ul = styled.ul<NavProps>`
 
         li {
             color: #fff;
-            margin-top: 20px;
+            margin-top: 1.25rem;
             border-bottom: 1px solid #fff;
         }
     }

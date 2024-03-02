@@ -4,12 +4,12 @@ const SpotCardStyled = styled.div`
     display: flex;
     text-align: center;
     flex-direction: column;
-    max-width: 200px;
+    max-width: 12.5rem;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 16px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
 `;
 
 export { SpotCardStyled };

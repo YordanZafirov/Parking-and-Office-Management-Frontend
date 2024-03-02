@@ -8,7 +8,7 @@ const PageTitle = styled.h1`
 `;
 
 const Container = styled.div`
-    max-width: 1500px;
+    max-width: 93.75rem;
     margin: auto;
     padding: 0 2rem;
     overflow: hidden;
@@ -18,7 +18,7 @@ const BaseButton = styled.button`
     align-self: center;
     background-color: var(--blue-green-light);
     border: transparent;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     box-shadow: darkgrey 15px 28px 25px -18px;
     box-sizing: border-box;
     color: black;
@@ -104,8 +104,8 @@ const BaseButton = styled.button`
 
 const BigButtonLight = styled(BaseButton)`
     background-color: var(--beige-light);
-    width: 250px;
-    font-size: 0.8rem;
+    width: 15.625rem;
+    font-size: 1rem;
     line-height: 1rem;
     padding: 0.6rem;
     font-size: 1.2rem;
@@ -118,7 +118,7 @@ const BigButtonLight = styled(BaseButton)`
 const BigButtonDark = styled(BaseButton)`
     background-color: var(--blue--green-light);
     color: var(--beige-light);
-    font-size: 0.8rem;
+    font-size: 1rem;
     line-height: 1rem;
     padding: 0.9rem;
 
@@ -131,7 +131,7 @@ const BaseButtonLogout = styled.button`
     align-self: center;
     background-color: var(--blue-green-light);
     border: transparent;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     box-shadow: darkgrey 15px 28px 25px -18px;
     box-sizing: border-box;
     color: black;
@@ -221,8 +221,8 @@ const StyledCard = styled.div`
     height: 90%;
     margin: 0 auto;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -247,7 +247,7 @@ const StyledToolTip = styled(Tooltip)`
         padding: 0.5rem;
         z-index: 2;
     }
-    & p{
+    & p {
         text-align: center;
     }
 `;

@@ -6,9 +6,9 @@ const ContainerDivFlex = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    max-width: 1500px;
-    margin: 20px auto;
+    gap: 0.625rem;
+    max-width: 93.75rem;
+    margin: 1.25rem auto;
     padding: 0 2rem;
     overflow: hidden;
 `;
@@ -19,9 +19,9 @@ const StyledContainer = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 10px;
-    max-width: 1500px;
-    margin: 20px auto;
+    gap: 0.625;
+    max-width: 93.75rem;
+    margin: 1.25rem auto;
     padding: 0 2rem;
     overflow: hidden;
 `;

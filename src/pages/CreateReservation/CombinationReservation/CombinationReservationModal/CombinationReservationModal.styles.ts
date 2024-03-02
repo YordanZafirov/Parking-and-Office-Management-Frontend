@@ -22,10 +22,10 @@ const CombinationReservationModalBox = styled.div`
 
     width: auto;
     height: auto;
-    min-width: 300px;
+    min-width: 18.75rem;
     background-color: var(--beige-light);
     border-radius: 0.5rem;
-    box-shadow: 0 10px 20px 0 darkgrey;
+    box-shadow: 0 0.625rem 1.25rem 0 darkgrey;
     padding: 0.3rem;
     z-index: 20;
 

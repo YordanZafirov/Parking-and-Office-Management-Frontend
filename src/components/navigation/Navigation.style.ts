@@ -5,7 +5,7 @@ const NavDiv = styled.div`
     width: 100%;
     height: 4rem;
     padding: 1rem 0;
-    padding: 0 20px;
+    padding: 0rem 1.25rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +27,7 @@ const NavDiv = styled.div`
 `;
 
 const NavContainer = styled.div`
-    max-width: 1500px;
+    max-width: 93.75rem;
     width: 100%;
     margin: 0 auto;
     display: flex;

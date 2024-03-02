@@ -4,36 +4,36 @@ const InformationContainer = styled.div`
     display: flex;
     flex-direction: column;
     background-color: var(--blue-green);
-    border-radius: 8px;
+    border-radius: 0.5rem;
     width: 100%;
 
     span {
         display: block;
-        padding: 10px;
-        margin: 15px auto;
+        padding: 0.625rem;
+        margin: 0.9375rem auto;
         font-weight: bold;
         width: 50%;
-        border-radius: 5px;
+        border-radius: 0.3125rem;
     }
 `;
 
 const LocationImage = styled.img`
     width: 100%;
-    height: 200px;
-    margin-bottom: 10px;
-    border-radius: 8px;
+    height: 12.5rem;
+    margin-bottom: 0.625rem;
+    border-radius: 0.5rem;
 `;
 
 const DeleteButton = styled.div`
-    top: 10px;
-    right: 10px;
+    top: 0.625rem;
+    right: 0.625rem;
     cursor: pointer;
     color: #fff;
     font-weight: bold;
-    padding: 5px;
+    padding: 0.3125rem;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     display: flex;
     align-items: center;
     justify-content: center;

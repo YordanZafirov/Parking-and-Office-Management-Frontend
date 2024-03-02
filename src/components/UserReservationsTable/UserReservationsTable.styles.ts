@@ -20,7 +20,7 @@ const UserReservationsTableStyle = styled.table`
     td {
         background-color: var(--blue-green-light);
 
-        padding: 8px;
+        padding: 0.5rem;
     }
 
     th {
@@ -28,24 +28,24 @@ const UserReservationsTableStyle = styled.table`
     }
 
     tr:first-child th:first-child {
-        border-top-left-radius: 10px;
+        border-top-left-radius: 0.625rem;
     }
     tr:first-child th:last-child {
-        border-top-right-radius: 10px;
+        border-top-right-radius: 0.625rem;
     }
     tr:last-child td:first-child {
-        border-bottom-left-radius: 10px;
+        border-bottom-left-radius: 0.625rem;
     }
     tr:last-child td:last-child {
-        border-bottom-right-radius: 10px;
+        border-bottom-right-radius: 0.625rem;
     }
 
     button {
         background-color: var(--beige);
         color: var(--grey-dark);
         border: none;
-        padding: 5px 10px;
-        border-radius: 5px;
+        padding: 0.3125rem 0.625rem;
+        border-radius: 0.3125rem;
         cursor: pointer;
     }
 
@@ -73,22 +73,22 @@ const UserReservationsTableStyle = styled.table`
         }
 
         tr:first-child td:first-child {
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            border-top-left-radius: 0.625rem;
+            border-top-right-radius: 0.625rem;
         }
 
         tr:last-child td:first-child {
             border-bottom-left-radius: 0;
         }
         tr:last-child td:last-child {
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 0.625rem;
+            border-bottom-right-radius: 0.625rem;
         }
         td::before {
             content: attr(data-label);
             float: left;
             font-weight: bold;
-            margin-right: 10px;
+            margin-right: 0.625rem;
         }
     }
 `;

@@ -23,8 +23,8 @@ const StyledModalContainer = styled.div<ModalProps>`
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--beige-light);
-    padding: 20px;
-    border-radius: 5px;
+    padding: 1.25rem;
+    border-radius: 0.3125rem;
     text-align: center;
     padding-left: ${(props) => (props.$confirmation ? '20px' : '40px')};
     padding-right: ${(props) => (props.$confirmation ? '20px' : '40px')};
@@ -36,19 +36,19 @@ const ModalContent = styled.div`
 `;
 
 const ModalActions = styled.div`
-    margin-top: 20px;
+    margin-top: 1.25rem;
     display: flex;
     justify-content: center;
 `;
 
 const ModalButton = styled.button`
-    padding: 10px 20px;
-    margin: 0 10px;
+    padding: 0.625rem 1.25rem;
+    margin: 0rem 0.625rem;
     cursor: pointer;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     outline: none;
 `;
 

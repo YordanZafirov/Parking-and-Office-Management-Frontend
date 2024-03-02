@@ -30,12 +30,12 @@ const PopoverLink = styled(NavLink)`
     text-decoration: none;
     color: #333;
     display: flex;
-    margin-top: 8px;
+    margin-top: 0.5rem;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: 0.5rem;
     background-color: #fa5252;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
 
     .logout {
         text-align: center;
