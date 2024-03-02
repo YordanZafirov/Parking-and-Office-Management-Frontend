@@ -3,13 +3,9 @@ import styled from 'styled-components';
 const CalendarContainer = styled.div`
     background-color: var(--blue-green-light);
     text-align: center;
-    /* padding: 20px; */
-    max-width: 600px;
+    max-width: 37.5rem;
     width: auto;
 
-    /* @media screen and (max-width: 470px) {
-        padding: 10px;
-    } */
     @media screen and (max-width: 400px) {
         padding: 0;
     }
@@ -19,7 +15,7 @@ const StyledAppContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: stretch;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     background-color: var(--beige);
     font-family: Arial, sans-serif;
 
@@ -45,10 +41,10 @@ const StyledCalendarContainer = styled.div`
     flex: 1;
 
     .rdrCalendarWrapper {
-        border-radius: 10px;
+        border-radius: 0.625rem;
         border: 1px solid var(--brown);
         @media screen and (max-width: 400px) {
-            max-width: 270px;
+            max-width: 16.875rem;
             padding: 0;
         }
     }
@@ -68,15 +64,15 @@ const StyledTimePickerContainer = styled.div`
     align-items: stretch;
     @media screen and (max-width: 640px) {
         flex-direction: column;
-        padding-top: 10px;
+        padding-top: 0.625rem;
     }
 `;
 
 const StyledTimePicker = styled.div`
     background-color: #ffffff;
     border: 1px solid var(--brown);
-    border-radius: 10px;
-    padding: 25px;
+    border-radius: 0.625rem;
+    padding: 1.5625rem;
     color: black;
     display: flex;
     flex-direction: column;
@@ -89,8 +85,8 @@ const StyledTimePicker = styled.div`
 
     @media screen and (max-width: 640px) {
         & label {
-            padding-top: 10px;
-            padding-bottom: 10px;
+            padding-top: 0.625rem;
+            padding-bottom: 0.625rem;
         }
     }
 `;

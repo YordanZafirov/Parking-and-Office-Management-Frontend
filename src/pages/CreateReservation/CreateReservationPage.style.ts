@@ -10,7 +10,7 @@ const Card = styled.div`
 `;
 const NoSpotsMessageContainer = styled.div`
     display: flex;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     text-align: center;
     justify-content: center;
 `;
@@ -35,7 +35,7 @@ const ImageStyled = styled.div`
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 
     @media screen and (max-width: 900px) {
         width: 60%;

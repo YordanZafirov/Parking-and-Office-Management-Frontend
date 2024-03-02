@@ -10,10 +10,10 @@ const FloorPlanDetailsContainer = styled.div`
 
 const HeadingFloorPlan = styled.h2`
     text-align: center;
-    padding-bottom: 40px;
+    padding-bottom: 2.5rem;
 
     @media (max-width: 768px) {
-        padding-bottom: 20px;
+        padding-bottom: 1.25rem;
     }
 `;
 
@@ -24,7 +24,7 @@ const ImageStyled = styled.div`
     margin-right: auto;
 
     @media screen and (max-width: 780px) {
-        width: 70%;
+        width: 80%;
     }
 
     @media screen and (max-width: 400px) {

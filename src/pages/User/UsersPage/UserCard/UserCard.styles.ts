@@ -3,9 +3,9 @@ import { BaseButton } from '../../../../components/CommonStyledElements';
 
 const StyledUserCard = styled.div`
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     overflow: hidden;
-    margin: 16px;
+    margin: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
 
@@ -17,18 +17,18 @@ const StyledUserCard = styled.div`
 
 const UserImage = styled.img`
     width: 100%;
-    max-height: 250px;
+    max-height: 15.625rem;
     object-fit: cover;
 `;
 
 const UserCardsContainerWrapper = styled.div`
     background-color: var(--blue-green-light);
-    margin: 10px auto;
-    padding: 10px 20px;
-    border-radius: 8px;
+    margin: 0.625rem auto;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 1.875rem;
     justify-content: center;
     align-items: center;
 
@@ -38,14 +38,14 @@ const UserCardsContainerWrapper = styled.div`
 `;
 
 const StyledUserDetails = styled.div`
-    padding: 16px;
+    padding: 1rem;
     text-align: center;
     background-color: var(--pink-light);
 `;
 
 const BaseButtonDeleteUser = styled(BaseButton)`
-    font-size: 16px;
-    padding: 15px;
+    font-size: 1rem;
+    padding: 0.9375rem;
 `;
 
 export { StyledUserCard, StyledUserDetails, UserImage, UserCardsContainerWrapper, BaseButtonDeleteUser };

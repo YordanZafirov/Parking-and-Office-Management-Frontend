@@ -20,14 +20,14 @@ const HomeContainer = styled.div`
         justify-content: center;
 
         gap: 2rem;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
 
     li {
         transition: transform 0.3s ease;
         cursor: pointer;
-        margin: 10px;
-        width: 400px;
+        margin: 0.625rem;
+        width: 25rem;
         &:hover {
             transform: translateY(-5px);
         }

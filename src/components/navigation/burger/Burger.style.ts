@@ -14,7 +14,7 @@ const BurgerDiv = styled.div<NavProps>`
         width: 2rem;
         height: 0.25rem;
         background-color: ${({ open }) => (open ? '#fff' : '#333')};
-        border-radius: 10px;
+        border-radius: 0.625rem;
         transform-origin: 1px;
         transition: all 0.3s linear;
 

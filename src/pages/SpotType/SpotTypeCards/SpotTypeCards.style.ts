@@ -3,11 +3,11 @@ import styled from 'styled-components';
 const SpotTypeContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 20px 10px;
+    gap: 1.25rem;
+    padding: 1.25rem 0.625rem;
     margin: 3rem auto;
     background-color: var(--blue-green);
-    border-radius: 8px;
+    border-radius: 0.5rem;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -26,15 +26,15 @@ const SpotTypeImageContainer = styled.div`
 `;
 
 const SpotTypeParagraph = styled.p`
-    font-size: 22px;
-    margin-bottom: 10px;
+    font-size: 1.375rem;
+    margin-bottom: 0.625rem;
 `;
 
 const SpotTypeImage = styled.img`
     width: 100%;
-    height: 200px;
-    margin-bottom: 10px;
-    border-radius: 8px;
+    height: 12.5rem;
+    margin-bottom: 0.625rem;
+    border-radius: 0.5rem;
     object-fit: cover;
 `;
 
