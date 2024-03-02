@@ -5,7 +5,7 @@ import { DivFlexStyled } from './CreateSpotsPage.style';
 import { useCreateSpots } from './CreateSpotsPage.logic';
 import { BaseButton, Container, FormButtonsContainer } from '../../components/CommonStyledElements';
 import { useSpotsContext } from '../../context/SpotsContext';
-import Loader from '../../components/Loader/Loader';
+import Loader from '../../components/loader/Loader';
 import { BackButton } from '../FloorPlan/FloorPlan.style';
 import { FaArrowLeft } from 'react-icons/fa6';
 import SpotCreationMarker from './SpotCreationMarker/SpotCreationMarker';

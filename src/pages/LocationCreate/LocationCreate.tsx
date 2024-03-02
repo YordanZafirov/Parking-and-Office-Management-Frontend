@@ -3,7 +3,7 @@ import { BaseButton } from '../../components/CommonStyledElements';
 import { FormStyled } from '../../components/InputField/Form.style';
 import ImageInputField from '../../components/InputField/ImageInputField';
 import InputField from '../../components/InputField/InputField';
-import { ListContainer } from '../AdminPage/Adminpage.style';
+import { ListContainer } from '../AdminPage/AdminPage.style';
 import { BackButton } from '../FloorPlan/FloorPlan.style';
 import { useCreateLocation } from './LocationCreate.logic';
 

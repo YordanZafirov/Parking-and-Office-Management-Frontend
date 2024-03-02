@@ -1,9 +1,9 @@
-import Loader from '../../components/Loader/Loader';
+import Loader from '../../components/loader/Loader';
 import SpotTypeCards from './SpotTypeCards/SpotTypeCards';
 import useChoseLocation from './SpotType.logic';
 import useSpotTypeCard from './SpotTypeCards/SpotTypeCards.logic';
 import { ChooseLocationContainer } from './SpotType.style';
-import UserReservationsTable from '../../components/UserReservationsTable/UserReservationsTable';
+import UserReservationsTable from '../../components/userReservationsTable/UserReservationsTable';
 import { useFutureReservationsByUserId } from '../User/UserProfilePage/UserProfilePage.logic';
 
 const SpotType = () => {
