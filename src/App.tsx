@@ -17,7 +17,6 @@ import LocationCreateForm from './pages/LocationCreate/LocationCreate';
 import SpotType from './pages/SpotType/SpotType';
 import CreateReservation from './pages/CreateReservation/CreateReservationPage';
 import UserProfilePage from './pages/User/UserProfilePage/UserProfilePage';
-import AdminPage from './pages/AdminPage/AdminPage';
 import ChangePasswordForm from './pages/User/ChangePasswordForm/ChangePasswordForm';
 import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/ChangeProfilePictureForm';
 import NotFound from './pages/NotFound/NotFound';
@@ -31,6 +30,7 @@ import SpotSelection from './pages/CreateReservation/SpotSelection/SpotSelection
 import CombinationReservation from './pages/CreateReservation/CombinationReservation/CombinationReservation';
 import SpotUpdate from './pages/FloorPlan/FloorPlanDetails/SpotUpdate/SpotUpdate';
 import { SpotsProvider } from './context/SpotsContext';
+import AdminPage from './pages/AdminPage/Adminpage';
 
 export const StyledApp = styled.div`
     min-height: 100vh;

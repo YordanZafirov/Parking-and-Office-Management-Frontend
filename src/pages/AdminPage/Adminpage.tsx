@@ -1,7 +1,7 @@
 import { Location } from '../Home/Home.static';
 import Loader from '../../components/Loader/Loader';
 import { useNavigate } from 'react-router-dom';
-import { BaseButtonCreateLocation, ContainerCreate, ContainerCreateSerch, ListContainer } from './AdminPage.style';
+import { BaseButtonCreateLocation, ContainerCreate, ContainerCreateSerch, ListContainer } from './Adminpage.style';
 import EditIcon from '../../components/Icons/EditIcon/EditIcon';
 import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
 import useAdminPage from './AdminPage.logic';
