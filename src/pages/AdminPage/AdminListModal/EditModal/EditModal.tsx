@@ -6,24 +6,26 @@ import { useEditLocationModalLogic } from './EditModal.logic';
 interface EditModalProps {
     isVisible: boolean;
     hideModal: () => void;
-    currentLocationName: string;
-    currentLocationCity: string;
-    currentLocationAddress: string;
-    setCurrentLocationName: (newLocationName: string) => void;
-    setCurrentLocationCity: (newLocationCity: string) => void;
-    setCurrentLocationAddress: (newLocationAddress: string) => void;
+    currentLocation: {
+        name: string;
+        city: string;
+        address: string;
+    };
+    setCurrentLocation: React.Dispatch<
+        React.SetStateAction<{
+            name: string;
+            city: string;
+            address: string;
+        }>
+    >;
     onConfirm: (newLocationName: string, newLocationCity: string, newLocationAddress: string) => void;
 }
 
 const EditLocationModal: React.FC<EditModalProps> = ({
     isVisible,
     hideModal,
-    currentLocationName,
-    currentLocationCity,
-    currentLocationAddress,
-    setCurrentLocationName,
-    setCurrentLocationCity,
-    setCurrentLocationAddress,
+    currentLocation,
+    setCurrentLocation,
     onConfirm,
 }) => {
     const {
@@ -37,9 +39,7 @@ const EditLocationModal: React.FC<EditModalProps> = ({
         handleLocationdBlur,
         handleConfirm,
     } = useEditLocationModalLogic({
-        currentLocationName,
-        currentLocationCity,
-        currentLocationAddress,
+        currentLocation,
         onConfirm,
         hideModal,
     });
@@ -55,7 +55,10 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                     value={newLocationName}
                     onChange={(e) => {
                         setNewLocationName(e.target.value);
-                        setCurrentLocationName(e.target.value);
+                        setCurrentLocation((prevLocation) => ({
+                            ...prevLocation,
+                            name: e.target.value,
+                        }));
                     }}
                     onBlur={handleLocationdBlur}
                 />
@@ -69,7 +72,10 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                     value={newLocationCity}
                     onChange={(e) => {
                         setNewLocationCity(e.target.value);
-                        setCurrentLocationCity(e.target.value);
+                        setCurrentLocation((prevLocation) => ({
+                            ...prevLocation,
+                            city: e.target.value,
+                        }));
                     }}
                     onBlur={handleLocationdBlur}
                 />
@@ -83,7 +89,10 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                     value={newLocationAddress}
                     onChange={(e) => {
                         setNewLocationAddress(e.target.value);
-                        setCurrentLocationAddress(e.target.value);
+                        setCurrentLocation((prevLocation) => ({
+                            ...prevLocation,
+                            address: e.target.value,
+                        }));
                     }}
                     onBlur={handleLocationdBlur}
                 />

@@ -3,20 +3,13 @@ import { useEditModalError } from './EditModalErrors';
 
 interface EditModalLogicProps {
     currentFloorPlanName: string;
-    currentFloorPlanImage: string;
     onConfirm: (newFloorPlanName: string, newFloorPlanImage: string) => void;
     hideModal: () => void;
 }
 
-export const useEditFloorPlanModalLogic = ({
-    currentFloorPlanName,
-    currentFloorPlanImage,
-    onConfirm,
-    hideModal,
-}: EditModalLogicProps) => {
+export const useEditFloorPlanModalLogic = ({ currentFloorPlanName, onConfirm, hideModal }: EditModalLogicProps) => {
     const { formErrors, validateName } = useEditModalError();
     const [newFloorPlanName, setNewFloorPlanName] = useState(currentFloorPlanName);
-    const [newFloorPlanImage] = useState(currentFloorPlanImage);
 
     const handleFloorPlanBlur = () => {
         validateName(newFloorPlanName);
@@ -26,7 +19,7 @@ export const useEditFloorPlanModalLogic = ({
         const isNameValid = validateName(newFloorPlanName);
 
         if (isNameValid) {
-            onConfirm(newFloorPlanName, newFloorPlanImage);
+            onConfirm(newFloorPlanName, '');
             hideModal();
         }
     };
@@ -34,7 +27,6 @@ export const useEditFloorPlanModalLogic = ({
     return {
         formErrors,
         newFloorPlanName,
-        newFloorPlanImage,
         setNewFloorPlanName,
         handleFloorPlanBlur,
         handleConfirm,

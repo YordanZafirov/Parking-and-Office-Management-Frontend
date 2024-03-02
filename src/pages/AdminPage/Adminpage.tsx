@@ -25,14 +25,10 @@ const AdminPage = () => {
         error,
         onDeleteClick,
         onEditClick,
-        setCurrentLocationName,
-        setCurrentLocationCity,
-        setCurrentLocationAddress,
+        setCurrentLocation,
         onDeleteConfirm,
         onEditConfirm,
-        originalLocationName,
-        originalLocationCity,
-        originalLocationAddress,
+        originalLocation,
         handleCreateLocationClick,
         handleManageUsersClick,
     } = useAdminPage();
@@ -148,12 +144,8 @@ const AdminPage = () => {
                     isVisible={isEditModalVisible}
                     hideModal={hideEditModal}
                     onConfirm={onEditConfirm}
-                    currentLocationName={originalLocationName}
-                    currentLocationCity={originalLocationCity}
-                    currentLocationAddress={originalLocationAddress}
-                    setCurrentLocationName={setCurrentLocationName}
-                    setCurrentLocationCity={setCurrentLocationCity}
-                    setCurrentLocationAddress={setCurrentLocationAddress}
+                    currentLocation={originalLocation}
+                    setCurrentLocation={setCurrentLocation}
                 />
             )}
         </ListContainer>

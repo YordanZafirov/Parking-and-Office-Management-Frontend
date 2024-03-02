@@ -1,15 +1,13 @@
 import React from 'react';
 import Modal from '../../../../components/ModalList/Modal';
 import { ErrorStyles, HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
-import { useEditFloorPlanModalLogic } from './EditFloorPlanModal.logic';
+import { useEditFloorPlanModalLogic } from './EditModal.logic';
 
 interface EditModalProps {
     isVisible: boolean;
     hideModal: () => void;
     currentFloorPlanName: string;
-    currentFloorPlanImage: string;
     setCurrentFloorPlanName: (newFloorPlanName: string) => void;
-    setCurrentFloorPlanImage: (newFloorPlanImage: string) => void;
     onConfirm: (newFloorPlanName: string, newFloorPlanImage: string) => void;
 }
 
@@ -17,14 +15,12 @@ const EditFloorPlanModal: React.FC<EditModalProps> = ({
     isVisible,
     hideModal,
     currentFloorPlanName,
-    currentFloorPlanImage,
     setCurrentFloorPlanName,
     onConfirm,
 }) => {
     const { formErrors, newFloorPlanName, setNewFloorPlanName, handleFloorPlanBlur, handleConfirm } =
         useEditFloorPlanModalLogic({
             currentFloorPlanName,
-            currentFloorPlanImage,
             onConfirm,
             hideModal,
         });

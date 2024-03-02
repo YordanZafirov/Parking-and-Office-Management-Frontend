@@ -2,21 +2,19 @@ import { useState } from 'react';
 import { useEditModalError } from './EditModalErrors';
 
 interface EditModalLogicProps {
-    currentLocationName: string;
-    currentLocationCity: string;
-    currentLocationAddress: string;
+    currentLocation: {
+        name: string;
+        city: string;
+        address: string;
+    };
     onConfirm: (newLocationName: string, newLocationCity: string, newLocationAddress: string) => void;
     hideModal: () => void;
 }
 
-export const useEditLocationModalLogic = ({
-    currentLocationName,
-    currentLocationCity,
-    currentLocationAddress,
-    onConfirm,
-    hideModal,
-}: EditModalLogicProps) => {
+export const useEditLocationModalLogic = ({ currentLocation, onConfirm, hideModal }: EditModalLogicProps) => {
     const { formErrors, validateName, validateCity, validateAddress } = useEditModalError();
+    const { name: currentLocationName, city: currentLocationCity, address: currentLocationAddress } = currentLocation;
+
     const [newLocationName, setNewLocationName] = useState(currentLocationName);
     const [newLocationCity, setNewLocationCity] = useState(currentLocationCity);
     const [newLocationAddress, setNewLocationAddress] = useState(currentLocationAddress);

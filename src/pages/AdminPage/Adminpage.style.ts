@@ -24,6 +24,8 @@ const TableCell = styled.td`
 `;
 
 const ListContainer = styled.div`
+    max-width: 1500px;
+    margin: 0 auto;
     padding: 20px;
 
     @media (max-width: 768px) {

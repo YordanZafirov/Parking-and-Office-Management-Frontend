@@ -1,15 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import { AddSpotIcon, ArrowIcon, BackButton, LinkFloorPlan, ListContainer } from './FloorPlan.style';
-import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
 import useModal from '../../components/ModalList/useModal';
 import DeleteFloorPlanModal from './FloorPlanListModal/DeleteModal/DeleteModal';
-import EditIcon from '../../components/Icons/EditIcon/EditIcon';
 import EditFloorPlanModal from './FloorPlanListModal/EditModal/EditModal';
 import useFloorPlan from './FloorPlan.logic';
 import { FaArrowLeft } from 'react-icons/fa';
 import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
 import { useSpotsContext } from '../../context/SpotsContext';
 import { StyledToolTip } from '../../components/CommonStyledElements';
-import { useNavigate } from 'react-router-dom';
+import EditIcon from '../../components/Icons/EditIcon/EditIcon';
+import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
 
 const FloorPlanPage = () => {
     const navigate = useNavigate();
@@ -22,8 +22,6 @@ const FloorPlanPage = () => {
         onEditClick,
         onEditConfirm,
         setCurrentFloorPlanName,
-        currentFloorPlanImage,
-        setCurrentFloorPlanImage,
         originalFloorPlanName,
         handleGoBack,
     } = useFloorPlan();
@@ -79,11 +77,7 @@ const FloorPlanPage = () => {
                                         </StyledToolTip>
                                         <EditIcon
                                             onClick={() => {
-                                                onEditClick(
-                                                    floorPlanItem.id || '',
-                                                    floorPlanItem.name || '',
-                                                    floorPlanItem.imgUrl || '',
-                                                );
+                                                onEditClick(floorPlanItem.id || '', floorPlanItem.name || '');
                                                 showEditModal();
                                             }}
                                         />
@@ -120,9 +114,7 @@ const FloorPlanPage = () => {
                     hideModal={hideEditModal}
                     onConfirm={onEditConfirm}
                     currentFloorPlanName={originalFloorPlanName}
-                    currentFloorPlanImage={currentFloorPlanImage}
                     setCurrentFloorPlanName={setCurrentFloorPlanName}
-                    setCurrentFloorPlanImage={setCurrentFloorPlanImage}
                 />
             )}
         </ListContainer>

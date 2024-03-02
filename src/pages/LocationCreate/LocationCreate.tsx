@@ -6,14 +6,9 @@ import InputField from '../../components/InputField/InputField';
 import { ListContainer } from '../AdminPage/AdminPage.style';
 import { BackButton } from '../FloorPlan/FloorPlan.style';
 import { useCreateLocation } from './LocationCreate.logic';
-import { useNavigate } from 'react-router-dom';
 
 export default function LocationCreateForm() {
-    const navigate = useNavigate();
-    const { formik, setImageFile } = useCreateLocation();
-    const handleGoBack = () => {
-        navigate(-1);
-    };
+    const { formik, setImageFile, handleGoBack } = useCreateLocation();
 
     return (
         <ListContainer>
