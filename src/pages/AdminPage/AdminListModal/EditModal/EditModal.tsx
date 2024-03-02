@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from '../../../../components/ModalList/Modal';
 import { ErrorStyles, HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
-import { useEditModalError } from './EditModalErrors';
+import { useEditLocationModalLogic } from './EditModal.logic';
 
 interface EditModalProps {
     isVisible: boolean;
@@ -26,33 +26,23 @@ const EditLocationModal: React.FC<EditModalProps> = ({
     setCurrentLocationAddress,
     onConfirm,
 }) => {
-    const { formErrors, validateName, validateCity, validateAddress } = useEditModalError();
-    const [newLocationName, setNewLocationName] = useState(currentLocationName);
-    const [newLocationCity, setNewLocationCity] = useState(currentLocationCity);
-    const [newLocationAddress, setNewLocationAddress] = useState(currentLocationAddress);
-
-    const handleNameBlur = () => {
-        validateName(newLocationName);
-    };
-
-    const handleCityBlur = () => {
-        validateCity(newLocationCity);
-    };
-
-    const handleAddressBlur = () => {
-        validateAddress(newLocationAddress);
-    };
-
-    const handleConfirm = () => {
-        const isNameValid = validateName(newLocationName);
-        const isCityValid = validateCity(newLocationCity);
-        const isAddressValid = validateAddress(newLocationAddress);
-
-        if (isNameValid && isCityValid && isAddressValid) {
-            onConfirm(newLocationName, newLocationCity, newLocationAddress);
-            hideModal();
-        }
-    };
+    const {
+        formErrors,
+        newLocationName,
+        newLocationCity,
+        newLocationAddress,
+        setNewLocationName,
+        setNewLocationCity,
+        setNewLocationAddress,
+        handleLocationdBlur,
+        handleConfirm,
+    } = useEditLocationModalLogic({
+        currentLocationName,
+        currentLocationCity,
+        currentLocationAddress,
+        onConfirm,
+        hideModal,
+    });
 
     return (
         <Modal isVisible={isVisible} hideModal={hideModal} onConfirm={handleConfirm} showConfirmButton={true}>
@@ -67,7 +57,7 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                         setNewLocationName(e.target.value);
                         setCurrentLocationName(e.target.value);
                     }}
-                    onBlur={handleNameBlur}
+                    onBlur={handleLocationdBlur}
                 />
                 {formErrors.name && <ErrorStyles>{formErrors.name}</ErrorStyles>}
             </ItemsModal>
@@ -81,7 +71,7 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                         setNewLocationCity(e.target.value);
                         setCurrentLocationCity(e.target.value);
                     }}
-                    onBlur={handleCityBlur}
+                    onBlur={handleLocationdBlur}
                 />
                 {formErrors.city && <ErrorStyles>{formErrors.city}</ErrorStyles>}
             </ItemsModal>
@@ -95,7 +85,7 @@ const EditLocationModal: React.FC<EditModalProps> = ({
                         setNewLocationAddress(e.target.value);
                         setCurrentLocationAddress(e.target.value);
                     }}
-                    onBlur={handleAddressBlur}
+                    onBlur={handleLocationdBlur}
                 />
                 {formErrors.address && <ErrorStyles>{formErrors.address}</ErrorStyles>}
             </ItemsModal>

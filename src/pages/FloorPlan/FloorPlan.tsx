@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { AddSpotIcon, ArrowIcon, BackButton, LinkFloorPlan, ListContainer } from './FloorPlan.style';
 import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
 import useModal from '../../components/ModalList/useModal';
@@ -10,6 +9,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
 import { useSpotsContext } from '../../context/SpotsContext';
 import { StyledToolTip } from '../../components/CommonStyledElements';
+import { useNavigate } from 'react-router-dom';
 
 const FloorPlanPage = () => {
     const navigate = useNavigate();
@@ -25,15 +25,12 @@ const FloorPlanPage = () => {
         currentFloorPlanImage,
         setCurrentFloorPlanImage,
         originalFloorPlanName,
+        handleGoBack,
     } = useFloorPlan();
 
     const { isVisible: isDeleteModalVisible, showModal: showDeleteModal, hideModal: hideDeleteModal } = useModal();
     const { isVisible: isEditModalVisible, showModal: showEditModal, hideModal: hideEditModal } = useModal();
     const { setExistingSpots } = useSpotsContext();
-
-    const handleGoBack = () => {
-        navigate(-1);
-    };
 
     return (
         <ListContainer>

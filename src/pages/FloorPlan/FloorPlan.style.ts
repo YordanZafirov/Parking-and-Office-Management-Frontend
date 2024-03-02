@@ -29,7 +29,7 @@ const ListContainer = styled.div`
     padding: 20px;
 
     @media (max-width: 768px) {
-        padding: 0;
+        padding: 10px;
     }
 `;
 

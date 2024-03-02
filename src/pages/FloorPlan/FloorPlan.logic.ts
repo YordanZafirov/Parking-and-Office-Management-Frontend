@@ -120,6 +120,10 @@ function useFloorPlan() {
         }
     };
 
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
     return {
         floorPlan,
         isLoading,
@@ -133,6 +137,7 @@ function useFloorPlan() {
         setCurrentFloorPlanImage,
         originalFloorPlanName,
         setOriginalFloorPlanName,
+        handleGoBack,
     };
 }
 

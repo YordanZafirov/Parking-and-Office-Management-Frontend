@@ -3,6 +3,7 @@ import { deleteLocation, getLocations, updateLocation } from '../../services/loc
 import { useState } from 'react';
 import useToken from '../../hooks/Token/Token.hook';
 import { LocationData } from './AdminPage.static';
+import { useNavigate } from 'react-router-dom';
 
 const useAdminPage = () => {
     const { data: locations, isLoading, error, refetch } = useQuery('admin', () => getLocations());
@@ -17,6 +18,14 @@ const useAdminPage = () => {
     const [originalLocationAddress, setOriginalLocationAddress] = useState<string>('');
 
     const decodedToken = useToken();
+    const navigate = useNavigate();
+
+    const handleCreateLocationClick = () => {
+        navigate('/createLocation');
+    };
+    const handleManageUsersClick = () => {
+        navigate('/user');
+    };
 
     const onDeleteLocation = async (locationId: string) => {
         try {
@@ -105,6 +114,8 @@ const useAdminPage = () => {
         originalLocationName,
         originalLocationCity,
         originalLocationAddress,
+        handleCreateLocationClick,
+        handleManageUsersClick,
     };
 };
 

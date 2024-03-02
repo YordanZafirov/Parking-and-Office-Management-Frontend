@@ -19,13 +19,6 @@ import { UserReservationsTableStyle } from '../../components/UserReservationsTab
 const AdminPage = () => {
     const navigate = useNavigate();
 
-    const handleCreateLocationClick = () => {
-        navigate('/createLocation');
-    };
-    const handleManageUsersClick = () => {
-        navigate('/user');
-    };
-
     const {
         locations,
         isLoading,
@@ -40,6 +33,8 @@ const AdminPage = () => {
         originalLocationName,
         originalLocationCity,
         originalLocationAddress,
+        handleCreateLocationClick,
+        handleManageUsersClick,
     } = useAdminPage();
 
     const { filteredItems, setSearchQuery } = useFilter<Location>({ items: locations || [] });

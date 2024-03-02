@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from '../../../../components/ModalList/Modal';
 import { ErrorStyles, HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
-import { useEditModalError } from './EditModalErrors';
+import { useEditFloorPlanModalLogic } from './EditFloorPlanModal.logic';
 
 interface EditModalProps {
     isVisible: boolean;
@@ -21,22 +21,13 @@ const EditFloorPlanModal: React.FC<EditModalProps> = ({
     setCurrentFloorPlanName,
     onConfirm,
 }) => {
-    const { formErrors, validateName } = useEditModalError();
-    const [newFloorPlanName, setNewFloorPlanName] = useState(currentFloorPlanName);
-    const [newFloorPlanImage] = useState(currentFloorPlanImage);
-
-    const handlePasswordBlur = () => {
-        validateName(newFloorPlanName);
-    };
-
-    const handleConfirm = () => {
-        const isNameValid = validateName(newFloorPlanName);
-
-        if (isNameValid) {
-            onConfirm(newFloorPlanName, newFloorPlanImage);
-            hideModal();
-        }
-    };
+    const { formErrors, newFloorPlanName, setNewFloorPlanName, handleFloorPlanBlur, handleConfirm } =
+        useEditFloorPlanModalLogic({
+            currentFloorPlanName,
+            currentFloorPlanImage,
+            onConfirm,
+            hideModal,
+        });
 
     return (
         <Modal isVisible={isVisible} hideModal={hideModal} onConfirm={handleConfirm} showConfirmButton={true}>
@@ -51,7 +42,7 @@ const EditFloorPlanModal: React.FC<EditModalProps> = ({
                         setNewFloorPlanName(e.target.value);
                         setCurrentFloorPlanName(e.target.value);
                     }}
-                    onBlur={handlePasswordBlur}
+                    onBlur={handleFloorPlanBlur}
                 />
                 {formErrors.name && <ErrorStyles>{formErrors.name}</ErrorStyles>}
             </ItemsModal>

@@ -45,6 +45,11 @@ const useUsersPageLogic = () => {
         const filtered = users?.filter((user: User) => user.email.toLowerCase().includes(query.toLowerCase()));
         setFilteredUsers(filtered);
     };
+
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
     return {
         users: filteredUsers,
         isLoading,
@@ -53,6 +58,7 @@ const useUsersPageLogic = () => {
         handleDeleteUser,
         title,
         searchPlaceholder,
+        handleGoBack,
     };
 };
 
