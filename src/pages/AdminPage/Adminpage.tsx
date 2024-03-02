@@ -1,7 +1,6 @@
 import { Location } from '../Home/Home.static';
-import Loader from '../../components/Loader/Loader';
 import { useNavigate } from 'react-router-dom';
-import { BaseButtonCreateLocation, ContainerCreate, ContainerCreateSerch, ListContainer } from './Adminpage.style';
+import { BaseButtonCreateLocation, ContainerCreate, ContainerCreateSerch, ListContainer } from './AdminPage.style';
 import EditIcon from '../../components/Icons/EditIcon/EditIcon';
 import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
 import useAdminPage from './AdminPage.logic';
@@ -9,12 +8,13 @@ import useModal from '../../components/ModalList/useModal';
 import useFilter from '../../utils/search';
 import DeleteLocationModal from './AdminListModal/DeleteModal/DeleteModal';
 import EditLocationModal from './AdminListModal/EditModal/EditModal';
-import SearchBar from '../../components/SearchBar/SearchBar';
 import { LocationData } from './AdminPage.static';
 import FloorPlansIcon from '../../components/Icons/FloorPlanIcon/FloorPlanIcon';
 import FloorPlansAddIcon from '../../components/Icons/FloorPlanAddIcon/FloorPlanAddIcon';
 
-import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
+import { UserReservationsTableStyle } from '../../components/userReservationsTable/UserReservationsTable.styles';
+import Loader from '../../components/loader/Loader';
+import SearchBar from '../../components/searchBar/SearchBar';
 
 const AdminPage = () => {
     const navigate = useNavigate();

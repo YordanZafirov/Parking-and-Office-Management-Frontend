@@ -2,7 +2,7 @@ import { Reservation } from '../../static/types';
 import { Container, PageTitle } from '../CommonStyledElements';
 import useModal from '../ModalList/useModal';
 import DeleteIcon from '../Icons/DeleteIcon/DeleteIcon';
-import Loader from '../Loader/Loader';
+import Loader from '../loader/Loader';
 import DeleteReservationModal from './DeleteModal/DeleteModal';
 import useUserReservationsTableLogic from './UserReservationsTable.logic';
 import { ReservationsTable } from './UserReservationsTable.static';

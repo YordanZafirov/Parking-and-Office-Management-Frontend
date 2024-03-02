@@ -7,7 +7,6 @@ import { AuthProvider } from './context/AuthContext';
 import { ReservationProvider } from './context/ReservationContext';
 import AddSpotForm from './pages/CreateSpots/AddSpotForm/AddSpotForm';
 import CreateSpots from './pages/CreateSpots/CreateSpotsPage';
-import Navigation from './components/Navigation/Navigation';
 
 import styled from 'styled-components';
 
@@ -30,7 +29,8 @@ import SpotSelection from './pages/CreateReservation/SpotSelection/SpotSelection
 import CombinationReservation from './pages/CreateReservation/CombinationReservation/CombinationReservation';
 import SpotUpdate from './pages/FloorPlan/FloorPlanDetails/SpotUpdate/SpotUpdate';
 import { SpotsProvider } from './context/SpotsContext';
-import AdminPage from './pages/AdminPage/Adminpage';
+import Navigation from './components/navigation/Navigation';
+import AdminPage from './pages/AdminPage/AdminPage';
 
 export const StyledApp = styled.div`
     min-height: 100vh;
