@@ -5,7 +5,7 @@ import Modal from '../../../../components/Modal/Modal';
 import { FormStyled } from '../../../CreateSpots/AddSpotForm/AddSpotForm.style';
 import { useDeleteSpot, useUpdateSpot } from './SpotUpdate.logic';
 import { DivFlexStyled } from '../../../CreateSpots/CreateSpotsPage.style';
-import Loader from '../../../../components/loader/Loader';
+import Loader from '../../../../components/Loader/Loader';
 
 export default function SpotUpdate() {
     const { formik, navigate, isLoading, spotType } = useUpdateSpot();
@@ -42,7 +42,7 @@ export default function SpotUpdate() {
                     ) : null}
                     {spotType && (spotType.name === 'Office desk' || spotType.name === 'Parking place') && (
                         <DivFlexStyled>
-                            <label className='checkbox-label'>
+                            <label className="checkbox-label">
                                 {'Is Permanent: '}
                                 <Field
                                     type="checkbox"

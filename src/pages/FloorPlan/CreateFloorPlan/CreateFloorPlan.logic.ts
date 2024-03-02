@@ -15,6 +15,10 @@ function useCreateFloorPlan() {
 
     const decodedToken = useToken();
 
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -55,7 +59,7 @@ function useCreateFloorPlan() {
         },
     });
 
-    return { formik, imageFile, setImageFile };
+    return { formik, imageFile, setImageFile, handleGoBack };
 }
 
 export { useCreateFloorPlan };

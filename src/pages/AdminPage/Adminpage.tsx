@@ -1,30 +1,23 @@
 import { Location } from '../Home/Home.static';
-import Loader from '../../components/loader/Loader';
+import Loader from '../../components/Loader/Loader';
 import { useNavigate } from 'react-router-dom';
 import { BaseButtonCreateLocation, ContainerCreate, ContainerCreateSerch, ListContainer } from './Adminpage.style';
-import EditIcon from '../../components/icons/EditIcon';
-import DeleteIcon from '../../components/icons/DeleteIcon';
+import EditIcon from '../../components/Icons/EditIcon/EditIcon';
+import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
 import useAdminPage from './AdminPage.logic';
 import useModal from '../../components/ModalList/useModal';
 import useFilter from '../../utils/search';
 import DeleteLocationModal from './AdminListModal/DeleteModal/DeleteModal';
 import EditLocationModal from './AdminListModal/EditModal/EditModal';
-import SearchBar from '../../components/searchBar/SearchBar';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import { LocationData } from './AdminPage.static';
-import FloorPlansIcon from '../../components/icons/FloorPlanIcon';
-import FloorPlansAddIcon from '../../components/icons/FloorPlanAddIcon';
+import FloorPlansIcon from '../../components/Icons/FloorPlanIcon/FloorPlanIcon';
+import FloorPlansAddIcon from '../../components/Icons/FloorPlanAddIcon/FloorPlanAddIcon';
 
 import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
 
 const AdminPage = () => {
     const navigate = useNavigate();
-
-    const handleCreateLocationClick = () => {
-        navigate('/createLocation');
-    };
-    const handleManageUsersClick = () => {
-        navigate('/user');
-    };
 
     const {
         locations,
@@ -32,14 +25,12 @@ const AdminPage = () => {
         error,
         onDeleteClick,
         onEditClick,
-        setCurrentLocationName,
-        setCurrentLocationCity,
-        setCurrentLocationAddress,
+        setCurrentLocation,
         onDeleteConfirm,
         onEditConfirm,
-        originalLocationName,
-        originalLocationCity,
-        originalLocationAddress,
+        originalLocation,
+        handleCreateLocationClick,
+        handleManageUsersClick,
     } = useAdminPage();
 
     const { filteredItems, setSearchQuery } = useFilter<Location>({ items: locations || [] });
@@ -58,22 +49,22 @@ const AdminPage = () => {
         <ListContainer>
             <ContainerCreateSerch>
                 <ContainerCreate>
-                <BaseButtonCreateLocation
-                    onClick={handleCreateLocationClick}
-                    style={{
-                        backgroundColor: `var(--blue-green-light)`,
-                    }}
-                >
-                    Create Location
-                </BaseButtonCreateLocation>
-                <BaseButtonCreateLocation
-                    onClick={handleManageUsersClick}
-                    style={{
-                        backgroundColor: `var(--blue-green-light)`,
-                    }}
-                >
-                    Manage Users
-                </BaseButtonCreateLocation>
+                    <BaseButtonCreateLocation
+                        onClick={handleCreateLocationClick}
+                        style={{
+                            backgroundColor: `var(--blue-green-light)`,
+                        }}
+                    >
+                        Create Location
+                    </BaseButtonCreateLocation>
+                    <BaseButtonCreateLocation
+                        onClick={handleManageUsersClick}
+                        style={{
+                            backgroundColor: `var(--blue-green-light)`,
+                        }}
+                    >
+                        Manage Users
+                    </BaseButtonCreateLocation>
                 </ContainerCreate>
                 <SearchBar placeholder="Search locations" onSearch={setSearchQuery} />
             </ContainerCreateSerch>
@@ -153,12 +144,8 @@ const AdminPage = () => {
                     isVisible={isEditModalVisible}
                     hideModal={hideEditModal}
                     onConfirm={onEditConfirm}
-                    currentLocationName={originalLocationName}
-                    currentLocationCity={originalLocationCity}
-                    currentLocationAddress={originalLocationAddress}
-                    setCurrentLocationName={setCurrentLocationName}
-                    setCurrentLocationCity={setCurrentLocationCity}
-                    setCurrentLocationAddress={setCurrentLocationAddress}
+                    currentLocation={originalLocation}
+                    setCurrentLocation={setCurrentLocation}
                 />
             )}
         </ListContainer>

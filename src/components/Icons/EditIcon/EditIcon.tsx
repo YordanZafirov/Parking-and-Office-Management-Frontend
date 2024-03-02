@@ -1,16 +1,7 @@
-import React, { MouseEventHandler } from 'react';
-import styled from 'styled-components';
-import { StyledToolTip } from '../CommonStyledElements';
-
-interface EditIconProps {
-    onClick: MouseEventHandler;
-}
-
-const BlueEditIcon = styled.span`
-    color: blue;
-    cursor: pointer;
-    margin: 10px;
-`;
+import React from 'react';
+import { StyledToolTip } from '../../CommonStyledElements';
+import { BlueEditIcon } from './EditIcon.style';
+import { EditIconProps } from './EditIcon.static';
 
 const EditIcon: React.FC<EditIconProps> = ({ onClick }) => (
     <>

@@ -3,20 +3,35 @@ import { deleteLocation, getLocations, updateLocation } from '../../services/loc
 import { useState } from 'react';
 import useToken from '../../hooks/Token/Token.hook';
 import { LocationData } from './AdminPage.static';
+import { useNavigate } from 'react-router-dom';
 
 const useAdminPage = () => {
     const { data: locations, isLoading, error, refetch } = useQuery('admin', () => getLocations());
 
     const [selectedLocationIdForDelete, setSelectedLocationIdForDelete] = useState<string | null>(null);
     const [selectedLocationIdForEdit, setSelectedLocationIdForEdit] = useState<string | null>(null);
-    const [currentLocationName, setCurrentLocationName] = useState<string>('');
-    const [currentLocationCity, setCurrentLocationCity] = useState<string>('');
-    const [currentLocationAddress, setCurrentLocationAddress] = useState<string>('');
-    const [originalLocationName, setOriginalLocationName] = useState<string>('');
-    const [originalLocationCity, setOriginalLocationCity] = useState<string>('');
-    const [originalLocationAddress, setOriginalLocationAddress] = useState<string>('');
+
+    const [currentLocation, setCurrentLocation] = useState({
+        name: '',
+        city: '',
+        address: '',
+    });
+
+    const [originalLocation, setOriginalLocation] = useState({
+        name: '',
+        city: '',
+        address: '',
+    });
 
     const decodedToken = useToken();
+    const navigate = useNavigate();
+
+    const handleCreateLocationClick = () => {
+        navigate('/createLocation');
+    };
+    const handleManageUsersClick = () => {
+        navigate('/user');
+    };
 
     const onDeleteLocation = async (locationId: string) => {
         try {
@@ -29,7 +44,7 @@ const useAdminPage = () => {
 
     const onEditLocation = async (locationId: string, newLocationData: LocationData) => {
         try {
-            if (newLocationData.name !== originalLocationName) {
+            if (newLocationData.name !== originalLocation.name) {
                 await updateLocation(locationId, newLocationData);
             } else {
                 const updatedLocationData = { ...newLocationData };
@@ -51,12 +66,17 @@ const useAdminPage = () => {
 
     const onEditClick = (locationId: string, locationName: string, locationCity: string, locationAddress: string) => {
         setSelectedLocationIdForEdit(locationId);
-        setCurrentLocationName(locationName);
-        setCurrentLocationCity(locationCity);
-        setCurrentLocationAddress(locationAddress);
-        setOriginalLocationName(locationName);
-        setOriginalLocationCity(locationCity);
-        setOriginalLocationAddress(locationAddress);
+        setCurrentLocation({
+            name: locationName,
+            city: locationCity,
+            address: locationAddress,
+        });
+
+        setOriginalLocation({
+            name: locationName,
+            city: locationCity,
+            address: locationAddress,
+        });
     };
 
     const onDeleteConfirm = async () => {
@@ -70,9 +90,9 @@ const useAdminPage = () => {
         try {
             if (selectedLocationIdForEdit) {
                 const newLocationData = {
-                    name: currentLocationName,
-                    city: currentLocationCity,
-                    address: currentLocationAddress,
+                    name: currentLocation.name,
+                    city: currentLocation.city,
+                    address: currentLocation.address,
                     modifiedBy: decodedToken?.id,
                 };
 
@@ -80,9 +100,11 @@ const useAdminPage = () => {
             }
 
             setSelectedLocationIdForEdit(null);
-            setCurrentLocationName('');
-            setCurrentLocationCity('');
-            setCurrentLocationAddress('');
+            setCurrentLocation({
+                name: '',
+                city: '',
+                address: '',
+            });
         } catch (error) {
             console.error('Error handling edit confirmation:', error);
         }
@@ -94,17 +116,13 @@ const useAdminPage = () => {
         error,
         onDeleteClick,
         onEditClick,
-        currentLocationName,
-        setCurrentLocationName,
-        currentLocationCity,
-        setCurrentLocationCity,
-        currentLocationAddress,
-        setCurrentLocationAddress,
+        currentLocation,
+        setCurrentLocation,
         onDeleteConfirm,
         onEditConfirm,
-        originalLocationName,
-        originalLocationCity,
-        originalLocationAddress,
+        originalLocation,
+        handleCreateLocationClick,
+        handleManageUsersClick,
     };
 };
 

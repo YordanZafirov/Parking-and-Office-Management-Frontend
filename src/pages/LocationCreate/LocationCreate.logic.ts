@@ -13,6 +13,10 @@ function useCreateLocation() {
 
     const decodedToken = useToken();
 
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -55,7 +59,7 @@ function useCreateLocation() {
         },
     });
 
-    return { formik, imageFile, setImageFile };
+    return { formik, imageFile, setImageFile, handleGoBack };
 }
 
 export { useCreateLocation };

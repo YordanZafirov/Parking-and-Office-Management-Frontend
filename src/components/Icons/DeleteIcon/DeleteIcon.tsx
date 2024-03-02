@@ -1,16 +1,7 @@
-import React, { MouseEventHandler } from 'react';
-import styled from 'styled-components';
-import { StyledToolTip } from '../CommonStyledElements';
-
-interface DeleteIconProps {
-    onClick: MouseEventHandler;
-}
-
-const RedDeleteIcon = styled.span`
-    color: red;
-    cursor: pointer;
-    margin: 10px;
-`;
+import React from 'react';
+import { StyledToolTip } from '../../CommonStyledElements';
+import { RedDeleteIcon } from './DeleteIcon.style';
+import { DeleteIconProps } from './DeleteIcon.static';
 
 const DeleteIcon: React.FC<DeleteIconProps> = ({ onClick }) => (
     <>

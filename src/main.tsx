@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import ErrorBoundary from './components/error/ErrorBoundary.tsx';
+import ErrorBoundary from './components/Error/ErrorBoundary.tsx';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

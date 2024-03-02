@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { BaseButton, Container } from '../../../components/CommonStyledElements';
 
 const UserPageMainButtonsContainer = styled(Container)`
-    margin: 50px auto 10px;
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -22,4 +21,12 @@ const BaseButtonCreateUser = styled(BaseButton)`
     background-color: var(--blue-green-light);
 `;
 
-export { UserPageMainButtonsContainer, BaseButtonCreateUser };
+const ListContainer = styled.div`
+    padding: 20px;
+
+    @media (max-width: 768px) {
+        padding: 10px;
+    }
+`;
+
+export { UserPageMainButtonsContainer, BaseButtonCreateUser, ListContainer };

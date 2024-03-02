@@ -18,7 +18,6 @@ function useFloorPlan() {
     const [selectedFloorPlanIdForDelete, setSelectedFloorPlanIdForDelete] = useState<string | null>(null);
     const [selectedFloorPlanIdForEdit, setSelectedFloorPlanIdForEdit] = useState<string | null>(null);
     const [currentFloorPlanName, setCurrentFloorPlanName] = useState<string>('');
-    const [currentFloorPlanImage, setCurrentFloorPlanImage] = useState<string>('');
     const [originalFloorPlanName, setOriginalFloorPlanName] = useState<string>('');
 
     useEffect(() => {
@@ -94,10 +93,9 @@ function useFloorPlan() {
         }
     };
 
-    const onEditClick = (floorPlanId: string, floorPlanName: string, floorPlanImage: string) => {
+    const onEditClick = (floorPlanId: string, floorPlanName: string) => {
         setSelectedFloorPlanIdForEdit(floorPlanId);
         setCurrentFloorPlanName(floorPlanName);
-        setCurrentFloorPlanImage(floorPlanImage);
         setOriginalFloorPlanName(floorPlanName);
     };
 
@@ -114,10 +112,13 @@ function useFloorPlan() {
 
             setSelectedFloorPlanIdForEdit(null);
             setCurrentFloorPlanName('');
-            setCurrentFloorPlanImage('');
         } catch (error) {
             console.error('Error handling edit confirmation:', error);
         }
+    };
+
+    const handleGoBack = () => {
+        navigate(-1);
     };
 
     return {
@@ -129,10 +130,9 @@ function useFloorPlan() {
         onEditConfirm,
         currentFloorPlanName,
         setCurrentFloorPlanName,
-        currentFloorPlanImage,
-        setCurrentFloorPlanImage,
         originalFloorPlanName,
         setOriginalFloorPlanName,
+        handleGoBack,
     };
 }
 

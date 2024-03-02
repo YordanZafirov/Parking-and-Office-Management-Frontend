@@ -5,14 +5,9 @@ import ImageInputField from '../../../components/InputField/ImageInputField';
 import InputField from '../../../components/InputField/InputField';
 import { BackButton, ListContainer } from '../FloorPlan.style';
 import { useCreateFloorPlan } from './CreateFloorPlan.logic';
-import { useNavigate } from 'react-router-dom';
 
 const CreateNewFloorPlanForm = () => {
-    const navigate = useNavigate();
-    const { formik, setImageFile } = useCreateFloorPlan();
-    const handleGoBack = () => {
-        navigate(-1);
-    };
+    const { formik, setImageFile, handleGoBack } = useCreateFloorPlan();
 
     return (
         <ListContainer>
