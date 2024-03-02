@@ -2,7 +2,7 @@ import { RiCloseFill } from 'react-icons/ri';
 
 import useReservationSummary from './ReservationSummary.logic';
 import { Reservation } from '../../static/types';
-import Loader from '../../components/loader/Loader';
+import Loader from '../../components/Loader/Loader';
 import { useReservationContext } from '../../context/ReservationContext';
 import {
     AddNewReservationButton,

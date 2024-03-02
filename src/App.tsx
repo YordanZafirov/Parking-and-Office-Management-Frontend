@@ -7,7 +7,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ReservationProvider } from './context/ReservationContext';
 import AddSpotForm from './pages/CreateSpots/AddSpotForm/AddSpotForm';
 import CreateSpots from './pages/CreateSpots/CreateSpotsPage';
-import Navigation from './components/navigation/Navigation';
+import Navigation from './components/Navigation/Navigation';
 
 import styled from 'styled-components';
 
@@ -17,7 +17,7 @@ import LocationCreateForm from './pages/LocationCreate/LocationCreate';
 import SpotType from './pages/SpotType/SpotType';
 import CreateReservation from './pages/CreateReservation/CreateReservationPage';
 import UserProfilePage from './pages/User/UserProfilePage/UserProfilePage';
-import AdminPage from './pages/AdminPage/Adminpage';
+import AdminPage from './pages/AdminPage/AdminPage';
 import ChangePasswordForm from './pages/User/ChangePasswordForm/ChangePasswordForm';
 import ChangeProfilePictureForm from './pages/User/ChangeProfilePictureForm/ChangeProfilePictureForm';
 import NotFound from './pages/NotFound/NotFound';

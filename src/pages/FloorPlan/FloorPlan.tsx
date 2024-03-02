@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { AddSpotIcon, ArrowIcon, BackButton, LinkFloorPlan, ListContainer } from './FloorPlan.style';
-import DeleteIcon from '../../components/icons/DeleteIcon';
+import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
 import useModal from '../../components/ModalList/useModal';
 import DeleteFloorPlanModal from './FloorPlanListModal/DeleteModal/DeleteModal';
-import EditIcon from '../../components/icons/EditIcon';
+import EditIcon from '../../components/Icons/EditIcon/EditIcon';
 import EditFloorPlanModal from './FloorPlanListModal/EditModal/EditModal';
 import useFloorPlan from './FloorPlan.logic';
 import { FaArrowLeft } from 'react-icons/fa';

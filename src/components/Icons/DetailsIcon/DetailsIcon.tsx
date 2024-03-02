@@ -1,16 +1,7 @@
-import React, { MouseEventHandler } from 'react';
-import styled from 'styled-components';
-import { StyledToolTip } from '../CommonStyledElements';
-
-interface DetailsIconProps {
-    onClick: MouseEventHandler;
-}
-
-const WhiteDetailsIcon = styled.span`
-    color: white;
-    cursor: pointer;
-    margin: 10px;
-`;
+import React from 'react';
+import { StyledToolTip } from '../../CommonStyledElements';
+import { WhiteDetailsIcon } from './DetailsIcon.style';
+import { DetailsIconProps } from './DetailsIcon.static';
 
 const DetailsIcon: React.FC<DetailsIconProps> = ({ onClick }) => (
     <>

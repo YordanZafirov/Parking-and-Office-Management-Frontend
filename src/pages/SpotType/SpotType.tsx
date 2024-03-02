@@ -1,4 +1,4 @@
-import Loader from '../../components/loader/Loader';
+import Loader from '../../components/Loader/Loader';
 import SpotTypeCards from './SpotTypeCards/SpotTypeCards';
 import useChoseLocation from './SpotType.logic';
 import useSpotTypeCard from './SpotTypeCards/SpotTypeCards.logic';

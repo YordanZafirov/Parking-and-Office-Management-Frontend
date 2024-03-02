@@ -1,6 +1,6 @@
 import { PageTitle } from '../../../components/CommonStyledElements';
-import Loader from '../../../components/loader/Loader';
-import SearchBar from '../../../components/searchBar/SearchBar';
+import Loader from '../../../components/Loader/Loader';
+import SearchBar from '../../../components/SearchBar/SearchBar';
 import UserCardsContainer from './UserCard/UserCardsContainer';
 import { useUsersPageLogic } from './UsersPage.logic';
 import { BaseButtonCreateUser, UserPageMainButtonsContainer } from './UsersPage.style';
