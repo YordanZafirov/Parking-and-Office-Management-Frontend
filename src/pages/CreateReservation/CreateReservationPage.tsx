@@ -1,7 +1,7 @@
 import ImageMarker from 'react-image-marker';
 import { BaseButton, StyledToolTip } from '../../components/CommonStyledElements';
 import { useShowSpots } from './CreateReservationPage.logic';
-import Loader from '../../components/loader/Loader';
+import Loader from '../../components/Loader/Loader';
 import { LocationImage } from '../Home/LocationChocie/LocationChoice.style';
 import { Card, ImageContainer, ImageStyled, NoSpotsMessageContainer } from './CreateReservationPage.style';
 import { DivFlexStyled } from '../CreateSpots/CreateSpotsPage.style';

@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ErrorBoundary from './components/error/ErrorBoundary.tsx';
+import ErrorBoundary from './components/Error/ErrorBoundary.tsx';
 
 const queryClient = new QueryClient();
 
