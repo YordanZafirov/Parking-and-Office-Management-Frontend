@@ -9,7 +9,8 @@ import { useSpotsContext } from '../../context/SpotsContext';
 import { StyledToolTip } from '../../components/CommonStyledElements';
 import EditIcon from '../../components/Icons/EditIcon/EditIcon';
 import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
-import { UserReservationsTableStyle } from '../../components/userReservationsTable/UserReservationsTable.styles';
+import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
+
 
 const FloorPlanPage = () => {
     const navigate = useNavigate();
