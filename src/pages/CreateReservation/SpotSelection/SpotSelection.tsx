@@ -1,7 +1,7 @@
 import { BaseButton, FormButtonsContainer } from '../../../components/CommonStyledElements';
-import Modal from '../../../components/Modal/Modal';
+import Modal from '../../../components/modal/Modal';
 import { FormStyled } from '../../CreateSpots/AddSpotForm/AddSpotForm.style';
-import InputField from '../../../components/InputField/InputField';
+import InputField from '../../../components/inputField/InputField';
 import { useReservSpot } from './SpotSelection.logic';
 
 export default function SpotSelection() {

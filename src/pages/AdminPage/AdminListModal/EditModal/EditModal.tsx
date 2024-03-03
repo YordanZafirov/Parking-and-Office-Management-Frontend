@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../../../../components/ModalList/Modal';
+import Modal from '../../../../components/modalList/Modal';
 import { ErrorStyles, HeaderModal, InputModal, ItemsModal, LabelModal } from './EditModal.style';
 import { useEditLocationModalLogic } from './EditModal.logic';
 

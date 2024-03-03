@@ -1,16 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { AddSpotIcon, ArrowIcon, BackButton, LinkFloorPlan, ListContainer } from './FloorPlan.style';
-import useModal from '../../components/ModalList/useModal';
+import useModal from '../../components/modalList/useModal';
 import DeleteFloorPlanModal from './FloorPlanListModal/DeleteModal/DeleteModal';
 import EditFloorPlanModal from './FloorPlanListModal/EditModal/EditModal';
 import useFloorPlan from './FloorPlan.logic';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useSpotsContext } from '../../context/SpotsContext';
 import { StyledToolTip } from '../../components/CommonStyledElements';
-import EditIcon from '../../components/Icons/EditIcon/EditIcon';
-import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
-import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
-
+import EditIcon from '../../components/icons/EditIcon/EditIcon';
+import DeleteIcon from '../../components/icons/DeleteIcon/DeleteIcon';
+import { UserReservationsTableStyle } from '../../components/userReservationsTable/UserReservationsTable.styles';
 
 const FloorPlanPage = () => {
     const navigate = useNavigate();

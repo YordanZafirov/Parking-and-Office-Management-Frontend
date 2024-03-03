@@ -30,7 +30,7 @@ import CombinationReservation from './pages/CreateReservation/CombinationReserva
 import SpotUpdate from './pages/FloorPlan/FloorPlanDetails/SpotUpdate/SpotUpdate';
 import { SpotsProvider } from './context/SpotsContext';
 import Navigation from './components/navigation/Navigation';
-import AdminPage from './pages/AdminPage/AdminpPage';
+import AdminPage from './pages/AdminPage/AdminPage';
 
 export const StyledApp = styled.div`
     min-height: 100vh;

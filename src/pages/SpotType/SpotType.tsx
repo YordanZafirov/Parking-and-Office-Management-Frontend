@@ -4,7 +4,7 @@ import useChoseLocation from './SpotType.logic';
 import useSpotTypeCard from './SpotTypeCards/SpotTypeCards.logic';
 import { ChooseLocationContainer } from './SpotType.style';
 import { useFutureReservationsByUserId } from '../User/UserProfilePage/UserProfilePage.logic';
-import UserReservationsTable from '../../components/UserReservationsTable/UserReservationsTable';
+import UserReservationsTable from '../../components/userReservationsTable/UserReservationsTable';
 
 const SpotType = () => {
     const { singleLocation, isLoading: loadingLocation, error: errorLocation, userId } = useChoseLocation();

@@ -1,21 +1,21 @@
 import { Location } from '../Home/Home.static';
 import { useNavigate } from 'react-router-dom';
-import { BaseButtonCreateLocation, ContainerCreate, ContainerCreateSerch, ListContainer } from './AdminPage.style';
-import EditIcon from '../../components/Icons/EditIcon/EditIcon';
-import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
+import { BaseButtonCreateLocation, ContainerCreate, ContainerCreateSearch, ListContainer } from './AdminPage.style';
+import EditIcon from '../../components/icons/EditIcon/EditIcon';
+import DeleteIcon from '../../components/icons/DeleteIcon/DeleteIcon';
 import useAdminPage from './AdminPage.logic';
-import useModal from '../../components/ModalList/useModal';
+import useModal from '../../components/modalList/useModal';
 import useFilter from '../../utils/search';
 import DeleteLocationModal from './AdminListModal/DeleteModal/DeleteModal';
 import EditLocationModal from './AdminListModal/EditModal/EditModal';
 import { LocationData } from './AdminPage.static';
-import FloorPlansIcon from '../../components/Icons/FloorPlanIcon/FloorPlanIcon';
-import FloorPlansAddIcon from '../../components/Icons/FloorPlanAddIcon/FloorPlanAddIcon';
-
+import FloorPlansIcon from '../../components/icons/FloorPlanIcon/FloorPlanIcon';
+import FloorPlansAddIcon from '../../components/icons/FloorPlanAddIcon/FloorPlanAddIcon';
 
 import Loader from '../../components/loader/Loader';
 import SearchBar from '../../components/searchBar/SearchBar';
-import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
+import { UserReservationsTableStyle } from '../../components/userReservationsTable/UserReservationsTable.styles';
+
 
 const AdminPage = () => {
     const navigate = useNavigate();
@@ -48,7 +48,7 @@ const AdminPage = () => {
 
     return (
         <ListContainer>
-            <ContainerCreateSerch>
+            <ContainerCreateSearch>
                 <ContainerCreate>
                     <BaseButtonCreateLocation
                         onClick={handleCreateLocationClick}
@@ -68,7 +68,7 @@ const AdminPage = () => {
                     </BaseButtonCreateLocation>
                 </ContainerCreate>
                 <SearchBar placeholder="Search locations" onSearch={setSearchQuery} />
-            </ContainerCreateSerch>
+            </ContainerCreateSearch>
 
             <UserReservationsTableStyle>
                 <caption>Location List</caption>

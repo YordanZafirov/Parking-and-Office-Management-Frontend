@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router';
-import Modal from '../../../components/Modal/Modal';
+import Modal from '../../../components/modal/Modal';
 import useChangePassword from './ChangePasswordForm.logic';
 import { BaseButton, FormButtonsContainer } from '../../../components/CommonStyledElements';
-import { FormStyled } from '../../../components/InputField/Form.style';
-import InputField from '../../../components/InputField/InputField';
+import { FormStyled } from '../../../components/inputField/Form.style';
+import InputField from '../../../components/inputField/InputField';
 
 const ChangePasswordForm = () => {
     const { formik } = useChangePassword();

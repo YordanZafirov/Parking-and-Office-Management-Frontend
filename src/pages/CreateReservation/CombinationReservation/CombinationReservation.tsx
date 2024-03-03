@@ -1,5 +1,5 @@
 import { BaseButton, FormButtonsContainer } from '../../../components/CommonStyledElements';
-import InputField from '../../../components/InputField/InputField';
+import InputField from '../../../components/inputField/InputField';
 import { FormStyled } from '../../CreateSpots/AddSpotForm/AddSpotForm.style';
 import { useReserveSpotCombination } from './CombinationReservation.logic';
 import CombinationReservationModal from './CombinationReservationModal/CombinationReservationModal';

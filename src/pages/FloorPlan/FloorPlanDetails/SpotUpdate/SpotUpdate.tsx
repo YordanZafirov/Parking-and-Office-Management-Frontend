@@ -1,7 +1,7 @@
 import { Field, FormikProvider } from 'formik';
 import { BaseButton, FormButtonsContainer } from '../../../../components/CommonStyledElements';
-import InputField from '../../../../components/InputField/InputField';
-import Modal from '../../../../components/Modal/Modal';
+import InputField from '../../../../components/inputField/InputField';
+import Modal from '../../../../components/modal/Modal';
 import { FormStyled } from '../../../CreateSpots/AddSpotForm/AddSpotForm.style';
 import { useDeleteSpot, useUpdateSpot } from './SpotUpdate.logic';
 import { DivFlexStyled } from '../../../CreateSpots/CreateSpotsPage.style';

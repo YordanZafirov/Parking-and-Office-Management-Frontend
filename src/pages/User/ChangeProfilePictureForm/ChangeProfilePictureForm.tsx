@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router';
-import Modal from '../../../components/Modal/Modal';
+import Modal from '../../../components/modal/Modal';
 import useChangeProfilePicture from './ChangeProfilePictureForm.logic';
 import { BaseButton, FormButtonsContainer } from '../../../components/CommonStyledElements';
-import InputField from '../../../components/InputField/InputField';
-import { FormStyled } from '../../../components/InputField/Form.style';
+import InputField from '../../../components/inputField/InputField';
+import { FormStyled } from '../../../components/inputField/Form.style';
 
 const ChangeProfilePictureForm = () => {
     const { formik, setImageFile } = useChangeProfilePicture();

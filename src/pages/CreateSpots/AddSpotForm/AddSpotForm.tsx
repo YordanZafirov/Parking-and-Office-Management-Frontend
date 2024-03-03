@@ -1,8 +1,8 @@
 import { Field, FormikProvider } from 'formik';
 import { FormStyled, Option, SelectStyle } from './AddSpotForm.style';
 import { useAddSpot, useSpotTypes } from './AddSpotForm.logic';
-import Modal from '../../../components/Modal/Modal';
-import InputField from '../../../components/InputField/InputField';
+import Modal from '../../../components/modal/Modal';
+import InputField from '../../../components/inputField/InputField';
 import { useNavigate } from 'react-router';
 import { BaseButton, FormButtonsContainer } from '../../../components/CommonStyledElements';
 

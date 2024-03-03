@@ -1,8 +1,8 @@
 import { FaArrowLeft } from 'react-icons/fa';
 import { BaseButton } from '../../components/CommonStyledElements';
-import { FormStyled } from '../../components/InputField/Form.style';
-import ImageInputField from '../../components/InputField/ImageInputField';
-import InputField from '../../components/InputField/InputField';
+import { FormStyled } from '../../components/inputField/Form.style';
+import ImageInputField from '../../components/inputField/ImageInputField';
+import InputField from '../../components/inputField/InputField';
 import { ListContainer } from '../AdminPage/AdminPage.style';
 import { BackButton } from '../FloorPlan/FloorPlan.style';
 import { useCreateLocation } from './LocationCreate.logic';
