@@ -1,7 +1,7 @@
 import { HomeContainer } from './Home.style';
 import useHome from './Home.logic';
 import { Location } from './Home.static';
-import Loader from '../../components/Loader/Loader';
+import Loader from '../../components/loader/Loader';
 import LocationChoice from './LocationChocie/LocationChocie';
 
 const Home = () => {

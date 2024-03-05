@@ -12,9 +12,9 @@ import { LocationData } from './AdminPage.static';
 import FloorPlansIcon from '../../components/Icons/FloorPlanIcon/FloorPlanIcon';
 import FloorPlansAddIcon from '../../components/Icons/FloorPlanAddIcon/FloorPlanAddIcon';
 
-import { UserReservationsTableStyle } from '../../components/UserReservationsTable/UserReservationsTable.styles';
-import Loader from '../../components/Loader/Loader';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import { UserReservationsTableStyle } from '../../components/userReservationsTable/UserReservationsTable.styles';
+import Loader from '../../components/loader/Loader';
+import SearchBar from '../../components/searchBar/SearchBar';
 
 const AdminPage = () => {
     const navigate = useNavigate();
