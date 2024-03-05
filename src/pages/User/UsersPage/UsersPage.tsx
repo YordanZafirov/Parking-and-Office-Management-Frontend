@@ -1,7 +1,7 @@
 import { FaArrowLeft } from 'react-icons/fa';
 import { PageTitle } from '../../../components/CommonStyledElements';
-import Loader from '../../../components/Loader/Loader';
-import SearchBar from '../../../components/SearchBar/SearchBar';
+import Loader from '../../../components/loader/Loader';
+import SearchBar from '../../../components/searchBar/SearchBar';
 import { BackButton } from '../../FloorPlan/FloorPlan.style';
 import UserCardsContainer from './UserCard/UserCardsContainer';
 import { useUsersPageLogic } from './UsersPage.logic';

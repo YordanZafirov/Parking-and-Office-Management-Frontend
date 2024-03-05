@@ -29,7 +29,7 @@ import SpotSelection from './pages/CreateReservation/SpotSelection/SpotSelection
 import CombinationReservation from './pages/CreateReservation/CombinationReservation/CombinationReservation';
 import SpotUpdate from './pages/FloorPlan/FloorPlanDetails/SpotUpdate/SpotUpdate';
 import { SpotsProvider } from './context/SpotsContext';
-import Navigation from './components/Navigation/Navigation';
+import Navigation from './components/navigation/Navigation';
 import AdminPage from './pages/AdminPage/AdminPage';
 
 export const StyledApp = styled.div`
