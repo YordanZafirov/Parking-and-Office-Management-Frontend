@@ -5,11 +5,11 @@ import DeleteFloorPlanModal from './FloorPlanListModal/DeleteModal/DeleteModal';
 import EditFloorPlanModal from './FloorPlanListModal/EditModal/EditModal';
 import useFloorPlan from './FloorPlan.logic';
 import { FaArrowLeft } from 'react-icons/fa';
+import { UserReservationsTableStyle } from '../../components/userReservationsTable/UserReservationsTable.styles';
 import { useSpotsContext } from '../../context/SpotsContext';
 import { StyledToolTip } from '../../components/CommonStyledElements';
 import EditIcon from '../../components/Icons/EditIcon/EditIcon';
 import DeleteIcon from '../../components/Icons/DeleteIcon/DeleteIcon';
-import { UserReservationsTableStyle } from '../../components/userReservationsTable/UserReservationsTable.styles';
 
 const FloorPlanPage = () => {
     const navigate = useNavigate();
