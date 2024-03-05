@@ -16,3 +16,5 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder, onSearch }) => {
 };
 
 export default SearchBar;
+
+// comment
