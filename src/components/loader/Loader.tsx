@@ -10,5 +10,3 @@ const Loader = () => {
 };
 
 export default Loader;
-
-// comment
