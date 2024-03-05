@@ -4,7 +4,7 @@ import { BackButton, ListContainer } from '../FloorPlan.style';
 import { useFloorPlanDetails } from './FloorPlanDetails.logic';
 import { FaArrowLeft } from 'react-icons/fa6';
 import SpotUpdateMarker from './SpotUpdateMarker/SpotUpdateMarker';
-import Loader from '../../../components/loader/Loader';
+import Loader from '../../../components/Loader/Loader';
 
 const FloorPlanDetails = () => {
     const { floorPlan, spotsByFloorPlan, error, isLoading, handleGoBack } = useFloorPlanDetails();
