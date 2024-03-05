@@ -13,7 +13,7 @@ import {
 import { userProfileConstants } from './UserProfilePage.static';
 import UserProfileInfo from './UserProfileInfo';
 import defaultPicture from '../../../assets/default-profile.jpg';
-import UserReservationsTable from '../../../components/UserReservationsTable/UserReservationsTable';
+import UserReservationsTable from '../../../components/userReservationsTable/UserReservationsTable';
 import NotFound from '../../NotFound/NotFound';
 import { TbLogout2 } from 'react-icons/tb';
 

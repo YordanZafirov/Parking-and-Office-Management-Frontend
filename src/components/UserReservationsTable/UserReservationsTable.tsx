@@ -2,11 +2,11 @@ import { Reservation } from '../../static/types';
 import { Container, PageTitle } from '../CommonStyledElements';
 import useModal from '../ModalList/useModal';
 import DeleteIcon from '../Icons/DeleteIcon/DeleteIcon';
-import Loader from '../Loader/Loader';
-import DeleteReservationModal from '../UserReservationsTable/DeleteModal/DeleteModal';
-import useUserReservationsTableLogic from '../UserReservationsTable/UserReservationsTable.logic';
-import { ReservationsTable } from '../UserReservationsTable/UserReservationsTable.static';
-import { UserReservationsTableStyle } from '../UserReservationsTable/UserReservationsTable.styles';
+import Loader from '../loader/Loader';
+import DeleteReservationModal from './DeleteModal/DeleteModal';
+import useUserReservationsTableLogic from './UserReservationsTable.logic';
+import { ReservationsTable } from './UserReservationsTable.static';
+import { UserReservationsTableStyle } from './UserReservationsTable.styles';
 
 const UserReservationsTable = ({
     reservations,
